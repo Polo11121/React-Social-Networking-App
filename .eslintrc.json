@@ -37,6 +37,7 @@
         "endOfLine": "auto"
       }
     ],
+    "no-underscore-dangle": 0,
     "import/no-cycle": 0,
     "no-use-before-define": 1,
     "arrow-body-style": 0,
