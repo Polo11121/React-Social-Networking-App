@@ -11,19 +11,21 @@ export const Main = () => {
 
   return (
     <div className="main">
-      <main className="main__content">
-        <div>
+      <div className="main__container">
+        <main className="main__content">
           <div>test</div>
-          <LoginForm />
-        </div>
-        <button onClick={toggleIsRegisterModalOpen} type="button">
-          Utwórz nowe konto
-        </button>
-      </main>
-      <RegisterModal
-        isOpen={isRegisterModalOpen}
-        onCloseModal={toggleIsRegisterModalOpen}
-      />
+          <div>
+            <LoginForm />
+            <button onClick={toggleIsRegisterModalOpen} type="button">
+              Utwórz nowe konto
+            </button>
+          </div>
+        </main>
+        <RegisterModal
+          isOpen={isRegisterModalOpen}
+          onCloseModal={toggleIsRegisterModalOpen}
+        />
+      </div>
     </div>
   );
 };
