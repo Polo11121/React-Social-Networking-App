@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import { useLogin } from 'api/useLogin';
+import './LoginForm.scss';
 
 export const LoginForm = ({
   isLinkHidden = false,
@@ -18,7 +19,7 @@ export const LoginForm = ({
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form className="login-form" onSubmit={formik.handleSubmit}>
       <input
         type="text"
         name="email"

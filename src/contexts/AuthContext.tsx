@@ -9,6 +9,7 @@ import {
 } from 'react';
 import { useGetUser } from 'api/useGetUser';
 import { CircularProgress } from '@mui/material';
+import { ResponseUserType } from 'shared/types/responseTypes';
 
 const AuthContext = createContext({
   isAuthenticated: false,
@@ -26,7 +27,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const authenticationHandler = useCallback(
-    ({ data }: { data: any }) => {
+    ({ data }: { data: ResponseUserType }) => {
       if (isAuthenticated) {
         localStorage.removeItem('userId');
       } else {
