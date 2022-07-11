@@ -1,41 +1,49 @@
+import { ReactNode } from 'react';
 import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
 import { useLogin } from 'api/useLogin';
+import { LoginSchema } from 'components/LoginForm/LoginSchema';
+import { Input, Button } from 'components';
 import './LoginForm.scss';
 
-export const LoginForm = ({
-  isLinkHidden = false,
-}: {
-  isLinkHidden?: boolean;
-}) => {
-  const { mutate } = useLogin();
+export const LoginForm = ({ children }: { children?: ReactNode }) => {
+  const { mutate, error, isLoading } = useLogin();
 
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
+    validationSchema: LoginSchema,
+    validateOnChange: false,
     onSubmit: (values) => mutate(values),
   });
 
   return (
     <form className="login-form" onSubmit={formik.handleSubmit}>
-      <input
+      <Input
         type="text"
         name="email"
-        placeholder="email"
+        placeholder="E-mail"
         onChange={formik.handleChange}
         value={formik.values.email}
+        error={formik.isValid ? error : formik.errors.email}
       />
-      <input
+      <Input
         type="password"
         name="password"
-        placeholder="password"
+        placeholder="Hasło"
         onChange={formik.handleChange}
         value={formik.values.password}
+        error={formik.errors.password}
       />
-      <button type="submit">Zaloguj się</button>
-      {!isLinkHidden && <Link to="/forgotPassword">Nie pamietasz hasła ?</Link>}
+      <Button
+        isDisabled={isLoading}
+        fullWidth
+        buttonStyleType="primary"
+        type="submit"
+        text="Zaloguj się"
+      />
+      {children}
     </form>
   );
 };

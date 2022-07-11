@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { useForgotPassword } from 'api/useForgotPassword';
-import { LinkButton, LoginForm } from 'components';
+import { Button, LoginForm } from 'components';
 
 export const ForgotPassword = () => {
   const { mutate } = useForgotPassword();
@@ -14,7 +14,7 @@ export const ForgotPassword = () => {
 
   return (
     <div>
-      <LoginForm isLinkHidden />
+      <LoginForm />
       <h1>Znajdź swoje konto</h1>
       <form onSubmit={formik.handleSubmit}>
         <input
@@ -23,7 +23,7 @@ export const ForgotPassword = () => {
           onChange={formik.handleChange}
           value={formik.values.email}
         />
-        <LinkButton text="Anuluj" to="/login" />
+        <Button buttonStyleType="primary" text="Anuluj" to="/login" />
         <button type="submit">Szukaj</button>
       </form>
     </div>

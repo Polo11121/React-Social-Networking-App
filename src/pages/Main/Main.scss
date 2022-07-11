@@ -1,3 +1,5 @@
+@import 'styles/colors';
+
 .main {
   height: 100vh;
 
@@ -8,7 +10,37 @@
     place-items: center;
   }
 
+  &__text {
+    width: 31.25rem;
+    margin: 3.125rem 1.25rem 0 0;
+  }
+
+  &__title {
+    font-size: 2.813rem;
+    color: $primary;
+  }
+
   &__content {
     display: flex;
+  }
+
+  &__link {
+    color: $primary;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+
+    &:hover {
+      text-decoration: underline solid;
+    }
+  }
+
+  &__form-line {
+    align-items: center;
+    border-bottom: 1px solid #dadde1;
+    display: flex;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 }
