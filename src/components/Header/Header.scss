@@ -1,0 +1,14 @@
+@import 'styles/colors';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  background-color: white;
+
+  &__logo {
+    color: $primary;
+  }
+}

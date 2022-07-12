@@ -21,18 +21,20 @@ export const Main = () => {
               im różne informacje i materiały.
             </h3>
           </div>
-          <LoginForm>
-            <Link className="main__link" to="/forgotPassword">
-              Nie pamietasz hasła ?
-            </Link>
-            <div className="main__form-line" />
-            <Button
-              type="submit"
-              buttonStyleType="secondary"
-              text="Utwórz nowe konto"
-              style={{ fontSize: '17px', margin: '0.5rem auto ' }}
-            />
-          </LoginForm>
+          <div className="main__form">
+            <LoginForm>
+              <Link className="main__link" to="/forgotPassword">
+                Nie pamietasz hasła ?
+              </Link>
+              <div className="main__form-line" />
+              <Button
+                type="submit"
+                buttonStyleType="secondary"
+                text="Utwórz nowe konto"
+                style={{ fontSize: '1.063rem', margin: '0.5rem auto ' }}
+              />
+            </LoginForm>
+          </div>
         </main>
         <RegisterModal
           isOpen={isRegisterModalOpen}

@@ -3,9 +3,16 @@ import { useFormik } from 'formik';
 import { useLogin } from 'api/useLogin';
 import { LoginSchema } from 'components/LoginForm/LoginSchema';
 import { Input, Button } from 'components';
+import classnames from 'classnames';
 import './LoginForm.scss';
 
-export const LoginForm = ({ children }: { children?: ReactNode }) => {
+export const LoginForm = ({
+  children,
+  isInverse = false,
+}: {
+  children?: ReactNode;
+  isInverse?: boolean;
+}) => {
   const { mutate, error, isLoading } = useLogin();
 
   const formik = useFormik({
@@ -19,8 +26,13 @@ export const LoginForm = ({ children }: { children?: ReactNode }) => {
   });
 
   return (
-    <form className="login-form" onSubmit={formik.handleSubmit}>
+    <form
+      className={classnames('login-form', { 'login-form--inverse': isInverse })}
+      onSubmit={formik.handleSubmit}
+    >
       <Input
+        style={isInverse ? { margin: '0 1rem 0 0' } : {}}
+        tooltipError={isInverse}
         type="text"
         name="email"
         placeholder="E-mail"
@@ -29,6 +41,8 @@ export const LoginForm = ({ children }: { children?: ReactNode }) => {
         error={formik.isValid ? error : formik.errors.email}
       />
       <Input
+        style={isInverse ? { margin: '0 1rem 0 0' } : {}}
+        tooltipError={isInverse}
         type="password"
         name="password"
         placeholder="Hasło"
@@ -38,7 +52,7 @@ export const LoginForm = ({ children }: { children?: ReactNode }) => {
       />
       <Button
         isDisabled={isLoading}
-        fullWidth
+        fullWidth={!isInverse}
         buttonStyleType="primary"
         type="submit"
         text="Zaloguj się"
