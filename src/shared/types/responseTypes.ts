@@ -11,3 +11,5 @@ export type UserType = {
 };
 
 export type ResponseUserType = ResponseType<{ user: UserType }>;
+
+export type ResponseErrorType = { message: string };
