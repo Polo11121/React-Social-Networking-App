@@ -28,7 +28,7 @@ export const Main = () => {
               </Link>
               <div className="main__form-line" />
               <Button
-                type="submit"
+                onClick={toggleIsRegisterModalOpen}
                 buttonStyleType="secondary"
                 text="Utwórz nowe konto"
                 style={{ fontSize: '1.063rem', margin: '0.5rem auto ' }}
@@ -36,10 +36,12 @@ export const Main = () => {
             </LoginForm>
           </div>
         </main>
-        <RegisterModal
-          isOpen={isRegisterModalOpen}
-          onCloseModal={toggleIsRegisterModalOpen}
-        />
+        {isRegisterModalOpen && (
+          <RegisterModal
+            isOpen={isRegisterModalOpen}
+            onCloseModal={toggleIsRegisterModalOpen}
+          />
+        )}
       </div>
     </div>
   );

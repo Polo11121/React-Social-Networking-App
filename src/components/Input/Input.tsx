@@ -29,7 +29,12 @@ export const Input = ({
 }: InputPropsType) => (
   <>
     <div
-      className={classnames('input', { 'input--error': error })}
+      tabIndex={0}
+      className={classnames(
+        'input',
+        { 'input--error': error },
+        { 'input--tooltip-error': tooltipError }
+      )}
       style={style}
     >
       <input

@@ -12,9 +12,10 @@ export const ForgotPassword = () => {
       email: '',
     },
     validationSchema: ForgotPasswordSchema,
-    validateOnChange: false,
     onSubmit: (values) => mutate(values),
   });
+
+  formik.validateOnChange = Boolean(formik.submitCount);
 
   return (
     <div className="forgot-password">
