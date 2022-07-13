@@ -21,9 +21,10 @@ export const LoginForm = ({
       password: '',
     },
     validationSchema: LoginSchema,
-    validateOnChange: false,
     onSubmit: (values) => mutate(values),
   });
+
+  formik.validateOnChange = Boolean(formik.submitCount);
 
   return (
     <form
