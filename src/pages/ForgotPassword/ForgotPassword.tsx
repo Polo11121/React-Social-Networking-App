@@ -1,21 +1,20 @@
-import { useFormik } from 'formik';
 import { useForgotPassword } from 'api/useForgotPassword';
 import { ForgotPasswordSchema } from 'pages/ForgotPassword/ForgotPasswordSchema';
-import { Button, Header, Input, LoginForm } from 'components';
+import { Button, Header, Input } from 'components';
+import { LoginForm } from 'shared/forms/LoginForm/LoginForm';
+import { useForm } from 'shared/hooks/useForm';
 import './ForgotPassword.scss';
 
 export const ForgotPassword = () => {
   const { mutate, error, isLoading } = useForgotPassword();
 
-  const formik = useFormik({
+  const formik = useForm({
     initialValues: {
-      email: '',
+      emailAddress: '',
     },
     validationSchema: ForgotPasswordSchema,
-    onSubmit: (values) => mutate(values),
+    mutate,
   });
-
-  formik.validateOnChange = Boolean(formik.submitCount);
 
   return (
     <div className="forgot-password">
@@ -41,11 +40,11 @@ export const ForgotPassword = () => {
             <Input
               style={{ margin: '0 1rem ' }}
               placeholder="Adres e-mail"
-              name="email"
-              error={formik.isValid ? error : formik.errors.email}
+              name="emailAddress"
+              error={formik.isValid ? error : formik.errors.emailAddress}
               type="text"
               onChange={formik.handleChange}
-              value={formik.values.email}
+              value={formik.values.emailAddress}
             />
             <div className="forgot-password__buttons">
               <div style={{ padding: '1rem' }}>

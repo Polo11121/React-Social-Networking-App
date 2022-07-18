@@ -5,13 +5,16 @@ export const RegisterSchema = Yup.object().shape({
   surname: Yup.string().required('Wpisz nazwisko'),
   email: Yup.string()
     .email('Nieprawidłowy adres email')
-    .required('Wpisz e-mail'),
+    .required('Nieprawidłowy adres email'),
   password: Yup.string()
     .min(8, 'Hasło musi mieć conajmniej 8 znaków')
-    .required('Wpisz hasło'),
-  passwordConfirm: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Hasła nie są identyczne')
-    .required('Powtóz hasło'),
+    .required('Hasło musi mieć conajmniej 8 znaków'),
+  passwordConfirm: Yup.string().test(
+    'equals passwords',
+    'Nieprawidłowe hasło',
+    (value, ctx) =>
+      Boolean(value && ctx.parent.password === value && value.length > 7)
+  ),
   birthDate: Yup.date().required('Podaj date urodzenia'),
   gender: Yup.string().required('Wybierz płeć'),
 });

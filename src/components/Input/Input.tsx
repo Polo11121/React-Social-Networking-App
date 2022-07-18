@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, CSSProperties } from 'react';
+import { ErrorText, Tooltip } from 'components';
 import WarningIcon from '@mui/icons-material/Warning';
-import Tooltip from '@mui/material/Tooltip';
 import classnames from 'classnames';
 import './Input.scss';
 
@@ -29,7 +29,6 @@ export const Input = ({
 }: InputPropsType) => (
   <>
     <div
-      tabIndex={0}
       className={classnames(
         'input',
         { 'input--error': error },
@@ -38,6 +37,8 @@ export const Input = ({
       style={style}
     >
       <input
+        data-tip
+        data-for={`${name}-input`}
         className="input__container"
         type={type}
         name={name}
@@ -46,16 +47,26 @@ export const Input = ({
         value={value}
         disabled={isDisabled}
       />
-      {error && tooltipError && (
-        <Tooltip arrow className="input__tooltip" title={error}>
-          <WarningIcon style={{ color: 'red' }} />
-        </Tooltip>
-      )}
+      <WarningIcon
+        style={{
+          color: 'red',
+          display: `${error && tooltipError ? 'block' : 'none'}`,
+        }}
+      />
     </div>
-    {error && !tooltipError && (
-      <p style={style} className="input__error">
-        {error}
-      </p>
-    )}
+    <ErrorText
+      style={{ marginBottom: '1rem', ...style }}
+      isHidden={tooltipError}
+      text={error}
+    />
+    <Tooltip
+      isDisabled={!(tooltipError && error)}
+      type="error"
+      offset={{ bottom: 10 }}
+      text={error}
+      id={`${name}-input`}
+      event="focusin"
+      eventOff="focusout"
+    />
   </>
 );

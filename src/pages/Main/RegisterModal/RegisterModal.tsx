@@ -1,8 +1,7 @@
 import { ChangeEvent } from 'react';
 import { Modal } from '@mui/material';
-import { useFormik } from 'formik';
 import { useRegister } from 'api/useRegister';
-
+import { useForm } from 'shared/hooks/useForm';
 import { GenderRadioButtons } from 'pages/Main/RegisterModal/GenderRadioButtons/GenderRadioButtons';
 import { BirthDatePicker } from 'pages/Main/RegisterModal/BirthDatePicker/BirthDatePicker';
 import { RegisterSchema } from 'pages/Main/RegisterModal/RegisterSchema';
@@ -13,9 +12,9 @@ import './RegisterModal.scss';
 type RegisterModalType = { isOpen: boolean; onCloseModal: () => void };
 
 export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
-  const { mutate } = useRegister();
+  const { mutate, error, isLoading } = useRegister();
 
-  const formik = useFormik({
+  const formik = useForm({
     initialValues: {
       name: '',
       surname: '',
@@ -26,10 +25,8 @@ export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
       gender: '',
     },
     validationSchema: RegisterSchema,
-    onSubmit: (values) => mutate(values),
+    mutate,
   });
-
-  formik.validateOnChange = Boolean(formik.submitCount);
 
   const changeDateBirthHandler = (value: Date | null) =>
     formik.setFieldValue('birthDate', value);
@@ -82,7 +79,7 @@ export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
             tooltipError
             onChange={formik.handleChange}
             value={formik.values.email}
-            error={formik.errors.email}
+            error={formik.isValid ? error : formik.errors.email}
           />
           <Input
             name="password"
@@ -113,6 +110,7 @@ export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
             onChange={changeGenderHandler}
           />
           <Button
+            isDisabled={isLoading}
             fullWidth
             buttonStyleType="primary"
             type="submit"

@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-import { useFormik } from 'formik';
 import { useLogin } from 'api/useLogin';
-import { LoginSchema } from 'components/LoginForm/LoginSchema';
+import { LoginSchema } from 'shared/forms/LoginForm/LoginSchema';
 import { Input, Button } from 'components';
+import { useForm } from 'shared/hooks/useForm';
 import classnames from 'classnames';
 import './LoginForm.scss';
 
@@ -15,16 +15,11 @@ export const LoginForm = ({
 }) => {
   const { mutate, error, isLoading } = useLogin();
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
+  const formik = useForm({
+    initialValues: { email: '', password: '' },
     validationSchema: LoginSchema,
-    onSubmit: (values) => mutate(values),
+    mutate,
   });
-
-  formik.validateOnChange = Boolean(formik.submitCount);
 
   return (
     <form

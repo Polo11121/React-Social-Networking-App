@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { RegisterModal } from 'pages/Main/RegisterModal/RegisterModal';
+import { LoginForm } from 'shared/forms/LoginForm/LoginForm';
 import { Link } from 'react-router-dom';
-import { Button, LoginForm } from 'components';
+import { Button } from 'components';
 import './Main.scss';
 
 export const Main = () => {
