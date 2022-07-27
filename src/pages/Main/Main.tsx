@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { RegisterModal } from 'pages/Main/RegisterModal/RegisterModal';
-import { LoginForm } from 'shared/forms/LoginForm/LoginForm';
+import { LoginForm } from 'shared/fixtures/LoginForm/LoginForm';
 import { Link } from 'react-router-dom';
 import { Button } from 'components';
 import './Main.scss';
@@ -32,7 +32,8 @@ export const Main = () => {
                 onClick={toggleIsRegisterModalOpen}
                 buttonStyleType="secondary"
                 text="Utwórz nowe konto"
-                style={{ fontSize: '1.063rem', margin: '0.5rem auto ' }}
+                style={{ fontSize: '1.063rem', margin: '0.5rem auto' }}
+                size="big"
               />
             </LoginForm>
           </div>

@@ -110,6 +110,7 @@ export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
             onChange={changeGenderHandler}
           />
           <Button
+            size="big"
             isDisabled={isLoading}
             fullWidth
             buttonStyleType="primary"

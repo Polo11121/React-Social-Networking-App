@@ -5,7 +5,7 @@ import { useMutation } from 'react-query';
 export const useLogout = () => {
   const { authenticationHandler } = useAuthContext();
 
-  const logout = () => axios.get('users/logout');
+  const logout = () => axios.get('/api/v1/users/logout');
 
   const { mutate, isLoading } = useMutation(logout, {
     onSuccess: authenticationHandler,

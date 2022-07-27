@@ -1,15 +1,13 @@
-@import 'styles/colors';
-@import 'styles/breakpoints';
-@import 'styles/mixins';
+@import 'styles/styles';
 
 .main {
-  background: #f0f2f5;
+  background: $background;
   height: 100vh;
 
   &__container {
     height: 80%;
     display: grid;
-    background: #f0f2f5;
+    background: $background;
     place-items: center;
   }
 
@@ -28,7 +26,7 @@
   }
 
   &__title {
-    font-size: 2.813rem;
+    font-size: $font-size-x-big;
     color: $primary;
   }
 

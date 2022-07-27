@@ -8,12 +8,10 @@ export default {
   title: 'Header',
 } as Meta;
 
-const Template: Story<{ children?: ReactNode }> = (args) => {
-  return (
-    <Router>
-      <Header {...args} />
-    </Router>
-  );
-};
+const Template: Story<{ children?: ReactNode }> = (args) => (
+  <Router>
+    <Header {...args} />
+  </Router>
+);
 
 export const Default = Template.bind({});

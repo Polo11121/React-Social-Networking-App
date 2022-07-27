@@ -5,7 +5,7 @@ import { ResponseErrorType } from 'shared/types/responseTypes';
 
 type UseApiType = {
   url: string;
-  method: 'post' | 'update' | 'delete';
+  method: 'post' | 'patch' | 'delete';
   onSuccess?: (data: any) => void;
 };
 
@@ -15,7 +15,7 @@ export const useApiCrud = ({ url, method, onSuccess }: UseApiType) => {
   const api = (data: Record<any, any>) =>
     axios({
       method,
-      url,
+      url: `/api/v1/${url}`,
       data,
     });
 

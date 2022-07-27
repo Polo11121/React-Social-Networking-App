@@ -1,12 +1,11 @@
-@import 'styles/breakpoints';
+@import 'styles/styles';
 
 .login-form {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  width: calc(100% - 2rem);
+  background-color: $white;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  @include cardBoxShadow;
 
   @media only screen and (min-width: $medium) {
     border-radius: 0.5rem;

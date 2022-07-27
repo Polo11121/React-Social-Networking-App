@@ -1,12 +1,14 @@
 import { useForgotPassword } from 'api/useForgotPassword';
 import { ForgotPasswordSchema } from 'pages/ForgotPassword/ForgotPasswordSchema';
 import { Button, Header, Input } from 'components';
-import { LoginForm } from 'shared/forms/LoginForm/LoginForm';
+import { LoginForm } from 'shared/fixtures/LoginForm/LoginForm';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'shared/hooks/useForm';
 import './ForgotPassword.scss';
 
 export const ForgotPassword = () => {
   const { mutate, error, isLoading } = useForgotPassword();
+  const navigate = useNavigate();
 
   const formik = useForm({
     initialValues: {
@@ -16,6 +18,8 @@ export const ForgotPassword = () => {
     mutate,
   });
 
+  const switchToMainPage = () => navigate('/');
+
   return (
     <div className="forgot-password">
       <Header>
@@ -23,7 +27,12 @@ export const ForgotPassword = () => {
           <LoginForm isInverse />
         </div>
         <div className="forgot-password__login-button">
-          <Button buttonStyleType="primary" text="Zaloguj" to="/" />
+          <Button
+            size="big"
+            buttonStyleType="primary"
+            text="Zaloguj"
+            onClick={switchToMainPage}
+          />
         </div>
       </Header>
       <div className="forgot-password__container">
@@ -47,14 +56,17 @@ export const ForgotPassword = () => {
               value={formik.values.emailAddress}
             />
             <div className="forgot-password__buttons">
-              <div style={{ padding: '1rem' }}>
+              <div style={{ padding: '1rem', display: 'flex' }}>
                 <Button
-                  buttonStyleType="secondary"
+                  size="big"
+                  buttonStyleType="mandy"
                   text="Anuluj"
-                  to="/"
+                  onClick={switchToMainPage}
                   style={{ marginLeft: '1rem' }}
                 />
                 <Button
+                  onClick={() => {}}
+                  size="big"
                   buttonStyleType="primary"
                   text="Szukaj"
                   isDisabled={isLoading}

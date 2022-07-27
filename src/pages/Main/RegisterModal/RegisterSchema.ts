@@ -4,8 +4,8 @@ export const RegisterSchema = Yup.object().shape({
   name: Yup.string().required('Wpisz imię'),
   surname: Yup.string().required('Wpisz nazwisko'),
   email: Yup.string()
-    .email('Nieprawidłowy adres email')
-    .required('Nieprawidłowy adres email'),
+    .email('Nieprawidłowy adres e-mail')
+    .required('Nieprawidłowy adres e-mail'),
   password: Yup.string()
     .min(8, 'Hasło musi mieć conajmniej 8 znaków')
     .required('Hasło musi mieć conajmniej 8 znaków'),

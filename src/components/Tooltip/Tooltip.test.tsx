@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Tooltip } from 'components';
 
 describe('<Tooltip>', () => {
-  it('should not show tooltip', () => {
+  it('should not show Tooltip', () => {
     render(
       <>
         <p data-tip data-for="tooltip" style={{ width: 'fit-content' }}>
@@ -15,7 +15,7 @@ describe('<Tooltip>', () => {
     expect(screen.queryByText('tooltip')).not.toBeVisible();
   });
 
-  it('should show tooltip after hover', () => {
+  it('should show Tooltip after hover', () => {
     render(
       <>
         <p data-tip data-for="tooltip" style={{ width: 'fit-content' }}>

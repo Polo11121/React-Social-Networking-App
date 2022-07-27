@@ -7,16 +7,14 @@ export default {
   title: 'Tooltip',
 } as Meta;
 
-const Template: Story<TooltipType> = (args) => {
-  return (
-    <>
-      <p data-tip data-for="tooltip" style={{ width: 'fit-content' }}>
-        hover here
-      </p>
-      <Tooltip {...args} id="tooltip" text="tooltip" />
-    </>
-  );
-};
+const Template: Story<TooltipType> = (args) => (
+  <>
+    <p data-tip data-for="tooltip" style={{ width: 'fit-content' }}>
+      hover here
+    </p>
+    <Tooltip {...args} id="tooltip" text="tooltip" />
+  </>
+);
 
 export const Default = Template.bind({});
 

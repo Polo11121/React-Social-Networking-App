@@ -1,5 +1,4 @@
 import { Story, Meta } from '@storybook/react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { ErrorText } from 'components';
 import { ErrorTextType } from 'components/ErrorText/ErrorText';
 
@@ -8,13 +7,7 @@ export default {
   title: 'ErrorText',
 } as Meta;
 
-const Template: Story<ErrorTextType> = (args) => {
-  return (
-    <Router>
-      <ErrorText {...args} />
-    </Router>
-  );
-};
+const Template: Story<ErrorTextType> = (args) => <ErrorText {...args} />;
 
 export const Default = Template.bind({});
 Default.args = { text: 'Test Error' };

@@ -1,45 +1,46 @@
-import { CSSProperties, MouseEventHandler } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { CSSProperties, MouseEventHandler, ReactNode } from 'react';
 import classnames from 'classnames';
 import './Button.scss';
 
 export type ButtonPropsType = {
   text: string;
-  buttonStyleType: 'primary' | 'secondary';
-  to?: string;
+  buttonStyleType: 'primary' | 'secondary' | 'mandy';
+  size?: 'small' | 'normal' | 'big';
   style?: CSSProperties;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   type?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
   isDisabled?: boolean;
+  Icon?: ReactNode;
 };
 
 export const Button = ({
   text,
-  to,
   style,
   buttonStyleType,
   onClick,
+  Icon,
   type = 'button',
+  size = 'normal',
   fullWidth = false,
   isDisabled = false,
-}: ButtonPropsType) => {
-  const navigate = useNavigate();
-
-  const switchPageTo = () => to && navigate(to);
-
-  return (
-    <button
-      disabled={isDisabled}
-      type={type}
-      className={classnames('button', `button--${buttonStyleType}`, {
+}: ButtonPropsType) => (
+  <button
+    disabled={isDisabled}
+    type={type}
+    className={classnames(
+      'button',
+      `button--${size}`,
+      `button--${buttonStyleType}`,
+      {
         'button--fullWidth': fullWidth,
         'button--disabled': isDisabled,
-      })}
-      style={style}
-      onClick={to ? switchPageTo : onClick}
-    >
-      {text}
-    </button>
-  );
-};
+      }
+    )}
+    style={style}
+    onClick={onClick}
+  >
+    {Icon}
+    {text}
+  </button>
+);

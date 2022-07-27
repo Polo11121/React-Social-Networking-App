@@ -3,11 +3,11 @@ type ResponseType<T> = {
 };
 
 export type UserType = {
-  role: string;
   _id: string;
   name: string;
-  email: string;
-  __v: number;
+  surname: string;
+  profileImage: string;
+  backgroundImage: string;
 };
 
 export type ResponseUserType = ResponseType<{ user: UserType }>;

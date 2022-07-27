@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { useLogin } from 'api/useLogin';
-import { LoginSchema } from 'shared/forms/LoginForm/LoginSchema';
+import { LoginSchema } from 'shared/fixtures/LoginForm/LoginSchema';
 import { Input, Button } from 'components';
 import { useForm } from 'shared/hooks/useForm';
 import classnames from 'classnames';
@@ -52,6 +52,7 @@ export const LoginForm = ({
         buttonStyleType="primary"
         type="submit"
         text="Zaloguj się"
+        size="big"
       />
       {children}
     </form>

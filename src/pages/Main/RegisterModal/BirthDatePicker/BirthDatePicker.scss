@@ -1,4 +1,4 @@
-@import 'styles/colors';
+@import 'styles/styles';
 
 .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
   height: 3rem;
@@ -20,5 +20,5 @@
 }
 
 .Mui-error .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  border-color: red !important;
+  border-color: $red !important;
 }

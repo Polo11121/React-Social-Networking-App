@@ -1,10 +1,10 @@
-@import 'styles/colors';
+@import 'styles/styles';
 
 .input {
   display: flex;
   align-items: center;
   padding: 0.625rem 0.75rem;
-  background-color: #fff;
+  background-color: $white;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   outline: 0;
@@ -16,25 +16,25 @@
 
   &__container {
     font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-small;
     width: 100%;
     border: none;
     outline: none;
   }
 
   &:focus-within {
-    background-color: #fff;
+    background-color: $white;
     border-color: $primary;
     box-shadow: 0 0 0 0.25rem rgb(0 111 113 / 25%);
   }
 
   &--error {
-    border-color: red;
+    border-color: $red;
     margin-bottom: 0;
 
     &:focus {
-      border-color: red;
+      border-color: $red;
       box-shadow: 0 0 0 0.25rem rgb(255 0 0 / 25%);
     }
   }
@@ -45,10 +45,10 @@
 }
 
 .MuiTooltip-tooltip {
-  background-color: red !important;
-  color: white !important;
+  background-color: $red !important;
+  color: $white !important;
 }
 
 .MuiTooltip-arrow {
-  color: red !important;
+  color: $red !important;
 }

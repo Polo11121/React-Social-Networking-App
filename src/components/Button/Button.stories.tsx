@@ -1,5 +1,4 @@
 import { Story, Meta } from '@storybook/react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { ButtonPropsType } from 'components/Button/Button';
 import { Button } from 'components';
 
@@ -8,13 +7,7 @@ export default {
   title: 'Button',
 } as Meta;
 
-const Template: Story<ButtonPropsType> = (args) => {
-  return (
-    <Router>
-      <Button {...args} />
-    </Router>
-  );
-};
+const Template: Story<ButtonPropsType> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = { text: 'Primary', buttonStyleType: 'primary' };

@@ -1,13 +1,11 @@
-@import 'styles/breakpoints';
-@import 'styles/colors';
+@import 'styles/styles';
 
 .register-modal {
-  width: 25rem;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  background-color: $white;
   position: relative;
+  @include cardBoxShadow;
 
   &__exit-button {
     position: absolute;
@@ -22,6 +20,7 @@
 
   @media only screen and (min-width: $medium) {
     border-radius: 0.5rem;
+    width: 25rem;
   }
 
   &__form {

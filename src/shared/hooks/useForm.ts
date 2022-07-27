@@ -7,7 +7,7 @@ import { getTrimmedData } from 'shared/functions';
 
 type UseFormType<T> = {
   initialValues: T;
-  validationSchema: any;
+  validationSchema?: any;
   mutate: UseMutateFunction<
     AxiosResponse<any, any>,
     AxiosError<ResponseErrorType, any>,

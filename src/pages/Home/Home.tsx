@@ -1,13 +1,5 @@
-import { useLogout } from 'api/useLogout';
+import './Home.scss';
 
 export const Home = () => {
-  const { mutate } = useLogout();
-
-  return (
-    <div>
-      <button type="button" onClick={() => mutate()}>
-        logout
-      </button>
-    </div>
-  );
+  return <div className="home">home</div>;
 };

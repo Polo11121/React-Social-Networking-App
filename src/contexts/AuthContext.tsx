@@ -8,18 +8,28 @@ import {
   useState,
 } from 'react';
 import { useGetUser } from 'api/useGetUser';
-import { CircularProgress } from '@mui/material';
-import { ResponseUserType } from 'shared/types/responseTypes';
+import { ResponseUserType, UserType } from 'shared/types/responseTypes';
+import { Spinner } from 'components';
+import { useQueryClient } from 'react-query';
+
+const initialUserInfo = {
+  name: '',
+  surname: '',
+  _id: '',
+  profileImage: '',
+} as UserType;
 
 const AuthContext = createContext({
   isAuthenticated: false,
   // eslint-disable-next-line
   authenticationHandler: (data: any) => {},
-  userInfo: {},
+  invalidateUserData: () => new Promise(() => {}),
+  userInfo: initialUserInfo,
 });
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const queryClient = useQueryClient();
 
   useEffect(
     () => setIsAuthenticated(Boolean(localStorage.getItem('userId'))),
@@ -43,20 +53,25 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     localStorage.getItem('userId')
   );
 
+  const invalidateUserData = useCallback(
+    () =>
+      queryClient.invalidateQueries(['user', localStorage.getItem('userId')]),
+    [queryClient]
+  );
+
   const value = useMemo(
-    () => ({ isAuthenticated, authenticationHandler, userInfo }),
-    [isAuthenticated, authenticationHandler, userInfo]
+    () => ({
+      isAuthenticated,
+      authenticationHandler,
+      userInfo: userInfo || initialUserInfo,
+      invalidateUserData,
+    }),
+    [isAuthenticated, authenticationHandler, userInfo, invalidateUserData]
   );
 
   return (
     <AuthContext.Provider value={value}>
-      {isLoading ? (
-        <div style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
-          <CircularProgress color="inherit" />
-        </div>
-      ) : (
-        children
-      )}
+      {isLoading ? <Spinner /> : children}
     </AuthContext.Provider>
   );
 };

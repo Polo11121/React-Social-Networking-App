@@ -1,0 +1,21 @@
+@import 'styles/styles';
+
+.edit-header {
+  padding: 1rem 3rem;
+  font-size: $font-size-big;
+  font-weight: $font-weight-medium;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  z-index: $z-index-large-priority;
+  color: $white;
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
