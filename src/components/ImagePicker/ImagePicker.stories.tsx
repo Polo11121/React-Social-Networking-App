@@ -8,7 +8,7 @@ export default {
 } as Meta;
 
 const Template: Story<ImagePickerPropsType> = (args) => (
-  <ImagePicker {...args} handleFile={(file: File | null) => {}} />
+  <ImagePicker {...args} handleFile={(file: File | FileList | null) => {}} />
 );
 
 export const Default = Template.bind({});

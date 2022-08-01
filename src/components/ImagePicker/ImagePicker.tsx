@@ -4,22 +4,25 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import './ImagePicker.scss';
 
 export type ImagePickerPropsType = {
-  handleFile: (file: File | null) => void;
+  handleFile: (file: File | FileList | null) => void;
   text?: string;
   tooltipText?: string;
+  isMultiple?: boolean;
 };
 
 export const ImagePicker = ({
   handleFile,
   text,
   tooltipText,
+  isMultiple = false,
 }: ImagePickerPropsType) => {
   const hiddenFileInput = useRef<null | HTMLInputElement>(null);
 
   const handleClick = () => hiddenFileInput.current?.click();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) =>
-    handleFile(event.target.files ? event.target.files[0] : null);
+    event.target.files &&
+    handleFile(isMultiple ? event.target.files : event.target.files[0]);
 
   return (
     <>
@@ -39,6 +42,7 @@ export const ImagePicker = ({
       </button>
       <input
         type="file"
+        multiple={isMultiple}
         ref={hiddenFileInput}
         onChange={handleChange}
         style={{ display: 'none' }}

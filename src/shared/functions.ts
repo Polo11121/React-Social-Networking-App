@@ -12,3 +12,6 @@ export const getTrimmedData = (obj: Record<any, any>) => {
   }
   return obj;
 };
+
+export const sortByDate = (date1: Date, date2: Date) =>
+  new Date(date2).getTime() - new Date(date1).getTime();

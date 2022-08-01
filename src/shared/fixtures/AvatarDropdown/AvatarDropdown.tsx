@@ -55,7 +55,7 @@ const AvatarDropdown = () => {
             src={userInfo.profileImage}
             className="avatar-dropdown__avatar"
           />
-          <ListItemText style={{ color: 'black' }}>Mój Profil</ListItemText>
+          <ListItemText>Mój Profil</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleLogout}>
           <div className="avatar-dropdown__icon-overlay">

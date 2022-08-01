@@ -2,6 +2,7 @@ export { Button } from './Button/Button';
 export { EditHeader } from './EditHeader/EditHeader';
 export { ErrorText } from './ErrorText/ErrorText';
 export { Header } from './Header/Header';
+export { ImageCarousel } from './ImageCarousel/ImageCarousel';
 export { ImagePicker } from './ImagePicker/ImagePicker';
 export { Input } from './Input/Input';
 export { SectionCard } from './SectionCard/SectionCard';

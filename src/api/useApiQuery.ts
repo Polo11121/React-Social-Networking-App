@@ -15,10 +15,10 @@ export const useApiQuery = <T>({
   const useApi = (): Promise<T> =>
     axios.get(`/api/v1/${endpoint}`).then((res) => res.data);
 
-  const { data, isLoading } = useQuery(queryKey, useApi, {
+  const data = useQuery(queryKey, useApi, {
     enabled,
     cacheTime: Infinity,
   });
 
-  return { data, isLoading };
+  return { ...data, data: data.data as T };
 };

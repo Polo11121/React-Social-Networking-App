@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { Modal } from '@mui/material';
+import { IconButton, Modal } from '@mui/material';
 import { useRegister } from 'api/useRegister';
 import { useForm } from 'shared/hooks/useForm';
 import { GenderRadioButtons } from 'pages/Main/RegisterModal/GenderRadioButtons/GenderRadioButtons';
@@ -36,15 +36,21 @@ export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
 
   return (
     <Modal
-      style={{ display: 'grid', placeItems: 'center' }}
+      style={{
+        display: 'grid',
+        placeItems: 'center',
+      }}
       open={isOpen}
       onClose={onCloseModal}
     >
       <div className="register-modal">
-        <ClearIcon
+        <IconButton
           className="register-modal__exit-button"
           onClick={onCloseModal}
-        />
+        >
+          <ClearIcon />
+        </IconButton>
+
         <div className="register-modal__text">
           <div style={{ padding: '1rem' }}>
             <h1>Zarejestruj się</h1>
