@@ -10,11 +10,11 @@ export const useProfilePreview = () => {
     profileImage: null,
   });
 
-  const changeBackgroundImage = (file: File | null) =>
-    setImages({ profileImage: null, backgroundImage: file });
+  const changeBackgroundImage = (file: File | FileList | null) =>
+    setImages({ profileImage: null, backgroundImage: file as File });
 
-  const changeProfileImage = (file: File | null) =>
-    setImages({ backgroundImage: null, profileImage: file });
+  const changeProfileImage = (file: File | FileList | null) =>
+    setImages({ backgroundImage: null, profileImage: file as File });
 
   const resetImages = () =>
     setImages({ backgroundImage: null, profileImage: null });

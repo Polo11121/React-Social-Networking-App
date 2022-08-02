@@ -1,0 +1,35 @@
+@import 'styles/styles';
+
+.post {
+  &__user {
+    position: relative;
+    display: flex;
+  }
+
+  &__button {
+    position: absolute !important;
+    right: 0;
+  }
+
+  &__icon {
+    margin-right: 0.5rem !important;
+  }
+
+  &__name {
+    font-weight: $font-weight-semibold;
+    margin-left: 0.5rem;
+  }
+
+  &__date {
+    margin-left: 0.5rem;
+    font-size: $font-size-small;
+  }
+
+  &__photo {
+    width: 100%;
+  }
+
+  &__text {
+    margin: 1rem 0;
+  }
+}

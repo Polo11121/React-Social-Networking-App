@@ -1,22 +1,33 @@
-import { useParams } from 'react-router-dom';
-import { useGetUser } from 'api/useGetUser';
 import { ProfilePreview } from 'pages/Profile/ProfilePreview/ProfilePreview';
-import { ProfileContent } from 'pages/Profile/ProfileContent/ProfileContent';
+import { ProfileInfo } from 'pages/Profile/ProfileInfo/ProfileInfo';
+import { useProfileInfo } from 'pages/Profile/useProfileInfo';
+import { ProfilePosts } from 'pages/Profile/ProfilePosts/ProfilePosts';
+import { useHandleScroll } from 'pages/Profile/useHandleScroll';
+import { ProfileHeader } from 'pages/Profile/ProfileHeader/ProfileHeader';
 import { Spinner } from 'components';
 import './Profile.scss';
 
 export const Profile = () => {
-  const { id } = useParams();
-  const { data: user, isLoading } = useGetUser(id || null);
+  const { isLoading, user } = useProfileInfo();
+  const { ref, isVisible } = useHandleScroll();
 
   return (
     <div className="profile">
-      {isLoading || !user ? (
+      {isLoading ? (
         <Spinner />
       ) : (
         <>
-          <ProfilePreview user={user} />
-          <ProfileContent />
+          <ProfilePreview ref={ref} user={user} />
+          {!isVisible && (
+            <ProfileHeader
+              avatar={user.profileImage}
+              user={`${user.name} ${user.surname}`}
+            />
+          )}
+          <div className="profile__content">
+            <ProfileInfo />
+            <ProfilePosts />
+          </div>
         </>
       )}
     </div>

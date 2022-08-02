@@ -3,12 +3,15 @@
 .profile-preview {
   @include cardBoxShadow;
   position: relative;
-  z-index: $z-index-small-priority;
+  z-index: $z-index-low-priority;
   background-color: $white;
 
   &__content {
-    width: 75%;
     margin: 0 auto;
+
+    @media only screen and (min-width: $large) {
+      width: 75%;
+    }
   }
 
   &__background-container {
@@ -38,9 +41,12 @@
   &__avatar {
     position: relative;
     border: 5px solid $white;
-    top: -30px;
     width: 10.625rem !important;
     height: 10.625rem !important;
+
+    @media only screen and (min-width: $medium) {
+      top: -30px;
+    }
   }
 
   &__info {
@@ -48,19 +54,45 @@
     position: relative;
     margin: 0 1.875rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    padding-bottom: 1rem;
+
+    @media only screen and (min-width: $medium) {
+      flex-direction: row;
+    }
+  }
+
+  &__user {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media only screen and (min-width: $medium) {
+      flex-direction: row;
+    }
   }
 
   &__photo-button {
     position: absolute;
     z-index: $z-index-normal-priority;
     left: 140px;
-    top: 80px;
+    top: 100px;
+
+    @media only screen and (min-width: $medium) {
+      left: 140px;
+      top: 80px;
+    }
   }
 
   &__user-info {
     display: flex;
     flex-direction: column;
-    margin: 1.875rem 0 0 1.25rem;
+    text-align: center;
+
+    @media only screen and (min-width: $medium) {
+      margin: 1.875rem 0 0 1.25rem;
+    }
   }
 }

@@ -1,0 +1,12 @@
+.profile-info {
+  flex: 0.4;
+
+  &__content {
+    position: sticky;
+    top: -1rem;
+    display: flex;
+    flex-direction: column;
+    top: calc(10rem - 1px);
+    gap: 1rem;
+  }
+}
