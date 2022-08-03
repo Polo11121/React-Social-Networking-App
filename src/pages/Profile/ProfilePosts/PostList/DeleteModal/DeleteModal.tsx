@@ -11,7 +11,11 @@ export const DeleteModal = ({
   deletedPost: null | string;
   onClose: () => void;
 }) => {
-  const { mutate, isLoading } = useDeletePost(onClose, deletedPost as string);
+  const { mutate, isLoading } = useDeletePost({
+    postId: deletedPost as string,
+    afterUpdate: onClose,
+  });
+
   const handleDeletePost = () => mutate({});
 
   return (
@@ -21,6 +25,7 @@ export const DeleteModal = ({
         display: 'grid',
         placeItems: 'center',
       }}
+      onClose={onClose}
     >
       <div className="delete-modal">
         <IconButton className="delete-modal__exit-button" onClick={onClose}>
@@ -32,7 +37,9 @@ export const DeleteModal = ({
           </div>
         </div>
         <div className="delete-modal__content">
-          <p>Usunięcie posta jest nieodwracalne</p>
+          <p>
+            Usunięcie posta jest nieodwracalne i nie można cofnąć tego procesu.
+          </p>
           <div className="delete-modal__buttons">
             <Button onClick={onClose} buttonStyleType="primary" text="Anuluj" />
             <Button

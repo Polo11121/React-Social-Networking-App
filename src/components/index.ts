@@ -1,3 +1,4 @@
+export { BouncingDotsLoader } from './BouncingDotsLoader/BouncingDotsLoader';
 export { Button } from './Button/Button';
 export { EditHeader } from './EditHeader/EditHeader';
 export { ErrorText } from './ErrorText/ErrorText';

@@ -15,6 +15,7 @@ type PostTypeProps = {
   text: string;
   images: string[];
   onShowPostPhotos: (selectedPhoto: null | number, photos: string[]) => void;
+  onEditPost: (postId: string, photos: string[], text: string) => void;
   onDeletePost: (postId: string) => void;
 };
 
@@ -36,17 +37,15 @@ export const Post = ({
   images,
   onShowPostPhotos,
   onDeletePost,
+  onEditPost,
 }: PostTypeProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleModalClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleModalClick = (event: React.MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
-  };
 
-  const handleModalClose = () => {
-    setAnchorEl(null);
-  };
+  const handleModalClose = () => setAnchorEl(null);
 
   const onPostImageClick = (index: number) => onShowPostPhotos(index, images);
 
@@ -57,7 +56,12 @@ export const Post = ({
           <MoreHorizIcon />
         </IconButton>
         <Menu anchorEl={anchorEl} open={open} onClose={handleModalClose}>
-          <MenuItem>
+          <MenuItem
+            onClick={() => {
+              onEditPost(id, images, text);
+              handleModalClose();
+            }}
+          >
             <EditIcon className="post__icon" />
             <ListItemText>Edytuj</ListItemText>
           </MenuItem>

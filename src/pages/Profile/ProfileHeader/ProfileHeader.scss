@@ -5,7 +5,7 @@
   position: sticky;
   background-color: $white;
   height: 4rem;
-  z-index: $z-index-low-priority;
+  z-index: $z-index-medium-priority;
   @include cardBoxShadow;
 
   &__content {

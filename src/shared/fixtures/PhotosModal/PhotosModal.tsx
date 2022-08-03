@@ -1,5 +1,6 @@
 import { ImageCarousel } from 'components';
 import { Modal } from '@mui/material';
+import './PhotosModal.scss';
 
 type PhotosModalType = {
   selectedPhoto: null | number;
@@ -20,8 +21,14 @@ export const PhotosModal = ({
     open={selectedPhoto !== null}
     onClose={onClose}
   >
-    <div style={{ width: '300px', height: '600px' }}>
-      <ImageCarousel selectedPhoto={selectedPhoto as number} images={photos} />
+    <div className="photo-modal">
+      <ImageCarousel
+        imageStyle={{
+          maxHeight: '60vh',
+        }}
+        selectedPhoto={selectedPhoto as number}
+        images={photos}
+      />
     </div>
   </Modal>
 );

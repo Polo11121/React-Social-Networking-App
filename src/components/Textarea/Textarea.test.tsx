@@ -16,7 +16,6 @@ describe('<Textarea>', () => {
 
   it('should Textarea listen for a change event', () => {
     const spy = jest.fn();
-
     render(<Textarea value="text" onChange={spy} />);
 
     const input = screen.getByDisplayValue('text');

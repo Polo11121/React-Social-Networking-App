@@ -1,8 +1,10 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Spinner } from 'components';
 
-describe('<SectionCard>', () => {
+describe('<Spinner>', () => {
   it('should display Spinner', () => {
-    render(<Spinner />);
+    render(<Spinner testId="test-" />);
+
+    screen.getByTestId('test-spinner');
   });
 });
