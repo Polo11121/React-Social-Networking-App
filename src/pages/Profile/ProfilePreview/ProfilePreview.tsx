@@ -3,6 +3,7 @@ import { UserType } from 'shared/types/responseTypes';
 import { Button, EditHeader, ImagePicker } from 'components';
 import { useProfilePreview } from 'pages/Profile/ProfilePreview/useProfilePreview';
 import { Avatar } from '@mui/material';
+import { getAge } from 'shared/functions';
 import EditIcon from '@mui/icons-material/Edit';
 import './ProfilePreview.scss';
 
@@ -75,7 +76,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement, { user: UserType }>(
               />
               <div className="profile-preview__user-info">
                 <h1>{`${user.name} ${user.surname}`}</h1>
-                <h2>Wiek: 19</h2>
+                <h2>Wiek: {getAge(user.birthDate)}</h2>
               </div>
             </div>
             <Button

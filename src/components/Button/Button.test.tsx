@@ -10,7 +10,6 @@ describe('<Button>', () => {
 
   it('should Button listen for a click event', () => {
     const spy = jest.fn();
-
     render(<Button buttonStyleType="primary" text="Test" onClick={spy} />);
 
     const button = screen.getByText('Test');
@@ -21,7 +20,6 @@ describe('<Button>', () => {
 
   it('should Button not listen for a click event if is disabled', () => {
     const spy = jest.fn();
-
     render(
       <Button buttonStyleType="primary" text="Test" onClick={spy} isDisabled />
     );

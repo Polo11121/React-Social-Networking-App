@@ -17,6 +17,7 @@ export type UserType = {
   backgroundImage: string;
   description: string;
   posts: PostType[];
+  birthDate: Date;
 };
 
 export type ResponseUserType = ResponseType<{ user: UserType }>;

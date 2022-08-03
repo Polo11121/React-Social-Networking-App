@@ -18,7 +18,7 @@
     top: 0.5rem !important;
   }
 
-  @media only screen and (min-width: $medium) {
+  @media only screen and (min-width: $small) {
     border-radius: 0.5rem;
     width: 25rem;
   }
@@ -30,6 +30,7 @@
   &__buttons {
     margin-top: 1rem;
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
+    justify-content: flex-end;
   }
 }

@@ -1,7 +1,7 @@
 import { useApiCrud } from 'api/useApiCrud';
 import { useAuthContext } from 'contexts/AuthContext';
 
-export const useDeletePost = ({
+export const useEditPost = ({
   postId,
   afterUpdate,
 }: {
@@ -17,7 +17,7 @@ export const useDeletePost = ({
 
   return useApiCrud({
     url: `posts/${postId}`,
-    method: 'delete',
+    method: 'patch',
     onSuccess,
   });
 };

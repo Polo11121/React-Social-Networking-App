@@ -36,7 +36,7 @@ export const AddPost = () => {
 
   const addPostHandler = () => {
     const formData = new FormData();
-    if (postValues.photos) {
+    if (postValues.photos?.length) {
       Array.from(postValues.photos).forEach((photo) =>
         formData.append('images', photo as Blob)
       );

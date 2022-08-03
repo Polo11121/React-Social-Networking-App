@@ -1,0 +1,8 @@
+@import 'styles/styles';
+
+.photo-modal {
+  max-width: 90vw;
+  @media only screen and (min-width: $large) {
+    max-width: 60vw;
+  }
+}

@@ -1,5 +1,5 @@
-import { TextareaAutosize } from '@mui/material';
 import { ChangeEventHandler } from 'react';
+import { TextareaAutosize } from '@mui/material';
 import './Textarea.scss';
 
 export type TextareaPropsType = {
@@ -8,6 +8,7 @@ export type TextareaPropsType = {
   placeholder?: string;
   name?: string;
   minRows?: number;
+  maxRows?: number;
 };
 
 export const Textarea = ({
@@ -16,9 +17,11 @@ export const Textarea = ({
   placeholder,
   name,
   minRows,
+  maxRows,
 }: TextareaPropsType) => (
   <TextareaAutosize
     minRows={minRows}
+    maxRows={maxRows}
     className="textarea"
     name={name}
     placeholder={placeholder}

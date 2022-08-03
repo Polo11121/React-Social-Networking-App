@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
-import { ImageList, ImageListItem } from '@mui/material';
 import { SectionCard } from 'components';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { PhotosModal } from 'shared/fixtures/PhotosModal/PhotosModal';
+import { ImageList, ImageListItem } from '@mui/material';
 
 export const ProfilePhotos = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<null | number>(null);
@@ -14,7 +14,7 @@ export const ProfilePhotos = () => {
   return (
     <>
       <SectionCard sectionTitle="Zdjęcia">
-        <ImageList sx={{ height: 328 }} cols={3} rowHeight={164}>
+        <ImageList sx={{ maxHeight: 328 }} cols={3} rowHeight={164}>
           {userPhotos.map((photo, index) => (
             <ImageListItem key={photo}>
               <img

@@ -6,14 +6,14 @@ export const useProfileInfo = () => {
   const { id } = useParams();
   const userInfo = useGetUser(id || null);
 
-  const userPhotos = userInfo.data.posts
-    .sort((post1, post2) => sortByDate(post1.createdAt, post2.createdAt))
-    .map(({ images }) => images)
-    .flat();
+  const posts = userInfo.data.posts.sort((post1, post2) =>
+    sortByDate(post1.createdAt, post2.createdAt)
+  );
 
+  const userPhotos = posts.map(({ images }) => images).flat();
   return {
     isLoading: userInfo.isLoading,
-    user: userInfo.data,
+    user: { ...userInfo.data, posts },
     userPhotos,
   };
 };

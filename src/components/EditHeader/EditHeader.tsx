@@ -22,7 +22,7 @@ export const EditHeader = ({
         <Button
           isDisabled={isDisabled}
           onClick={onSubmit}
-          text="Zapisz zmiany"
+          text="Zapisz"
           buttonStyleType="primary"
         />
       </div>

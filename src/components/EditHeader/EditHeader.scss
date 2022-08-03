@@ -2,7 +2,7 @@
 
 .edit-header {
   padding: 1rem 3rem;
-  font-size: $font-size-big;
+  font-size: $font-size-small;
   font-weight: $font-weight-medium;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,12 @@
   z-index: $z-index-large-priority;
   color: $white;
 
+  @media only screen and (min-width: $medium) {
+    font-size: $font-size-big;
+  }
+
   &__buttons {
+    margin-left: 0.5rem;
     display: flex;
     align-items: center;
     gap: 1rem;

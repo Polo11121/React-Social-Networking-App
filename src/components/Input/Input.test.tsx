@@ -16,7 +16,6 @@ describe('<Input>', () => {
 
   it('should Input listen for a change event', () => {
     const spy = jest.fn();
-
     render(<Input value="text" onChange={spy} />);
 
     const input = screen.getByDisplayValue('text');

@@ -13,8 +13,9 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding-bottom: 2.5rem;
 
-    @media only screen and (min-width: $large) {
+    @media only screen and (min-width: $extraLarge) {
       flex-direction: row;
       width: 75%;
     }

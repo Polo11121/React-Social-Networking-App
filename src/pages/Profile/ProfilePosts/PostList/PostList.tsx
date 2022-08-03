@@ -1,45 +1,49 @@
-import { useState } from 'react';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
-import { sortByDate } from 'shared/functions';
 import { PhotosModal } from 'shared/fixtures/PhotosModal/PhotosModal';
 import { DeleteModal } from 'pages/Profile/ProfilePosts/PostList/DeleteModal/DeleteModal';
 import { Post } from 'pages/Profile/ProfilePosts/PostList/Post/Post';
+import { EditModal } from 'pages/Profile/ProfilePosts/PostList/EditModal/EditModal';
+import { usePostList } from 'pages/Profile/ProfilePosts/PostList/usePostList';
+import { useMockInfinityData } from 'shared/hooks/useMockInfinityData';
+import { BouncingDotsLoader } from 'components';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const PostList = () => {
   const { user } = useProfileInfo();
-  const [deletedPost, setDeletedPost] = useState<null | string>(null);
-  const [postPhotosModal, setPostPhotosModal] = useState<{
-    selectedPhoto: null | number;
-    photos: string[];
-  }>({
-    selectedPhoto: null,
-    photos: [],
+  const {
+    deletedPost,
+    postPhotos,
+    editedPost,
+    onOpenPhotosModal,
+    onClosePhotosModal,
+    onOpenDeletePostModal,
+    onCloseDeletePostModal,
+    onOpenEditPostModal,
+    onCloseEditPostModal,
+  } = usePostList();
+
+  const { entities, onNext, hasMore } = useMockInfinityData({
+    fetchedEntities: user.posts,
+    offset: 3,
   });
 
-  const onShowPostPhotos = (selectedPhoto: null | number, photos: string[]) =>
-    setPostPhotosModal({ selectedPhoto, photos });
-
-  const onPhotosModalClose = () =>
-    setPostPhotosModal({ selectedPhoto: null, photos: [] });
-
-  const onDeleteModalClose = () => setDeletedPost(null);
-
-  const onDeletePost = (postId: string) => setDeletedPost(postId);
-
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        marginTop: '1rem',
-        gap: '1rem',
-      }}
-    >
-      {user?.posts
-        ?.sort((post1, post2) => sortByDate(post1.createdAt, post2.createdAt))
-        .map(({ description, createdAt, _id, images }) => (
+    <div>
+      <InfiniteScroll
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginTop: '1rem',
+          gap: '1rem',
+        }}
+        dataLength={entities.length}
+        next={onNext}
+        hasMore={hasMore}
+        loader={<BouncingDotsLoader testId="posts-" />}
+      >
+        {entities.map(({ description, createdAt, _id, images }) => (
           <Post
-            onShowPostPhotos={onShowPostPhotos}
+            onShowPostPhotos={onOpenPhotosModal}
             avatar={user.profileImage}
             date={createdAt}
             images={images}
@@ -47,15 +51,24 @@ export const PostList = () => {
             user={`${user.name} ${user.surname}`}
             key={_id}
             id={_id}
-            onDeletePost={onDeletePost}
+            onDeletePost={onOpenDeletePostModal}
+            onEditPost={onOpenEditPostModal}
           />
         ))}
-      <PhotosModal
-        onClose={onPhotosModalClose}
-        selectedPhoto={postPhotosModal.selectedPhoto}
-        photos={postPhotosModal.photos}
-      />
-      <DeleteModal deletedPost={deletedPost} onClose={onDeleteModalClose} />
+      </InfiniteScroll>
+
+      {postPhotos.selectedPhoto !== null && (
+        <PhotosModal {...postPhotos} onClose={onClosePhotosModal} />
+      )}
+      {deletedPost && (
+        <DeleteModal
+          deletedPost={deletedPost}
+          onClose={onCloseDeletePostModal}
+        />
+      )}
+      {editedPost.postId && (
+        <EditModal {...editedPost} onClose={onCloseEditPostModal} />
+      )}
     </div>
   );
 };
