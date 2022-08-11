@@ -7,6 +7,7 @@ type PostType = {
   _id: string;
   description: string;
   createdAt: Date;
+  type: string;
 };
 
 export type UserType = {

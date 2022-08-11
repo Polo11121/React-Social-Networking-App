@@ -28,3 +28,12 @@ export const getAge = (dateString: Date) => {
 
   return age;
 };
+
+export const formatPostDate = (date: Date) =>
+  new Date(date).toLocaleDateString('pl-PL', {
+    hour: '2-digit',
+    minute: '2-digit',
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+  });

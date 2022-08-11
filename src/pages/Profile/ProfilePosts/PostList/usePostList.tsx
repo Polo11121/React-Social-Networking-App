@@ -14,7 +14,7 @@ export const usePostList = () => {
   const [deletedPost, setDeletedPost] = useState<null | string>(null);
   const [postPhotos, setPostPhotos] = useState<{
     selectedPhoto: null | number;
-    photos: string[];
+    photos: { image: string; label: string }[];
   }>(postPhotosInitialState);
   const [editedPost, setEditedPost] = useState<{
     postId: null | string;
@@ -22,8 +22,10 @@ export const usePostList = () => {
     text: string;
   }>(editedPostInitialState);
 
-  const onOpenPhotosModal = (selectedPhoto: null | number, photos: string[]) =>
-    setPostPhotos({ selectedPhoto, photos });
+  const onOpenPhotosModal = (
+    selectedPhoto: null | number,
+    photos: { image: string; label: string }[]
+  ) => setPostPhotos({ selectedPhoto, photos });
 
   const onClosePhotosModal = () => setPostPhotos(postPhotosInitialState);
 

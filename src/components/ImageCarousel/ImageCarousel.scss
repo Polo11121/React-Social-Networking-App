@@ -1,0 +1,27 @@
+@import 'styles/styles';
+.image-carousel {
+  &__item {
+    position: relative;
+
+    &:hover {
+      & > p {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__item-label {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.25;
+    margin: 0 auto;
+    color: white;
+    width: 100%;
+    word-break: break-word;
+    font-size: 0.75rem;
+    padding: 0.625rem;
+    text-align: center;
+    background-color: $secondary;
+    transition: opacity 0.35s ease-in-out;
+  }
+}
