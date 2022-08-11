@@ -41,8 +41,9 @@ export const PostList = () => {
         hasMore={hasMore}
         loader={<BouncingDotsLoader testId="posts-" />}
       >
-        {entities.map(({ description, createdAt, _id, images }) => (
+        {entities.map(({ description, createdAt, _id, images, type }) => (
           <Post
+            isPost={type === 'post'}
             onShowPostPhotos={onOpenPhotosModal}
             avatar={user.profileImage}
             date={createdAt}
@@ -56,7 +57,6 @@ export const PostList = () => {
           />
         ))}
       </InfiniteScroll>
-
       {postPhotos.selectedPhoto !== null && (
         <PhotosModal {...postPhotos} onClose={onClosePhotosModal} />
       )}

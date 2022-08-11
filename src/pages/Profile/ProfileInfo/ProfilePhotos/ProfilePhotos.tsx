@@ -16,12 +16,12 @@ export const ProfilePhotos = () => {
       <SectionCard sectionTitle="Zdjęcia">
         <ImageList sx={{ maxHeight: 328 }} cols={3} rowHeight={164}>
           {userPhotos.map((photo, index) => (
-            <ImageListItem key={photo}>
+            <ImageListItem key={photo.image}>
               <img
                 style={{ cursor: 'pointer' }}
                 onClick={() => setSelectedPhoto(index)}
-                src={`${photo}?w=164&h=164&fit=crop&auto=format`}
-                srcSet={`${photo}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                src={`${photo.image}?w=164&h=164&fit=crop&auto=format`}
+                srcSet={`${photo.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                 alt={`${user.name}-${user.surname}-img`}
                 loading="lazy"
               />
@@ -29,11 +29,13 @@ export const ProfilePhotos = () => {
           ))}
         </ImageList>
       </SectionCard>
-      <PhotosModal
-        onClose={onModalClose}
-        selectedPhoto={selectedPhoto}
-        photos={userPhotos}
-      />
+      {selectedPhoto !== null && (
+        <PhotosModal
+          onClose={onModalClose}
+          selectedPhoto={selectedPhoto}
+          photos={userPhotos}
+        />
+      )}
     </>
   );
 };

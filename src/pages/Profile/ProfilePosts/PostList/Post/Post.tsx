@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Avatar, ListItemText, Menu, MenuItem } from '@mui/material';
 import { ImageCarousel, SectionCard } from 'components';
+import { formatPostDate } from 'shared/functions';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
@@ -13,20 +14,18 @@ type PostTypeProps = {
   user: string;
   date: Date;
   text: string;
+  isPost: boolean;
   images: string[];
-  onShowPostPhotos: (selectedPhoto: null | number, photos: string[]) => void;
+  onShowPostPhotos: (
+    selectedPhoto: number | null,
+    photos: {
+      image: string;
+      label: string;
+    }[]
+  ) => void;
   onEditPost: (postId: string, photos: string[], text: string) => void;
   onDeletePost: (postId: string) => void;
 };
-
-const formatPostDate = (date: Date) =>
-  new Date(date).toLocaleDateString('pl-PL', {
-    hour: '2-digit',
-    minute: '2-digit',
-    year: 'numeric',
-    month: 'long',
-    day: '2-digit',
-  });
 
 export const Post = ({
   id,
@@ -35,6 +34,7 @@ export const Post = ({
   date,
   text,
   images,
+  isPost,
   onShowPostPhotos,
   onDeletePost,
   onEditPost,
@@ -47,7 +47,14 @@ export const Post = ({
 
   const handleModalClose = () => setAnchorEl(null);
 
-  const onPostImageClick = (index: number) => onShowPostPhotos(index, images);
+  const onPostImageClick = (index: number) =>
+    onShowPostPhotos(
+      index,
+      images.map((image) => ({
+        image,
+        label: `${text} ${formatPostDate(date)}`,
+      }))
+    );
 
   return (
     <SectionCard>
@@ -56,15 +63,17 @@ export const Post = ({
           <MoreHorizIcon />
         </IconButton>
         <Menu anchorEl={anchorEl} open={open} onClose={handleModalClose}>
-          <MenuItem
-            onClick={() => {
-              onEditPost(id, images, text);
-              handleModalClose();
-            }}
-          >
-            <EditIcon className="post__icon" />
-            <ListItemText>Edytuj</ListItemText>
-          </MenuItem>
+          {!isPost && (
+            <MenuItem
+              onClick={() => {
+                onEditPost(id, images, text);
+                handleModalClose();
+              }}
+            >
+              <EditIcon className="post__icon" />
+              <ListItemText>Edytuj</ListItemText>
+            </MenuItem>
+          )}
           <MenuItem
             onClick={() => {
               onDeletePost(id);
