@@ -33,7 +33,7 @@ const AvatarDropdown = () => {
   const navigate = useNavigate();
 
   const goToMyProfile = () => {
-    navigate(`/profile/${userInfo._id}`);
+    navigate(`/profile/${userInfo._id}/posts`);
     handleClose();
   };
 

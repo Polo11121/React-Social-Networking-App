@@ -1,15 +1,14 @@
 import { ProfilePreview } from 'pages/Profile/ProfilePreview/ProfilePreview';
-import { ProfileInfo } from 'pages/Profile/ProfileInfo/ProfileInfo';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
-import { ProfilePosts } from 'pages/Profile/ProfilePosts/ProfilePosts';
-import { useHandleScroll } from 'pages/Profile/useHandleScroll';
-import { ProfileHeader } from 'pages/Profile/ProfileHeader/ProfileHeader';
+import { useCheckVisibility } from 'shared/hooks/useCheckVisibility';
+import { ProfileNavigation } from 'pages/Profile/ProfileNavigation/ProfileNavigation';
+import { ProfileContent } from 'pages/Profile/ProfileContent/ProfileContent';
 import { Spinner } from 'components';
 import './Profile.scss';
 
 export const Profile = () => {
-  const { isLoading, user } = useProfileInfo();
-  const { ref, isVisible } = useHandleScroll();
+  const { isLoading } = useProfileInfo();
+  const { ref, isVisible } = useCheckVisibility();
 
   return (
     <div className="profile">
@@ -17,17 +16,9 @@ export const Profile = () => {
         <Spinner />
       ) : (
         <>
-          <ProfilePreview ref={ref} user={user} />
-          {!isVisible && (
-            <ProfileHeader
-              avatar={user.profileImage}
-              user={`${user.name} ${user.surname}`}
-            />
-          )}
-          <div className="profile__content">
-            <ProfileInfo />
-            <ProfilePosts />
-          </div>
+          <ProfilePreview ref={ref} />
+          <ProfileNavigation isVisible={isVisible} />
+          <ProfileContent />
         </>
       )}
     </div>

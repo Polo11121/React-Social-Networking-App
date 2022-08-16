@@ -35,7 +35,7 @@ export const ImagePicker = ({
         onClick={handleClick}
       >
         <CameraAltIcon
-          style={text ? { marginRight: '5px' } : {}}
+          style={text ? { marginRight: '0.313rem' } : {}}
           fontSize={text ? 'small' : 'medium'}
         />
         {text}

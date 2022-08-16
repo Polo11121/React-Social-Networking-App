@@ -1,0 +1,82 @@
+@import 'styles/styles';
+
+.profile-navigation {
+  margin-bottom: 1rem;
+  background-color: $white;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 10%), 0 16px 16px rgb(0 0 0 / 10%);
+  position: sticky;
+  top: calc(5rem - 1px);
+  z-index: $z-index-medium-priority;
+  height: 4rem;
+
+  &__content {
+    width: 75%;
+    margin: 0 auto;
+    padding: 0;
+    border-top: 1.5px solid #dadde1;
+    display: flex;
+    justify-content: center;
+    height: 4rem;
+
+    &--avatar {
+      border: none;
+
+      @media only screen and (min-width: $medium) {
+        padding: 1.875rem;
+      }
+    }
+
+    @media only screen and (min-width: $medium) {
+      justify-content: flex-start;
+    }
+  }
+
+  &__link {
+    border-bottom: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    text-decoration: none;
+    color: #65676b;
+    font-weight: $font-weight-semibold;
+
+    &:hover {
+      border-radius: 0.313rem;
+      background-color: lightgray;
+      margin: 0.25rem 0;
+    }
+
+    &--active {
+      border-bottom: 3px solid $primary;
+      color: $primary;
+
+      &:hover {
+        margin: 0;
+        border-radius: 0;
+        background-color: inherit;
+      }
+    }
+  }
+
+  &__button {
+    padding: 0 0.5rem;
+    width: fit-content;
+    background-color: inherit;
+    border: none;
+    height: calc(100% - 0.3rem);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.15rem 0;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: darken($white, 8%);
+    }
+  }
+
+  &__username {
+    font-weight: $font-weight-semibold;
+  }
+}

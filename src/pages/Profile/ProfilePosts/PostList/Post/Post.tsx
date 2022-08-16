@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './Post.scss';
 
-type PostTypeProps = {
+type PostPropsType = {
   id: string;
   avatar: string;
   user: string;
@@ -38,7 +38,7 @@ export const Post = ({
   onShowPostPhotos,
   onDeletePost,
   onEditPost,
-}: PostTypeProps) => {
+}: PostPropsType) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 

@@ -16,19 +16,16 @@ export const useMockInfinityData = <T,>({
   fetchedEntities,
   offset,
 }: UseMockInfinityDataProps<T>): UseMockInfinityDataType<T> => {
-  const [entities, setEntities] = useState<T[]>([]);
   const [index, setIndex] = useState(offset);
+  const [initialEntitiesLength] = useState(fetchedEntities.length);
+
   const startIndex = 0;
 
   useEffect(() => {
-    if (fetchedEntities.length) {
-      setEntities(fetchedEntities.slice(startIndex, offset));
+    if (fetchedEntities.length !== initialEntitiesLength) {
+      setIndex((prevIndex) => prevIndex + 1);
     }
-  }, []);
-
-  useEffect(() => {
-    setEntities(fetchedEntities.slice(startIndex, index));
-  }, [index]);
+  }, [fetchedEntities]);
 
   const onNext = () =>
     setTimeout(
@@ -41,7 +38,11 @@ export const useMockInfinityData = <T,>({
       1000
     );
 
-  const hasMore = fetchedEntities.length > entities.length;
+  const hasMore = fetchedEntities.length > index;
 
-  return { entities, onNext, hasMore };
+  return {
+    entities: fetchedEntities.slice(startIndex, index),
+    onNext,
+    hasMore,
+  };
 };

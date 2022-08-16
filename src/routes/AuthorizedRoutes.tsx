@@ -11,7 +11,7 @@ export const AuthorizedRoutes = () => (
     </Header>
     <Routes>
       <Route path="/home" element={<Home />} />
-      <Route path="/profile/:id" element={<Profile />} />
+      <Route path="/profile/:id/*" element={<Profile />} />
       <Route path="*" element={<Navigate to="/home" replace />} />
     </Routes>
   </>

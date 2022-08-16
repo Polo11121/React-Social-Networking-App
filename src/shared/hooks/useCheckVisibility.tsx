@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export const useHandleScroll = () => {
+export const useCheckVisibility = () => {
   const [size, setSize] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -44,5 +44,5 @@ export const useHandleScroll = () => {
     };
   }, []);
 
-  return { ref, isVisible };
+  return { ref, isVisible, size };
 };
