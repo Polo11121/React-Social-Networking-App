@@ -25,7 +25,10 @@ export const ImageCarousel = ({
     statusFormatter={(current, total) => `${current} z ${total}`}
   >
     {images.map((image) => (
-      <div className="image-carousel__item">
+      <div
+        className="image-carousel__item"
+        key={typeof image === 'string' ? image : image.image}
+      >
         <img
           src={typeof image === 'string' ? image : image.image}
           key={typeof image === 'string' ? image : image.image}

@@ -6,6 +6,7 @@ export { Header } from './Header/Header';
 export { ImageCarousel } from './ImageCarousel/ImageCarousel';
 export { ImagePicker } from './ImagePicker/ImagePicker';
 export { Input } from './Input/Input';
+export { Photos } from './Photos/Photos';
 export { SectionCard } from './SectionCard/SectionCard';
 export { Textarea } from './Textarea/Textarea';
 export { Tooltip } from './Tooltip/Tooltip';

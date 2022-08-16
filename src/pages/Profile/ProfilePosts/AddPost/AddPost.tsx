@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import { Avatar } from '@mui/material';
 import {
   Button,
@@ -15,7 +15,7 @@ export const AddPost = () => {
   const { userInfo } = useAuthContext();
   const [postValues, setPostValues] = useState<{
     text: string;
-    photos: null | FileList;
+    photos: FileList | null;
   }>({
     text: '',
     photos: null,
@@ -50,6 +50,13 @@ export const AddPost = () => {
   const isButtonDisabled =
     isLoading || !(postValues.photos || postValues.text.trim());
 
+  const carouselImages = useMemo(
+    () =>
+      postValues.photos &&
+      Array.from(postValues.photos).map((photo) => URL.createObjectURL(photo)),
+    [postValues.photos]
+  );
+
   return (
     <SectionCard>
       <div className="add-post">
@@ -62,13 +69,7 @@ export const AddPost = () => {
             name="post"
           />
         </div>
-        {postValues.photos && (
-          <ImageCarousel
-            images={Array.from(postValues.photos).map((photo) =>
-              URL.createObjectURL(photo)
-            )}
-          />
-        )}
+        {carouselImages && <ImageCarousel images={carouselImages} />}
         <div className="add-post__buttons">
           <ImagePicker
             isMultiple

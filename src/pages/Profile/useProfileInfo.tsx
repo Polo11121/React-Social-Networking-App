@@ -11,7 +11,7 @@ export const useProfileInfo = () => {
 
   const userPhotos = posts
     .map(({ images, description, createdAt, type }) =>
-      images.map((image) => ({
+      images.sort().map((image) => ({
         image,
         label: `${description} ${formatPostDate(createdAt)}`,
         type,
@@ -21,7 +21,11 @@ export const useProfileInfo = () => {
 
   return {
     isLoading: userInfo.isLoading,
-    user: { ...userInfo.data, posts },
+    user: {
+      ...userInfo.data,
+      posts,
+      fullName: `${userInfo.data.name} ${userInfo.data.surname}`,
+    },
     userPhotos,
   };
 };

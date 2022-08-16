@@ -49,7 +49,7 @@ export const PostList = () => {
             date={createdAt}
             images={images}
             text={description}
-            user={`${user.name} ${user.surname}`}
+            user={user.fullName}
             key={_id}
             id={_id}
             onDeletePost={onOpenDeletePostModal}

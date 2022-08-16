@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ImageCarousel } from 'components';
 
-describe('<BouncingDotsLoader>', () => {
+describe('<ImageCarousel>', () => {
   it('should render BouncingDotsLoader', () => {
     render(
       <ImageCarousel
@@ -12,7 +12,6 @@ describe('<BouncingDotsLoader>', () => {
       />
     );
 
-    const images = screen.getAllByRole('img');
-    expect(images).toHaveLength(2);
+    expect(screen.getAllByRole('img')).toHaveLength(2);
   });
 });
