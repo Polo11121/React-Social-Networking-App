@@ -22,7 +22,7 @@
 
   &__text {
     text-align: center;
-    border-bottom: 1px solid #dadde1;
+    @include bottomLine;
   }
 
   &__exit-button {
@@ -34,7 +34,6 @@
   &__input-container {
     padding: 1rem;
     display: flex;
-    width: 70vw;
     align-items: center;
     width: 100%;
     gap: 0.313rem;
@@ -42,10 +41,15 @@
     @include line;
   }
 
-  &__buttons {
+  &__footer {
     padding: 1rem;
     padding-top: 1rem;
     display: flex;
     justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
   }
 }

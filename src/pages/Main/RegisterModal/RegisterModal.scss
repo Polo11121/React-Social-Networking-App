@@ -14,7 +14,7 @@
   }
 
   &__text {
-    border-bottom: 1px solid #dadde1;
+    @include bottomLine;
   }
 
   @media only screen and (min-width: $medium) {

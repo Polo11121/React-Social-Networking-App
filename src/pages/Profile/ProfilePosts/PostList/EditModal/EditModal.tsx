@@ -98,18 +98,21 @@ export const EditModal = ({
                 : photos
             }
           />
-          <div className="edit-post__buttons">
+          <div className="edit-post__footer">
             <ImagePicker
               isMultiple
               text="Edytuj zdjęcia"
               handleFile={changPhotoHandler}
             />
-            <Button
-              isDisabled={isButtonDisabled}
-              onClick={addPostHandler}
-              text="Edtyuj przemyślenie"
-              buttonStyleType="primary"
-            />
+            <div className="edit-post__buttons">
+              <Button onClick={onClose} text="Anuluj" buttonStyleType="mandy" />
+              <Button
+                isDisabled={isButtonDisabled}
+                onClick={addPostHandler}
+                text="Edtyuj przemyślenie"
+                buttonStyleType="primary"
+              />
+            </div>
           </div>
         </div>
       </div>

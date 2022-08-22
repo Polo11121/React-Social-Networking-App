@@ -1,0 +1,17 @@
+@import 'styles/styles';
+
+.hobbies-list {
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 80%;
+  row-gap: 0.5rem;
+
+  &__chip {
+    &--checked {
+      color: $secondary !important;
+      border-color: $secondary !important;
+    }
+  }
+}
