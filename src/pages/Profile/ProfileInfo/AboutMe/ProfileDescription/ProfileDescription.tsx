@@ -4,7 +4,7 @@ import { useForm } from 'shared/hooks/useForm';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { useUpdateMe } from 'api/useUpdateMe';
 
-const ProfileDescription = () => {
+export const ProfileDescription = () => {
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const {
     user: { description },
@@ -61,5 +61,3 @@ const ProfileDescription = () => {
     </>
   );
 };
-
-export default ProfileDescription;

@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/Home/Home';
 import { Profile } from 'pages/Profile/Profile';
 import { Header } from 'components';
-import AvatarDropdown from 'shared/fixtures/AvatarDropdown/AvatarDropdown';
+import { AvatarDropdown } from 'shared/fixtures/AvatarDropdown/AvatarDropdown';
 
 export const AuthorizedRoutes = () => (
   <>

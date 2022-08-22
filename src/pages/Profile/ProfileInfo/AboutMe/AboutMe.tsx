@@ -1,5 +1,6 @@
 import { SectionCard, Button } from 'components';
-import ProfileDescription from 'pages/Profile/ProfileInfo/AboutMe/ProfileDescription/ProfileDescription';
+import { ProfileDescription } from 'pages/Profile/ProfileInfo/AboutMe/ProfileDescription/ProfileDescription';
+import { ProfileHobbies } from 'pages/Profile/ProfileInfo/AboutMe/ProfileHobbies/ProfileHobbies';
 import './AboutMe.scss';
 
 export const AboutMe = () => (
@@ -7,7 +8,7 @@ export const AboutMe = () => (
     <div className="about-me">
       <ProfileDescription />
       <Button buttonStyleType="secondary" text="Edytuj szczegóły" fullWidth />
-      <Button buttonStyleType="secondary" text="Dodaj opis" fullWidth />
+      <ProfileHobbies />
     </div>
   </SectionCard>
 );

@@ -1,0 +1,17 @@
+.add-hobby {
+  &__chip {
+    display: flex;
+    align-items: center;
+  }
+
+  &__chip-input {
+    border: none;
+    outline: none;
+  }
+
+  &__icons-menu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 320px;
+  }
+}

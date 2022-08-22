@@ -50,7 +50,6 @@ export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
         >
           <ClearIcon />
         </IconButton>
-
         <div className="register-modal__text">
           <div style={{ padding: '1rem' }}>
             <h1>Zarejestruj się</h1>

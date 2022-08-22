@@ -5,6 +5,13 @@
   text-align: center;
 }
 
+@mixin bottomLine {
+  border-bottom: 1px solid #dadde1;
+}
+
+@mixin topLine {
+  border-top: 1px solid #dadde1;
+}
 @mixin cardBoxShadow {
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }

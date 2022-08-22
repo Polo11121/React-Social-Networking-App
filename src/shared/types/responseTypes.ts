@@ -19,6 +19,7 @@ export type UserType = {
   description: string;
   posts: PostType[];
   birthDate: Date;
+  hobbies: { text: string; icon: string; _id: string }[];
 };
 
 export type ResponseUserType = ResponseType<{ user: UserType }>;

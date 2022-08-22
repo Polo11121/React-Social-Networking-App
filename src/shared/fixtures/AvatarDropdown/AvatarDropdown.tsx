@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './AvatarDropdown.scss';
 
-const AvatarDropdown = () => {
+export const AvatarDropdown = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -70,5 +70,3 @@ const AvatarDropdown = () => {
     </>
   );
 };
-
-export default AvatarDropdown;
