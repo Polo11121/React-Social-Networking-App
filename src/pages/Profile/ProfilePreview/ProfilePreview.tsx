@@ -18,7 +18,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
     changeProfileImageHandler,
     isLoading,
   } = useProfilePreview();
-  const { user } = useProfileInfo();
+  const { user, isOwner } = useProfileInfo();
 
   return (
     <div className="profile-preview" ref={ref}>
@@ -50,22 +50,26 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
             />
           )}
           <div className="profile-preview__background-button">
-            <ImagePicker
-              text={`${
-                user.backgroundImage ? 'Edytuj' : 'Dodaj'
-              } zdjęcie w tle`}
-              handleFile={changeBackgroundImage}
-            />
+            {isOwner && (
+              <ImagePicker
+                text={`${
+                  user.backgroundImage ? 'Edytuj' : 'Dodaj'
+                } zdjęcie w tle`}
+                handleFile={changeBackgroundImage}
+              />
+            )}
           </div>
         </div>
         <div className="profile-preview__info">
           <div className="profile-preview__user">
-            <div className="profile-preview__photo-button">
-              <ImagePicker
-                tooltipText="Zmień zdjęcie profilowe"
-                handleFile={changeProfileImage}
-              />
-            </div>
+            {isOwner && (
+              <div className="profile-preview__photo-button">
+                <ImagePicker
+                  tooltipText="Zmień zdjęcie profilowe"
+                  handleFile={changeProfileImage}
+                />
+              </div>
+            )}
             <Avatar
               src={
                 profileImage
@@ -79,11 +83,13 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
               <h2>Wiek: {getAge(user.birthDate)}</h2>
             </div>
           </div>
-          <Button
-            Icon={<EditIcon />}
-            text="Edytuj Profil"
-            buttonStyleType="primary"
-          />
+          {isOwner && (
+            <Button
+              Icon={<EditIcon />}
+              text="Edytuj Profil"
+              buttonStyleType="primary"
+            />
+          )}
         </div>
       </div>
     </div>

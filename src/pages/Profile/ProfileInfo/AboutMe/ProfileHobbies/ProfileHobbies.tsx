@@ -9,6 +9,7 @@ export const ProfileHobbies = () => {
   const [isHobbiesModalOpen, setIsHobbiesModalOpen] = useState(false);
   const {
     user: { hobbies },
+    isOwner,
   } = useProfileInfo();
 
   const toggleModalVisibility = () =>
@@ -16,33 +17,39 @@ export const ProfileHobbies = () => {
 
   return (
     <>
-      {' '}
       {Boolean(hobbies.length) && (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-evenly',
-            flexWrap: 'wrap',
-            rowGap: '0.5rem',
-          }}
-          className="profile-hobbies"
-        >
-          {hobbies.map(({ icon, text, _id }) => (
-            <Chip
-              icon={<HobbiesIcon iconName={icon} />}
-              key={_id}
-              label={text}
-              variant="outlined"
-            />
-          ))}
-        </div>
+        <>
+          <h2 className="about-me__subTitle">Hobby</h2>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-evenly',
+              flexWrap: 'wrap',
+              rowGap: '0.5rem',
+            }}
+          >
+            {hobbies?.map(({ icon, text, _id }) => (
+              <Chip
+                className="about-me__chip"
+                icon={
+                  <HobbiesIcon className="about-me__chip" iconName={icon} />
+                }
+                key={_id}
+                label={text}
+                variant="outlined"
+              />
+            ))}
+          </div>
+        </>
       )}
-      <Button
-        onClick={toggleModalVisibility}
-        buttonStyleType="secondary"
-        text={`${hobbies ? 'Edytuj' : 'Dodaj'} hobby`}
-        fullWidth
-      />
+      {isOwner && (
+        <Button
+          onClick={toggleModalVisibility}
+          buttonStyleType="secondary"
+          text={`${hobbies ? 'Edytuj' : 'Dodaj'} hobby`}
+          fullWidth
+        />
+      )}
       {isHobbiesModalOpen && (
         <HobbiesModal
           isOpen={isHobbiesModalOpen}

@@ -83,7 +83,7 @@ export const AddHobby = ({
       />
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <div className="add-hobby__icons-menu">
-          {iconsNames.map((icon) => (
+          {iconsNames?.map((icon) => (
             <IconButton
               key={icon}
               onClick={() => {

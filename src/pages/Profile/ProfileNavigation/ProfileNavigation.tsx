@@ -41,7 +41,7 @@ export const ProfileNavigation = ({ isVisible }: { isVisible: boolean }) => {
                 'profile-navigation__link--active': isActive,
               })
             }
-            to="info"
+            to="details"
           >
             Informacje
           </NavLink>

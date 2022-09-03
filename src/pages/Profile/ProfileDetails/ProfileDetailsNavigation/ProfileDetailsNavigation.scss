@@ -1,0 +1,41 @@
+@import 'styles/styles.scss';
+
+.profile-details-navigation {
+  @media only screen and (min-width: $large) {
+    @include rightLine;
+    border-bottom: 0;
+  }
+
+  @include bottomLine;
+  border-right: 0;
+  flex: 0.3;
+
+  &__title {
+    padding-left: 0.5rem;
+  }
+
+  &__content {
+    padding: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__link {
+    color: black;
+    text-decoration: none;
+    padding: 0.5rem;
+    font-weight: $font-weight-semibold;
+
+    &:hover {
+      border-radius: 0.313rem;
+      background-color: lightgray;
+    }
+
+    &--active {
+      color: $primary;
+      border-radius: 0.313rem;
+      background-color: rgba($primary, 25%);
+    }
+  }
+}

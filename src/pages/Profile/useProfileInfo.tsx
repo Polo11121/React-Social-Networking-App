@@ -1,16 +1,18 @@
 import { useGetUser } from 'api/useGetUser';
+import { useAuthContext } from 'contexts/AuthContext';
 import { useParams } from 'react-router-dom';
 import { formatPostDate, sortByDate } from 'shared/functions';
 
 export const useProfileInfo = () => {
   const { id } = useParams();
+  const { userInfo: loggedInUser } = useAuthContext();
   const userInfo = useGetUser(id || null);
-  const posts = userInfo.data.posts.sort((post1, post2) =>
+  const posts = userInfo.data?.posts.sort((post1, post2) =>
     sortByDate(post1.createdAt, post2.createdAt)
   );
 
   const userPhotos = posts
-    .map(({ images, description, createdAt, type }) =>
+    ?.map(({ images, description, createdAt, type }) =>
       images.sort().map((image) => ({
         image,
         label: `${description} ${formatPostDate(createdAt)}`,
@@ -24,8 +26,9 @@ export const useProfileInfo = () => {
     user: {
       ...userInfo.data,
       posts,
-      fullName: `${userInfo.data.name} ${userInfo.data.surname}`,
+      fullName: `${userInfo?.data?.name} ${userInfo?.data?.surname}`,
     },
     userPhotos,
+    isOwner: loggedInUser._id === id,
   };
 };

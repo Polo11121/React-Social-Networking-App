@@ -4,17 +4,19 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { pl } from 'date-fns/locale';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import './BirthDatePicker.scss';
+import { ErrorText, Tooltip } from 'components';
+import TooltipStories from 'components/Tooltip/Tooltip.stories';
 
 type BirthDatePickerType = {
   value: Date | null;
   onChange: (value: Date | null) => {};
-  isError: boolean;
+  error?: string;
 };
 
 export const BirthDatePicker = ({
   value,
   onChange,
-  isError,
+  error,
 }: BirthDatePickerType) => (
   <>
     <p style={{ marginBottom: '0.5rem' }}>Data urodzenia</p>
@@ -25,9 +27,11 @@ export const BirthDatePicker = ({
         renderInput={(params) => (
           <TextField
             {...params}
-            error={isError}
+            error={Boolean(error)}
             style={{ marginBottom: '1rem', borderColor: 'red' }}
             fullWidth
+            data-tip
+            data-for="birthDate-picker"
             inputProps={{
               ...params.inputProps,
               placeholder: 'dd.mm.rrrr',
@@ -36,5 +40,14 @@ export const BirthDatePicker = ({
         )}
       />
     </LocalizationProvider>
+    <Tooltip
+      isDisabled={!error}
+      type="error"
+      offset={{ bottom: 10 }}
+      text={error}
+      id="birthDate-picker"
+      event="focusin"
+      eventOff="focusout"
+    />
   </>
 );

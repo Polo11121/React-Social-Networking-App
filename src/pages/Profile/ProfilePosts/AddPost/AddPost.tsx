@@ -58,7 +58,7 @@ export const AddPost = () => {
   );
 
   return (
-    <SectionCard>
+    <SectionCard style={{ marginBottom: '1rem' }}>
       <div className="add-post">
         <div className="add-post__input-container">
           <Avatar src={userInfo.profileImage} />

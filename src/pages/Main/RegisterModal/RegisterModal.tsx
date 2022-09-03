@@ -105,7 +105,7 @@ export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
             error={formik.errors.passwordConfirm}
           />
           <BirthDatePicker
-            isError={Boolean(formik.errors.birthDate)}
+            error={formik.errors.birthDate}
             value={formik.values.birthDate}
             onChange={changeDateBirthHandler}
           />

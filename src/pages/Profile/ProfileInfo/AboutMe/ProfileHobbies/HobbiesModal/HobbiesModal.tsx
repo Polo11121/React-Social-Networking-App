@@ -43,7 +43,10 @@ export const HobbiesModal = ({
   const {
     user: { hobbies: userHobbies },
   } = useProfileInfo();
-  const { mutate, isLoading } = useUpdateMe(onClose);
+  const { mutate, isLoading } = useUpdateMe({
+    afterUpdate: onClose,
+    toastText: 'Pomyślnie zaktualizowano hobby',
+  });
 
   const checkedHobbies = hobbies.filter(({ checked }) => checked);
   const isButtonDisabled =
