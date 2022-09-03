@@ -1,0 +1,40 @@
+@import 'styles/styles';
+.add-hoc {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0 !important;
+  align-items: center;
+  padding-bottom: 0 !important;
+
+  &__display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: -4px;
+    font-size: 18px !important;
+  }
+
+  &__add-icon {
+    margin-right: 0.5rem;
+    color: $primary !important;
+  }
+
+  &__add-text {
+    color: $primary;
+    font-size: $font-size-big;
+  }
+
+  &__input-button {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+
+  &__menu-button {
+    background-color: lighten(lightgray, 5%) !important;
+
+    &:hover {
+      background-color: lighten(lightgray, 10%) !important;
+    }
+  }
+}

@@ -13,7 +13,7 @@ export const HobbiesList = ({
   setHobbies: Dispatch<SetStateAction<HobbiesType>>;
 }) => (
   <div className="hobbies-list">
-    {hobbies.map(({ icon, text, id, deletable, checked }) => (
+    {hobbies?.map(({ icon, text, id, deletable, checked }) => (
       <Chip
         className={classNames({
           'hobbies-list__chip--checked': checked,

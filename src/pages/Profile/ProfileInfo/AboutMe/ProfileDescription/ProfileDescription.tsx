@@ -8,11 +8,15 @@ export const ProfileDescription = () => {
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const {
     user: { description },
+    isOwner,
   } = useProfileInfo();
 
-  const { mutate, isLoading } = useUpdateMe(() =>
-    setIsDescriptionOpen((prevState) => !prevState)
-  );
+  const afterUpdate = () => () =>
+    setIsDescriptionOpen((prevState) => !prevState);
+  const { mutate, isLoading } = useUpdateMe({
+    afterUpdate,
+    toastText: 'Pomyślnie zaktualizowano opis',
+  });
 
   const formik = useForm({
     initialValues: { description },
@@ -51,13 +55,20 @@ export const ProfileDescription = () => {
     </form>
   ) : (
     <>
-      {description && <p className="about-me__desc">{description}</p>}
-      <Button
-        onClick={toggleDescriptionVisibility}
-        buttonStyleType="secondary"
-        text={`${description ? 'Edytuj' : 'Dodaj'} opis`}
-        fullWidth
-      />
+      {description && (
+        <>
+          <h2 className="about-me__subTitle">Opis</h2>
+          <p className="about-me__desc">{description}</p>
+        </>
+      )}
+      {isOwner && (
+        <Button
+          onClick={toggleDescriptionVisibility}
+          buttonStyleType="secondary"
+          text={`${description ? 'Edytuj' : 'Dodaj'} opis`}
+          fullWidth
+        />
+      )}
     </>
   );
 };

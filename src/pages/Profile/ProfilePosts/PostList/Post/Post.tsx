@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './Post.scss';
+import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 
 type PostPropsType = {
   id: string;
@@ -39,8 +40,8 @@ export const Post = ({
   onDeletePost,
   onEditPost,
 }: PostPropsType) => {
+  const { isOwner } = useProfileInfo();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
 
   const handleModalClick = (event: React.MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
@@ -59,11 +60,17 @@ export const Post = ({
   return (
     <SectionCard>
       <div className="post__user">
-        <IconButton onClick={handleModalClick} className="post__button">
-          <MoreHorizIcon />
-        </IconButton>
-        <Menu anchorEl={anchorEl} open={open} onClose={handleModalClose}>
-          {!isPost && (
+        {isOwner && (
+          <IconButton onClick={handleModalClick} className="post__button">
+            <MoreHorizIcon />
+          </IconButton>
+        )}
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleModalClose}
+        >
+          {isPost && (
             <MenuItem
               onClick={() => {
                 onEditPost(id, images, text);

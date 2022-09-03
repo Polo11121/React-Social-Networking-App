@@ -19,7 +19,12 @@ export const useProfilePreview = () => {
   const resetImages = () =>
     setImages({ backgroundImage: null, profileImage: null });
 
-  const { mutate, isLoading } = useUpdateMe(resetImages);
+  const { mutate, isLoading } = useUpdateMe({
+    afterUpdate: resetImages,
+    toastText: `Pomyślnie zaktualizowano zdjęcie ${
+      images.profileImage ? 'profilowe' : 'w tle'
+    }`,
+  });
 
   const changeProfileImageHandler = () => {
     const formData = new FormData();

@@ -1,5 +1,6 @@
 import { useApiCrud } from 'api/useApiCrud';
 import { useAuthContext } from 'contexts/AuthContext';
+import { customToast } from 'shared/hooks/customToast';
 
 export const useDeletePost = ({
   postId,
@@ -13,6 +14,7 @@ export const useDeletePost = ({
   const onSuccess = async () => {
     await invalidateUserData();
     afterUpdate();
+    customToast({ text: 'Pomyślnie usunięto post' });
   };
 
   return useApiCrud({

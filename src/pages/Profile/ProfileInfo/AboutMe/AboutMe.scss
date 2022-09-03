@@ -1,3 +1,5 @@
+@import 'styles/styles';
+
 .about-me {
   display: flex;
   flex-direction: column;
@@ -10,8 +12,17 @@
     gap: 1rem;
   }
 
+  &__subTitle {
+    text-align: center;
+  }
+
   &__desc {
     word-break: break-word;
     text-align: center;
+  }
+
+  &__chip {
+    color: $secondary !important;
+    border-color: $secondary !important;
   }
 }

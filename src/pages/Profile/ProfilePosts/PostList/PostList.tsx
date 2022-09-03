@@ -5,7 +5,7 @@ import { Post } from 'pages/Profile/ProfilePosts/PostList/Post/Post';
 import { EditModal } from 'pages/Profile/ProfilePosts/PostList/EditModal/EditModal';
 import { usePostList } from 'pages/Profile/ProfilePosts/PostList/usePostList';
 import { useMockInfinityData } from 'shared/hooks/useMockInfinityData';
-import { BouncingDotsLoader } from 'components';
+import { BouncingDotsLoader, SectionCard } from 'components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const PostList = () => {
@@ -29,6 +29,7 @@ export const PostList = () => {
 
   return (
     <div>
+      <SectionCard sectionTitle="Posty" />
       <InfiniteScroll
         style={{
           display: 'flex',

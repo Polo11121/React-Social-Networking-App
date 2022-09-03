@@ -1,3 +1,4 @@
+import { differenceInYears } from 'date-fns';
 import * as Yup from 'yup';
 
 export const RegisterSchema = Yup.object().shape({
@@ -15,6 +16,14 @@ export const RegisterSchema = Yup.object().shape({
     (value, ctx) =>
       Boolean(value && ctx.parent.password === value && value.length > 7)
   ),
-  birthDate: Yup.date().required('Podaj date urodzenia'),
+  birthDate: Yup.date()
+    .nullable()
+    .required('Nieprawidłowa data urodzenia')
+    .test(
+      'adult',
+      'Żeby założyć konto, użytkownik musi być pełnoletni',
+      (value) =>
+        Boolean(value && differenceInYears(new Date(), new Date(value)) >= 18)
+    ),
   gender: Yup.string().required('Wybierz płeć'),
 });

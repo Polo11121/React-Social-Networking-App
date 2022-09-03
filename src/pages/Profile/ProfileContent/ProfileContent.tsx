@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { ProfilePhotos } from 'pages/Profile/ProfilePhotos/ProfilePhotos';
 import { ProfileInfo } from 'pages/Profile/ProfileInfo/ProfileInfo';
 import { ProfilePosts } from 'pages/Profile/ProfilePosts/ProfilePosts';
+import { ProfileDetails } from 'pages/Profile/ProfileDetails/ProfileDetails';
 import './ProfileContent.scss';
 
 export const ProfileContent = () => (
@@ -17,6 +18,7 @@ export const ProfileContent = () => (
         }
       />
       <Route path="photos" element={<ProfilePhotos />} />
+      <Route path="details/*" element={<ProfileDetails />} />
       <Route path="*" element={<Navigate to="posts" replace />} />
     </Routes>
   </div>

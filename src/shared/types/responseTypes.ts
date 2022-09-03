@@ -16,10 +16,22 @@ export type UserType = {
   surname: string;
   profileImage: string;
   backgroundImage: string;
+  gender: 'male' | 'female';
   description: string;
   posts: PostType[];
   birthDate: Date;
   hobbies: { text: string; icon: string; _id: string }[];
+  workPlace: string;
+  middleSchool: string;
+  upperSchool: string;
+  home: string;
+  childCity: string;
+  cities: string[];
+  phoneNumber: string;
+  address: string;
+  email: string;
+  contactEmail: string;
+  interestedGenders: 'males' | 'females' | 'femalesAndMales';
 };
 
 export type ResponseUserType = ResponseType<{ user: UserType }>;

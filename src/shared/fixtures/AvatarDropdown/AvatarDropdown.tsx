@@ -14,7 +14,6 @@ import './AvatarDropdown.scss';
 
 export const AvatarDropdown = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -40,7 +39,11 @@ export const AvatarDropdown = () => {
   return (
     <>
       <IconButton
-        style={{ display: 'flex', flexDirection: 'column' }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '0px 0px 0px 62.879px',
+        }}
         disableRipple
         onClick={handleClick}
       >
@@ -49,7 +52,7 @@ export const AvatarDropdown = () => {
           style={{ fontSize: '18px', color: 'black' }}
         >{`${userInfo.name} ${userInfo.surname}`}</p>
       </IconButton>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={goToMyProfile}>
           <Avatar
             src={userInfo.profileImage}

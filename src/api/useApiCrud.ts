@@ -19,11 +19,15 @@ export const useApiCrud = ({ url, method, onSuccess }: UseApiType) => {
       data,
     });
 
-  const { mutate, isLoading } = useMutation(api, {
-    onSuccess,
-    onError: (errorResponse: AxiosError<ResponseErrorType>) =>
-      setError(errorResponse.response?.data.message),
-  });
+  const resetError = () => setError(undefined);
 
-  return { mutate, isLoading, error };
+  return {
+    ...useMutation(api, {
+      onSuccess,
+      onError: (errorResponse: AxiosError<ResponseErrorType>) =>
+        setError(errorResponse.response?.data.message),
+    }),
+    error,
+    resetError,
+  };
 };

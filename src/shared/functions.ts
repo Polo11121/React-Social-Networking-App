@@ -38,6 +38,27 @@ export const formatPostDate = (date: Date) =>
     day: '2-digit',
   });
 
+export const formatProfileDetailsDate = (date: Date) =>
+  new Date(date).toLocaleDateString('pl-PL', {
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+  });
+
+export const formatInterestedGenders = (gender: string) => {
+  if (gender === 'males') {
+    return 'Mężczyźni';
+  }
+  if (gender === 'females') {
+    return 'Kobiety';
+  }
+  if (gender === 'femalesAndMales') {
+    return 'Kobiety i Mężczyźni';
+  }
+
+  return '';
+};
+
 export const goToTop = () =>
   window.scrollTo({
     top: 0,
@@ -57,3 +78,6 @@ export const areEqual = <T>(array1: T[], array2: T[]) => {
 
   return false;
 };
+
+export const capitalizeFirstLetter = (word?: string) =>
+  word && word.charAt(0).toUpperCase() + word.slice(1);

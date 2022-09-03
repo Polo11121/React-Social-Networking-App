@@ -28,7 +28,7 @@ const AuthContext = createContext({
 });
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const queryClient = useQueryClient();
 
   useEffect(
@@ -71,7 +71,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {isLoading ? <Spinner /> : children}
+      {isLoading && <Spinner />}
+      {children}
     </AuthContext.Provider>
   );
 };
