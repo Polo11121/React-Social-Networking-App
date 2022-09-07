@@ -1,8 +1,12 @@
 @import 'styles/styles';
 
 .profile {
-  background-color: $background;
-  position: relative;
   display: flex;
   flex-direction: column;
+  position: relative;
+  background-color: $background;
+
+  &--with-spinner {
+    @include pageLayout;
+  }
 }

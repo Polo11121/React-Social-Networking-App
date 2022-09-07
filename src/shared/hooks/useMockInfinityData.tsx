@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
 type UseMockInfinityDataProps<T> = {
@@ -25,6 +24,7 @@ export const useMockInfinityData = <T,>({
     if (fetchedEntities.length !== initialEntitiesLength) {
       setIndex((prevIndex) => prevIndex + 1);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchedEntities]);
 
   const onNext = () =>

@@ -13,9 +13,7 @@ export const useLogout = () => {
     customToast({ text: 'Pomyślnie wylogowano' });
   };
 
-  const { mutate, isLoading } = useMutation(logout, {
+  return useMutation(logout, {
     onSuccess,
   });
-
-  return { mutate, isLoading };
 };

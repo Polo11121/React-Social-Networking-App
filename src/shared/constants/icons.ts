@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/dot-notation */
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import HotelIcon from '@mui/icons-material/Hotel';
@@ -42,6 +41,16 @@ import SportsTennisIcon from '@mui/icons-material/SportsTennis';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import Filter1Icon from '@mui/icons-material/Filter1';
+import Filter2Icon from '@mui/icons-material/Filter2';
+import Filter3Icon from '@mui/icons-material/Filter3';
+import Filter4Icon from '@mui/icons-material/Filter4';
+import Filter5Icon from '@mui/icons-material/Filter5';
+import Filter6Icon from '@mui/icons-material/Filter6';
+import Filter7Icon from '@mui/icons-material/Filter7';
+import Filter8Icon from '@mui/icons-material/Filter8';
+import Filter9Icon from '@mui/icons-material/Filter9';
+import Filter9PlusIcon from '@mui/icons-material/Filter9Plus';
 
 export const hobbiesIcons = {
   SportsEsportsIcon,
@@ -88,3 +97,16 @@ export const hobbiesIcons = {
   MoreVertIcon,
   AddCircleOutlineIcon,
 };
+
+export const picturesIcons = [
+  Filter1Icon,
+  Filter2Icon,
+  Filter3Icon,
+  Filter4Icon,
+  Filter5Icon,
+  Filter6Icon,
+  Filter7Icon,
+  Filter8Icon,
+  Filter9Icon,
+  Filter9PlusIcon,
+];

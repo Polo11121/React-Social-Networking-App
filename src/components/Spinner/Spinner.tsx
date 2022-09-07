@@ -1,10 +1,21 @@
-import { Backdrop, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 
-export const Spinner = ({ testId }: { testId?: string }) => (
-  <Backdrop
-    open
-    sx={{ color: '#006f71', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+export const Spinner = ({
+  testId,
+  customColor,
+}: {
+  testId?: string;
+  customColor?: string;
+}) => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100%',
+      color: customColor || '#006f71',
+    }}
   >
     <CircularProgress color="inherit" data-testid={`${testId}spinner`} />
-  </Backdrop>
+  </div>
 );

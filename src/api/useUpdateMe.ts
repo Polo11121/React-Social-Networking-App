@@ -13,9 +13,11 @@ export const useUpdateMe = ({
 
   const onSuccess = async () => {
     await invalidateUserData();
+
     if (afterUpdate) {
       afterUpdate();
     }
+
     if (toastText) {
       customToast({ text: toastText });
     }

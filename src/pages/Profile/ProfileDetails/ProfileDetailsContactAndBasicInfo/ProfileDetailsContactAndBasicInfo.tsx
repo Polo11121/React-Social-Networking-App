@@ -1,6 +1,6 @@
-import { AddHoc } from 'components';
 import { ChangeEventHandler } from 'react';
-import { useProfileDetails } from '../useProfileDetails';
+import { AddHoc } from 'components';
+import { useProfileDetails } from 'pages/Profile/ProfileDetails/useProfileDetails';
 
 export const ProfileDetailsContactAndBasicInfo = () => {
   const {

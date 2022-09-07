@@ -1,0 +1,60 @@
+@import 'styles/styles';
+
+.chat-content-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 70vw;
+
+  &--owner {
+    margin-left: auto;
+    align-items: flex-end;
+  }
+
+  @media only screen and (min-width: $large) {
+    max-width: 35vw;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    padding-left: 0.313rem;
+    font-size: 0.875rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.188rem;
+  }
+
+  &__user-photo {
+    height: 1.25rem !important;
+    width: 1.25rem !important;
+    margin-right: 0.313rem;
+  }
+
+  &__content {
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.313rem 0.625rem;
+    border-radius: 0.625rem;
+    background-color: lightgray;
+    color: $black;
+    word-wrap: break-word;
+
+    &--owner {
+      background-color: $primary;
+      color: $white;
+    }
+
+    &--withImages {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__timestamp {
+    font-size: 10px;
+    margin-left: 10px;
+
+    &--withImages {
+      align-self: flex-end;
+    }
+  }
+}

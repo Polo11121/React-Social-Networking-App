@@ -1,0 +1,26 @@
+@import 'styles/styles';
+
+.chat-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  @media only screen and (min-width: $large) {
+    flex: 0.8;
+  }
+
+  &--hidden {
+    display: none;
+
+    @media only screen and (min-width: $large) {
+      display: flex;
+    }
+  }
+
+  &__message {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

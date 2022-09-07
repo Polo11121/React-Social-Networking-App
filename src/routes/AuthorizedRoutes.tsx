@@ -1,6 +1,7 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/Home/Home';
 import { Profile } from 'pages/Profile/Profile';
+import { Chat } from 'pages/Chat/Chat';
 import { Header } from 'components';
 import { AvatarDropdown } from 'shared/fixtures/AvatarDropdown/AvatarDropdown';
 import { HeaderNavigation } from 'shared/fixtures/HeaderNavigation/HeaderNavigation';
@@ -12,8 +13,10 @@ export const AuthorizedRoutes = () => (
       <AvatarDropdown />
     </Header>
     <Routes>
-      <Route path="home" element={<Home />} />
+      <Route path="/" element={<Home />} />
+      <Route path="chat/*" element={<Chat />} />
       <Route path="profile/:id/*" element={<Profile />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </>
 );

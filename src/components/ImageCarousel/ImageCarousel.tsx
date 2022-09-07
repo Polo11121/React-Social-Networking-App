@@ -39,7 +39,7 @@ export const ImageCarousel = ({
             ...imageStyle,
           }}
         />
-        {typeof image !== 'string' && (
+        {typeof image !== 'string' && image.label && (
           <p className="image-carousel__item-label">{image.label}</p>
         )}
       </div>

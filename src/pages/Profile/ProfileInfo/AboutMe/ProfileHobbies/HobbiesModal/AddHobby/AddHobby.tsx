@@ -3,7 +3,7 @@ import { Chip, IconButton, Menu } from '@mui/material';
 import { HobbiesType } from 'pages/Profile/ProfileInfo/AboutMe/ProfileHobbies/HobbiesModal/HobbiesModal';
 import { HobbiesIcon } from 'pages/Profile/ProfileInfo/AboutMe/ProfileHobbies/HobbiesIcon/HobbiesIcon';
 import { v4 as uuid } from 'uuid';
-import { hobbiesIcons } from 'shared/consts/icons';
+import { hobbiesIcons } from 'shared/constants/icons';
 import './AddHobby.scss';
 
 const iconsNames = Object.keys(hobbiesIcons);
