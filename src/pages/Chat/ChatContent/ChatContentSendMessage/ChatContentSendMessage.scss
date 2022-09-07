@@ -1,0 +1,18 @@
+@import 'styles/styles';
+
+.chat-content-send-message {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  align-items: center;
+  background-color: $white;
+  @include topLine;
+
+  &--active {
+    color: $primary !important;
+  }
+
+  &__icon:hover {
+    color: $primary !important;
+  }
+}

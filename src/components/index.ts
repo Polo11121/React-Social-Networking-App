@@ -8,6 +8,7 @@ export { ImageCarousel } from './ImageCarousel/ImageCarousel';
 export { ImagePicker } from './ImagePicker/ImagePicker';
 export { Input } from './Input/Input';
 export { Photos } from './Photos/Photos';
+export { Search } from './Search/Search';
 export { SectionCard } from './SectionCard/SectionCard';
 export { Textarea } from './Textarea/Textarea';
 export { Tooltip } from './Tooltip/Tooltip';

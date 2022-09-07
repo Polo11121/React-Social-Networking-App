@@ -5,7 +5,7 @@ import './PhotosModal.scss';
 type PhotosModalType = {
   selectedPhoto: null | number;
   onClose?: () => void;
-  photos: { image: string; label: string }[];
+  photos: { image: string; label?: string }[];
 };
 
 export const PhotosModal = ({

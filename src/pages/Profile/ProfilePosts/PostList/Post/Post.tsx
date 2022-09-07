@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Avatar, ListItemText, Menu, MenuItem } from '@mui/material';
 import { ImageCarousel, SectionCard } from 'components';
 import { formatPostDate } from 'shared/functions';
+import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './Post.scss';
-import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 
 type PostPropsType = {
   id: string;

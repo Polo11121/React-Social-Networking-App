@@ -1,16 +1,18 @@
 import {
   createContext,
-  ReactNode,
+  MutableRefObject,
   useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import { useGetUser } from 'api/useGetUser';
 import { ResponseUserType, UserType } from 'shared/types/responseTypes';
-import { Spinner } from 'components';
+import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
 import { useQueryClient } from 'react-query';
+import { io, Socket } from 'socket.io-client';
 
 const initialUserInfo = {
   name: '',
@@ -21,20 +23,32 @@ const initialUserInfo = {
 
 const AuthContext = createContext({
   isAuthenticated: false,
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   authenticationHandler: (data: any) => {},
   invalidateUserData: () => new Promise(() => {}),
   userInfo: initialUserInfo,
+  socket: io() as unknown as MutableRefObject<Socket<any, any> | undefined>,
 });
 
-export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
+export const AuthContextProvider = ({
+  children,
+}: {
+  children: JSX.Element;
+}) => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const queryClient = useQueryClient();
+  const socket = useRef<Socket<any, any> | undefined>();
 
-  useEffect(
-    () => setIsAuthenticated(Boolean(localStorage.getItem('userId'))),
-    []
-  );
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+
+    setIsAuthenticated(Boolean(userId));
+
+    if (userId) {
+      socket.current = io();
+      socket.current.emit('add-user', userId);
+    }
+  }, []);
 
   const authenticationHandler = useCallback(
     ({ data }: { data: ResponseUserType }) => {
@@ -65,14 +79,14 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       authenticationHandler,
       userInfo: userInfo || initialUserInfo,
       invalidateUserData,
+      socket,
     }),
     [isAuthenticated, authenticationHandler, userInfo, invalidateUserData]
   );
 
   return (
     <AuthContext.Provider value={value}>
-      {isLoading && <Spinner />}
-      {children}
+      <WithLoader isLoading={isLoading}>{children}</WithLoader>
     </AuthContext.Provider>
   );
 };

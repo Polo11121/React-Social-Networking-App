@@ -27,6 +27,7 @@ export const ImagePicker = ({
   return (
     <>
       <button
+        type="button"
         data-tip
         data-for={tooltipText}
         className={`image-picker__button image-picker__button--${

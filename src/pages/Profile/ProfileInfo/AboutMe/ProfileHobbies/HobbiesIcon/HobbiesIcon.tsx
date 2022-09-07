@@ -1,4 +1,4 @@
-import { hobbiesIcons } from 'shared/consts/icons';
+import { hobbiesIcons } from 'shared/constants/icons';
 
 export const HobbiesIcon = ({
   iconName,

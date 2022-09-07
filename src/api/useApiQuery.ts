@@ -20,5 +20,5 @@ export const useApiQuery = <T>({
     cacheTime: Infinity,
   });
 
-  return { ...data, data: data.data as T };
+  return { ...data, data: (data.data || []) as T };
 };

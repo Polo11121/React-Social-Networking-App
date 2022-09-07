@@ -1,0 +1,6 @@
+@import 'styles/styles';
+
+.chat {
+  @include pageLayout;
+  display: flex;
+}

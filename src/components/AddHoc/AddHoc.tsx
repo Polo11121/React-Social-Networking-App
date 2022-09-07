@@ -67,6 +67,7 @@ export const AddHoc = ({
 
   const hideAdHoc = () => {
     setAdHocVisibility(false);
+
     if (onClose) {
       onClose();
     }
@@ -81,6 +82,7 @@ export const AddHoc = ({
     if (onSubmit) {
       await onSubmit();
     }
+
     setAdHocVisibility(false);
   };
 
@@ -88,6 +90,7 @@ export const AddHoc = ({
     if (onDelete) {
       await onDelete();
     }
+
     handleModalClose();
   };
 
@@ -100,6 +103,7 @@ export const AddHoc = ({
         />
       );
     }
+
     if (inputType === 'select') {
       return (
         <FormControl fullWidth>
@@ -124,6 +128,7 @@ export const AddHoc = ({
         </FormControl>
       );
     }
+
     if (onChange) {
       return (
         <Input
@@ -144,7 +149,7 @@ export const AddHoc = ({
       <div className="add-hoc">
         <div className="add-hoc__display">
           {Icon} {displayText}:{' '}
-          <span style={{ fontWeight: 'bold' }}>
+          <span className="add-hoc__display-value">
             {displayValue || (value as string)}
           </span>
         </div>
