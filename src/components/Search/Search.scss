@@ -1,6 +1,7 @@
 @import 'styles/styles';
 
 .search {
+  position: relative;
   display: flex;
   align-items: center;
   font-size: 0.875rem;
@@ -37,6 +38,17 @@
     height: 100%;
     width: 100%;
     outline: none;
+  }
+
+  &__hints {
+    display: none;
+  }
+
+  &:focus-within + .search__hints,
+  &__hints:hover {
+    display: block;
+    position: absolute;
+    width: inherit;
   }
 
   &__icon {

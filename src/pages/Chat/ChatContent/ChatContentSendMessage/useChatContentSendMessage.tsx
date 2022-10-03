@@ -31,20 +31,12 @@ export const useChatContentSendMessage = ({
     resetValue,
     setValue: setMessageText,
   } = useSearch();
-  const { userInfo, socket } = useAuthContext();
-  const { id } = useParams();
+  const { userInfo } = useAuthContext();
   const queryClient = useQueryClient();
+  const { id } = useParams();
 
-  const onSuccess = () => {
-    queryClient.invalidateQueries(['messages', id]);
+  const onSuccess = () => queryClient.invalidateQueries(['messages', id]);
 
-    if (socket.current) {
-      socket.current.emit('send-msg', {
-        sender: userInfo._id,
-        receiver: id,
-      });
-    }
-  };
   const { mutate } = useAddMessage(onSuccess);
 
   const handleOpenEmojis = (event: React.MouseEvent<HTMLButtonElement>) => {

@@ -12,8 +12,19 @@
   z-index: $z-index-normal-priority;
   @include cardBoxShadow;
 
+  &__logo-container {
+    display: flex;
+    align-items: center;
+  }
+
   &__logo {
+    display: none;
     color: $primary;
     text-decoration: none;
+    margin-right: 1rem;
+
+    @media only screen and (min-width: $medium) {
+      display: flex;
+    }
   }
 }

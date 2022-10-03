@@ -3,7 +3,6 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 type CustomToastType = {
   text: string;
-  status?: 'default' | 'success';
   position?: ToastPosition;
   autoClose?: number;
   hideProgressBar?: boolean;
@@ -19,7 +18,6 @@ type CustomToastType = {
 export const customToast = ({
   text,
   progress,
-  status,
   position = 'top-right',
   autoClose = 2000,
   hideProgressBar = true,

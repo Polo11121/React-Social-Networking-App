@@ -1,5 +1,7 @@
 import { useProfileDetails } from 'pages/Profile/ProfileDetails/useProfileDetails';
 import { AddHoc } from 'components';
+import { capitalizeFirstLetter } from 'shared/functions';
+import { CitySelect } from 'shared/fixtures/CitySelect/CitySelect';
 
 export const ProfileDetailsPlaces = () => {
   const { adHocsPlaces, isLoading, isOwner } = useProfileDetails();
@@ -10,36 +12,36 @@ export const ProfileDetailsPlaces = () => {
       {adHocsPlaces.map(
         ({
           initialValue,
+          value,
+          displayValue,
           name,
           placeholder,
-          value,
-          onChange,
           Icon,
-          disableEdit,
           displayText,
+          onChange,
           onSubmit,
           onDelete,
           onClose,
         }) => (
           <AddHoc
+            value={value?.label}
+            displayValue={displayValue}
             displayOnly={!isOwner}
-            disableEdit={disableEdit}
             key={name}
-            isDisabled={
-              isLoading ||
-              value === initialValue ||
-              (!initialValue && !value.trim())
-            }
+            placeholder={placeholder}
+            isDisabled={isLoading || value === initialValue}
             onSubmit={onSubmit}
             onDelete={onDelete}
             onClose={onClose}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            name={name}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
-          />
+          >
+            <CitySelect
+              value={value}
+              placeholder={capitalizeFirstLetter(placeholder)}
+              setSelectedOption={onChange}
+            />
+          </AddHoc>
         )
       )}
     </>

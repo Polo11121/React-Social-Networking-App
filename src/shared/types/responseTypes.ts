@@ -1,6 +1,4 @@
-type ResponseType<T> = {
-  data: T;
-};
+import { FiltersType } from 'shared/types/repeatableTypes';
 
 type PostType = {
   images: string[];
@@ -8,6 +6,13 @@ type PostType = {
   description: string;
   createdAt: Date;
   type: string;
+};
+
+export type CityType = {
+  _id: string;
+  city: string;
+  location: { type: 'Point'; coordinates: number[] };
+  province: string;
 };
 
 export type UserType = {
@@ -24,14 +29,15 @@ export type UserType = {
   workPlace: string;
   middleSchool: string;
   upperSchool: string;
-  home: string;
-  childCity: string;
-  cities: string[];
+  home: CityType;
+  childCity: CityType;
+  cities: CityType[];
   phoneNumber: string;
   address: string;
   email: string;
   contactEmail: string;
   interestedGenders: 'males' | 'females' | 'femalesAndMales';
+  filters: FiltersType;
 };
 
 export type MessageType = {
@@ -47,8 +53,20 @@ export type MessageType = {
   isImageLoading?: boolean;
   createdAt: Date;
   images: string[];
+  receiverRead?: boolean;
 };
 
-export type ResponseUserType = ResponseType<{ user: UserType }>;
+export type LastMessagesType = {
+  _id: string;
+  match: UserType;
+  lastMessage: MessageType;
+};
+
+export type MatchType = {
+  _id: string;
+  match: UserType;
+};
+
+export type ResponseUserType = { data: UserType };
 
 export type ResponseErrorType = { message: string };

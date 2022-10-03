@@ -1,12 +1,15 @@
 import { ChatNavbarList } from 'pages/Chat/ChatNavbar/ChatNavbarList/ChatNavbarList';
 import { Search } from 'components';
+import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
 import { useParams } from 'react-router-dom';
 import { useSearch } from 'shared/hooks/useSearch';
+import { useGetLastMessages } from 'api/useGetLastMessages';
 import classNames from 'classnames';
 import './ChatNavbar.scss';
 
 export const ChatNavbar = () => {
   const { id } = useParams();
+  const { isLoading } = useGetLastMessages();
   const { value, onChange } = useSearch();
 
   return (
@@ -19,11 +22,9 @@ export const ChatNavbar = () => {
           placeholder="Znajdź użytkownika"
         />
       </div>
-      {true ? (
-        <ChatNavbarList />
-      ) : (
-        <span className="chat-navbar__message">Nie znaleziono wiadomości.</span>
-      )}
+      <WithLoader isLoading={isLoading}>
+        <ChatNavbarList searchTerm={value} />
+      </WithLoader>
     </div>
   );
 };

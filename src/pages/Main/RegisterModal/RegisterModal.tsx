@@ -3,7 +3,7 @@ import { IconButton, Modal } from '@mui/material';
 import { useRegister } from 'api/useRegister';
 import { useForm } from 'shared/hooks/useForm';
 import { GenderRadioButtons } from 'pages/Main/RegisterModal/GenderRadioButtons/GenderRadioButtons';
-import { BirthDatePicker } from 'pages/Main/RegisterModal/BirthDatePicker/BirthDatePicker';
+import { BirthDatePicker } from 'shared/fixtures/BirthDatePicker/BirthDatePicker';
 import { RegisterSchema } from 'pages/Main/RegisterModal/RegisterSchema';
 import { Button, Input } from 'components';
 import ClearIcon from '@mui/icons-material/Clear';

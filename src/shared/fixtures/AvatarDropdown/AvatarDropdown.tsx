@@ -37,20 +37,17 @@ export const AvatarDropdown = () => {
   };
 
   return (
-    <>
+    <div className="avatar-dropdown">
       <IconButton
         style={{
           display: 'flex',
           flexDirection: 'column',
-          padding: '0px 0px 0px 62.879px',
         }}
         disableRipple
         onClick={handleClick}
       >
         <Avatar src={userInfo.profileImage} />
-        <p
-          style={{ fontSize: '18px', color: 'black' }}
-        >{`${userInfo.name} ${userInfo.surname}`}</p>
+        <p className="avatar-dropdown__username">{`${userInfo.name} ${userInfo.surname}`}</p>
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={goToMyProfile}>
@@ -70,6 +67,6 @@ export const AvatarDropdown = () => {
           <ListItemText>Wyloguj</ListItemText>
         </MenuItem>
       </Menu>
-    </>
+    </div>
   );
 };

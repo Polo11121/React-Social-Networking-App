@@ -1,7 +1,22 @@
+@import 'styles/styles.scss';
+
 .avatar-dropdown {
-  width: 153.91px;
+  display: flex;
+  justify-content: flex-end;
+  width: 296px;
+
   &__avatar {
     margin-right: 0.5rem !important;
+  }
+
+  &__username {
+    font-size: 18px;
+    color: black;
+    display: none;
+
+    @media only screen and (min-width: $medium) {
+      display: block;
+    }
   }
 
   &__icon-overlay {

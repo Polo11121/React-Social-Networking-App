@@ -63,8 +63,8 @@ export const ProfileDetails = () => {
       Icon: SchoolIcon,
       displayText: gender === 'male' ? 'Uczęszczał do' : 'Uczęsczała do',
     },
-    { displayValue: home, Icon: HouseIcon, displayText: 'Mieszka w' },
-    { displayValue: childCity, Icon: PlaceIcon, displayText: 'Z' },
+    { displayValue: home?.city, Icon: HouseIcon, displayText: 'Mieszka w' },
+    { displayValue: childCity?.city, Icon: PlaceIcon, displayText: 'Z' },
   ];
 
   const goToProfileDetails = () => navigate(`/profile/${_id}/details`);
@@ -79,7 +79,6 @@ export const ProfileDetails = () => {
               key={`${displayText}-${displayValue}`}
               Icon={<Icon fontSize="large" />}
               displayOnly
-              disableEdit
               displayText={displayText}
               displayValue={displayValue}
             />

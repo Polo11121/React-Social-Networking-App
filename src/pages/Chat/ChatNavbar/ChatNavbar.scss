@@ -27,11 +27,4 @@
     gap: 1rem;
     @include bottomLine;
   }
-
-  &__message {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
 }

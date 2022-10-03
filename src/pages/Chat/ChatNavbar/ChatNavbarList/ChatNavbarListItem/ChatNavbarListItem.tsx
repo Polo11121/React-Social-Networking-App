@@ -9,6 +9,7 @@ type ChatNavbarListItemPropsType = {
   fullName: string;
   lastMessage: string;
   isActive?: boolean;
+  newMessage?: boolean;
 };
 
 export const ChatNavbarListItem = ({
@@ -17,6 +18,7 @@ export const ChatNavbarListItem = ({
   fullName,
   lastMessage,
   isActive = false,
+  newMessage,
 }: ChatNavbarListItemPropsType) => (
   <NavLink
     to={`/chat/${userId}`}
@@ -27,7 +29,13 @@ export const ChatNavbarListItem = ({
     <Avatar src={avatar} className="chat-navbar-list-item__avatar" />
     <div className="chat-navbar-list-item__info">
       <span className="chat-navbar-list-item__full-name">{fullName}</span>
-      <span className="chat-navbar-list-item__last-message">{lastMessage}</span>
+      <span
+        className={classNames('chat-navbar-list-item__last-message', {
+          'chat-navbar-list-item__last-message--bold': newMessage,
+        })}
+      >
+        {lastMessage}
+      </span>
     </div>
   </NavLink>
 );

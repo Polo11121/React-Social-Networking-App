@@ -1,0 +1,27 @@
+@import 'styles/styles';
+
+.users-search {
+  &__hint {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid $primary;
+    width: 100%;
+    cursor: pointer;
+
+    &--empty {
+      pointer-events: none;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__hint-avatar {
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    width: 30px;
+  }
+}
