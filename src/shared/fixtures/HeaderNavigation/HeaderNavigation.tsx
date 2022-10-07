@@ -16,7 +16,7 @@ export const HeaderNavigation = () => {
 
   return (
     <nav className="header-navigation">
-      <Tooltip primaryColor text="Ślepy strzał" id="game" />
+      <Tooltip backgroundColor="#006f71" text="Ślepy strzał" id="game" />
       <NavLink
         data-tip
         data-for="game"
@@ -29,7 +29,7 @@ export const HeaderNavigation = () => {
       >
         <CasinoIcon fontSize="large" />
       </NavLink>
-      <Tooltip primaryColor text="Czat" id="chat" />
+      <Tooltip backgroundColor="#006f71" text="Czat" id="chat" />
       <NavLink
         data-tip
         data-for="chat"
@@ -44,7 +44,7 @@ export const HeaderNavigation = () => {
           <MessageIcon fontSize="large" />
         </Badge>
       </NavLink>
-      <Tooltip primaryColor text="Dopasowania" id="matches" />
+      <Tooltip backgroundColor="#006f71" text="Dopasowania" id="matches" />
       <NavLink
         data-tip
         data-for="matches"
@@ -59,7 +59,11 @@ export const HeaderNavigation = () => {
           <FavoriteIcon fontSize="large" />
         </Badge>
       </NavLink>
-      <Tooltip primaryColor text="Proponowani" id="proposedPeople" />
+      <Tooltip
+        backgroundColor="#006f71"
+        text="Proponowani"
+        id="proposedPeople"
+      />
       <NavLink
         data-tip
         data-for="proposedPeople"

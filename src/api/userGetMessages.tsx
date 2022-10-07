@@ -21,6 +21,7 @@ export const useGetMessages = (receiverId: string | null) => {
       queryClient.invalidateQueries('lastMessages');
     },
     enabled: Boolean(receiverId),
+    refetchOnMount: false,
   });
 
   return {

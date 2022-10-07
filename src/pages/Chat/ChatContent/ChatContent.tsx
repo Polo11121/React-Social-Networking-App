@@ -21,10 +21,10 @@ export const ChatContent = () => {
   const { currentChatUser, isLoading: isUserLoading } = useGetLastMessages(id);
   const {
     data: messages,
-    isLoading,
     fetchNextPage,
     hasNextPage,
     isFetching,
+    isFetchedAfterMount,
   } = useGetMessages(id || null);
   const [writtenMessages, setWrittenMessages] = useState(messages);
   const [messagePhotos, setMessagePhotos] = useState<PhotosModalType>(
@@ -60,7 +60,7 @@ export const ChatContent = () => {
               onNext={fetchNextPage}
               hasMore={Boolean(hasNextPage)}
               onShowPostPhotos={onOpenPhotosModal}
-              isLoading={isLoading}
+              isLoading={!isFetchedAfterMount}
               messages={writtenMessages}
             />
             <ChatContentSendMessage

@@ -38,6 +38,7 @@ export type UserType = {
   contactEmail: string;
   interestedGenders: 'males' | 'females' | 'femalesAndMales';
   filters: FiltersType;
+  matchStatus: { user: string; status: string }[];
 };
 
 export type MessageType = {

@@ -7,7 +7,7 @@ import './ChatNavbarList.scss';
 export const ChatNavbarList = ({ searchTerm }: { searchTerm: string }) => {
   const { userInfo } = useAuthContext();
   const { data } = useGetLastMessages();
-  const id = useParams();
+  const { id } = useParams();
 
   const filteredData = data.filter(({ match: { name, surname } }) =>
     `${name} ${surname}`.toUpperCase().includes(searchTerm)
@@ -24,17 +24,20 @@ export const ChatNavbarList = ({ searchTerm }: { searchTerm: string }) => {
           }) => (
             <ChatNavbarListItem
               key={matchId}
-              isActive={id['*'] === _id}
+              isActive={id === _id}
               userId={_id}
               avatar={profileImage}
               fullName={`${name} ${surname}`}
-              lastMessage={`${
-                lastMessage?.sender?._id === userInfo._id
-                  ? 'Ty'
-                  : lastMessage?.sender?.name
-              }: ${lastMessage?.text}`}
+              lastMessage={
+                lastMessage &&
+                `${
+                  lastMessage?.sender?._id === userInfo._id
+                    ? 'Ty'
+                    : lastMessage?.sender?.name
+                }: ${lastMessage?.text}`
+              }
               newMessage={
-                lastMessage?.receiver?._id === userInfo._id &&
+                lastMessage?.sender?._id !== userInfo._id &&
                 !lastMessage?.receiverRead
               }
             />

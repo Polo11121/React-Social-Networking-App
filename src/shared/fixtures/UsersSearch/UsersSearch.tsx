@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { getUsers } from 'api/getUsersBySearchTerm';
-import { Search, Spinner } from 'components';
+import { Spinner } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { useSearch } from 'shared/hooks/useSearch';
+import SearchIcon from '@mui/icons-material/Search';
 import './UsersSearch.scss';
 
 export const UsersSearch = () => {
@@ -21,13 +22,23 @@ export const UsersSearch = () => {
   };
 
   return (
-    <Search
-      placeholder="Znajdź użytkownika"
-      ref={searchRef}
-      style={{ width: '240px' }}
-      onChange={debouncedOnChange}
-      hints={
-        !value || users.length ? (
+    <div className="users-search">
+      <div className="users-search__container">
+        <SearchIcon
+          className="users-search__icon"
+          data-testid="loupe-icon-users-search"
+        />
+        <input
+          ref={searchRef}
+          onChange={debouncedOnChange}
+          placeholder="Znajdź użytkownika"
+          type="text"
+          className="users-search__input"
+        />
+        {isLoading && <Spinner size={20} />}
+      </div>
+      <div className="users-search__hints">
+        {!value || users.length || isLoading ? (
           users.map(({ name, surname, profileImage, _id }) => (
             <div
               key={_id}
@@ -48,10 +59,8 @@ export const UsersSearch = () => {
           <div className="users-search__hint users-search__hint--empty">
             Brak pasujących wyszukiwań
           </div>
-        )
-      }
-    >
-      {isLoading && <Spinner size={20} />}
-    </Search>
+        )}
+      </div>
+    </div>
   );
 };

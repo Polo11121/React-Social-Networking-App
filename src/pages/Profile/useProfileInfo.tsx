@@ -28,5 +28,9 @@ export const useProfileInfo = () => {
     },
     userPhotos,
     isOwner: loggedInUser._id === id,
+    userStatus: userInfo.data.matchStatus?.find(({ user }) => user === id),
+    myStatus: userInfo.data.matchStatus?.find(
+      ({ user }) => user === loggedInUser._id
+    ),
   };
 };

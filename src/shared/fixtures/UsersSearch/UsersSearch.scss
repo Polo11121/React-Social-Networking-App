@@ -1,6 +1,70 @@
 @import 'styles/styles';
 
 .users-search {
+  width: 240px;
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    border-radius: 1rem;
+    line-height: 1.5;
+    padding: 0.3125rem 0.625rem;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in,
+      background-color 100ms ease-in;
+    border: 2px solid #dee1e2;
+    background: $lightGray;
+    height: 2.25rem;
+    width: 100%;
+
+    &:hover {
+      border-color: #ccc;
+    }
+
+    &:focus-within {
+      border-color: $primary;
+      background: $white;
+
+      & > .users-search__icon {
+        color: rgb(14, 14, 16) !important;
+      }
+
+      & > .users-search__input::placeholder {
+        color: rgb(14, 14, 16);
+      }
+    }
+
+    &:focus-within + .users-search__hints {
+      display: block;
+      position: absolute;
+      width: inherit;
+    }
+  }
+
+  &__icon {
+    color: gray !important;
+  }
+
+  &__input {
+    border: none;
+    background-color: inherit;
+    color: rgb(14, 14, 16);
+    height: 100%;
+    width: 100%;
+    outline: none;
+  }
+
+  &__hints {
+    display: none;
+
+    &:hover {
+      display: block;
+      position: absolute;
+      width: inherit;
+    }
+  }
+
   &__hint {
     display: flex;
     align-items: center;

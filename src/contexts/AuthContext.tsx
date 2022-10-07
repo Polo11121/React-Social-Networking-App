@@ -39,44 +39,58 @@ export const AuthContextProvider = ({
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const { pathname } = useLocation();
+  const path = pathname.split('/');
   const queryClient = useQueryClient();
   const socket = useRef<Socket<any, any> | undefined>();
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
-
     setIsAuthenticated(Boolean(userId));
 
-    if (userId) {
+    if (userId && !socket.current) {
       socket.current = io();
       socket.current.emit('add-user', userId);
     }
 
     if (socket.current) {
-      const path = pathname.split('/');
-
-      socket.current.on('msg-receive', ({ sender }: { sender: string }) => {
-        if (path[1] === 'chat' && path[2]) {
-          queryClient.invalidateQueries(['messages', sender]);
-          queryClient.invalidateQueries('lastMessages');
-        } else if (path[1] === 'chat' && !path[2]) {
-          queryClient.invalidateQueries('lastMessages');
-          queryClient.invalidateQueries('unreadMessages');
-        } else {
-          queryClient.invalidateQueries('unreadMessages');
-          customToast({ text: `Masz nowa wiadomość` });
+      socket.current.on(
+        'msg-receive',
+        ({ sender, text }: { sender: string; text: string }) => {
+          if (path[1] === 'chat' && path[2]) {
+            queryClient.invalidateQueries(['messages', sender]);
+            queryClient.invalidateQueries('lastMessages');
+          } else if (path[1] === 'chat' && !path[2]) {
+            queryClient.invalidateQueries('lastMessages');
+            queryClient.invalidateQueries('unreadMessages');
+          } else {
+            queryClient.invalidateQueries('unreadMessages');
+            customToast({ text });
+          }
         }
-      });
+      );
 
-      socket.current.on('new-match', () => {
-        if (pathname.split('/')[1] === 'matches') {
-          queryClient.invalidateQueries('matches');
-        } else {
-          queryClient.invalidateQueries('newMatches');
-          customToast({ text: `Masz nowe dopasowanie` });
+      socket.current.on(
+        'match-status',
+        ({ text, users }: { text: string; users: string[] }) => {
+          queryClient.invalidateQueries(users[1]);
+          queryClient.invalidateQueries(users[2]);
+          if (path[1] === 'matches') {
+            queryClient.invalidateQueries('matches');
+          } else {
+            queryClient.invalidateQueries('newMatches');
+
+            if (text) {
+              customToast({ text });
+            }
+          }
         }
-      });
+      );
     }
+    return () => {
+      if (socket.current) {
+        socket.current.removeAllListeners();
+      }
+    };
   }, [pathname]);
 
   const authenticationHandler = useCallback(

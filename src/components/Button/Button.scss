@@ -3,6 +3,7 @@
 .button {
   display: flex;
   align-items: center;
+  gap: 0.25rem;
   justify-content: center;
   font-weight: $font-weight-semibold;
   width: fit-content;
