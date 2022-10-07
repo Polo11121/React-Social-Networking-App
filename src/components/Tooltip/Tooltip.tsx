@@ -11,6 +11,7 @@ export type TooltipType = {
   type?: Type;
   offset?: Offset;
   isDisabled?: boolean;
+  backgroundColor?: string;
 };
 
 export const Tooltip = ({
@@ -21,12 +22,14 @@ export const Tooltip = ({
   id,
   isDisabled = false,
   multiline = false,
+  backgroundColor,
   effect = 'solid',
   place = 'bottom',
   type = 'info',
 }: TooltipType) =>
   isDisabled ? null : (
     <ReactTooltip
+      backgroundColor={backgroundColor}
       disable={isDisabled}
       eventOff={eventOff}
       event={event}

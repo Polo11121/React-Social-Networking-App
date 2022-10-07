@@ -1,25 +1,53 @@
 import { useParams } from 'react-router-dom';
 import { ChatNavbarListItem } from 'pages/Chat/ChatNavbar/ChatNavbarList/ChatNavbarListItem/ChatNavbarListItem';
+import { useGetLastMessages } from 'api/useGetLastMessages';
+import { useAuthContext } from 'contexts/AuthContext';
+import './ChatNavbarList.scss';
 
-export const ChatNavbarList = () => {
+export const ChatNavbarList = ({ searchTerm }: { searchTerm: string }) => {
+  const { userInfo } = useAuthContext();
+  const { data } = useGetLastMessages();
   const { id } = useParams();
 
+  const filteredData = data.filter(({ match: { name, surname } }) =>
+    `${name} ${surname}`.toUpperCase().includes(searchTerm)
+  );
+
   return (
-    <div style={{ overflowY: 'auto', margin: '1rem 0' }}>
-      <ChatNavbarListItem
-        isActive={id === '63161b5577b19063105bb89b'}
-        userId="63161b5577b19063105bb89b"
-        avatar="https://i1.fdbimg.pl/x1/07jzjf32/680x986_r5llfk.jpg"
-        fullName="Katie KoX"
-        lastMessage="elo"
-      />
-      <ChatNavbarListItem
-        isActive={id === '6316481a1b793e25dc9c2345'}
-        userId="6316481a1b793e25dc9c2345"
-        avatar="https://i1.fdbimg.pl/x1/07jzjf32/680x986_r5llfk.jpg"
-        fullName="Katie KoX"
-        lastMessage="elo"
-      />
+    <div className="chat-navbar-list">
+      {filteredData.length ? (
+        filteredData.map(
+          ({
+            _id: matchId,
+            match: { _id, profileImage, name, surname },
+            lastMessage,
+          }) => (
+            <ChatNavbarListItem
+              key={matchId}
+              isActive={id === _id}
+              userId={_id}
+              avatar={profileImage}
+              fullName={`${name} ${surname}`}
+              lastMessage={
+                lastMessage &&
+                `${
+                  lastMessage?.sender?._id === userInfo._id
+                    ? 'Ty'
+                    : lastMessage?.sender?.name
+                }: ${lastMessage?.text}`
+              }
+              newMessage={
+                lastMessage?.sender?._id !== userInfo._id &&
+                !lastMessage?.receiverRead
+              }
+            />
+          )
+        )
+      ) : (
+        <span className="chat-navbar-list__message">
+          Nie znaleziono wiadomości.
+        </span>
+      )}
     </div>
   );
 };

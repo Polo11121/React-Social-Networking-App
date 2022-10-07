@@ -8,7 +8,7 @@ export const ChatContentHeader = ({
   fullName,
   userId,
 }: {
-  avatar: string;
+  avatar?: string;
   fullName: string;
   userId: string;
 }) => (

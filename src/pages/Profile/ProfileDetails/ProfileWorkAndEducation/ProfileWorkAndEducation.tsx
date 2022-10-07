@@ -1,5 +1,6 @@
 import { useProfileDetails } from 'pages/Profile/ProfileDetails/useProfileDetails';
-import { AddHoc } from 'components';
+import { AddHoc, Input } from 'components';
+import { capitalizeFirstLetter } from 'shared/functions';
 
 export const ProfileWorkAndEducation = () => {
   const { adHocsWorkAndEducation, isLoading, isOwner } = useProfileDetails();
@@ -15,14 +16,12 @@ export const ProfileWorkAndEducation = () => {
           onChange,
           Icon,
           displayText,
-          disableEdit,
           onSubmit,
           onClose,
           onDelete,
         }) => (
           <AddHoc
             displayOnly={!isOwner}
-            disableEdit={disableEdit}
             key={name}
             isDisabled={
               isLoading ||
@@ -34,11 +33,17 @@ export const ProfileWorkAndEducation = () => {
             onClose={onClose}
             placeholder={placeholder}
             value={value}
-            onChange={onChange}
-            name={name}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
-          />
+          >
+            <Input
+              style={{ margin: '0' }}
+              placeholder={capitalizeFirstLetter(placeholder)}
+              value={value}
+              onChange={onChange}
+              name={name}
+            />
+          </AddHoc>
         )
       )}
     </>

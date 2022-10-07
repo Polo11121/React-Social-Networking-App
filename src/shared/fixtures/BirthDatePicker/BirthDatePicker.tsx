@@ -1,11 +1,10 @@
+import { Tooltip } from 'components';
 import { TextField } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { pl } from 'date-fns/locale';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import './BirthDatePicker.scss';
-import { ErrorText, Tooltip } from 'components';
-import TooltipStories from 'components/Tooltip/Tooltip.stories';
 
 type BirthDatePickerType = {
   value: Date | null;

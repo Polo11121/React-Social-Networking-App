@@ -5,7 +5,7 @@ import { ResponseErrorType } from 'shared/types/responseTypes';
 
 type UseApiType = {
   url: string;
-  method: 'post' | 'patch' | 'delete';
+  method: 'post' | 'patch' | 'delete' | 'put';
   onSuccess?: (data: any) => void;
 };
 

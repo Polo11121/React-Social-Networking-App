@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import { debounce } from 'debounce';
 
 export const useSearch = () => {
   const [value, setValue] = useState('');
@@ -8,5 +9,10 @@ export const useSearch = () => {
 
   const resetValue = () => setValue('');
 
-  return { value, onChange, setValue, resetValue };
+  const debouncedSetValue = debounce(setValue, 200);
+
+  const debouncedOnChange = (event: ChangeEvent<HTMLInputElement>) =>
+    debouncedSetValue(event.target.value);
+
+  return { value, onChange, setValue, debouncedOnChange, resetValue };
 };

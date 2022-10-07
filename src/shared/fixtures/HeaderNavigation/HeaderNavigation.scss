@@ -1,7 +1,7 @@
 @import 'styles/styles';
 
 .header-navigation {
-  display: flex;
+  display: none;
   justify-content: center;
   padding: 0;
   height: 100%;
@@ -16,6 +16,10 @@
 
   @media only screen and (min-width: $medium) {
     justify-content: flex-start;
+  }
+
+  @media only screen and (min-width: $large) {
+    display: flex;
   }
 
   &__link {
@@ -46,4 +50,8 @@
       }
     }
   }
+}
+
+.css-106c1u2-MuiBadge-badge {
+  background-color: $primary !important;
 }

@@ -1,0 +1,12 @@
+.chat-navbar-list {
+  overflow-y: auto;
+  margin: 1rem 0;
+  height: 100%;
+
+  &__message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}

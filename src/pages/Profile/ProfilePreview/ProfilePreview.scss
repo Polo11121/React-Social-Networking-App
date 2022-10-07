@@ -89,6 +89,10 @@
     }
   }
 
+  &__match {
+    color: $mandy;
+  }
+
   &__user-info {
     display: flex;
     flex-direction: column;
@@ -97,6 +101,24 @@
     @media only screen and (min-width: $medium) {
       text-align: left;
       margin-left: 1.25rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+
+    & > button {
+      width: 100%;
+    }
+
+    @media only screen and (min-width: $medium) {
+      flex-direction: row;
+      gap: 1rem;
+
+      & > button {
+        width: fit-content;
+      }
     }
   }
 }

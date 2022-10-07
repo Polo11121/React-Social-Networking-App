@@ -6,6 +6,8 @@ import { ChatContentMessages } from 'pages/Chat/ChatContent/ChatContentMessages/
 import { useGetMessages } from 'api/userGetMessages';
 import { PhotosModal } from 'shared/fixtures/PhotosModal/PhotosModal';
 import { PhotosModalType } from 'shared/types/repeatableTypes';
+import { useGetLastMessages } from 'api/useGetLastMessages';
+import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
 import classNames from 'classnames';
 import './ChatContent.scss';
 
@@ -16,12 +18,13 @@ const messagePhotosInitialState = {
 
 export const ChatContent = () => {
   const { id } = useParams();
+  const { currentChatUser, isLoading: isUserLoading } = useGetLastMessages(id);
   const {
     data: messages,
-    isLoading,
     fetchNextPage,
     hasNextPage,
     isFetching,
+    isFetchedAfterMount,
   } = useGetMessages(id || null);
   const [writtenMessages, setWrittenMessages] = useState(messages);
   const [messagePhotos, setMessagePhotos] = useState<PhotosModalType>(
@@ -46,30 +49,31 @@ export const ChatContent = () => {
       className={classNames('chat-content', { 'chat-content--hidden': !id })}
     >
       {id ? (
-        <>
-          <ChatContentHeader
-            avatar="https://i1.fdbimg.pl/x1/07jzjf32/680x986_r5llfk.jpg"
-            fullName="Katie KoX"
-            userId={id}
-          />
-          <ChatContentMessages
-            onNext={fetchNextPage}
-            hasMore={Boolean(hasNextPage)}
-            onShowPostPhotos={onOpenPhotosModal}
-            isLoading={isLoading}
-            messages={writtenMessages}
-          />
-          <ChatContentSendMessage
-            onShowPostPhotos={onOpenPhotosModal}
-            setWrittenMessages={setWrittenMessages}
-          />
-        </>
+        <WithLoader isLoading={isUserLoading}>
+          <>
+            <ChatContentHeader
+              avatar={currentChatUser?.profileImage}
+              fullName={`${currentChatUser?.name} ${currentChatUser?.surname}`}
+              userId={id}
+            />
+            <ChatContentMessages
+              onNext={fetchNextPage}
+              hasMore={Boolean(hasNextPage)}
+              onShowPostPhotos={onOpenPhotosModal}
+              isLoading={!isFetchedAfterMount}
+              messages={writtenMessages}
+            />
+            <ChatContentSendMessage
+              onShowPostPhotos={onOpenPhotosModal}
+              setWrittenMessages={setWrittenMessages}
+            />
+          </>
+        </WithLoader>
       ) : (
         <h2 className="chat-content__message">
           Wybierz czat lub rozpocznij nową konwersację
         </h2>
       )}
-      \
       {messagePhotos.selectedPhoto !== null && (
         <PhotosModal {...messagePhotos} onClose={onClosePhotosModal} />
       )}

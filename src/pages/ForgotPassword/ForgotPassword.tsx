@@ -18,7 +18,7 @@ export const ForgotPassword = () => {
     mutate,
   });
 
-  const switchToMainPage = () => navigate('/');
+  const goToMainPage = () => navigate('/');
 
   return (
     <div className="forgot-password">
@@ -31,7 +31,7 @@ export const ForgotPassword = () => {
             size="big"
             buttonStyleType="primary"
             text="Zaloguj"
-            onClick={switchToMainPage}
+            onClick={goToMainPage}
           />
         </div>
       </Header>
@@ -61,7 +61,7 @@ export const ForgotPassword = () => {
                   size="big"
                   buttonStyleType="mandy"
                   text="Anuluj"
-                  onClick={switchToMainPage}
+                  onClick={goToMainPage}
                   style={{ marginLeft: '1rem' }}
                 />
                 <Button
