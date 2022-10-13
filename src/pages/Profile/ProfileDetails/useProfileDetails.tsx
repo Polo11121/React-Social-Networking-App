@@ -1,5 +1,17 @@
+import { useEffect, useState } from 'react';
+import {
+  formatInterestedGenders,
+  formatProfileDetailsDate,
+  getAge,
+} from 'shared/functions';
+import {
+  interestedGendersOptions,
+  gendersOptions,
+} from 'shared/constants/options';
 import { useUpdateMe } from 'api/useUpdateMe';
 import { useFormik } from 'formik';
+import { SingleValue } from 'react-select';
+import { CityType } from 'shared/types/responseTypes';
 import { ProfileDetailsSchema } from 'pages/Profile/ProfileDetails/ProfileDetailsSchema';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import SchoolIcon from '@mui/icons-material/School';
@@ -14,19 +26,6 @@ import CakeIcon from '@mui/icons-material/Cake';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PersonIcon from '@mui/icons-material/Person';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-import { useEffect, useState } from 'react';
-import {
-  formatInterestedGenders,
-  formatProfileDetailsDate,
-  getAge,
-} from 'shared/functions';
-
-import { SingleValue } from 'react-select';
-import {
-  interestedGendersOptions,
-  gendersOptions,
-} from 'shared/constants/options';
-import { CityType } from 'shared/types/responseTypes';
 
 const formatCity = (city: CityType) =>
   city ? { label: city.city, value: city._id } : null;
@@ -110,12 +109,12 @@ export const useProfileDetails = () => {
       label: 'Miejsce pracy',
       Icon: BusinessCenterIcon,
       displayText: 'Pracuje w',
-      onChange: formik.handleChange,
-      onSubmit: () => mutateAsync({ workPlace: formik.values.workPlace }),
-      onClose: () => {
+      changeHandler: formik.handleChange,
+      submitHandler: () => mutateAsync({ workPlace: formik.values.workPlace }),
+      closeHandler: () => {
         formik.setFieldValue('workPlace', workPlace);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ workPlace: '' });
         formik.setFieldValue('workPlace', '');
       },
@@ -128,12 +127,13 @@ export const useProfileDetails = () => {
       label: 'Szkoła średnia',
       Icon: SchoolIcon,
       displayText: gender === 'male' ? 'Uczył się w' : 'Uczyła sie w',
-      onChange: formik.handleChange,
-      onSubmit: () => mutateAsync({ middleSchool: formik.values.middleSchool }),
-      onClose: () => {
+      changeHandler: formik.handleChange,
+      submitHandler: () =>
+        mutateAsync({ middleSchool: formik.values.middleSchool }),
+      closeHandler: () => {
         formik.setFieldValue('middleSchool', middleSchool);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ middleSchool: '' });
         formik.setFieldValue('middleSchool', '');
       },
@@ -146,12 +146,13 @@ export const useProfileDetails = () => {
       label: 'Szkoła wyższa',
       Icon: SchoolIcon,
       displayText: gender === 'male' ? 'Uczęszczał do' : 'Uczęsczała do',
-      onChange: formik.handleChange,
-      onSubmit: () => mutateAsync({ upperSchool: formik.values.upperSchool }),
-      onClose: () => {
+      changeHandler: formik.handleChange,
+      submitHandler: () =>
+        mutateAsync({ upperSchool: formik.values.upperSchool }),
+      closeHandler: () => {
         formik.setFieldValue('upperSchool', upperSchool);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ upperSchool: '' });
         formik.setFieldValue('upperSchool', '');
       },
@@ -164,16 +165,16 @@ export const useProfileDetails = () => {
       placeholder: 'aktualne miejsce zamieszkania',
       Icon: HouseIcon,
       displayText: 'Mieszka w',
-      onChange: (value: { label: string; value: string }) =>
+      changeHandler: (value: { label: string; value: string }) =>
         formik.setFieldValue('home', value),
-      onSubmit: () =>
+      submitHandler: () =>
         mutateAsync({
           home: formik.values.home?.value,
         }),
-      onClose: () => {
+      closeHandler: () => {
         formik.setFieldValue('home', formatCity(home));
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ home: null });
         formik.setFieldValue('home', null);
       },
@@ -186,14 +187,14 @@ export const useProfileDetails = () => {
       placeholder: 'miasto rodzinne',
       Icon: PlaceIcon,
       displayText: 'Z',
-      onChange: (value: { label: string; value: string }) =>
+      changeHandler: (value: { label: string; value: string }) =>
         formik.setFieldValue('childCity', value),
-      onSubmit: () =>
+      submitHandler: () =>
         mutateAsync({ childCity: formik.values.childCity?.value }),
-      onClose: () => {
+      closeHandler: () => {
         formik.setFieldValue('childCity', formatCity(childCity));
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ childCity: '' });
         formik.setFieldValue('childCity', '');
       },
@@ -205,12 +206,13 @@ export const useProfileDetails = () => {
       placeholder: 'numer telefonu komórkowego',
       Icon: PhoneAndroidIcon,
       displayText: 'Numer telefonu komórkoweg',
-      onChange: formik.handleChange,
-      onSubmit: () => mutateAsync({ phoneNumber: formik.values.phoneNumber }),
-      onClose: () => {
+      changeHandler: formik.handleChange,
+      submitHandler: () =>
+        mutateAsync({ phoneNumber: formik.values.phoneNumber }),
+      closeHandler: () => {
         formik.setFieldValue('phoneNumber', phoneNumber);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ phoneNumber: '' });
         formik.setFieldValue('phoneNumber', '');
       },
@@ -222,12 +224,12 @@ export const useProfileDetails = () => {
       placeholder: 'adres',
       Icon: HouseIcon,
       displayText: 'Adres',
-      onChange: formik.handleChange,
-      onSubmit: () => mutateAsync({ address: formik.values.address }),
-      onClose: () => {
+      changeHandler: formik.handleChange,
+      submitHandler: () => mutateAsync({ address: formik.values.address }),
+      closeHandler: () => {
         formik.setFieldValue('address', address);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ address: '' });
         formik.setFieldValue('address', '');
       },
@@ -239,12 +241,13 @@ export const useProfileDetails = () => {
       placeholder: 'adres e-mail',
       Icon: EmailIcon,
       displayText: 'Adres e-mail',
-      onChange: formik.handleChange,
-      onSubmit: () => mutateAsync({ contactEmail: formik.values.contactEmail }),
-      onClose: () => {
+      changeHandler: formik.handleChange,
+      submitHandler: () =>
+        mutateAsync({ contactEmail: formik.values.contactEmail }),
+      closeHandler: () => {
         formik.setFieldValue('contactEmail', contactEmail);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ contactEmail: '' });
         formik.setFieldValue('contactEmail', '');
       },
@@ -258,12 +261,12 @@ export const useProfileDetails = () => {
       placeholder: 'Imię',
       Icon: PersonIcon,
       displayText: 'Imię',
-      onChange: formik.handleChange,
-      onSubmit: () => mutateAsync({ name: formik.values.firstName }),
-      onClose: () => {
+      changeHandler: formik.handleChange,
+      submitHandler: () => mutateAsync({ name: formik.values.firstName }),
+      closeHandler: () => {
         formik.setFieldValue('firstName', firstName);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ firstName: '' });
         formik.setFieldValue('firstName', '');
       },
@@ -277,12 +280,12 @@ export const useProfileDetails = () => {
       placeholder: 'Nazwisko',
       Icon: PersonIcon,
       displayText: 'Nazwisko',
-      onChange: formik.handleChange,
-      onSubmit: () => mutateAsync({ surname: formik.values.surname }),
-      onClose: () => {
+      changeHandler: formik.handleChange,
+      submitHandler: () => mutateAsync({ surname: formik.values.surname }),
+      closeHandler: () => {
         formik.setFieldValue('surname', surname);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ surname: '' });
         formik.setFieldValue('surname', '');
       },
@@ -299,14 +302,14 @@ export const useProfileDetails = () => {
       displayText: 'Płeć',
       inputType: 'select' as const,
       options: gendersOptions,
-      onChange: (
+      changeHandler: (
         value: SingleValue<{
           label: string;
           value: string;
         }>
       ) => formik.setFieldValue('gender', value),
-      onSubmit: () => mutateAsync({ gender: formik.values.gender.value }),
-      onClose: () => {
+      submitHandler: () => mutateAsync({ gender: formik.values.gender.value }),
+      closeHandler: () => {
         formik.setFieldValue('gender', formatGender(gender));
       },
     },
@@ -319,13 +322,13 @@ export const useProfileDetails = () => {
       placeholder: 'Data urodzenia',
       Icon: CalendarMonthIcon,
       displayText: 'Data urodzenia',
-      onChange: (value: Date | null) =>
+      changeHandler: (value: Date | null) =>
         formik.setFieldValue('birthDate', value),
-      onSubmit: () => mutateAsync({ birthDate: formik.values.birthDate }),
-      onClose: () => {
+      submitHandler: () => mutateAsync({ birthDate: formik.values.birthDate }),
+      closeHandler: () => {
         formik.setFieldValue('birthDate', birthDate);
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ birthDate: '' });
         formik.setFieldValue('birthDate', '');
       },
@@ -347,23 +350,23 @@ export const useProfileDetails = () => {
       displayText: 'Interesują mnie',
       inputType: 'select' as const,
       options: interestedGendersOptions,
-      onChange: (
+      changeHandler: (
         value: SingleValue<{
           label: string;
           value: string;
         }>
       ) => formik.setFieldValue('interestedGenders', value),
-      onSubmit: () =>
+      submitHandler: () =>
         mutateAsync({
           interestedGenders: formik.values.interestedGenders?.value,
         }),
-      onClose: () => {
+      closeHandler: () => {
         formik.setFieldValue(
           'interestedGenders',
           formatInterestedGendersSelect(interestedGenders)
         );
       },
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({ interestedGenders: '' });
         formik.setFieldValue('interestedGenders', '');
       },
@@ -395,23 +398,23 @@ export const useProfileDetails = () => {
       Icon: PlaceIcon,
       displayText: gender === 'male' ? 'Mieszkał w' : 'Mieszkała w',
       inputType: 'citySelect' as const,
-      onChange: (value: { label: string; value: string }) =>
+      changeHandler: (value: { label: string; value: string }) =>
         setUserCities([
           ...userCities.slice(0, index),
           value,
           ...userCities.slice(index + 1),
         ]),
-      onSubmit: () =>
+      submitHandler: () =>
         mutateAsync({
           cities: userCities.map((userCity) => userCity?.value),
         }),
-      onClose: () =>
+      closeHandler: () =>
         setUserCities([
           ...userCities.slice(0, index),
           formatCity(cities[index]),
           ...userCities.slice(index + 1),
         ]),
-      onDelete: () => {
+      deleteHandler: () => {
         mutateAsync({
           cities: [
             ...userCities.slice(0, index),

@@ -67,7 +67,7 @@ export const HobbiesModal = ({
     );
   }, [userHobbies]);
 
-  const updateHobbies = () =>
+  const updateHobbiesHandler = () =>
     mutate({
       hobbies: checkedHobbies.map(({ text, icon }) => ({ text, icon })),
     });
@@ -107,7 +107,7 @@ export const HobbiesModal = ({
             <Button onClick={onClose} text="Anuluj" buttonStyleType="mandy" />
             <Button
               text="Dodaj hobby"
-              onClick={updateHobbies}
+              onClick={updateHobbiesHandler}
               isDisabled={isButtonDisabled}
               buttonStyleType="primary"
             />

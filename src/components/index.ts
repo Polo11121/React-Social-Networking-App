@@ -8,6 +8,7 @@ export { Header } from './Header/Header';
 export { ImageCarousel } from './ImageCarousel/ImageCarousel';
 export { ImagePicker } from './ImagePicker/ImagePicker';
 export { Input } from './Input/Input';
+export { Match } from './Match/Match';
 export { Photos } from './Photos/Photos';
 export { Search } from './Search/Search';
 export { SectionCard } from './SectionCard/SectionCard';

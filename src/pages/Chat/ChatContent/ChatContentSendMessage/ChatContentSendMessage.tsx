@@ -20,15 +20,15 @@ export const ChatContentSendMessage = ({
 }) => {
   const {
     sendMessageHandler,
-    handleOpenEmojis,
+    openEmojisMenuHandler,
     changPhotoHandler,
     anchorEl,
-    handleCloseEmojis,
-    chooseEmoji,
+    closeEmojisMenuHandler,
+    chooseEmojiHandler,
     messageText,
     onChangeMessageText,
     messagePhotos,
-    onMessageImageClick,
+    messageImageClickHandler,
     isDisabled,
   } = useChatContentSendMessage({
     setWrittenMessages,
@@ -40,7 +40,7 @@ export const ChatContentSendMessage = ({
       <Tooltip type="dark" text="Dodaj emoji" id="messages-emoji" />
       <IconButton
         className="chat-content-send-message__icon"
-        onClick={handleOpenEmojis}
+        onClick={openEmojisMenuHandler}
         data-for="messages-emoji"
         data-tip
       >
@@ -48,7 +48,7 @@ export const ChatContentSendMessage = ({
       </IconButton>
       <ImagePicker
         tooltipText="Dodaj zdjęcie"
-        handleFile={changPhotoHandler}
+        onChooseFile={changPhotoHandler}
         isMultiple
       />
       <Menu
@@ -56,9 +56,9 @@ export const ChatContentSendMessage = ({
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
-        onClose={handleCloseEmojis}
+        onClose={closeEmojisMenuHandler}
       >
-        <Picker onEmojiClick={chooseEmoji} />
+        <Picker onEmojiClick={chooseEmojiHandler} />
       </Menu>
       <Search
         value={messageText}
@@ -75,7 +75,7 @@ export const ChatContentSendMessage = ({
             />
             <IconButton
               className="chat-content-send-message__icon"
-              onClick={onMessageImageClick}
+              onClick={messageImageClickHandler}
               data-for="messages-photos"
               data-tip
             >

@@ -4,15 +4,21 @@ import { debounce } from 'debounce';
 export const useSearch = () => {
   const [value, setValue] = useState('');
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>) =>
+  const changeValueHandler = (event: ChangeEvent<HTMLInputElement>) =>
     setValue(event.target.value);
 
-  const resetValue = () => setValue('');
+  const resetValueHandler = () => setValue('');
 
-  const debouncedSetValue = debounce(setValue, 200);
+  const debouncedSetValueHandler = debounce(setValue, 200);
 
-  const debouncedOnChange = (event: ChangeEvent<HTMLInputElement>) =>
-    debouncedSetValue(event.target.value);
+  const debouncedChangeValueHandler = (event: ChangeEvent<HTMLInputElement>) =>
+    debouncedSetValueHandler(event.target.value);
 
-  return { value, onChange, setValue, debouncedOnChange, resetValue };
+  return {
+    value,
+    changeValueHandler,
+    setValue,
+    debouncedChangeValueHandler,
+    resetValueHandler,
+  };
 };

@@ -66,6 +66,15 @@ export type LastMessagesType = {
 export type MatchType = {
   _id: string;
   match: UserType;
+  status: 'none' | 'request' | 'match';
+};
+
+export type AllMatchesType = {
+  matches: MatchType[];
+  allCount: number;
+  receiveCount: number;
+  sendCount: number;
+  matchCount: number;
 };
 
 export type ResponseUserType = { data: UserType };

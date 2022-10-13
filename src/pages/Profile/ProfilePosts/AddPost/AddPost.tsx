@@ -74,7 +74,7 @@ export const AddPost = () => {
           <ImagePicker
             isMultiple
             text="Dodaj zdjęcie"
-            handleFile={changPhotoHandler}
+            onChooseFile={changPhotoHandler}
           />
           <Button
             isDisabled={isButtonDisabled}

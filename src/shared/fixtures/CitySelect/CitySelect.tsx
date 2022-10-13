@@ -5,32 +5,34 @@ import { useGetCities } from 'api/useGetCities';
 import { debounce } from 'debounce';
 import { SelectOptionType } from 'shared/types/repeatableTypes';
 
-export const CitySelect = ({
-  setSelectedOption,
-  placeholder,
-  value,
-}: {
-  setSelectedOption: (value: SelectOptionType) => void;
+type CitySelectPropsType = {
+  onChange: (value: SelectOptionType) => void;
   placeholder?: string;
   value?: SelectOptionType | null;
-}) => {
+};
+
+export const CitySelect = ({
+  onChange,
+  placeholder,
+  value,
+}: CitySelectPropsType) => {
   const [inputValue, setInputValue] = useState('');
 
-  const handleChangeSelectedValue = (
+  const changeSelectedValueHandler = (
     newValue: SingleValue<{
       label: string;
       value: string;
       coordinates?: number[];
     }>
   ) =>
-    setSelectedOption({
+    onChange({
       label: newValue?.label || '',
       value: newValue?.value || '',
       // @ts-ignore
       location: newValue.location,
     });
 
-  const debouncedSetInputValue = debounce(setInputValue, 200);
+  const debouncedChangeValueHandler = debounce(setInputValue, 200);
 
   const { data: cities, isFetching } = useGetCities(inputValue);
 
@@ -41,8 +43,8 @@ export const CitySelect = ({
       placeholder={placeholder}
       loadingMessage={() => 'Ładowanie....'}
       // @ts-ignore
-      onChange={handleChangeSelectedValue}
-      onInputChange={debouncedSetInputValue}
+      onChange={changeSelectedValueHandler}
+      onInputChange={debouncedChangeValueHandler}
       isLoading={isFetching}
       noOptionsMessage={() => 'Znajdź miasto'}
       // @ts-ignore

@@ -5,7 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-type GenderRadioButtonsType = {
+type GenderRadioButtonsPropsType = {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   isError: boolean;
@@ -15,7 +15,7 @@ export const GenderRadioButtons = ({
   value,
   onChange,
   isError,
-}: GenderRadioButtonsType) => (
+}: GenderRadioButtonsPropsType) => (
   <FormControl style={{ marginBottom: '1rem' }}>
     <FormLabel style={{ color: 'black' }} focused={false}>
       Płeć

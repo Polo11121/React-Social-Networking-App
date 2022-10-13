@@ -20,3 +20,5 @@ export type FiltersType = {
   interestedAge: '18-26' | '27-34' | '35-44' | '45-54' | '55-64';
   interestedCityMaxDistance: '0' | '10' | '50' | '100' | '200' | '300';
 };
+
+export type MatchesListOptionType = 'match' | 'all' | 'none' | 'request';

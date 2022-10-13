@@ -21,20 +21,20 @@ export const ProfileDetailsContactAndBasicInfo = () => {
           name,
           placeholder,
           value,
-          onChange,
           Icon,
           displayText,
-          onSubmit,
-          onDelete,
-          onClose,
+          changeHandler,
+          submitHandler,
+          closeHandler,
+          deleteHandler,
         }) => (
           <AddHoc
             displayOnly={!isOwner}
             key={name}
             isDisabled={isLoading || value === initialValue || !value.trim()}
-            onSubmit={onSubmit}
-            onDelete={onDelete}
-            onClose={onClose}
+            onSubmit={submitHandler}
+            onDelete={deleteHandler}
+            onClose={closeHandler}
             placeholder={placeholder}
             value={value}
             Icon={<Icon fontSize="large" />}
@@ -44,7 +44,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
               style={{ margin: '0' }}
               placeholder={capitalizeFirstLetter(placeholder)}
               value={value as string}
-              onChange={onChange}
+              onChange={changeHandler}
               name={name}
             />
           </AddHoc>
@@ -57,12 +57,12 @@ export const ProfileDetailsContactAndBasicInfo = () => {
           name,
           placeholder,
           value,
-          onChange,
           Icon,
           displayText,
-          onSubmit,
-          onDelete,
-          onClose,
+          changeHandler,
+          submitHandler,
+          closeHandler,
+          deleteHandler,
           hideDelete,
         }) => (
           <AddHoc
@@ -70,9 +70,9 @@ export const ProfileDetailsContactAndBasicInfo = () => {
             displayOnly={!isOwner}
             key={name}
             isDisabled={isLoading || value === initialValue || !value.trim()}
-            onSubmit={onSubmit}
-            onDelete={onDelete}
-            onClose={onClose}
+            onSubmit={submitHandler}
+            onDelete={deleteHandler}
+            onClose={closeHandler}
             placeholder={placeholder}
             value={value}
             Icon={<Icon fontSize="large" />}
@@ -82,7 +82,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
               style={{ margin: '0' }}
               placeholder={capitalizeFirstLetter(placeholder)}
               value={value}
-              onChange={onChange}
+              onChange={changeHandler}
               name={name}
             />
           </AddHoc>
@@ -93,8 +93,8 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         displayOnly={!isOwner}
         key={gender.name}
         isDisabled={isLoading || gender.value.value === gender.initialValue}
-        onSubmit={gender.onSubmit}
-        onClose={gender.onClose}
+        onSubmit={gender.submitHandler}
+        onClose={gender.closeHandler}
         placeholder={gender.placeholder}
         value={gender.value.value}
         Icon={<gender.Icon fontSize="large" />}
@@ -104,7 +104,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         <Select
           value={gender.value}
           placeholder={gender.placeholder}
-          onChange={gender.onChange}
+          onChange={gender.changeHandler}
           options={gender.options}
         />
       </AddHoc>
@@ -117,8 +117,8 @@ export const ProfileDetailsContactAndBasicInfo = () => {
             birthDate.value.getTime() === birthDate.initialValue.getTime() ||
             birthDate.error
         )}
-        onSubmit={birthDate.onSubmit}
-        onClose={birthDate.onClose}
+        onSubmit={birthDate.submitHandler}
+        onClose={birthDate.closeHandler}
         placeholder={birthDate.placeholder}
         value={birthDate.value}
         Icon={<birthDate.Icon fontSize="large" />}
@@ -128,7 +128,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         <BirthDatePicker
           error={birthDate.error}
           value={birthDate.value}
-          onChange={birthDate.onChange}
+          onChange={birthDate.changeHandler}
         />
       </AddHoc>
       <AddHoc
@@ -146,9 +146,9 @@ export const ProfileDetailsContactAndBasicInfo = () => {
           interestedGenders.value?.value === interestedGenders.initialValue ||
           !interestedGenders.value?.value
         }
-        onDelete={interestedGenders.onDelete}
-        onSubmit={interestedGenders.onSubmit}
-        onClose={interestedGenders.onClose}
+        onDelete={interestedGenders.deleteHandler}
+        onSubmit={interestedGenders.submitHandler}
+        onClose={interestedGenders.closeHandler}
         placeholder={interestedGenders.placeholder}
         value={interestedGenders.value?.value}
         Icon={<interestedGenders.Icon fontSize="large" />}
@@ -158,7 +158,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         <Select
           value={interestedGenders.value}
           placeholder={capitalizeFirstLetter(interestedGenders.placeholder)}
-          onChange={interestedGenders.onChange}
+          onChange={interestedGenders.changeHandler}
           options={interestedGenders.options}
         />
       </AddHoc>

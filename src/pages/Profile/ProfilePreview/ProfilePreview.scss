@@ -80,12 +80,12 @@
   &__photo-button {
     position: absolute;
     z-index: $z-index-normal-priority;
-    left: 8.75rem;
-    top: 6.35rem;
+    left: 13.5rem;
+    top: 7.5rem;
 
     @media only screen and (min-width: $medium) {
       left: 8.75rem;
-      top: 4rem;
+      top: 5.5rem;
     }
   }
 

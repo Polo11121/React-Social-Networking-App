@@ -8,7 +8,7 @@ import './Main.scss';
 export const Main = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
-  const toggleIsRegisterModalOpen = () =>
+  const registerModalVisibilityHandler = () =>
     setIsRegisterModalOpen((prevState) => !prevState);
 
   return (
@@ -29,7 +29,7 @@ export const Main = () => {
               </Link>
               <div className="main__form-line" />
               <Button
-                onClick={toggleIsRegisterModalOpen}
+                onClick={registerModalVisibilityHandler}
                 buttonStyleType="secondary"
                 text="Utwórz nowe konto"
                 style={{ fontSize: '1.063rem', margin: '0.5rem auto' }}
@@ -41,7 +41,7 @@ export const Main = () => {
         {isRegisterModalOpen && (
           <RegisterModal
             isOpen={isRegisterModalOpen}
-            onCloseModal={toggleIsRegisterModalOpen}
+            onClose={registerModalVisibilityHandler}
           />
         )}
       </div>

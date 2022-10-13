@@ -1,7 +1,7 @@
 import { useApiQuery } from 'api/useApiQuery';
 import { UserType } from 'shared/types/responseTypes';
 
-export const getUsers = (searchTerm: string) =>
+export const useGetUsersBySearchTerm = (searchTerm: string) =>
   useApiQuery<UserType[]>({
     endpoint: `users?searchTerm=${searchTerm}`,
     queryKey: ['users', searchTerm],

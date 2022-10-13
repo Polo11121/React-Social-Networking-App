@@ -9,9 +9,13 @@ import { Button, Input } from 'components';
 import ClearIcon from '@mui/icons-material/Clear';
 import './RegisterModal.scss';
 
-type RegisterModalType = { isOpen: boolean; onCloseModal: () => void };
-
-export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
+export const RegisterModal = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
   const { mutate, error, isLoading } = useRegister();
 
   const formik = useForm({
@@ -41,13 +45,10 @@ export const RegisterModal = ({ isOpen, onCloseModal }: RegisterModalType) => {
         placeItems: 'center',
       }}
       open={isOpen}
-      onClose={onCloseModal}
+      onClose={onClose}
     >
       <div className="register-modal">
-        <IconButton
-          className="register-modal__exit-button"
-          onClick={onCloseModal}
-        >
+        <IconButton className="register-modal__exit-button" onClick={onClose}>
           <ClearIcon />
         </IconButton>
         <div className="register-modal__text">

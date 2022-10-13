@@ -1,15 +1,14 @@
 import { useGetUser } from 'api/useGetUser';
 import { useAuthContext } from 'contexts/AuthContext';
 import { useParams } from 'react-router-dom';
-import { formatPostDate } from 'shared/functions';
+import { formatPostDate, getFullName } from 'shared/functions';
 
 export const useProfileInfo = () => {
   const { id } = useParams();
   const { userInfo: loggedInUser } = useAuthContext();
-  const userInfo = useGetUser(id || null);
-  const { posts } = userInfo.data;
+  const { data: user, isLoading } = useGetUser(id || null);
 
-  const userPhotos = posts
+  const userPhotos = user.posts
     ?.map(({ images, description, createdAt, type }) =>
       images.sort().map((image) => ({
         image,
@@ -20,17 +19,18 @@ export const useProfileInfo = () => {
     .reduce((acc, val) => acc.concat(val), []);
 
   return {
-    isLoading: userInfo.isLoading,
+    isLoading,
     user: {
-      ...userInfo.data,
-      posts,
-      fullName: `${userInfo?.data?.name} ${userInfo?.data?.surname}`,
+      ...user,
+      posts: user.posts,
+      fullName: getFullName(user?.name, user?.surname),
     },
     userPhotos,
     isOwner: loggedInUser._id === id,
-    userStatus: userInfo.data.matchStatus?.find(({ user }) => user === id),
-    myStatus: userInfo.data.matchStatus?.find(
-      ({ user }) => user === loggedInUser._id
-    ),
+    userStatus: user.matchStatus?.find(({ user: userId }) => userId === id)
+      ?.status,
+    myStatus: user.matchStatus?.find(
+      ({ user: userId }) => userId === loggedInUser._id
+    )?.status,
   };
 };

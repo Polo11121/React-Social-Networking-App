@@ -1,108 +1,31 @@
 import { forwardRef } from 'react';
 import { Button, EditHeader, ImagePicker, Tooltip } from 'components';
 import { useProfilePreview } from 'pages/Profile/ProfilePreview/useProfilePreview';
+import { useMatchFunctionality } from 'shared/hooks/useMatchFunctionality';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { Avatar } from '@mui/material';
-import { useMatch } from 'api/useMatch';
-import { useNavigate } from 'react-router-dom';
 import { getAge } from 'shared/functions';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
-import ChatIcon from '@mui/icons-material/Chat';
 import './ProfilePreview.scss';
 
 export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
   const {
     profileImage,
     backgroundImage,
-    resetImages,
-    changeBackgroundImage,
-    changeProfileImage,
+    resetImagesHandler,
+    chooseBackgroundImageHandler,
+    chooseProfileImageHandler,
     changeBackgroundImageHandler,
     changeProfileImageHandler,
     isLoading,
   } = useProfilePreview();
   const { user, isOwner, myStatus, userStatus } = useProfileInfo();
-  const navigate = useNavigate();
-
-  const goToChat = () => navigate(`/chat/${user._id}`);
-
-  const { mutate } = useMatch(user._id);
-
-  const requestMatch = () => mutate({ userId: user._id, status: 'request' });
-
-  const rejectMatch = () => mutate({ userId: user._id, status: 'reject' });
-
-  const isMatch =
-    userStatus?.status === 'match' && myStatus?.status === 'match';
-
-  const matchButton = () => {
-    if (
-      !myStatus ||
-      myStatus?.status === 'reject' ||
-      (myStatus?.status === 'none' && userStatus?.status === 'none')
-    ) {
-      return (
-        <Button
-          onClick={requestMatch}
-          Icon={<FavoriteIcon />}
-          text="Wyślij prośbę o dopasowanie"
-          buttonStyleType="primary"
-        />
-      );
-    }
-    if (userStatus?.status === 'request') {
-      return (
-        <>
-          <Button
-            onClick={requestMatch}
-            Icon={<FavoriteIcon />}
-            text="Akceptuj prośbę"
-            buttonStyleType="primary"
-          />
-          <Button
-            onClick={rejectMatch}
-            Icon={<HeartBrokenIcon />}
-            text="Odrzuć prośbę"
-            buttonStyleType="mandy"
-          />
-        </>
-      );
-    }
-    if (isMatch) {
-      return (
-        <>
-          <Button
-            onClick={goToChat}
-            Icon={<ChatIcon />}
-            text="Czat"
-            buttonStyleType="primary"
-          />
-          <Button
-            onClick={rejectMatch}
-            Icon={<HeartBrokenIcon />}
-            text="Anuluj dopasowanie"
-            buttonStyleType="mandy"
-          />
-        </>
-      );
-    }
-    if (userStatus?.status === 'reject') {
-      return null;
-    }
-    if (myStatus?.status === 'request') {
-      return (
-        <Button
-          onClick={rejectMatch}
-          Icon={<HeartBrokenIcon />}
-          text="Anuluj prośbę"
-          buttonStyleType="mandy"
-        />
-      );
-    }
-    return null;
-  };
+  const { isMatch, matchButtons } = useMatchFunctionality({
+    userId: user._id,
+    myStatus,
+    userStatus,
+  });
 
   return (
     <div className="profile-preview" ref={ref}>
@@ -112,7 +35,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
           text={`Edycja ${
             backgroundImage ? 'zdjęcie w tle' : 'zdjęcia profilowego'
           }`}
-          onClose={resetImages}
+          onClose={resetImagesHandler}
           onSubmit={
             backgroundImage
               ? changeBackgroundImageHandler
@@ -139,7 +62,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
                 text={`${
                   user.backgroundImage ? 'Edytuj' : 'Dodaj'
                 } zdjęcie w tle`}
-                handleFile={changeBackgroundImage}
+                onChooseFile={chooseBackgroundImageHandler}
               />
             )}
           </div>
@@ -150,7 +73,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
               <div className="profile-preview__photo-button">
                 <ImagePicker
                   tooltipText="Zmień zdjęcie profilowe"
-                  handleFile={changeProfileImage}
+                  onChooseFile={chooseProfileImageHandler}
                 />
               </div>
             )}
@@ -174,7 +97,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
                 )}
                 <Tooltip
                   backgroundColor="#e8495f"
-                  text="Dopasowano"
+                  text="Dopasowanie"
                   id="match"
                 />
               </h1>
@@ -188,7 +111,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
               buttonStyleType="primary"
             />
           ) : (
-            <div className="profile-preview__buttons">{matchButton()}</div>
+            <div className="profile-preview__buttons">{matchButtons()}</div>
           )}
         </div>
       </div>

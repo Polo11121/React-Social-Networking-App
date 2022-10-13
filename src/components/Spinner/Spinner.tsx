@@ -1,14 +1,12 @@
 import { CircularProgress } from '@mui/material';
 
-export const Spinner = ({
-  testId,
-  customColor,
-  size,
-}: {
+type SpinnerPropsType = {
   testId?: string;
   customColor?: string;
   size?: number;
-}) => (
+};
+
+export const Spinner = ({ testId, customColor, size }: SpinnerPropsType) => (
   <div
     style={{
       display: 'flex',

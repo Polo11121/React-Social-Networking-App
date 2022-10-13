@@ -16,20 +16,20 @@ export const ProfileDetailsOverview = () => {
           label,
           placeholder,
           value,
-          onChange,
           Icon,
           displayText,
-          onSubmit,
-          onDelete,
-          onClose,
+          changeHandler,
+          submitHandler,
+          closeHandler,
+          deleteHandler,
         }) => (
           <AddHoc
             displayOnly={!isOwner}
             key={name}
             isDisabled={isLoading || value === initialValue}
-            onSubmit={onSubmit}
-            onDelete={onDelete}
-            onClose={onClose}
+            onSubmit={submitHandler}
+            onDelete={deleteHandler}
+            onClose={closeHandler}
             placeholder={placeholder}
             value={value}
             Icon={<Icon fontSize="large" />}
@@ -39,7 +39,7 @@ export const ProfileDetailsOverview = () => {
               style={{ margin: '0' }}
               placeholder={label || capitalizeFirstLetter(placeholder)}
               value={value as string}
-              onChange={onChange}
+              onChange={changeHandler}
               name={name}
             />
           </AddHoc>
@@ -54,10 +54,10 @@ export const ProfileDetailsOverview = () => {
           placeholder,
           Icon,
           displayText,
-          onChange,
-          onSubmit,
-          onDelete,
-          onClose,
+          changeHandler,
+          submitHandler,
+          closeHandler,
+          deleteHandler,
         }) => (
           <AddHoc
             displayValue={displayValue}
@@ -66,16 +66,16 @@ export const ProfileDetailsOverview = () => {
             placeholder={placeholder}
             value={value?.label}
             isDisabled={isLoading || value === initialValue}
-            onSubmit={onSubmit}
-            onDelete={onDelete}
-            onClose={onClose}
+            onSubmit={submitHandler}
+            onDelete={deleteHandler}
+            onClose={closeHandler}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
           >
             <CitySelect
               value={value}
               placeholder={capitalizeFirstLetter(placeholder)}
-              setSelectedOption={onChange}
+              onChange={changeHandler}
             />
           </AddHoc>
         )

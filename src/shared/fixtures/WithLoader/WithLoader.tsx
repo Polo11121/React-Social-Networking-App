@@ -4,6 +4,6 @@ export const WithLoader = ({
   children,
   isLoading,
 }: {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
   isLoading: boolean;
-}) => (isLoading ? <Spinner /> : children);
+}) => (isLoading ? <Spinner /> : <>{children}</>);

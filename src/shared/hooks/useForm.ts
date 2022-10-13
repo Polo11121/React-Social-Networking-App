@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useFormik } from 'formik';
+import { FormikValues, useFormik } from 'formik';
 import { UseMutateFunction } from 'react-query';
 import { AxiosError, AxiosResponse } from 'axios';
 import { ResponseErrorType } from 'shared/types/responseTypes';
@@ -16,7 +16,7 @@ type UseFormType<T> = {
   >;
 };
 
-export const useForm = <T>({
+export const useForm = <T extends FormikValues>({
   initialValues,
   validationSchema,
   mutate,

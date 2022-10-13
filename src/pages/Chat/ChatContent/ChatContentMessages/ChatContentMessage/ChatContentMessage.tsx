@@ -25,7 +25,7 @@ export const ChatContentMessage = ({
   isImageLoading,
   onShowPostPhotos,
 }: ChatContentMessagePropsType) => {
-  const onMessageImageClick = (index: number) =>
+  const messageImageClickHandler = (index: number) =>
     onShowPostPhotos({
       selectedPhoto: index,
       photos: images.map((image) => ({
@@ -55,7 +55,7 @@ export const ChatContentMessage = ({
         <span className="chat-content-message__text">{message}</span>
         {isImageLoading && <Spinner customColor="#fff" />}
         {Boolean(images.length) && (
-          <ImageCarousel onClick={onMessageImageClick} images={images} />
+          <ImageCarousel onClick={messageImageClickHandler} images={images} />
         )}
         <span
           className={classNames('chat-content-message__timestamp', {

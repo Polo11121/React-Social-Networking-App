@@ -2,17 +2,19 @@ import { CSSProperties, ReactNode } from 'react';
 import classNames from 'classnames';
 import './SectionCard.scss';
 
+type SectionCardPropsType = {
+  sectionTitle?: string;
+  children?: ReactNode;
+  style?: CSSProperties;
+  noPadding?: boolean;
+};
+
 export const SectionCard = ({
   sectionTitle,
   children,
   style,
   noPadding = false,
-}: {
-  sectionTitle?: string;
-  children?: ReactNode;
-  style?: CSSProperties;
-  noPadding?: boolean;
-}) => (
+}: SectionCardPropsType) => (
   <div
     style={style}
     className={classNames('section-card', {

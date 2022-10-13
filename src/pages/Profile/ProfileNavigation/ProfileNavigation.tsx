@@ -5,6 +5,12 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import './ProfileNavigation.scss';
 
+const navigationItems = [
+  { label: 'Posty', link: 'posts' },
+  { label: 'Zdjęcia', link: 'photos' },
+  { label: 'Informacje', link: 'details' },
+];
+
 export const ProfileNavigation = ({ isVisible }: { isVisible: boolean }) => {
   const { user } = useProfileInfo();
 
@@ -15,36 +21,18 @@ export const ProfileNavigation = ({ isVisible }: { isVisible: boolean }) => {
           className="profile-navigation__content"
           style={isVisible ? {} : { border: 'none' }}
         >
-          <NavLink
-            className={({ isActive }) =>
-              classNames('profile-navigation__link', {
-                'profile-navigation__link--active': isActive,
-              })
-            }
-            to="posts"
-          >
-            Posty
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              classNames('profile-navigation__link', {
-                'profile-navigation__link--active': isActive,
-              })
-            }
-            to="photos"
-          >
-            Zdjęcia
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              classNames('profile-navigation__link', {
-                'profile-navigation__link--active': isActive,
-              })
-            }
-            to="details"
-          >
-            Informacje
-          </NavLink>
+          {navigationItems.map(({ label, link }) => (
+            <NavLink
+              className={({ isActive }) =>
+                classNames('profile-navigation__link', {
+                  'profile-navigation__link--active': isActive,
+                })
+              }
+              to={link}
+            >
+              {label}
+            </NavLink>
+          ))}
         </nav>
       </Collapse>
       <Collapse in={!isVisible}>
