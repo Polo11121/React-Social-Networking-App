@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { TooltipType } from 'components/Tooltip/Tooltip';
+import { TooltipPropsType } from 'components/Tooltip/Tooltip';
 import { Tooltip } from 'components';
 
 export default {
@@ -7,7 +7,7 @@ export default {
   title: 'Tooltip',
 } as Meta;
 
-const Template: Story<TooltipType> = (args) => (
+const Template: Story<TooltipPropsType> = (args) => (
   <>
     <p data-tip data-for="tooltip" style={{ width: 'fit-content' }}>
       hover here

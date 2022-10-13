@@ -10,7 +10,7 @@ import './ChatNavbar.scss';
 export const ChatNavbar = () => {
   const { id } = useParams();
   const { isLoading } = useGetLastMessages();
-  const { value, onChange } = useSearch();
+  const { value, changeValueHandler } = useSearch();
 
   return (
     <div className={classNames('chat-navbar', { 'chat-navbar--hide': id })}>
@@ -18,7 +18,7 @@ export const ChatNavbar = () => {
         <h2>Czaty</h2>
         <Search
           value={value}
-          onChange={onChange}
+          onChange={changeValueHandler}
           placeholder="Znajdź użytkownika"
         />
       </div>

@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import { ChangePasswordSchema } from 'pages/Profile/ProfileDetails/ProfileDetailsChangePassword//ChangePasswordSchema';
 import { Input, Button } from 'components';
 import { useForm } from 'shared/hooks/useForm';
 import { useChangePassword } from 'api/useChangePassword';
-import { useEffect } from 'react';
 import './ProfileDetailsChangePassword.scss';
 
 export const ProfileDetailsChangePassword = () => {

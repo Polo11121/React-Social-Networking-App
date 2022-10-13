@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { ChatNavbarListItem } from 'pages/Chat/ChatNavbar/ChatNavbarList/ChatNavbarListItem/ChatNavbarListItem';
 import { useGetLastMessages } from 'api/useGetLastMessages';
+import { getFullName } from 'shared/functions';
 import { useAuthContext } from 'contexts/AuthContext';
 import './ChatNavbarList.scss';
 
@@ -10,7 +11,7 @@ export const ChatNavbarList = ({ searchTerm }: { searchTerm: string }) => {
   const { id } = useParams();
 
   const filteredData = data.filter(({ match: { name, surname } }) =>
-    `${name} ${surname}`.toUpperCase().includes(searchTerm)
+    getFullName(name, surname).toUpperCase().includes(searchTerm.toUpperCase())
   );
 
   return (
@@ -27,7 +28,7 @@ export const ChatNavbarList = ({ searchTerm }: { searchTerm: string }) => {
               isActive={id === _id}
               userId={_id}
               avatar={profileImage}
-              fullName={`${name} ${surname}`}
+              fullName={getFullName(name, surname)}
               lastMessage={
                 lastMessage &&
                 `${

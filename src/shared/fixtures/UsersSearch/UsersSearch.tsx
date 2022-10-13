@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { getUsers } from 'api/getUsersBySearchTerm';
+import { useGetUsersBySearchTerm } from 'api/useGetUsersBySearchTerm';
 import { Spinner } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { useSearch } from 'shared/hooks/useSearch';
@@ -7,14 +7,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import './UsersSearch.scss';
 
 export const UsersSearch = () => {
-  const { value, resetValue, debouncedOnChange } = useSearch();
+  const { value, resetValueHandler, debouncedChangeValueHandler } = useSearch();
   const searchRef = useRef<HTMLInputElement>(null);
-  const { data: users, isLoading } = getUsers(value);
+  const { data: users, isLoading } = useGetUsersBySearchTerm(value);
   const navigate = useNavigate();
 
   const navigateToUser = (userId: string) => {
     navigate(`/profile/${userId}`);
-    resetValue();
+    resetValueHandler();
 
     if (searchRef.current) {
       searchRef.current.value = '';
@@ -30,7 +30,7 @@ export const UsersSearch = () => {
         />
         <input
           ref={searchRef}
-          onChange={debouncedOnChange}
+          onChange={debouncedChangeValueHandler}
           placeholder="Znajdź użytkownika"
           type="text"
           className="users-search__input"

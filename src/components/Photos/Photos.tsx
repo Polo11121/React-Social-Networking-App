@@ -25,7 +25,7 @@ export const Photos = ({
 }: PhotosPropsType) => {
   const [selectedPhoto, setSelectedPhoto] = useState<null | number>(null);
 
-  const onModalClose = () => setSelectedPhoto(null);
+  const closeModalHandler = () => setSelectedPhoto(null);
 
   return (
     <>
@@ -52,7 +52,7 @@ export const Photos = ({
       </SectionCard>
       {selectedPhoto !== null && (
         <PhotosModal
-          onClose={onModalClose}
+          onClose={closeModalHandler}
           selectedPhoto={selectedPhoto}
           photos={photosList}
         />

@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import axios, { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 import { ResponseErrorType } from 'shared/types/responseTypes';
+import axios, { AxiosError } from 'axios';
 
-type UseApiType = {
+type UseApiCrudType = {
   url: string;
   method: 'post' | 'patch' | 'delete' | 'put';
   onSuccess?: (data: any) => void;
 };
 
-export const useApiCrud = ({ url, method, onSuccess }: UseApiType) => {
+export const useApiCrud = ({ url, method, onSuccess }: UseApiCrudType) => {
   const [error, setError] = useState<string | undefined>();
 
   const api = (data: Record<any, any>) =>

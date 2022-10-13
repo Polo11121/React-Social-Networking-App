@@ -9,17 +9,18 @@ import {
 import { useAuthContext } from 'contexts/AuthContext';
 import { useLogout } from 'api/useLogout';
 import { useNavigate } from 'react-router-dom';
+import { getFullName } from 'shared/functions';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './AvatarDropdown.scss';
 
 export const AvatarDropdown = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const openHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const closeHandler = () => {
     setAnchorEl(null);
   };
 
@@ -27,13 +28,13 @@ export const AvatarDropdown = () => {
 
   const { mutate } = useLogout();
 
-  const handleLogout = () => mutate();
+  const logoutHandler = () => mutate();
 
   const navigate = useNavigate();
 
   const goToMyProfile = () => {
     navigate(`/profile/${userInfo._id}/posts`);
-    handleClose();
+    closeHandler();
   };
 
   return (
@@ -44,12 +45,14 @@ export const AvatarDropdown = () => {
           flexDirection: 'column',
         }}
         disableRipple
-        onClick={handleClick}
+        onClick={openHandler}
       >
         <Avatar src={userInfo.profileImage} />
-        <p className="avatar-dropdown__username">{`${userInfo.name} ${userInfo.surname}`}</p>
+        <p className="avatar-dropdown__username">
+          {getFullName(userInfo.name, userInfo.surname)}
+        </p>
       </IconButton>
-      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={closeHandler}>
         <MenuItem onClick={goToMyProfile}>
           <Avatar
             src={userInfo.profileImage}
@@ -57,7 +60,7 @@ export const AvatarDropdown = () => {
           />
           <ListItemText>Mój Profil</ListItemText>
         </MenuItem>
-        <MenuItem onClick={handleLogout}>
+        <MenuItem onClick={logoutHandler}>
           <div className="avatar-dropdown__icon-overlay">
             <LogoutIcon
               style={{ color: 'white' }}

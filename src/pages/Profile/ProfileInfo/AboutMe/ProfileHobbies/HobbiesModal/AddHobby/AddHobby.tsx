@@ -21,20 +21,20 @@ export const AddHobby = ({
     icon: 'MoreVertIcon',
   });
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) =>
+  const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
 
-  const handleClose = () => setAnchorEl(null);
+  const closeHandler = () => setAnchorEl(null);
 
-  const changeHobbyName = (event: ChangeEvent<HTMLInputElement>) =>
+  const changeHobbyNameHandler = (event: ChangeEvent<HTMLInputElement>) =>
     setHobby((prevState) => ({ ...prevState, text: event.target.value }));
 
-  const changeHobbyIcon = (icon: string) => {
+  const changeHobbyIconHandler = (icon: string) => {
     setHobby((prevState) => ({ ...prevState, icon }));
-    handleClose();
+    closeHandler();
   };
 
-  const addHobby = () => {
+  const addHobbyHandler = () => {
     setHobbies((prevState) => [
       ...prevState,
       {
@@ -55,14 +55,14 @@ export const AddHobby = ({
     <>
       <Chip
         icon={
-          <IconButton disableRipple onClick={handleClick}>
+          <IconButton disableRipple onClick={clickHandler}>
             <HobbiesIcon iconName={hobby.icon} />
           </IconButton>
         }
         label={
           <div className="add-hobby-modal__chip">
             <input
-              onChange={changeHobbyName}
+              onChange={changeHobbyNameHandler}
               value={hobby.text}
               type="text"
               placeholder="Dodaj hobby"
@@ -72,7 +72,7 @@ export const AddHobby = ({
               disabled={
                 !hobby.text.trim() || hobbiesNames.includes(hobby.text.trim())
               }
-              onClick={addHobby}
+              onClick={addHobbyHandler}
               disableRipple
             >
               <HobbiesIcon iconName="AddCircleOutlineIcon" />
@@ -81,14 +81,12 @@ export const AddHobby = ({
         }
         variant="outlined"
       />
-      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={closeHandler}>
         <div className="add-hobby__icons-menu">
           {iconsNames?.map((icon) => (
             <IconButton
               key={icon}
-              onClick={() => {
-                changeHobbyIcon(icon);
-              }}
+              onClick={() => changeHobbyIconHandler(icon)}
               disableRipple
             >
               <HobbiesIcon iconName={icon} />

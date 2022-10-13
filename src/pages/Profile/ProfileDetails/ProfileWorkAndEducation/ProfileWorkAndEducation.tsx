@@ -13,12 +13,12 @@ export const ProfileWorkAndEducation = () => {
           name,
           placeholder,
           value,
-          onChange,
           Icon,
           displayText,
-          onSubmit,
-          onClose,
-          onDelete,
+          changeHandler,
+          submitHandler,
+          closeHandler,
+          deleteHandler,
         }) => (
           <AddHoc
             displayOnly={!isOwner}
@@ -28,9 +28,9 @@ export const ProfileWorkAndEducation = () => {
               value === initialValue ||
               (!initialValue && !value.trim())
             }
-            onSubmit={onSubmit}
-            onDelete={onDelete}
-            onClose={onClose}
+            onSubmit={submitHandler}
+            onDelete={deleteHandler}
+            onClose={closeHandler}
             placeholder={placeholder}
             value={value}
             Icon={<Icon fontSize="large" />}
@@ -40,7 +40,7 @@ export const ProfileWorkAndEducation = () => {
               style={{ margin: '0' }}
               placeholder={capitalizeFirstLetter(placeholder)}
               value={value}
-              onChange={onChange}
+              onChange={changeHandler}
               name={name}
             />
           </AddHoc>

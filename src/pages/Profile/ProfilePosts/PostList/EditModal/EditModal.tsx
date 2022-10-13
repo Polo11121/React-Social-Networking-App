@@ -6,7 +6,7 @@ import { useAuthContext } from 'contexts/AuthContext';
 import ClearIcon from '@mui/icons-material/Clear';
 import './EditModal.scss';
 
-type EditPostModalType = {
+type EditPostModalPropsType = {
   text: string;
   photos: string[];
   postId: string | null;
@@ -18,7 +18,7 @@ export const EditModal = ({
   photos,
   postId,
   onClose,
-}: EditPostModalType) => {
+}: EditPostModalPropsType) => {
   const { userInfo } = useAuthContext();
   const [postValues, setPostValues] = useState<{
     text: string;
@@ -40,6 +40,7 @@ export const EditModal = ({
   const { mutate, isLoading } = useEditPost({
     postId: postId as string,
     afterUpdate: onClose,
+    method: 'patch',
   });
 
   const addPostHandler = () => {
@@ -102,7 +103,7 @@ export const EditModal = ({
             <ImagePicker
               isMultiple
               text="Edytuj zdjęcia"
-              handleFile={changPhotoHandler}
+              onChooseFile={changPhotoHandler}
             />
             <div className="edit-post__buttons">
               <Button onClick={onClose} text="Anuluj" buttonStyleType="mandy" />

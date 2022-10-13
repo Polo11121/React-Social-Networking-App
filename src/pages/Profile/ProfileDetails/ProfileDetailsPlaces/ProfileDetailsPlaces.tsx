@@ -18,10 +18,10 @@ export const ProfileDetailsPlaces = () => {
           placeholder,
           Icon,
           displayText,
-          onChange,
-          onSubmit,
-          onDelete,
-          onClose,
+          changeHandler,
+          submitHandler,
+          closeHandler,
+          deleteHandler,
         }) => (
           <AddHoc
             value={value?.label}
@@ -30,16 +30,16 @@ export const ProfileDetailsPlaces = () => {
             key={name}
             placeholder={placeholder}
             isDisabled={isLoading || value === initialValue}
-            onSubmit={onSubmit}
-            onDelete={onDelete}
-            onClose={onClose}
+            onSubmit={submitHandler}
+            onDelete={deleteHandler}
+            onClose={closeHandler}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
           >
             <CitySelect
               value={value}
               placeholder={capitalizeFirstLetter(placeholder)}
-              setSelectedOption={onChange}
+              onChange={changeHandler}
             />
           </AddHoc>
         )

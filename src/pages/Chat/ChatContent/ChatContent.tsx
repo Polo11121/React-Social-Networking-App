@@ -7,6 +7,7 @@ import { useGetMessages } from 'api/userGetMessages';
 import { PhotosModal } from 'shared/fixtures/PhotosModal/PhotosModal';
 import { PhotosModalType } from 'shared/types/repeatableTypes';
 import { useGetLastMessages } from 'api/useGetLastMessages';
+import { getFullName } from 'shared/functions';
 import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
 import classNames from 'classnames';
 import './ChatContent.scss';
@@ -18,25 +19,20 @@ const messagePhotosInitialState = {
 
 export const ChatContent = () => {
   const { id } = useParams();
+  const { data: messages, isFetching } = useGetMessages(id || null);
   const { currentChatUser, isLoading: isUserLoading } = useGetLastMessages(id);
-  const {
-    data: messages,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchedAfterMount,
-  } = useGetMessages(id || null);
   const [writtenMessages, setWrittenMessages] = useState(messages);
   const [messagePhotos, setMessagePhotos] = useState<PhotosModalType>(
     messagePhotosInitialState
   );
 
-  const onOpenPhotosModal = ({ selectedPhoto, photos }: PhotosModalType) =>
+  const openPhotosModalHandler = ({ selectedPhoto, photos }: PhotosModalType) =>
     setMessagePhotos({ selectedPhoto, photos });
 
-  const onClosePhotosModal = () => {
+  const closePhotosModalHandler = () => {
     setMessagePhotos(messagePhotosInitialState);
   };
+
   useEffect(() => {
     if (!isFetching) {
       setWrittenMessages(messages);
@@ -53,18 +49,18 @@ export const ChatContent = () => {
           <>
             <ChatContentHeader
               avatar={currentChatUser?.profileImage}
-              fullName={`${currentChatUser?.name} ${currentChatUser?.surname}`}
+              fullName={getFullName(
+                currentChatUser?.name,
+                currentChatUser?.surname
+              )}
               userId={id}
             />
             <ChatContentMessages
-              onNext={fetchNextPage}
-              hasMore={Boolean(hasNextPage)}
-              onShowPostPhotos={onOpenPhotosModal}
-              isLoading={!isFetchedAfterMount}
+              onShowPostPhotos={openPhotosModalHandler}
               messages={writtenMessages}
             />
             <ChatContentSendMessage
-              onShowPostPhotos={onOpenPhotosModal}
+              onShowPostPhotos={openPhotosModalHandler}
               setWrittenMessages={setWrittenMessages}
             />
           </>
@@ -75,7 +71,7 @@ export const ChatContent = () => {
         </h2>
       )}
       {messagePhotos.selectedPhoto !== null && (
-        <PhotosModal {...messagePhotos} onClose={onClosePhotosModal} />
+        <PhotosModal {...messagePhotos} onClose={closePhotosModalHandler} />
       )}
     </div>
   );

@@ -1,0 +1,34 @@
+@import 'styles/styles';
+
+.matches-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media only screen and (min-width: $medium) {
+    width: fit-content;
+  }
+
+  &__chips {
+    display: flex;
+    justify-content: center;
+
+    @media only screen and (min-width: $small) {
+      gap: 0.5rem;
+    }
+  }
+
+  &__chip {
+    background-color: white !important;
+    font-size: 0.5rem !important;
+
+    @media only screen and (min-width: $small) {
+      font-size: 0.75rem !important;
+    }
+
+    &--checked {
+      color: $primary !important;
+      border-color: $primary !important;
+    }
+  }
+}

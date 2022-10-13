@@ -72,26 +72,30 @@ export const AuthContextProvider = ({
       socket.current.on(
         'match-status',
         ({ text, users }: { text: string; users: string[] }) => {
-          queryClient.invalidateQueries(users[1]);
-          queryClient.invalidateQueries(users[2]);
+          users.forEach((user) => {
+            if (user !== userId) {
+              queryClient.invalidateQueries(['user', user]);
+            }
+          });
+
           if (path[1] === 'matches') {
             queryClient.invalidateQueries('matches');
           } else {
             queryClient.invalidateQueries('newMatches');
-
-            if (text) {
-              customToast({ text });
-            }
+          }
+          if (text) {
+            customToast({ text });
           }
         }
       );
     }
+
     return () => {
       if (socket.current) {
         socket.current.removeAllListeners();
       }
     };
-  }, [pathname]);
+  }, [path, queryClient]);
 
   const authenticationHandler = useCallback(
     ({ data }: { data: ResponseUserType }) => {

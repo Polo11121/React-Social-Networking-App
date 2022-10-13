@@ -94,7 +94,7 @@ export const Home = () => {
           options={ageOptions}
         />
         <CitySelect
-          setSelectedOption={onInterestedCityChange}
+          onChange={onInterestedCityChange}
           placeholder="Interesujące Cię miasto"
           value={formik.values.interestedCity}
         />

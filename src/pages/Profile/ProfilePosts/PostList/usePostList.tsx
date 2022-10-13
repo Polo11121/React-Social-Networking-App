@@ -22,34 +22,34 @@ export const usePostList = () => {
     text: string;
   }>(editedPostInitialState);
 
-  const onOpenPhotosModal = (
+  const openPhotosModalHandler = (
     selectedPhoto: null | number,
     photos: { image: string; label: string }[]
   ) => setPostPhotos({ selectedPhoto, photos });
 
-  const onClosePhotosModal = () => setPostPhotos(postPhotosInitialState);
+  const closePhotosModalHandler = () => setPostPhotos(postPhotosInitialState);
 
-  const onOpenDeletePostModal = (postId: string) => setDeletedPost(postId);
+  const openDeletePostModalHandler = (postId: string) => setDeletedPost(postId);
 
-  const onCloseDeletePostModal = () => setDeletedPost(null);
+  const closeDeletePostModalHandler = () => setDeletedPost(null);
 
-  const onOpenEditPostModal = (
+  const openEditPostModalHandler = (
     postId: string,
     photos: string[],
     text: string
   ) => setEditedPost({ postId, photos, text });
 
-  const onCloseEditPostModal = () => setEditedPost(editedPostInitialState);
+  const closeEditPostModalHandler = () => setEditedPost(editedPostInitialState);
 
   return {
     deletedPost,
     postPhotos,
     editedPost,
-    onOpenPhotosModal,
-    onClosePhotosModal,
-    onOpenDeletePostModal,
-    onCloseDeletePostModal,
-    onOpenEditPostModal,
-    onCloseEditPostModal,
+    openPhotosModalHandler,
+    closePhotosModalHandler,
+    openDeletePostModalHandler,
+    closeDeletePostModalHandler,
+    openEditPostModalHandler,
+    closeEditPostModalHandler,
   };
 };

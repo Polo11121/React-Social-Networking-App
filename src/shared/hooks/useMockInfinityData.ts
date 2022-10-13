@@ -11,7 +11,7 @@ type UseMockInfinityDataType<T> = {
   hasMore: boolean;
 };
 
-export const useMockInfinityData = <T,>({
+export const useMockInfinityData = <T>({
   fetchedEntities,
   offset,
 }: UseMockInfinityDataProps<T>): UseMockInfinityDataType<T> => {

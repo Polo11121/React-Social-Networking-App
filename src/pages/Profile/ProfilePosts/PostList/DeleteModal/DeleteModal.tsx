@@ -1,6 +1,6 @@
 import { IconButton, Modal } from '@mui/material';
 import { Button } from 'components';
-import { useDeletePost } from 'api/useDeletePost';
+import { useEditPost } from 'api/useEditPost';
 import ClearIcon from '@mui/icons-material/Clear';
 import './DeleteModal.scss';
 
@@ -11,12 +11,13 @@ export const DeleteModal = ({
   deletedPost: null | string;
   onClose: () => void;
 }) => {
-  const { mutate, isLoading } = useDeletePost({
+  const { mutate, isLoading } = useEditPost({
     postId: deletedPost as string,
     afterUpdate: onClose,
+    method: 'delete',
   });
 
-  const handleDeletePost = () => mutate({});
+  const deletePostHandler = () => mutate({});
 
   return (
     <Modal
@@ -43,7 +44,7 @@ export const DeleteModal = ({
           <div className="delete-modal__buttons">
             <Button onClick={onClose} buttonStyleType="primary" text="Anuluj" />
             <Button
-              onClick={handleDeletePost}
+              onClick={deletePostHandler}
               isDisabled={isLoading}
               buttonStyleType="mandy"
               text="Usuń"

@@ -39,12 +39,12 @@ export const AddHoc = ({
   const [adHocVisibility, setAdHocVisibility] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleModalClick = (event: React.MouseEvent<HTMLButtonElement>) =>
+  const openModalHandler = (event: React.MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
 
-  const handleModalClose = () => setAnchorEl(null);
+  const closeModalHandler = () => setAnchorEl(null);
 
-  const hideAdHoc = () => {
+  const hideAdHocHandler = () => {
     setAdHocVisibility(false);
 
     if (onClose) {
@@ -52,12 +52,12 @@ export const AddHoc = ({
     }
   };
 
-  const showAdHoc = () => {
+  const showAdHocHandler = () => {
     setAdHocVisibility(true);
-    handleModalClose();
+    closeModalHandler();
   };
 
-  const handleSubmit = async () => {
+  const submitHandler = async () => {
     if (onSubmit) {
       await onSubmit();
     }
@@ -65,38 +65,38 @@ export const AddHoc = ({
     setAdHocVisibility(false);
   };
 
-  const handleDelete = async () => {
+  const deleteHandler = async () => {
     if (onDelete) {
       await onDelete();
     }
 
-    handleModalClose();
+    closeModalHandler();
   };
 
   return (value && !adHocVisibility) || displayOnly ? (
     <div className="add-hoc">
       <div className="add-hoc__display">
-        {Icon} {displayText}:{' '}
+        {Icon} {displayText}:
         <span className="add-hoc__display-value">
           {displayValue || (value as string)}
         </span>
       </div>
       {!displayOnly && (
-        <IconButton onClick={handleModalClick} className="add-hoc__menu-button">
+        <IconButton onClick={openModalHandler} className="add-hoc__menu-button">
           <MoreHorizIcon />
         </IconButton>
       )}
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
-        onClose={handleModalClose}
+        onClose={closeModalHandler}
       >
-        <MenuItem onClick={showAdHoc}>
+        <MenuItem onClick={showAdHocHandler}>
           <EditIcon className="post__icon" />
           <ListItemText>Edytuj</ListItemText>
         </MenuItem>
         {!hideDelete && (
-          <MenuItem onClick={handleDelete}>
+          <MenuItem onClick={deleteHandler}>
             <DeleteIcon className="post__icon" />
             <ListItemText>Usuń</ListItemText>
           </MenuItem>
@@ -109,12 +109,16 @@ export const AddHoc = ({
         <>
           {children}
           <div className="add-hoc__input-button">
-            <Button buttonStyleType="mandy" text="Anuluj" onClick={hideAdHoc} />
+            <Button
+              buttonStyleType="mandy"
+              text="Anuluj"
+              onClick={hideAdHocHandler}
+            />
             <Button
               isDisabled={isDisabled}
               buttonStyleType="primary"
               text="Zapisz"
-              onClick={handleSubmit}
+              onClick={submitHandler}
             />
           </div>
         </>
@@ -122,7 +126,7 @@ export const AddHoc = ({
         <IconButton
           style={{ marginRight: 'auto' }}
           edge="start"
-          onClick={showAdHoc}
+          onClick={showAdHocHandler}
           disableRipple
           className="add-hoc"
         >

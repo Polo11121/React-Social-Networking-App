@@ -10,17 +10,17 @@ export const useProfilePreview = () => {
     profileImage: null,
   });
 
-  const changeBackgroundImage = (file: File | FileList | null) =>
+  const chooseBackgroundImageHandler = (file: File | FileList | null) =>
     setImages({ profileImage: null, backgroundImage: file as File });
 
-  const changeProfileImage = (file: File | FileList | null) =>
+  const chooseProfileImageHandler = (file: File | FileList | null) =>
     setImages({ backgroundImage: null, profileImage: file as File });
 
-  const resetImages = () =>
+  const resetImagesHandler = () =>
     setImages({ backgroundImage: null, profileImage: null });
 
   const { mutate, isLoading } = useUpdateMe({
-    afterUpdate: resetImages,
+    afterUpdate: resetImagesHandler,
     toastText: `Pomyślnie zaktualizowano zdjęcie ${
       images.profileImage ? 'profilowe' : 'w tle'
     }`,
@@ -40,9 +40,9 @@ export const useProfilePreview = () => {
 
   return {
     ...images,
-    changeBackgroundImage,
-    changeProfileImage,
-    resetImages,
+    chooseBackgroundImageHandler,
+    chooseProfileImageHandler,
+    resetImagesHandler,
     changeProfileImageHandler,
     changeBackgroundImageHandler,
     isLoading,

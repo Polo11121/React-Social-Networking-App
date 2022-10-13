@@ -12,7 +12,7 @@ export const ProfileHobbies = () => {
     isOwner,
   } = useProfileInfo();
 
-  const toggleModalVisibility = () =>
+  const modalVisibilityHandler = () =>
     setIsHobbiesModalOpen((prevState) => !prevState);
 
   return (
@@ -44,7 +44,7 @@ export const ProfileHobbies = () => {
       )}
       {isOwner && (
         <Button
-          onClick={toggleModalVisibility}
+          onClick={modalVisibilityHandler}
           buttonStyleType="secondary"
           text={`${hobbies ? 'Edytuj' : 'Dodaj'} hobby`}
           fullWidth
@@ -53,7 +53,7 @@ export const ProfileHobbies = () => {
       {isHobbiesModalOpen && (
         <HobbiesModal
           isOpen={isHobbiesModalOpen}
-          onClose={toggleModalVisibility}
+          onClose={modalVisibilityHandler}
         />
       )}
     </>

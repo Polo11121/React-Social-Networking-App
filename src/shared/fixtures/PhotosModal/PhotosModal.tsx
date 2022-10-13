@@ -2,7 +2,7 @@ import { ImageCarousel } from 'components';
 import { Modal } from '@mui/material';
 import './PhotosModal.scss';
 
-type PhotosModalType = {
+type PhotosModalPropsType = {
   selectedPhoto: null | number;
   onClose?: () => void;
   photos: { image: string; label?: string }[];
@@ -12,7 +12,7 @@ export const PhotosModal = ({
   selectedPhoto,
   onClose,
   photos,
-}: PhotosModalType) => (
+}: PhotosModalPropsType) => (
   <Modal
     style={{
       display: 'grid',

@@ -4,25 +4,25 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import './ImagePicker.scss';
 
 export type ImagePickerPropsType = {
-  handleFile: (file: File | FileList | null) => void;
+  onChooseFile: (file: File | FileList | null) => void;
   text?: string;
   tooltipText?: string;
   isMultiple?: boolean;
 };
 
 export const ImagePicker = ({
-  handleFile,
+  onChooseFile,
   text,
   tooltipText,
   isMultiple = false,
 }: ImagePickerPropsType) => {
   const hiddenFileInput = useRef<null | HTMLInputElement>(null);
 
-  const handleClick = () => hiddenFileInput.current?.click();
+  const clickHandler = () => hiddenFileInput.current?.click();
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) =>
+  const changeHandler = (event: ChangeEvent<HTMLInputElement>) =>
     event.target.files &&
-    handleFile(isMultiple ? event.target.files : event.target.files[0]);
+    onChooseFile(isMultiple ? event.target.files : event.target.files[0]);
 
   return (
     <>
@@ -33,7 +33,7 @@ export const ImagePicker = ({
         className={`image-picker__button image-picker__button--${
           text ? 'text' : 'circle'
         }`}
-        onClick={handleClick}
+        onClick={clickHandler}
       >
         <CameraAltIcon
           style={text ? { marginRight: '0.313rem' } : {}}
@@ -45,7 +45,7 @@ export const ImagePicker = ({
         type="file"
         multiple={isMultiple}
         ref={hiddenFileInput}
-        onChange={handleChange}
+        onChange={changeHandler}
         style={{ display: 'none' }}
       />
       <Tooltip

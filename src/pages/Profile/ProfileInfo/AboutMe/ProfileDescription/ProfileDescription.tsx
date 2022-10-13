@@ -13,6 +13,7 @@ export const ProfileDescription = () => {
 
   const afterUpdate = () => () =>
     setIsDescriptionOpen((prevState) => !prevState);
+
   const { mutate, isLoading } = useUpdateMe({
     afterUpdate,
     toastText: 'Pomyślnie zaktualizowano opis',
@@ -23,7 +24,7 @@ export const ProfileDescription = () => {
     mutate,
   });
 
-  const toggleDescriptionVisibility = () => {
+  const descriptionVisibilityHandler = () => {
     setIsDescriptionOpen((prevState) => !prevState);
     formik.setFieldValue('description', description);
   };
@@ -39,7 +40,7 @@ export const ProfileDescription = () => {
       />
       <div className="about-me__desc-buttons">
         <Button
-          onClick={toggleDescriptionVisibility}
+          onClick={descriptionVisibilityHandler}
           text="Anuluj"
           buttonStyleType="mandy"
         />
@@ -63,7 +64,7 @@ export const ProfileDescription = () => {
       )}
       {isOwner && (
         <Button
-          onClick={toggleDescriptionVisibility}
+          onClick={descriptionVisibilityHandler}
           buttonStyleType="secondary"
           text={`${description ? 'Edytuj' : 'Dodaj'} opis`}
           fullWidth

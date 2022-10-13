@@ -14,68 +14,59 @@ export const HeaderNavigation = () => {
   const { data: unreadMessages } = useGetUnreadMessages();
   const { data: newMatches } = useGetNewMatches();
 
+  const navigationItems = [
+    {
+      label: 'Ślepy strzał',
+      id: 'game',
+      path: '',
+      Icon: <CasinoIcon fontSize="large" />,
+    },
+    {
+      label: 'Czat',
+      id: 'chat',
+      path: 'chat',
+      Icon: <MessageIcon fontSize="large" />,
+      counter: unreadMessages,
+    },
+    {
+      label: 'Dopasowania',
+      id: 'matches',
+      path: 'matches',
+      Icon: <FavoriteIcon fontSize="large" />,
+      counter: newMatches,
+    },
+    {
+      label: 'Proponowani',
+      id: 'proposedPeople',
+      path: 'proposedPeople',
+      Icon: <VolunteerActivismIcon fontSize="large" />,
+    },
+  ];
   return (
     <nav className="header-navigation">
-      <Tooltip backgroundColor="#006f71" text="Ślepy strzał" id="game" />
-      <NavLink
-        data-tip
-        data-for="game"
-        className={({ isActive }) =>
-          classNames('header-navigation__link', {
-            'header-navigation__link--active': isActive,
-          })
-        }
-        to=""
-      >
-        <CasinoIcon fontSize="large" />
-      </NavLink>
-      <Tooltip backgroundColor="#006f71" text="Czat" id="chat" />
-      <NavLink
-        data-tip
-        data-for="chat"
-        className={({ isActive }) =>
-          classNames('header-navigation__link', {
-            'header-navigation__link--active': isActive,
-          })
-        }
-        to="chat"
-      >
-        <Badge badgeContent={unreadMessages} color="primary">
-          <MessageIcon fontSize="large" />
-        </Badge>
-      </NavLink>
-      <Tooltip backgroundColor="#006f71" text="Dopasowania" id="matches" />
-      <NavLink
-        data-tip
-        data-for="matches"
-        className={({ isActive }) =>
-          classNames('header-navigation__link', {
-            'header-navigation__link--active': isActive,
-          })
-        }
-        to="/matches"
-      >
-        <Badge badgeContent={newMatches} color="primary">
-          <FavoriteIcon fontSize="large" />
-        </Badge>
-      </NavLink>
-      <Tooltip
-        backgroundColor="#006f71"
-        text="Proponowani"
-        id="proposedPeople"
-      />
-      <NavLink
-        data-tip
-        data-for="proposedPeople"
-        className={({ isActive }) =>
-          classNames('header-navigation__link', {
-            'header-navigation__link--active': isActive,
-          })
-        }
-        to="/proposedPeople"
-      >
-        <VolunteerActivismIcon fontSize="large" />
-      </NavLink>
+      {navigationItems.map(({ label, id, path, Icon, counter }) => (
+        <>
+          <Tooltip backgroundColor="#006f71" text={label} id={id} />
+          <NavLink
+            data-tip
+            data-for={id}
+            className={({ isActive }) =>
+              classNames('header-navigation__link', {
+                'header-navigation__link--active': isActive,
+              })
+            }
+            to={path}
+          >
+            {counter ? (
+              <Badge badgeContent={counter} color="primary">
+                {Icon}
+              </Badge>
+            ) : (
+              Icon
+            )}
+          </NavLink>
+        </>
+      ))}
     </nav>
   );
 };

@@ -14,11 +14,11 @@ export const useWindowDimensions = () => {
   );
 
   useEffect(() => {
-    const handleResize = () => setWindowDimensions(getWindowDimensions());
+    const resizeHandler = () => setWindowDimensions(getWindowDimensions());
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', resizeHandler);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', resizeHandler);
   }, []);
 
   return windowDimensions;

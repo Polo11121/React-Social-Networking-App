@@ -3,15 +3,17 @@ import { NavLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import './ChatContentHeader.scss';
 
+type ChatContentHeaderType = {
+  avatar?: string;
+  fullName: string;
+  userId: string;
+};
+
 export const ChatContentHeader = ({
   avatar,
   fullName,
   userId,
-}: {
-  avatar?: string;
-  fullName: string;
-  userId: string;
-}) => (
+}: ChatContentHeaderType) => (
   <div className="chat-content-header">
     <IconButton>
       <NavLink className="chat-content-header__back-button" to="/chat">

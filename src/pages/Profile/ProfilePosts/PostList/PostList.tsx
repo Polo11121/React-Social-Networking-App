@@ -14,12 +14,12 @@ export const PostList = () => {
     deletedPost,
     postPhotos,
     editedPost,
-    onOpenPhotosModal,
-    onClosePhotosModal,
-    onOpenDeletePostModal,
-    onCloseDeletePostModal,
-    onOpenEditPostModal,
-    onCloseEditPostModal,
+    openPhotosModalHandler,
+    closePhotosModalHandler,
+    openDeletePostModalHandler,
+    closeDeletePostModalHandler,
+    openEditPostModalHandler,
+    closeEditPostModalHandler,
   } = usePostList();
 
   const { entities, onNext, hasMore } = useMockInfinityData({
@@ -45,7 +45,7 @@ export const PostList = () => {
         {entities.map(({ description, createdAt, _id, images, type }) => (
           <Post
             isPost={type === 'post'}
-            onShowPostPhotos={onOpenPhotosModal}
+            onShowPostPhotos={openPhotosModalHandler}
             avatar={user.profileImage}
             date={createdAt}
             images={images}
@@ -53,22 +53,22 @@ export const PostList = () => {
             user={user.fullName}
             key={_id}
             id={_id}
-            onDeletePost={onOpenDeletePostModal}
-            onEditPost={onOpenEditPostModal}
+            onDeletePost={openDeletePostModalHandler}
+            onEditPost={openEditPostModalHandler}
           />
         ))}
       </InfiniteScroll>
       {postPhotos.selectedPhoto !== null && (
-        <PhotosModal {...postPhotos} onClose={onClosePhotosModal} />
+        <PhotosModal {...postPhotos} onClose={closePhotosModalHandler} />
       )}
       {deletedPost && (
         <DeleteModal
           deletedPost={deletedPost}
-          onClose={onCloseDeletePostModal}
+          onClose={closeDeletePostModalHandler}
         />
       )}
       {editedPost.postId && (
-        <EditModal {...editedPost} onClose={onCloseEditPostModal} />
+        <EditModal {...editedPost} onClose={closeEditPostModalHandler} />
       )}
     </div>
   );

@@ -43,12 +43,12 @@ export const Post = ({
   const { isOwner } = useProfileInfo();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleModalClick = (event: React.MouseEvent<HTMLButtonElement>) =>
+  const openModalHandler = (event: React.MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
 
-  const handleModalClose = () => setAnchorEl(null);
+  const closeModalHandler = () => setAnchorEl(null);
 
-  const onPostImageClick = (index: number) =>
+  const clickPostImageHandler = (index: number) =>
     onShowPostPhotos(
       index,
       images.map((image) => ({
@@ -61,20 +61,20 @@ export const Post = ({
     <SectionCard>
       <div className="post__user">
         {isOwner && (
-          <IconButton onClick={handleModalClick} className="post__button">
+          <IconButton onClick={openModalHandler} className="post__button">
             <MoreHorizIcon />
           </IconButton>
         )}
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
-          onClose={handleModalClose}
+          onClose={closeModalHandler}
         >
           {isPost && (
             <MenuItem
               onClick={() => {
                 onEditPost(id, images, text);
-                handleModalClose();
+                closeModalHandler();
               }}
             >
               <EditIcon className="post__icon" />
@@ -84,7 +84,7 @@ export const Post = ({
           <MenuItem
             onClick={() => {
               onDeletePost(id);
-              handleModalClose();
+              closeModalHandler();
             }}
           >
             <DeleteIcon className="post__icon" />
@@ -98,7 +98,7 @@ export const Post = ({
         </div>
       </div>
       <p className="post__text">{text}</p>
-      <ImageCarousel onClick={onPostImageClick} images={images} />
+      <ImageCarousel onClick={clickPostImageHandler} images={images} />
     </SectionCard>
   );
 };

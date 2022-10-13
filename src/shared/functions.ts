@@ -81,3 +81,6 @@ export const areEqual = <T>(array1: T[], array2: T[]) => {
 
 export const capitalizeFirstLetter = (word?: string) =>
   word && word.charAt(0).toUpperCase() + word.slice(1);
+
+export const getFullName = (name?: string, surname?: string) =>
+  `${name} ${surname}`;

@@ -5,24 +5,30 @@ import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
 import { formatPostDate } from 'shared/functions';
 import { MessageType } from 'shared/types/responseTypes';
 import { PhotosModalType } from 'shared/types/repeatableTypes';
+import { useGetMessages } from 'api/userGetMessages';
+import { useParams } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import './ChatContentMessages.scss';
 
 type ChatContentMessagesProps = {
-  isLoading: boolean;
   messages: MessageType[];
   onShowPostPhotos: ({ selectedPhoto, photos }: PhotosModalType) => void;
-  onNext: () => void;
-  hasMore: boolean;
 };
 export const ChatContentMessages = ({
   messages,
-  isLoading,
   onShowPostPhotos,
-  onNext,
-  hasMore,
 }: ChatContentMessagesProps) => {
+  const { id } = useParams();
   const { userInfo } = useAuthContext();
+  const {
+    fetchNextPage,
+    hasNextPage,
+    isFetchedAfterMount,
+    isLoading: isMessagesLoading,
+    isRefetching,
+  } = useGetMessages(id || null);
+
+  const isLoading = (isRefetching && !isFetchedAfterMount) || isMessagesLoading;
 
   return (
     <div id="scrollableDiv" className="chat-content-messages">
@@ -35,8 +41,8 @@ export const ChatContentMessages = ({
             gap: '1rem',
           }}
           dataLength={messages.length}
-          next={onNext}
-          hasMore={hasMore}
+          next={fetchNextPage}
+          hasMore={Boolean(hasNextPage)}
           inverse
           loader={<BouncingDotsLoader testId="messages-" />}
         >

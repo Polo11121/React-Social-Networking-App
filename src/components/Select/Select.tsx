@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Select, { InputActionMeta, SingleValue } from 'react-select';
 import { SelectOptionType } from 'shared/types/repeatableTypes';
 
-type CustomSelectType = {
+type CustomSelectPropsType = {
   value?: SelectOptionType | null;
   placeholder?: string;
   onChange: (newValue: SingleValue<SelectOptionType>) => void;
@@ -13,6 +13,7 @@ type CustomSelectType = {
   isLoading?: boolean;
   noOptionsMessage?: (obj: { inputValue: string }) => React.ReactNode;
 };
+
 export const CustomSelect = ({
   value,
   placeholder,
@@ -23,7 +24,7 @@ export const CustomSelect = ({
   onInputChange,
   isLoading,
   noOptionsMessage,
-}: CustomSelectType) => (
+}: CustomSelectPropsType) => (
   <Select
     styles={{
       control: (base) => ({

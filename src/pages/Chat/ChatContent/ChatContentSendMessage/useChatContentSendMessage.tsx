@@ -27,34 +27,29 @@ export const useChatContentSendMessage = ({
   const [messagePhotos, setMessagePhotos] = useState<FileList | null>(null);
   const {
     value: messageText,
-    onChange: onChangeMessageText,
-    resetValue,
+    changeValueHandler: onChangeMessageText,
+    resetValueHandler,
     setValue: setMessageText,
   } = useSearch();
   const { userInfo } = useAuthContext();
-  const queryClient = useQueryClient();
   const { id } = useParams();
+  const queryClient = useQueryClient();
 
   const onSuccess = () => queryClient.invalidateQueries(['messages', id]);
 
   const { mutate } = useAddMessage(onSuccess);
 
-  const handleOpenEmojis = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const openEmojisMenuHandler = (event: React.MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
-  };
 
-  const handleCloseEmojis = () => {
-    setAnchorEl(null);
-  };
+  const closeEmojisMenuHandler = () => setAnchorEl(null);
 
-  const chooseEmoji = (
+  const chooseEmojiHandler = (
     event: MouseEvent<Element, globalThis.MouseEvent>,
     data: IEmojiData
-  ) => {
-    setMessageText((prevState) => `${prevState}${data.emoji}`);
-  };
+  ) => setMessageText((prevState) => `${prevState}${data.emoji}`);
 
-  const onMessageImageClick = () => {
+  const messageImageClickHandler = () => {
     if (messagePhotos) {
       onShowPostPhotos({
         selectedPhoto: 0,
@@ -95,12 +90,13 @@ export const useChatContentSendMessage = ({
         formData.append('images', photo as Blob)
       );
     }
+
     formData.append('text', messageText);
     formData.append('receiver', id as string);
     formData.append('sender', userInfo._id);
 
     mutate(formData);
-    resetValue();
+    resetValueHandler();
     setMessagePhotos(null);
   };
 
@@ -108,14 +104,14 @@ export const useChatContentSendMessage = ({
 
   return {
     sendMessageHandler,
-    handleOpenEmojis,
+    openEmojisMenuHandler,
     changPhotoHandler,
     anchorEl,
-    handleCloseEmojis,
-    chooseEmoji,
+    closeEmojisMenuHandler,
+    chooseEmojiHandler,
     onChangeMessageText,
     messagePhotos,
-    onMessageImageClick,
+    messageImageClickHandler,
     isDisabled,
     messageText,
   };

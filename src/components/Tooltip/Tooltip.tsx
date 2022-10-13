@@ -1,6 +1,6 @@
 import ReactTooltip, { Effect, Offset, Place, Type } from 'react-tooltip';
 
-export type TooltipType = {
+export type TooltipPropsType = {
   text?: string;
   id: string;
   event?: string;
@@ -26,7 +26,7 @@ export const Tooltip = ({
   effect = 'solid',
   place = 'bottom',
   type = 'info',
-}: TooltipType) =>
+}: TooltipPropsType) =>
   isDisabled ? null : (
     <ReactTooltip
       backgroundColor={backgroundColor}
