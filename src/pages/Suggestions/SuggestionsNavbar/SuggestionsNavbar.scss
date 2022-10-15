@@ -1,0 +1,36 @@
+@import 'styles/styles';
+
+.suggestions-navbar {
+  @include pageLayout;
+  @include rightLine;
+  @include cardBoxShadow;
+  position: fixed;
+  left: 0;
+  width: 20vw;
+  height: 100%;
+  top: calc(4rem - 1px);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: $white;
+  z-index: $z-index-normal-priority;
+  @media only screen and (min-width: $large) {
+    flex: 0.2;
+  }
+
+  &--hide {
+    display: none;
+
+    @media only screen and (min-width: $large) {
+      display: flex;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    @include bottomLine;
+  }
+}

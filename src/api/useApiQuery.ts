@@ -7,22 +7,28 @@ type UseApiQueryType = {
   enabled?: boolean;
   defaultZero?: boolean;
   onSuccess?: (data: any) => void;
+  refetchOnWindowFocus?: boolean;
+  staleTime?: number;
+  refetchOnMount?: boolean;
 };
 
 export const useApiQuery = <T>({
   endpoint,
   queryKey,
+  onSuccess,
   enabled = true,
   defaultZero = false,
-  onSuccess,
+  refetchOnWindowFocus = true,
+  refetchOnMount = false,
 }: UseApiQueryType) => {
   const useApi = (): Promise<T> =>
     axios.get(`/api/v1/${endpoint}`).then((res) => res.data);
 
   const data = useQuery(queryKey, useApi, {
     enabled,
-    cacheTime: Infinity,
     onSuccess,
+    refetchOnWindowFocus,
+    refetchOnMount,
   });
 
   const defaultValue = defaultZero ? 0 : [];

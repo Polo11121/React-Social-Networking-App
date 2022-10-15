@@ -37,8 +37,8 @@ export const HeaderNavigation = () => {
     },
     {
       label: 'Proponowani',
-      id: 'proposedPeople',
-      path: 'proposedPeople',
+      id: 'suggestions',
+      path: 'suggestions',
       Icon: <VolunteerActivismIcon fontSize="large" />,
     },
   ];

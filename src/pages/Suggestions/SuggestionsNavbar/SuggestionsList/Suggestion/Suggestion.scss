@@ -1,0 +1,29 @@
+@import 'styles/styles';
+
+.suggestion {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+
+  &__avatar {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &--active {
+    background-color: $lightGray;
+  }
+
+  &:not(&--active):hover {
+    background-color: $lightGray;
+  }
+}

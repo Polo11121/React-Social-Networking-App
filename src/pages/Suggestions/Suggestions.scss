@@ -1,6 +1,7 @@
 @import 'styles/styles';
 
-.chat {
+.suggestions {
   @include pageLayout;
   display: flex;
+  justify-content: flex-end;
 }
