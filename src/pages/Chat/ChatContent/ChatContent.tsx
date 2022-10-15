@@ -9,6 +9,7 @@ import { PhotosModalType } from 'shared/types/repeatableTypes';
 import { useGetLastMessages } from 'api/useGetLastMessages';
 import { getFullName } from 'shared/functions';
 import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import classNames from 'classnames';
 import './ChatContent.scss';
 
@@ -66,9 +67,10 @@ export const ChatContent = () => {
           </>
         </WithLoader>
       ) : (
-        <h2 className="chat-content__message">
-          Wybierz czat lub rozpocznij nową konwersację
-        </h2>
+        <div className="chat-content__message">
+          <ChatOutlinedIcon style={{ fontSize: '8rem' }} />
+          <h2>Wybierz czat lub rozpocznij nową konwersację</h2>
+        </div>
       )}
       {messagePhotos.selectedPhoto !== null && (
         <PhotosModal {...messagePhotos} onClose={closePhotosModalHandler} />

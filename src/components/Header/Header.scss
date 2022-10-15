@@ -9,7 +9,7 @@
   padding: 0 2rem;
   background-color: $white;
   height: 4rem;
-  z-index: $z-index-normal-priority;
+  z-index: $z-index-large-priority;
   @include cardBoxShadow;
 
   &__logo-container {

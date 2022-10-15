@@ -1,8 +1,8 @@
 import { MatchesListOptionType } from 'shared/types/repeatableTypes';
 import { useGetMatches } from 'api/useGetMatches';
-import { Match } from 'components';
-import './MatchesList.scss';
+import { Match } from 'pages/Matches/MatchesList/Match/Match';
 import { getFullName } from 'shared/functions';
+import './MatchesList.scss';
 
 export const MatchesList = ({
   listOption,

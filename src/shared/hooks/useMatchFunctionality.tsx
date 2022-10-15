@@ -1,3 +1,4 @@
+import { useSuggestionsContext } from 'contexts/SuggestionsContext';
 import { useNavigate } from 'react-router-dom';
 import { useMatch } from 'api/useMatch';
 import { Button } from 'components';
@@ -17,15 +18,24 @@ export const useMatchFunctionality = ({
   userStatus,
 }: UseMatchFunctionalityType) => {
   const navigate = useNavigate();
-  const { mutate } = useMatch(userId);
+  const { mutateAsync } = useMatch(userId);
+  const { addRequestedUser, removeRequestedUser } = useSuggestionsContext();
 
   const goToChat = () => navigate(`/chat/${userId}`);
 
   const goToProfile = () => navigate(`/profile/${userId}`);
 
-  const requestMatch = () => mutate({ userId, status: 'request' });
+  const requestMatch = () => {
+    mutateAsync({ userId, status: 'request' }).then(() => {
+      addRequestedUser(userId);
+    });
+  };
 
-  const rejectMatch = () => mutate({ userId, status: 'reject' });
+  const rejectMatch = () => {
+    mutateAsync({ userId, status: 'reject' }).then(() => {
+      removeRequestedUser(userId);
+    });
+  };
 
   const isMatch = myStatus
     ? userStatus === 'match' && myStatus === 'match'
@@ -160,5 +170,7 @@ export const useMatchFunctionality = ({
     goToProfile,
     matchButtons: myStatus ? profileButtons : matchButtons,
     matchStatus,
+    requestMatch,
+    rejectMatch,
   };
 };
