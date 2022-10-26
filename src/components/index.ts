@@ -1,8 +1,8 @@
 export { AddHoc } from './AddHoc/AddHoc';
 export { BouncingDotsLoader } from './BouncingDotsLoader/BouncingDotsLoader';
 export { Button } from './Button/Button';
+export { CitySelect } from './CitySelect/CitySelect';
 export { CustomSelect as Select } from './Select/Select';
-export { EditHeader } from './EditHeader/EditHeader';
 export { ErrorText } from './ErrorText/ErrorText';
 export { Header } from './Header/Header';
 export { ImageCarousel } from './ImageCarousel/ImageCarousel';

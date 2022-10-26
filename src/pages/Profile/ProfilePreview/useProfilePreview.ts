@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useUpdateMe } from 'api/useUpdateMe';
+import { useUpdateUser } from 'api/useUpdateUser';
+import { useNavigate } from 'react-router-dom';
 
 export const useProfilePreview = () => {
   const [images, setImages] = useState<{
@@ -10,6 +11,11 @@ export const useProfilePreview = () => {
     profileImage: null,
   });
 
+  const navigate = useNavigate();
+
+  const navigateToEditProfile = () =>
+    navigate('details/contact-and-basic-info');
+
   const chooseBackgroundImageHandler = (file: File | FileList | null) =>
     setImages({ profileImage: null, backgroundImage: file as File });
 
@@ -19,7 +25,7 @@ export const useProfilePreview = () => {
   const resetImagesHandler = () =>
     setImages({ backgroundImage: null, profileImage: null });
 
-  const { mutate, isLoading } = useUpdateMe({
+  const { mutate, isLoading } = useUpdateUser({
     afterUpdate: resetImagesHandler,
     toastText: `Pomyślnie zaktualizowano zdjęcie ${
       images.profileImage ? 'profilowe' : 'w tle'
@@ -46,5 +52,6 @@ export const useProfilePreview = () => {
     changeProfileImageHandler,
     changeBackgroundImageHandler,
     isLoading,
+    navigateToEditProfile,
   };
 };

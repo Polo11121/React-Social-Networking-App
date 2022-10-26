@@ -1,8 +1,8 @@
-import { useApiCrud } from 'api/useApiCrud';
 import { useAuthContext } from 'contexts/AuthContext';
 import { customToast } from 'shared/hooks/customToast';
+import { useApiCrud } from 'api/useApiCrud';
 
-type UseEditPostType = {
+type UseEditPostPropsType = {
   postId: string;
   afterUpdate: () => void;
   method: 'patch' | 'delete';
@@ -12,7 +12,7 @@ export const useEditPost = ({
   postId,
   afterUpdate,
   method,
-}: UseEditPostType) => {
+}: UseEditPostPropsType) => {
   const { invalidateUserData } = useAuthContext();
 
   const onSuccess = async () => {

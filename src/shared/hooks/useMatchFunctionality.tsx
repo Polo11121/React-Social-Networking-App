@@ -6,7 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import ChatIcon from '@mui/icons-material/Chat';
 
-type UseMatchFunctionalityType = {
+type UseMatchFunctionalityPropsType = {
   userId: string;
   myStatus?: string;
   userStatus?: string;
@@ -16,14 +16,14 @@ export const useMatchFunctionality = ({
   userId,
   myStatus,
   userStatus,
-}: UseMatchFunctionalityType) => {
+}: UseMatchFunctionalityPropsType) => {
   const navigate = useNavigate();
   const { mutateAsync } = useMatch(userId);
   const { addRequestedUser, removeRequestedUser } = useSuggestionsContext();
 
-  const goToChat = () => navigate(`/chat/${userId}`);
+  const navigateToChat = () => navigate(`/chat/${userId}`);
 
-  const goToProfile = () => navigate(`/profile/${userId}`);
+  const navigateToProfile = () => navigate(`/profile/${userId}`);
 
   const requestMatch = () => {
     mutateAsync({ userId, status: 'request' }).then(() => {
@@ -37,6 +37,12 @@ export const useMatchFunctionality = ({
     });
   };
 
+  const cancelMatch = () => {
+    mutateAsync({ userId, status: 'none' }).then(() => {
+      removeRequestedUser(userId);
+    });
+  };
+
   const isMatch = myStatus
     ? userStatus === 'match' && myStatus === 'match'
     : userStatus === 'match';
@@ -45,7 +51,11 @@ export const useMatchFunctionality = ({
     if (
       !myStatus ||
       myStatus === 'reject' ||
-      (myStatus === 'none' && userStatus === 'none')
+      (myStatus === 'none' && userStatus === 'none') ||
+      myStatus === 'left' ||
+      myStatus === 'right' ||
+      userStatus === 'left' ||
+      userStatus === 'right'
     ) {
       return (
         <Button
@@ -56,6 +66,7 @@ export const useMatchFunctionality = ({
         />
       );
     }
+
     if (userStatus === 'request') {
       return (
         <>
@@ -74,11 +85,12 @@ export const useMatchFunctionality = ({
         </>
       );
     }
+
     if (isMatch) {
       return (
         <>
           <Button
-            onClick={goToChat}
+            onClick={navigateToChat}
             Icon={<ChatIcon />}
             text="Czat"
             buttonStyleType="primary"
@@ -92,13 +104,15 @@ export const useMatchFunctionality = ({
         </>
       );
     }
+
     if (userStatus === 'reject') {
       return null;
     }
+
     if (myStatus === 'request') {
       return (
         <Button
-          onClick={rejectMatch}
+          onClick={cancelMatch}
           Icon={<HeartBrokenIcon />}
           text="Anuluj prośbę"
           buttonStyleType="mandy"
@@ -131,7 +145,7 @@ export const useMatchFunctionality = ({
       return (
         <>
           <Button
-            onClick={goToChat}
+            onClick={navigateToChat}
             Icon={<ChatIcon />}
             text="Czat"
             buttonStyleType="primary"
@@ -147,7 +161,7 @@ export const useMatchFunctionality = ({
     }
     return (
       <Button
-        onClick={rejectMatch}
+        onClick={cancelMatch}
         Icon={<HeartBrokenIcon />}
         text="Anuluj"
         buttonStyleType="mandy"
@@ -167,7 +181,7 @@ export const useMatchFunctionality = ({
 
   return {
     isMatch,
-    goToProfile,
+    navigateToProfile,
     matchButtons: myStatus ? profileButtons : matchButtons,
     matchStatus,
     requestMatch,

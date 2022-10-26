@@ -24,6 +24,7 @@
     "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-error-boundary": "^3.1.4",
     "react-infinite-scroll-component": "^6.1.0",
     "react-query": "^3.39.1",
     "react-responsive-carousel": "^3.2.23",
@@ -108,6 +109,7 @@
     "husky": "^7.0.0",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
+    "react-select-event": "^5.5.1",
     "react-tinder-card": "^1.5.4",
     "webpack": "^5.73.0"
   }

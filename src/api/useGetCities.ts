@@ -1,5 +1,5 @@
-import { useApiQuery } from 'api/useApiQuery';
 import { CityType } from 'shared/types/responseTypes';
+import { useApiQuery } from 'api/useApiQuery';
 
 export const useGetCities = (cityId: string | null) =>
   useApiQuery<CityType[]>({

@@ -15,6 +15,8 @@ import './AvatarDropdown.scss';
 
 export const AvatarDropdown = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { userInfo } = useAuthContext();
+  const { mutate } = useLogout();
 
   const openHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -24,15 +26,11 @@ export const AvatarDropdown = () => {
     setAnchorEl(null);
   };
 
-  const { userInfo } = useAuthContext();
-
-  const { mutate } = useLogout();
-
   const logoutHandler = () => mutate();
 
   const navigate = useNavigate();
 
-  const goToMyProfile = () => {
+  const navigateToMyProfile = () => {
     navigate(`/profile/${userInfo._id}/posts`);
     closeHandler();
   };
@@ -53,7 +51,7 @@ export const AvatarDropdown = () => {
         </p>
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={closeHandler}>
-        <MenuItem onClick={goToMyProfile}>
+        <MenuItem onClick={navigateToMyProfile}>
           <Avatar
             src={userInfo.profileImage}
             className="avatar-dropdown__avatar"

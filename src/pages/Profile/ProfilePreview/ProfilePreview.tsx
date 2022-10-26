@@ -1,15 +1,20 @@
 import { forwardRef } from 'react';
-import { Button, EditHeader, ImagePicker, Tooltip } from 'components';
+import { Button, ImagePicker, Tooltip } from 'components';
+import { ProfilePreviewEditHeader } from 'pages/Profile/ProfilePreview/ProfilePreviewEditHeader/ProfilePreviewEditHeader';
 import { useProfilePreview } from 'pages/Profile/ProfilePreview/useProfilePreview';
 import { useMatchFunctionality } from 'shared/hooks/useMatchFunctionality';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { Avatar } from '@mui/material';
+import { NavLink, useLocation } from 'react-router-dom';
 import { getAge } from 'shared/functions';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import './ProfilePreview.scss';
 
 export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
+  const path = useLocation().pathname.split('/')[1];
+
   const {
     profileImage,
     backgroundImage,
@@ -18,6 +23,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
     chooseProfileImageHandler,
     changeBackgroundImageHandler,
     changeProfileImageHandler,
+    navigateToEditProfile,
     isLoading,
   } = useProfilePreview();
   const { user, isOwner, myStatus, userStatus } = useProfileInfo();
@@ -30,7 +36,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div className="profile-preview" ref={ref}>
       {(profileImage || backgroundImage) && (
-        <EditHeader
+        <ProfilePreviewEditHeader
           isDisabled={isLoading}
           text={`Edycja ${
             backgroundImage ? 'zdjęcie w tle' : 'zdjęcia profilowego'
@@ -45,6 +51,11 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
       )}
       <div className="profile-preview__content">
         <div className="profile-preview__background-container">
+          {path === 'suggestions' && (
+            <NavLink className="profile-preview__back-button" to="/suggestions">
+              <ArrowBackIcon style={{ fontSize: '3.125rem' }} />
+            </NavLink>
+          )}
           {(user.backgroundImage || backgroundImage) && (
             <img
               className="profile-preview__background-image"
@@ -107,6 +118,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
           {isOwner ? (
             <Button
               Icon={<EditIcon />}
+              onClick={navigateToEditProfile}
               text="Edytuj Profil"
               buttonStyleType="primary"
             />

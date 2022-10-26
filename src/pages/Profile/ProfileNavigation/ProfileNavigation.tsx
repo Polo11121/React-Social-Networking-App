@@ -23,6 +23,7 @@ export const ProfileNavigation = ({ isVisible }: { isVisible: boolean }) => {
         >
           {navigationItems.map(({ label, link }) => (
             <NavLink
+              key={label}
               className={({ isActive }) =>
                 classNames('profile-navigation__link', {
                   'profile-navigation__link--active': isActive,

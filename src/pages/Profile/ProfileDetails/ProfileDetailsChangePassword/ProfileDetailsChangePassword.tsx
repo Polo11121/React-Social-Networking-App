@@ -3,7 +3,6 @@ import { ChangePasswordSchema } from 'pages/Profile/ProfileDetails/ProfileDetail
 import { Input, Button } from 'components';
 import { useForm } from 'shared/hooks/useForm';
 import { useChangePassword } from 'api/useChangePassword';
-import './ProfileDetailsChangePassword.scss';
 
 export const ProfileDetailsChangePassword = () => {
   const {
@@ -32,11 +31,10 @@ export const ProfileDetailsChangePassword = () => {
   }, [status]);
 
   return (
-    <div className="profile-details-change-password">
-      <h2 className="profile-details-change-password__title">Zmień hasło</h2>
+    <div>
+      <h2 style={{ marginBottom: '1rem' }}>Zmień hasło</h2>
       <form onSubmit={formik.handleSubmit}>
         <Input
-          style={{ marginRight: '1rem' }}
           name="passwordCurrent"
           placeholder="Stare hasło"
           type="password"
@@ -45,7 +43,6 @@ export const ProfileDetailsChangePassword = () => {
           error={formik.isValid ? error : formik.errors.passwordCurrent}
         />
         <Input
-          style={{ marginRight: '1rem' }}
           name="password"
           placeholder="Nowe hasło"
           type="password"
@@ -54,7 +51,6 @@ export const ProfileDetailsChangePassword = () => {
           error={formik.errors.password}
         />
         <Input
-          style={{ marginRight: '1rem' }}
           name="passwordConfirm"
           placeholder="Powtórz nowe hasło"
           type="password"

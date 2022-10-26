@@ -1,7 +1,6 @@
 import { useProfileDetails } from 'pages/Profile/ProfileDetails/useProfileDetails';
-import { AddHoc, Input } from 'components';
+import { AddHoc, Input, CitySelect } from 'components';
 import { capitalizeFirstLetter } from 'shared/functions';
-import { CitySelect } from 'shared/fixtures/CitySelect/CitySelect';
 
 export const ProfileDetailsOverview = () => {
   const { adHocsOverviewInputs, adHocsOverviewSelects, isLoading, isOwner } =

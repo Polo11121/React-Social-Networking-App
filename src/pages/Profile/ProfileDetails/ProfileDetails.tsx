@@ -1,10 +1,6 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { ProfileDetailsNavigation } from 'pages/Profile/ProfileDetails/ProfileDetailsNavigation/ProfileDetailsNavigation';
-import { ProfileDetailsOverview } from 'pages/Profile/ProfileDetails/ProfileDetailsOverview/ProfileDetailsOverview';
-import { ProfileWorkAndEducation } from 'pages/Profile/ProfileDetails/ProfileWorkAndEducation/ProfileWorkAndEducation';
-import { ProfileDetailsPlaces } from 'pages/Profile/ProfileDetails/ProfileDetailsPlaces/ProfileDetailsPlaces';
-import { ProfileDetailsContactAndBasicInfo } from 'pages/Profile/ProfileDetails/ProfileDetailsContactAndBasicInfo/ProfileDetailsContactAndBasicInfo';
-import { ProfileDetailsChangePassword } from 'pages/Profile/ProfileDetails/ProfileDetailsChangePassword/ProfileDetailsChangePassword';
+import { profileDetailsRoutes } from 'routes/routes';
 import { SectionCard } from 'components';
 import './ProfileDetails.scss';
 
@@ -14,21 +10,9 @@ export const ProfileDetails = () => (
       <ProfileDetailsNavigation />
       <div className="profile-details__container">
         <Routes>
-          <Route path="overview" element={<ProfileDetailsOverview />} />
-          <Route
-            path="work-and-education"
-            element={<ProfileWorkAndEducation />}
-          />
-          <Route path="places" element={<ProfileDetailsPlaces />} />
-          <Route
-            path="contact-and-basic-info"
-            element={<ProfileDetailsContactAndBasicInfo />}
-          />
-          <Route
-            path="change-password"
-            element={<ProfileDetailsChangePassword />}
-          />
-          <Route path="*" element={<Navigate to="overview" replace />} />
+          {profileDetailsRoutes.map(({ path, Component }) => (
+            <Route key={path} path={path} element={Component} />
+          ))}
         </Routes>
       </div>
     </div>

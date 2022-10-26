@@ -1,5 +1,5 @@
-import { useApiQuery } from 'api/useApiQuery';
 import { LastMessagesType } from 'shared/types/responseTypes';
+import { useApiQuery } from 'api/useApiQuery';
 
 export const useGetLastMessages = (messageId?: string) => {
   const matches = useApiQuery<LastMessagesType[]>({

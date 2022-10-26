@@ -11,8 +11,8 @@ type ChatContentMessagePropsType = {
   timestamp: string;
   isOwner: boolean;
   images: string[];
-  onShowPostPhotos: ({ selectedPhoto, photos }: PhotosModalType) => void;
   isImageLoading?: boolean;
+  onShowPostPhotos: ({ selectedPhoto, photos }: PhotosModalType) => void;
 };
 
 export const ChatContentMessage = ({

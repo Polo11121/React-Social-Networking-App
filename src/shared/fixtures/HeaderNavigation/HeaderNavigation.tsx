@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useGetUnreadMessages } from 'api/useGetUnreadMessages';
 import { useGetNewMatches } from 'api/useGetNewMatches';
@@ -18,7 +19,7 @@ export const HeaderNavigation = () => {
     {
       label: 'Ślepy strzał',
       id: 'game',
-      path: '',
+      path: 'swipe',
       Icon: <CasinoIcon fontSize="large" />,
     },
     {
@@ -42,10 +43,11 @@ export const HeaderNavigation = () => {
       Icon: <VolunteerActivismIcon fontSize="large" />,
     },
   ];
+
   return (
     <nav className="header-navigation">
       {navigationItems.map(({ label, id, path, Icon, counter }) => (
-        <>
+        <Fragment key={id}>
           <Tooltip backgroundColor="#006f71" text={label} id={id} />
           <NavLink
             data-tip
@@ -65,7 +67,7 @@ export const HeaderNavigation = () => {
               Icon
             )}
           </NavLink>
-        </>
+        </Fragment>
       ))}
     </nav>
   );

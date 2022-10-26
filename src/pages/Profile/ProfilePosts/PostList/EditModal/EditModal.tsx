@@ -50,8 +50,8 @@ export const EditModal = ({
         formData.append('images', photo as Blob)
       );
     }
-    formData.append('description', postValues.text);
 
+    formData.append('description', postValues.text);
     mutate(formData);
   };
 

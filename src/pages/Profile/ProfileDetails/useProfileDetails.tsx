@@ -8,12 +8,13 @@ import {
   interestedGendersOptions,
   gendersOptions,
 } from 'shared/constants/options';
-import { useUpdateMe } from 'api/useUpdateMe';
+import { useUpdateUser } from 'api/useUpdateUser';
 import { useFormik } from 'formik';
 import { SingleValue } from 'react-select';
 import { CityType } from 'shared/types/responseTypes';
 import { ProfileDetailsSchema } from 'pages/Profile/ProfileDetails/ProfileDetailsSchema';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
+import { SelectOptionType } from 'shared/types/repeatableTypes';
 import SchoolIcon from '@mui/icons-material/School';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import PlaceIcon from '@mui/icons-material/Place';
@@ -65,7 +66,7 @@ export const useProfileDetails = () => {
     isOwner,
   } = useProfileInfo();
 
-  const { mutateAsync, isLoading } = useUpdateMe({
+  const { mutateAsync, isLoading } = useUpdateUser({
     toastText: 'Pomyślnie zaktualizowano profil',
   });
 
@@ -302,12 +303,8 @@ export const useProfileDetails = () => {
       displayText: 'Płeć',
       inputType: 'select' as const,
       options: gendersOptions,
-      changeHandler: (
-        value: SingleValue<{
-          label: string;
-          value: string;
-        }>
-      ) => formik.setFieldValue('gender', value),
+      changeHandler: (value: SingleValue<SelectOptionType>) =>
+        formik.setFieldValue('gender', value),
       submitHandler: () => mutateAsync({ gender: formik.values.gender.value }),
       closeHandler: () => {
         formik.setFieldValue('gender', formatGender(gender));
@@ -350,12 +347,8 @@ export const useProfileDetails = () => {
       displayText: 'Interesują mnie',
       inputType: 'select' as const,
       options: interestedGendersOptions,
-      changeHandler: (
-        value: SingleValue<{
-          label: string;
-          value: string;
-        }>
-      ) => formik.setFieldValue('interestedGenders', value),
+      changeHandler: (value: SingleValue<SelectOptionType>) =>
+        formik.setFieldValue('interestedGenders', value),
       submitHandler: () =>
         mutateAsync({
           interestedGenders: formik.values.interestedGenders?.value,

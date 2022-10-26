@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 import { ImagePicker } from 'components';
-import { ImagePickerPropsType } from './ImagePicker';
+import { ImagePickerPropsType } from 'components/ImagePicker/ImagePicker';
 
 export default {
   component: ImagePicker,

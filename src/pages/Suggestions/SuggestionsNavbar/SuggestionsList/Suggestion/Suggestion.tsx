@@ -17,6 +17,7 @@ type SuggestionPropsType = {
   profileImage: string;
   requested: boolean;
 };
+
 export const Suggestion = ({
   name,
   surname,
@@ -39,10 +40,10 @@ export const Suggestion = ({
       <>
         <Avatar className="suggestion__avatar" src={profileImage} />
         <div className="suggestion__info">
-          <div>{getFullName(name, surname)}</div>
           <div>
-            {city}, {getAge(birthDate)}
+            {getFullName(name, surname)}, {getAge(birthDate)}
           </div>
+          {city && <div>{city}</div>}
           {requested ? (
             <Button
               style={{ marginTop: '0.5rem' }}

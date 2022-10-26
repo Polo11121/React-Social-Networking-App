@@ -1,0 +1,154 @@
+import { useState, useRef, createRef, useMemo } from 'react';
+import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
+import { SwipeCard } from 'pages/Swipe/SwipeCard/SwipeCard';
+import { Filters } from 'shared/fixtures/Filters/Filters';
+import { IconButton } from '@mui/material';
+import { useAuthContext } from 'contexts/AuthContext';
+import { useGetUsers } from 'api/useGetUsers';
+import { useMatch } from 'api/useMatch';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import CloseIcon from '@mui/icons-material/Close';
+import HeartBrokenSharpIcon from '@mui/icons-material/HeartBrokenSharp';
+import classNames from 'classnames';
+import './Swipe.scss';
+
+export const Swipe = () => {
+  const {
+    userInfo: { filters, gender },
+  } = useAuthContext();
+
+  const {
+    fetchNextPage,
+    isFetching,
+    data: users, // @ts-ignore
+    results,
+  } = useGetUsers({ filters, isSwipe: true });
+  const { mutateAsync } = useMatch();
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lastDirection, setLastDirection] = useState('');
+  const currentIndexRef = useRef(currentIndex);
+
+  const childRefs = useMemo(
+    () =>
+      Array(results)
+        .fill(0)
+        .map(() => createRef()),
+    [results]
+  );
+
+  const updateCurrentIndexHandler = (index: number) => {
+    setCurrentIndex(index);
+    currentIndexRef.current = index;
+  };
+
+  const swipedHandler = (direction: string, index: number, userId: string) => {
+    setLastDirection(direction);
+    updateCurrentIndexHandler(index + 1);
+
+    mutateAsync({ userId, status: direction }).then(() => {
+      if (currentIndex === users.length - 1) {
+        fetchNextPage();
+      }
+    });
+  };
+
+  const outOfFrameHandler = (index: number) => {
+    if (currentIndexRef.current <= index) {
+      // @ts-ignore
+      childRefs[index].current.restoreCard();
+    }
+  };
+
+  const swipeHandler = async (direction: string) => {
+    if (currentIndex <= results - 1) {
+      // @ts-ignore
+      await childRefs[currentIndex].current.swipe(direction);
+    }
+  };
+
+  const goBackHandler = async () => {
+    if (currentIndex > 0) {
+      const newIndex = currentIndex - 1;
+      mutateAsync({ userId: users[newIndex]._id, status: 'none' });
+      updateCurrentIndexHandler(newIndex);
+      // @ts-ignore
+      await childRefs[newIndex].current.restoreCard();
+    }
+  };
+
+  const swipeMessage = () => {
+    if (!lastDirection) {
+      return 'Przesuń żeby uzyśkać dopasowanie';
+    }
+
+    return `
+Przesunął${gender === 'male' ? 'eś' : 'aś'} w ${
+      lastDirection === 'left' ? 'lewo' : 'prawo'
+    }`;
+  };
+
+  return (
+    <div className="swipe">
+      <Filters />
+      <div className="swipe__cards">
+        <WithLoader isLoading={isFetching}>
+          {users.length ? (
+            users.map((user, index) => (
+              <SwipeCard
+                user={user}
+                isHidden={index < currentIndex}
+                // @ts-ignore
+                ref={childRefs[index]}
+                key={user._id}
+                index={index}
+                onSwipe={swipedHandler}
+                onCardLeftScreen={outOfFrameHandler}
+              />
+            ))
+          ) : (
+            <div className="swipe__empty">
+              <HeartBrokenSharpIcon style={{ fontSize: '8rem' }} />
+              <h2>Brak dopasowań.</h2>
+            </div>
+          )}
+        </WithLoader>
+      </div>
+      <div
+        className={classNames('swipe__buttons', {
+          'swipe__buttons--hidden': !users.length,
+        })}
+      >
+        <IconButton
+          onClick={() => swipeHandler('left')}
+          className="swipe__button"
+          disableRipple
+        >
+          <CloseIcon className="swipe__icon swipe__icon--left" />
+        </IconButton>
+        <IconButton
+          className="swipe__button"
+          disableRipple
+          onClick={goBackHandler}
+        >
+          <RefreshIcon className="swipe__icon swipe__icon--refresh" />
+        </IconButton>
+        <IconButton
+          onClick={() => swipeHandler('right')}
+          className="swipe__button"
+          disableRipple
+        >
+          <FavoriteIcon className="swipe__icon swipe__icon--right" />
+        </IconButton>
+      </div>
+      <h2
+        className={classNames('swipe__message', {
+          'swipe__message--hidden': !users.length,
+        })}
+      >
+        {swipeMessage()}
+      </h2>
+    </div>
+  );
+};

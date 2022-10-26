@@ -8,8 +8,8 @@ import './UsersSearch.scss';
 
 export const UsersSearch = () => {
   const { value, resetValueHandler, debouncedChangeValueHandler } = useSearch();
-  const searchRef = useRef<HTMLInputElement>(null);
   const { data: users, isLoading } = useGetUsersBySearchTerm(value);
+  const searchRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   const navigateToUser = (userId: string) => {

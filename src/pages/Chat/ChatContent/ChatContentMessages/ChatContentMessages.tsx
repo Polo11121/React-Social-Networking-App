@@ -5,30 +5,23 @@ import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
 import { formatPostDate } from 'shared/functions';
 import { MessageType } from 'shared/types/responseTypes';
 import { PhotosModalType } from 'shared/types/repeatableTypes';
-import { useGetMessages } from 'api/userGetMessages';
+import { useGetMessages } from 'api/useGetMessages';
 import { useParams } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import './ChatContentMessages.scss';
 
-type ChatContentMessagesProps = {
+type ChatContentMessagesPropsType = {
   messages: MessageType[];
   onShowPostPhotos: ({ selectedPhoto, photos }: PhotosModalType) => void;
 };
+
 export const ChatContentMessages = ({
   messages,
   onShowPostPhotos,
-}: ChatContentMessagesProps) => {
+}: ChatContentMessagesPropsType) => {
   const { id } = useParams();
   const { userInfo } = useAuthContext();
-  const {
-    fetchNextPage,
-    hasNextPage,
-    isFetchedAfterMount,
-    isLoading: isMessagesLoading,
-    isRefetching,
-  } = useGetMessages(id || null);
-
-  const isLoading = (isRefetching && !isFetchedAfterMount) || isMessagesLoading;
+  const { fetchNextPage, hasNextPage, isLoading } = useGetMessages(id || null);
 
   return (
     <div id="scrollableDiv" className="chat-content-messages">

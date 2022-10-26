@@ -1,8 +1,8 @@
-import { useApiCrud } from 'api/useApiCrud';
-import { useAuthContext } from 'contexts/AuthContext';
 import { customToast } from 'shared/hooks/customToast';
+import { useAuthContext } from 'contexts/AuthContext';
+import { useApiCrud } from 'api/useApiCrud';
 
-export const useUpdateMe = ({
+export const useUpdateUser = ({
   afterUpdate,
   toastText,
 }: {
@@ -24,7 +24,7 @@ export const useUpdateMe = ({
   };
 
   return useApiCrud({
-    url: 'users/updateMe',
+    url: 'users/updateUser',
     method: 'patch',
     onSuccess,
   });

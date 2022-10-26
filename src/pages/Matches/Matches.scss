@@ -4,8 +4,12 @@
   @include pageLayout;
 
   &__container {
+    @include leftLine;
+    @include rightLine;
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    background-color: white;
+    background-color: $white;
     height: 100%;
     padding: 0.5rem 1rem 0;
 

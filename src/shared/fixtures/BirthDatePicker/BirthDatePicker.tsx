@@ -2,11 +2,11 @@ import { Tooltip } from 'components';
 import { TextField } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { pl } from 'date-fns/locale';
 import { LocalizationProvider } from '@mui/x-date-pickers';
+import { pl } from 'date-fns/locale';
 import './BirthDatePicker.scss';
 
-type BirthDatePickerType = {
+type BirthDatePickerPropsType = {
   value: Date | null;
   onChange: (value: Date | null) => {};
   error?: string;
@@ -16,7 +16,7 @@ export const BirthDatePicker = ({
   value,
   onChange,
   error,
-}: BirthDatePickerType) => (
+}: BirthDatePickerPropsType) => (
   <>
     <p style={{ marginBottom: '0.5rem' }}>Data urodzenia</p>
     <LocalizationProvider adapterLocale={pl} dateAdapter={AdapterDateFns}>

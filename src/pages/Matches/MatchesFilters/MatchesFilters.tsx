@@ -12,6 +12,7 @@ type MatchesFiltersPropsType = {
   listOption: string;
   onListOptionChange: (option: MatchesListOptionType) => void;
 };
+
 export const MatchesFilters = ({
   searchTerm,
   listOption,
@@ -27,6 +28,13 @@ export const MatchesFilters = ({
       'matches-filters__chip--checked': listOption === option,
     });
 
+  const chipsList = [
+    { label: `Wszyscy (${allCount})`, value: 'all' as const },
+    { label: `Dopasowani (${matchCount})`, value: 'match' as const },
+    { label: `Otrzymane prośby (${receiveCount})`, value: 'request' as const },
+    { label: `Wysłane prośby (${sendCount})`, value: 'none' as const },
+  ];
+
   return (
     <div className="matches-filters">
       <Search
@@ -35,30 +43,15 @@ export const MatchesFilters = ({
         placeholder="Znajdź użytkownika"
       />
       <div className="matches-filters__chips">
-        <Chip
-          label={`Wszyscy (${allCount})`}
-          variant="outlined"
-          className={getClassnames('all')}
-          onClick={() => onListOptionChange('all')}
-        />
-        <Chip
-          label={`Dopasowani (${matchCount})`}
-          variant="outlined"
-          className={getClassnames('match')}
-          onClick={() => onListOptionChange('match')}
-        />
-        <Chip
-          label={`Otrzymane prośby (${receiveCount})`}
-          variant="outlined"
-          className={getClassnames('request')}
-          onClick={() => onListOptionChange('request')}
-        />
-        <Chip
-          label={`Wysłane prośby (${sendCount})`}
-          variant="outlined"
-          className={getClassnames('none')}
-          onClick={() => onListOptionChange('none')}
-        />
+        {chipsList.map(({ value, label }) => (
+          <Chip
+            key={value}
+            label={label}
+            variant="outlined"
+            className={getClassnames(value)}
+            onClick={() => onListOptionChange(value)}
+          />
+        ))}
       </div>
     </div>
   );
