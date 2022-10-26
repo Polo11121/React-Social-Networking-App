@@ -24,7 +24,7 @@ export const Main = () => {
           </div>
           <div className="main__form">
             <LoginForm>
-              <Link className="main__link" to="/forgotPassword">
+              <Link className="main__link" to="/forgot-password">
                 Nie pamietasz hasła ?
               </Link>
               <div className="main__form-line" />

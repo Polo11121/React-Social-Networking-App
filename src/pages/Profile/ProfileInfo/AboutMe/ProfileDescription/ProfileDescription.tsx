@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button, Textarea } from 'components';
 import { useForm } from 'shared/hooks/useForm';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
-import { useUpdateMe } from 'api/useUpdateMe';
+import { useUpdateUser } from 'api/useUpdateUser';
 
 export const ProfileDescription = () => {
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
@@ -11,10 +11,9 @@ export const ProfileDescription = () => {
     isOwner,
   } = useProfileInfo();
 
-  const afterUpdate = () => () =>
-    setIsDescriptionOpen((prevState) => !prevState);
+  const afterUpdate = () => setIsDescriptionOpen(false);
 
-  const { mutate, isLoading } = useUpdateMe({
+  const { mutate, isLoading } = useUpdateUser({
     afterUpdate,
     toastText: 'Pomyślnie zaktualizowano opis',
   });

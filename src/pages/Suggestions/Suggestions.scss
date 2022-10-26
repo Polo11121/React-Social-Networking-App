@@ -1,7 +1,10 @@
 @import 'styles/styles';
 
 .suggestions {
-  @include pageLayout;
+  &--full-width {
+    @include pageLayout;
+  }
+
   display: flex;
   justify-content: flex-end;
 }

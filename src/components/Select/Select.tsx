@@ -2,12 +2,13 @@ import { ReactNode } from 'react';
 import Select, { InputActionMeta, SingleValue } from 'react-select';
 import { SelectOptionType } from 'shared/types/repeatableTypes';
 
-type CustomSelectPropsType = {
+export type CustomSelectPropsType = {
   value?: SelectOptionType | null;
   placeholder?: string;
   onChange: (newValue: SingleValue<SelectOptionType>) => void;
   options: SelectOptionType[];
   name?: string;
+  inputId?: string;
   loadingMessage?: (obj: { inputValue: string }) => ReactNode;
   onInputChange?: (newValue: string, actionMeta: InputActionMeta) => void;
   isLoading?: boolean;
@@ -20,6 +21,7 @@ export const CustomSelect = ({
   onChange,
   options,
   name,
+  inputId,
   loadingMessage,
   onInputChange,
   isLoading,
@@ -37,6 +39,7 @@ export const CustomSelect = ({
     onChange={onChange}
     options={options}
     name={name}
+    inputId={inputId}
     loadingMessage={loadingMessage}
     onInputChange={onInputChange}
     isLoading={isLoading}

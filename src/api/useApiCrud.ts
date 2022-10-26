@@ -3,13 +3,13 @@ import { useMutation } from 'react-query';
 import { ResponseErrorType } from 'shared/types/responseTypes';
 import axios, { AxiosError } from 'axios';
 
-type UseApiCrudType = {
+type UseApiCrudPropsType = {
   url: string;
   method: 'post' | 'patch' | 'delete' | 'put';
   onSuccess?: (data: any) => void;
 };
 
-export const useApiCrud = ({ url, method, onSuccess }: UseApiCrudType) => {
+export const useApiCrud = ({ url, method, onSuccess }: UseApiCrudPropsType) => {
   const [error, setError] = useState<string | undefined>();
 
   const api = (data: Record<any, any>) =>

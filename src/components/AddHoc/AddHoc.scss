@@ -3,8 +3,8 @@
 .add-hoc {
   display: flex;
   justify-content: space-between;
-  padding-top: 0 !important;
   align-items: center;
+  padding-top: 0 !important;
   padding-bottom: 0 !important;
 
   &__display {
@@ -15,8 +15,26 @@
     font-size: $font-size-big !important;
   }
 
-  &____display-value {
+  &__display-value {
     font-weight: $font-weight-bold;
+  }
+
+  &__menu-button {
+    background-color: lighten(lightgray, 5%) !important;
+
+    &:hover {
+      background-color: lighten(lightgray, 10%) !important;
+    }
+  }
+
+  &__menu-icon {
+    margin-right: 0.5rem !important;
+  }
+
+  &__input-button {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
   }
 
   &__add-icon {
@@ -27,19 +45,5 @@
   &__add-text {
     color: $primary;
     font-size: $font-size-big;
-  }
-
-  &__input-button {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-  }
-
-  &__menu-button {
-    background-color: lighten(lightgray, 5%) !important;
-
-    &:hover {
-      background-color: lighten(lightgray, 10%) !important;
-    }
   }
 }

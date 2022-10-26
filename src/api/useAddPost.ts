@@ -1,6 +1,6 @@
-import { useApiCrud } from 'api/useApiCrud';
 import { useAuthContext } from 'contexts/AuthContext';
 import { customToast } from 'shared/hooks/customToast';
+import { useApiCrud } from 'api/useApiCrud';
 
 export const useAddPost = (afterUpdate: () => void) => {
   const { invalidateUserData } = useAuthContext();

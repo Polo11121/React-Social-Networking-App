@@ -11,7 +11,7 @@
 
   &__username {
     font-size: 1.125rem;
-    color: black;
+    color: $black;
     display: none;
 
     @media only screen and (min-width: $medium) {

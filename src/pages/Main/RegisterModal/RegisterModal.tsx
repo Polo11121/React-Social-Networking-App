@@ -5,6 +5,7 @@ import { useForm } from 'shared/hooks/useForm';
 import { GenderRadioButtons } from 'pages/Main/RegisterModal/GenderRadioButtons/GenderRadioButtons';
 import { BirthDatePicker } from 'shared/fixtures/BirthDatePicker/BirthDatePicker';
 import { RegisterSchema } from 'pages/Main/RegisterModal/RegisterSchema';
+import { customToast } from 'shared/hooks/customToast';
 import { Button, Input } from 'components';
 import ClearIcon from '@mui/icons-material/Clear';
 import './RegisterModal.scss';
@@ -16,7 +17,15 @@ export const RegisterModal = ({
   isOpen: boolean;
   onClose: () => void;
 }) => {
-  const { mutate, error, isLoading } = useRegister();
+  const onSuccess = () => {
+    onClose();
+    customToast({
+      text: 'Utworzono konto. Aby zakończyć proces rejestracji, potwierdź swoje konto linkiem aktywacyjnym wysłanym na podany adres e-mail',
+      autoClose: 5000,
+    });
+  };
+
+  const { mutate, error, isLoading } = useRegister(onSuccess);
 
   const formik = useForm({
     initialValues: {

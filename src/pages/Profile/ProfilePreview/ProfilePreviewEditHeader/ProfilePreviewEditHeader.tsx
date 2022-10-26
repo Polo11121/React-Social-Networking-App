@@ -1,22 +1,22 @@
 import { Button } from 'components';
-import './EditHeader.scss';
+import './ProfilePreviewEditHeader.scss';
 
-export type EditHeaderPropsType = {
+export type ProfilePreviewEditHeaderPropsType = {
   text: string;
   onSubmit: () => void;
   onClose: () => void;
   isDisabled?: boolean;
 };
 
-export const EditHeader = ({
+export const ProfilePreviewEditHeader = ({
   text,
   onSubmit,
   onClose,
   isDisabled = false,
-}: EditHeaderPropsType) => (
-  <div className="edit-header">
+}: ProfilePreviewEditHeaderPropsType) => (
+  <div className="profile-preview-edit-header">
     <p>{text}</p>
-    <div className="edit-header__buttons">
+    <div className="profile-preview-edit-header__buttons">
       <Button onClick={onClose} text="Anuluj" buttonStyleType="mandy" />
       <Button
         isDisabled={isDisabled}

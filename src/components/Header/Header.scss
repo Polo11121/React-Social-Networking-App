@@ -1,11 +1,11 @@
 @import 'styles/styles';
 
 .header {
-  position: sticky;
-  top: 0;
   display: flex;
+  position: sticky;
   align-items: center;
   justify-content: space-between;
+  top: 0;
   padding: 0 2rem;
   background-color: $white;
   height: 4rem;
@@ -26,5 +26,9 @@
     @media only screen and (min-width: $medium) {
       display: flex;
     }
+  }
+
+  &--inactive {
+    pointer-events: none;
   }
 }

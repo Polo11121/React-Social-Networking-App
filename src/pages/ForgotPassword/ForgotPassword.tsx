@@ -1,7 +1,7 @@
 import { useForgotPassword } from 'api/useForgotPassword';
+import { LoginFormHeader } from 'shared/fixtures/LoginFormHeader/LoginFormHeader';
 import { ForgotPasswordSchema } from 'pages/ForgotPassword/ForgotPasswordSchema';
-import { Button, Header, Input } from 'components';
-import { LoginForm } from 'shared/fixtures/LoginForm/LoginForm';
+import { Button, Input } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'shared/hooks/useForm';
 import './ForgotPassword.scss';
@@ -12,7 +12,7 @@ export const ForgotPassword = () => {
 
   const formik = useForm({
     initialValues: {
-      emailAddress: '',
+      email: '',
     },
     validationSchema: ForgotPasswordSchema,
     mutate,
@@ -22,19 +22,7 @@ export const ForgotPassword = () => {
 
   return (
     <div className="forgot-password">
-      <Header>
-        <div className="forgot-password__login-form">
-          <LoginForm isInverse />
-        </div>
-        <div className="forgot-password__login-button">
-          <Button
-            size="big"
-            buttonStyleType="primary"
-            text="Zaloguj"
-            onClick={navigateToMainPage}
-          />
-        </div>
-      </Header>
+      <LoginFormHeader />
       <div className="forgot-password__container">
         <main className="forgot-password__content">
           <h1 className="forgot-password__title">Znajdź swoje konto</h1>
@@ -43,17 +31,16 @@ export const ForgotPassword = () => {
             onSubmit={formik.handleSubmit}
           >
             <p className="forgot-password__text">
-              Wprowadź adres e-mail lub numer telefonu komórkowego, aby wyszukać
-              swoje konto.
+              Wprowadź adres e-mail, aby wyszukać swoje konto.
             </p>
             <Input
               style={{ margin: '0 1rem ' }}
               placeholder="Adres e-mail"
-              name="emailAddress"
-              error={formik.isValid ? error : formik.errors.emailAddress}
+              name="email"
+              error={formik.isValid ? error : formik.errors.email}
               type="text"
               onChange={formik.handleChange}
-              value={formik.values.emailAddress}
+              value={formik.values.email}
             />
             <div className="forgot-password__buttons">
               <div style={{ padding: '1rem', display: 'flex' }}>
@@ -65,7 +52,6 @@ export const ForgotPassword = () => {
                   style={{ marginLeft: '1rem' }}
                 />
                 <Button
-                  onClick={() => {}}
                   size="big"
                   buttonStyleType="primary"
                   text="Szukaj"

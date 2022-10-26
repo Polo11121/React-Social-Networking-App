@@ -1,5 +1,5 @@
-import { useApiQuery } from 'api/useApiQuery';
 import { UserType } from 'shared/types/responseTypes';
+import { useApiQuery } from 'api/useApiQuery';
 
 export const useGetUser = (userId: string | null) =>
   useApiQuery<UserType>({

@@ -4,7 +4,7 @@ import { HeaderNavigation } from 'shared/fixtures/HeaderNavigation/HeaderNavigat
 import { UsersSearch } from 'shared/fixtures/UsersSearch/UsersSearch';
 
 export const AppTopHeader = () => (
-  <Header search={<UsersSearch />}>
+  <Header isLink={false} search={<UsersSearch />}>
     <HeaderNavigation />
     <AvatarDropdown />
   </Header>

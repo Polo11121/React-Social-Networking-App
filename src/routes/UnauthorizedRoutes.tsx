@@ -1,11 +1,10 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { Main } from 'pages/Main/Main';
-import { ForgotPassword } from 'pages/ForgotPassword/ForgotPassword';
+import { unauthorizedRoutes } from 'routes/routes';
+import { Route, Routes } from 'react-router-dom';
 
 export const UnauthorizedRoutes = () => (
   <Routes>
-    <Route path="/" element={<Main />} />
-    <Route path="/forgotPassword" element={<ForgotPassword />} />
-    <Route path="*" element={<Navigate to="/" replace />} />
+    {unauthorizedRoutes.map(({ path, Component }) => (
+      <Route key={path} path={path} element={Component} />
+    ))}
   </Routes>
 );

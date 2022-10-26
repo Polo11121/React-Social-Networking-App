@@ -4,6 +4,10 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { AuthContextProvider } from 'contexts/AuthContext';
+import { ErrorFallback } from 'pages/ErrorFallback/ErrorFallback';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 import './index.scss';
 
@@ -16,7 +20,10 @@ render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <AuthContextProvider>
-          <App />
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <App />
+            <ToastContainer />
+          </ErrorBoundary>
         </AuthContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />

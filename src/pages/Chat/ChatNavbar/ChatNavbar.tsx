@@ -13,7 +13,7 @@ export const ChatNavbar = () => {
   const { value, changeValueHandler } = useSearch();
 
   return (
-    <div className={classNames('chat-navbar', { 'chat-navbar--hide': id })}>
+    <div className={classNames('chat-navbar', { 'chat-navbar--hidden': id })}>
       <div className="chat-navbar__header">
         <h2>Czaty</h2>
         <Search

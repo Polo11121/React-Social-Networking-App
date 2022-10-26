@@ -2,12 +2,14 @@ import { useInfiniteQuery, useQueryClient } from 'react-query';
 import { MessageType } from 'shared/types/responseTypes';
 import axios from 'axios';
 
-type GetMessagesResponseType = { hasNextPage: boolean; data: MessageType[] };
+type UseGetMessagesResponseType = { hasNextPage: boolean; data: MessageType[] };
 
 export const useGetMessages = (receiverId: string | null) => {
   const queryClient = useQueryClient();
 
-  const getMessages = ({ pageParam = 1 }): Promise<GetMessagesResponseType> =>
+  const getMessages = ({
+    pageParam = 1,
+  }): Promise<UseGetMessagesResponseType> =>
     axios
       .get(`/api/v1/messages/${receiverId}?page=${pageParam}&limit=20`)
       .then((res) => res.data);
@@ -23,7 +25,7 @@ export const useGetMessages = (receiverId: string | null) => {
     },
     onSuccess,
     enabled: Boolean(receiverId),
-    refetchOnMount: false,
+    cacheTime: 0,
   });
 
   return {

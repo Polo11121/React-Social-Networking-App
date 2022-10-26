@@ -4,7 +4,7 @@ import { IconButton, Modal } from '@mui/material';
 import { HobbiesList } from 'pages/Profile/ProfileInfo/AboutMe/ProfileHobbies/HobbiesModal/HobbiesList/HobbiesList';
 import { AddHobby } from 'pages/Profile/ProfileInfo/AboutMe/ProfileHobbies/HobbiesModal/AddHobby/AddHobby';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
-import { useUpdateMe } from 'api/useUpdateMe';
+import { useUpdateUser } from 'api/useUpdateUser';
 import { Button } from 'components';
 import { areEqual } from 'shared/functions';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -43,12 +43,13 @@ export const HobbiesModal = ({
   const {
     user: { hobbies: userHobbies },
   } = useProfileInfo();
-  const { mutate, isLoading } = useUpdateMe({
+  const { mutate, isLoading } = useUpdateUser({
     afterUpdate: onClose,
     toastText: 'Pomyślnie zaktualizowano hobby',
   });
 
   const checkedHobbies = hobbies.filter(({ checked }) => checked);
+
   const isButtonDisabled =
     (hobbies.every(({ checked }) => !checked) && !userHobbies.length) ||
     isLoading ||
@@ -56,6 +57,11 @@ export const HobbiesModal = ({
       userHobbies.map(({ text }) => text),
       checkedHobbies.map(({ text }) => text)
     );
+
+  const updateHobbiesHandler = () =>
+    mutate({
+      hobbies: checkedHobbies.map(({ text, icon }) => ({ text, icon })),
+    });
 
   useEffect(() => {
     setHobbies((prevState) =>
@@ -66,11 +72,6 @@ export const HobbiesModal = ({
       )
     );
   }, [userHobbies]);
-
-  const updateHobbiesHandler = () =>
-    mutate({
-      hobbies: checkedHobbies.map(({ text, icon }) => ({ text, icon })),
-    });
 
   return (
     <Modal

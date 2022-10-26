@@ -67,7 +67,7 @@ export const ProfileDetails = () => {
     { displayValue: childCity?.city, Icon: PlaceIcon, displayText: 'Z' },
   ];
 
-  const goToProfileDetails = () => navigate(`/profile/${_id}/details`);
+  const navigateToProfileDetails = () => navigate(`/profile/${_id}/details`);
 
   return (
     <>
@@ -86,7 +86,7 @@ export const ProfileDetails = () => {
       )}
       {isOwner && (
         <Button
-          onClick={goToProfileDetails}
+          onClick={navigateToProfileDetails}
           buttonStyleType="secondary"
           text="Edytuj szczegóły"
           fullWidth

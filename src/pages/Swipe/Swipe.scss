@@ -1,0 +1,78 @@
+@import 'styles/styles';
+
+.swipe {
+  overflow-x: hidden;
+  @include pageLayout;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 auto;
+
+  &__cards {
+    position: relative;
+    height: 34.375rem;
+    width: 18.75rem;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 0.5rem;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  &__button {
+    background-color: white !important;
+  }
+
+  &__icon {
+    font-size: 3.125rem !important;
+
+    &--left {
+      color: $mandy !important;
+      transition: rotate 0.8s ease-in-out !important;
+
+      &:hover {
+        rotate: 360deg !important;
+      }
+    }
+    &--refresh {
+      color: $secondary !important;
+      transition: rotate 0.2s ease-in-out !important;
+
+      &:hover {
+        rotate: 120deg !important;
+      }
+    }
+    &--right {
+      color: $primary !important;
+      transition: transform 0.2s ease-in-out !important;
+
+      &:hover {
+        transform: scale(1.2) !important;
+      }
+    }
+  }
+
+  &__empty {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $primary !important;
+  }
+
+  &__message {
+    color: $primary;
+    text-align: center;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+}

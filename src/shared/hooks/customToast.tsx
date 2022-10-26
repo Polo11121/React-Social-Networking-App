@@ -1,7 +1,8 @@
-import { toast, ToastPosition } from 'react-toastify';
+import { CSSProperties } from 'react';
+import { toast, ToastPosition, TypeOptions } from 'react-toastify';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-type CustomToastType = {
+type CustomToastPropsType = {
   text: string;
   position?: ToastPosition;
   autoClose?: number;
@@ -12,12 +13,16 @@ type CustomToastType = {
   progress?: string | number;
   closeButton?: boolean;
   isSuccess?: boolean;
+  style?: CSSProperties;
   pauseOnFocusLoss?: boolean;
+  type?: TypeOptions;
 };
 
 export const customToast = ({
   text,
   progress,
+  style,
+  type = 'default',
   position = 'top-right',
   autoClose = 2000,
   hideProgressBar = true,
@@ -26,9 +31,9 @@ export const customToast = ({
   closeButton = false,
   draggable = true,
   pauseOnFocusLoss = false,
-}: CustomToastType) =>
+}: CustomToastPropsType) =>
   toast(text, {
-    type: 'default',
+    type,
     position,
     icon: <CheckCircleIcon />,
     closeButton,
@@ -40,6 +45,7 @@ export const customToast = ({
     draggable,
     progress,
     style: {
+      ...style,
       color: '#006f71',
     },
   });

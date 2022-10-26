@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ChatContentHeader } from 'pages/Chat/ChatContent/ChatContentHeader/ChatContentHeader';
 import { ChatContentSendMessage } from 'pages/Chat/ChatContent/ChatContentSendMessage/ChatContentSendMessage';
 import { ChatContentMessages } from 'pages/Chat/ChatContent/ChatContentMessages/ChatContentMessages';
-import { useGetMessages } from 'api/userGetMessages';
+import { useGetMessages } from 'api/useGetMessages';
 import { PhotosModal } from 'shared/fixtures/PhotosModal/PhotosModal';
 import { PhotosModalType } from 'shared/types/repeatableTypes';
 import { useGetLastMessages } from 'api/useGetLastMessages';

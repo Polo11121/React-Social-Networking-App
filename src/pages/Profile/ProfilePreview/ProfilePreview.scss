@@ -29,6 +29,23 @@
     }
   }
 
+  &__back-button {
+    position: absolute !important;
+    top: 1.875rem !important;
+    left: 1.875rem !important;
+    display: flex;
+    background-color: $white;
+    border-radius: 50%;
+    text-decoration: none !important;
+    color: inherit !important;
+
+    @media only screen and (min-width: $large) {
+      display: none !important;
+    }
+
+    color: $primary !important;
+  }
+
   &__background-image {
     border-radius: inherit;
     width: 100%;
@@ -80,11 +97,11 @@
   &__photo-button {
     position: absolute;
     z-index: $z-index-normal-priority;
-    left: 13.5rem;
+    left: 12rem;
     top: 7.5rem;
 
     @media only screen and (min-width: $medium) {
-      left: 8.75rem;
+      left: 8.5rem;
       top: 5.5rem;
     }
   }

@@ -1,3 +1,4 @@
+/* eslint-disable no-promise-executor-return */
 export const getTrimmedData = (obj: Record<any, any>) => {
   if (obj && typeof obj === 'object') {
     // eslint-disable-next-line array-callback-return
@@ -84,3 +85,7 @@ export const capitalizeFirstLetter = (word?: string) =>
 
 export const getFullName = (name?: string, surname?: string) =>
   `${name} ${surname}`;
+
+export const timeout = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};

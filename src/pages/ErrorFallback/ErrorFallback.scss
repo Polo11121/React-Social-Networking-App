@@ -1,0 +1,24 @@
+@import 'styles/styles';
+
+.error-fallback {
+  background-color: $background;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  &__message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $primary !important;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+}

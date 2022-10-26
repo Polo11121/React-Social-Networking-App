@@ -1,0 +1,46 @@
+@import 'styles/styles';
+
+.profile-details-change-email-modal {
+  &__container {
+    background-color: $white;
+    @include cardBoxShadow;
+    width: 100vw;
+
+    @media only screen and (min-width: $large) {
+      width: 40vw;
+      border-radius: 0.5rem;
+    }
+
+    @media only screen and (min-width: $large) and (max-width: $extraLarge) {
+      width: 60vw;
+    }
+  }
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  &__text {
+    @include bottomLine;
+
+    &--bold {
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0 1rem;
+    @include topLine;
+  }
+}

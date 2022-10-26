@@ -1,12 +1,11 @@
-import { useApiCrud } from 'api/useApiCrud';
 import { customToast } from 'shared/hooks/customToast';
+import { useApiCrud } from 'api/useApiCrud';
 
 export const useChangePassword = () => {
-  const onSuccess = () =>
-    customToast({ text: 'Pomyślnie zaktualizowano hasło' });
+  const onSuccess = () => customToast({ text: 'Pomyślnie zmieniono hasło' });
 
   return useApiCrud({
-    url: 'users/updateMyPassword',
+    url: 'users/updatePassword',
     method: 'patch',
     onSuccess,
   });

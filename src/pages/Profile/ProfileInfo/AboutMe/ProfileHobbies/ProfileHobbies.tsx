@@ -30,7 +30,6 @@ export const ProfileHobbies = () => {
           >
             {hobbies?.map(({ icon, text, _id }) => (
               <Chip
-                className="about-me__chip"
                 icon={
                   <HobbiesIcon className="about-me__chip" iconName={icon} />
                 }

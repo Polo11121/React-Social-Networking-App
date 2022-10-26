@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { Profile } from 'pages/Profile/Profile';
-import classNames from 'classnames';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
+import classNames from 'classnames';
 import './SuggestionsContent.scss';
 
 export const SuggestionsContent = () => {
@@ -9,7 +9,9 @@ export const SuggestionsContent = () => {
 
   return (
     <div
-      className={classNames('chat-content', { 'chat-content--hidden': !id })}
+      className={classNames('suggestions-content', {
+        'suggestions-content--hidden': !id,
+      })}
     >
       {id ? (
         <Profile />

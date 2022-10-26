@@ -64,7 +64,10 @@ export const AuthContextProvider = ({
             queryClient.invalidateQueries('unreadMessages');
           } else {
             queryClient.invalidateQueries('unreadMessages');
-            customToast({ text });
+            customToast({
+              text,
+              style: { whiteSpace: 'nowrap', width: 'fit-content' },
+            });
           }
         }
       );
@@ -83,6 +86,7 @@ export const AuthContextProvider = ({
           } else {
             queryClient.invalidateQueries('newMatches');
           }
+
           if (text) {
             customToast({ text });
           }

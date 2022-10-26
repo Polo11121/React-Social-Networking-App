@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-type UseApiQueryType = {
+type UseApiQueryPropsType = {
   endpoint: string;
   queryKey: string | (string | null)[];
   enabled?: boolean;
@@ -18,9 +18,9 @@ export const useApiQuery = <T>({
   onSuccess,
   enabled = true,
   defaultZero = false,
+  refetchOnMount = true,
   refetchOnWindowFocus = true,
-  refetchOnMount = false,
-}: UseApiQueryType) => {
+}: UseApiQueryPropsType) => {
   const useApi = (): Promise<T> =>
     axios.get(`/api/v1/${endpoint}`).then((res) => res.data);
 

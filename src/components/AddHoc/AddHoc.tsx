@@ -92,12 +92,12 @@ export const AddHoc = ({
         onClose={closeModalHandler}
       >
         <MenuItem onClick={showAdHocHandler}>
-          <EditIcon className="post__icon" />
+          <EditIcon className="ad-hoc__menu-icon" />
           <ListItemText>Edytuj</ListItemText>
         </MenuItem>
         {!hideDelete && (
           <MenuItem onClick={deleteHandler}>
-            <DeleteIcon className="post__icon" />
+            <DeleteIcon className="ad-hoc__menu-icon" />
             <ListItemText>Usuń</ListItemText>
           </MenuItem>
         )}

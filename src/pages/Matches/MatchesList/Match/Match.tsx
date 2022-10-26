@@ -20,7 +20,7 @@ export const Match = ({
   profileImage,
   id,
 }: MatchPropsType) => {
-  const { matchButtons, matchStatus, isMatch, goToProfile } =
+  const { matchButtons, matchStatus, isMatch, navigateToProfile } =
     useMatchFunctionality({
       userId: id,
       userStatus: status,
@@ -28,7 +28,7 @@ export const Match = ({
 
   return (
     <div className="match">
-      <div onClick={goToProfile} className="match__info">
+      <div onClick={navigateToProfile} className="match__info">
         <Avatar
           className="match__avatar"
           src={profileImage}
