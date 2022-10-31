@@ -69,7 +69,7 @@ export const ChatContent = () => {
       ) : (
         <div className="chat-content__message">
           <ChatOutlinedIcon style={{ fontSize: '8rem' }} />
-          <h2>Wybierz czat lub rozpocznij nową konwersację</h2>
+          <h2>Wybierz czat lub rozpocznij nową konwersację.</h2>
         </div>
       )}
       {messagePhotos.selectedPhoto !== null && (

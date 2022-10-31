@@ -10,12 +10,14 @@ type BirthDatePickerPropsType = {
   value: Date | null;
   onChange: (value: Date | null) => {};
   error?: string;
+  testId?: string;
 };
 
 export const BirthDatePicker = ({
   value,
   onChange,
   error,
+  testId,
 }: BirthDatePickerPropsType) => (
   <>
     <p style={{ marginBottom: '0.5rem' }}>Data urodzenia</p>
@@ -25,6 +27,7 @@ export const BirthDatePicker = ({
         value={value}
         renderInput={(params) => (
           <TextField
+            id={testId}
             {...params}
             error={Boolean(error)}
             style={{ marginBottom: '1rem', borderColor: 'red' }}

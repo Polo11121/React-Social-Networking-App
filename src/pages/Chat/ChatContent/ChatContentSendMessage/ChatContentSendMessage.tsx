@@ -50,6 +50,7 @@ export const ChatContentSendMessage = ({
         tooltipText="Dodaj zdjęcie"
         onChooseFile={changPhotoHandler}
         isMultiple
+        testId="add-message-photo"
       />
       <Menu
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
@@ -65,6 +66,7 @@ export const ChatContentSendMessage = ({
         onChange={onChangeMessageText}
         hideIcon
         placeholder="Aa"
+        testId="chat-send-message-input"
       >
         {messagePhotos && (
           <>
@@ -84,7 +86,11 @@ export const ChatContentSendMessage = ({
           </>
         )}
       </Search>
-      <IconButton type="submit" disabled={isDisabled}>
+      <IconButton
+        type="submit"
+        disabled={isDisabled}
+        data-testid="chat-send-message-button"
+      >
         <SendIcon
           className={classNames({
             'chat-content-send-message--active': !isDisabled,

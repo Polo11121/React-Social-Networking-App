@@ -16,6 +16,7 @@ export const Filters = () => {
         Icon={<FilterAltIcon />}
         text="Filtry"
         onClick={changeModalVisibilityHandler}
+        testId="open-filters-modal-button"
       />
       {isFiltersModalOpen && (
         <FiltersModal

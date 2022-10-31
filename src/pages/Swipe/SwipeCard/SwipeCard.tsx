@@ -20,7 +20,11 @@ export const SwipeCard = forwardRef<HTMLDivElement, SwipeCardPropsType>(
     const { hobbies, name, description, birthDate, profileImage } = user;
 
     return (
-      <div className="swipe-card" style={{ zIndex: 1000 - index }}>
+      <div
+        className="swipe-card"
+        style={{ zIndex: 1000 - index }}
+        data-testid={`swipe-card-${name}`}
+      >
         <TinderCard
           // @ts-ignore
           ref={ref}

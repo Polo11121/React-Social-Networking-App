@@ -5,13 +5,13 @@ context('Login', () => {
     cy.visit('http://localhost:3000/');
   });
 
-  it('should render form with two input and submit button', () => {
+  it('should display form with two input and submit button', () => {
     cy.get('input[placeholder*="E-mail"]');
     cy.get('input[placeholder*="Hasło"]');
     cy.get('button[type=submit]');
   });
 
-  it('should display errors after submitting with empty values', () => {
+  it('should display error after submitting with empty values', () => {
     cy.get('button[type=submit]').click();
 
     cy.contains('p', 'Nieprawidłowy adres e-mail');
@@ -37,11 +37,13 @@ context('Login', () => {
   });
 
   it('should login user after submitting with correct values', () => {
-    cy.get('input[placeholder*="E-mail"]').type('eloelo3200@wp.pl');
-    cy.get('input[placeholder*="Hasło"]').type('eloelo3200');
+    cy.fixture('user1.json').then(({ login, password }) => {
+      cy.get('input[placeholder*="E-mail"]').type(login);
+      cy.get('input[placeholder*="Hasło"]').type(password);
 
-    cy.get('button[type=submit]').click();
+      cy.get('button[type=submit]').click();
+    });
 
-    cy.contains('p', 'Michał Jasiński');
+    cy.contains('test');
   });
 });

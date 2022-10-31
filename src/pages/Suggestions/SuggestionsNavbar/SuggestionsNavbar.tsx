@@ -12,7 +12,7 @@ export const SuggestionsNavbar = () => {
   const [randomSeed] = useState(Math.random());
   const { id } = useParams();
   const {
-    userInfo: { filters, home, interestedGenders: userInterestedGenders },
+    userInfo: { filters },
   } = useAuthContext();
 
   const {
@@ -23,8 +23,8 @@ export const SuggestionsNavbar = () => {
   } = useGetUsers({
     filters: {
       ...filters,
-      interestedCity: filters?.interestedCity || home,
-      interestedGenders: filters?.interestedGenders || userInterestedGenders,
+      interestedCity: filters?.interestedCity,
+      interestedGenders: filters?.interestedGenders,
     },
     randomSeed,
   });

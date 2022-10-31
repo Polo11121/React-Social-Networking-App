@@ -34,6 +34,7 @@ export const UsersSearch = () => {
           placeholder="Znajdź użytkownika"
           type="text"
           className="users-search__input"
+          data-testid="users-header-search-input"
         />
         {isLoading && <Spinner size={20} />}
       </div>
@@ -44,6 +45,7 @@ export const UsersSearch = () => {
               key={_id}
               onClick={() => navigateToUser(_id)}
               className="users-search__hint"
+              data-testid={`users-header-search-${name}-${surname}-hint`}
             >
               <img
                 src={profileImage}

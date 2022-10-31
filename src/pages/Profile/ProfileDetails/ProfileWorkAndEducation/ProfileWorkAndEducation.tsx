@@ -35,6 +35,7 @@ export const ProfileWorkAndEducation = () => {
             value={value}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
+            testId={name}
           >
             <Input
               style={{ margin: '0' }}
@@ -42,6 +43,7 @@ export const ProfileWorkAndEducation = () => {
               value={value}
               onChange={changeHandler}
               name={name}
+              testId={`addHoc-${name}-input`}
             />
           </AddHoc>
         )

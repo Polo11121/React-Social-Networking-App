@@ -43,9 +43,10 @@ export const ProfileHobbies = () => {
       )}
       {isOwner && (
         <Button
+          testId="edit-hobby-button"
           onClick={modalVisibilityHandler}
           buttonStyleType="secondary"
-          text={`${hobbies ? 'Edytuj' : 'Dodaj'} hobby`}
+          text={`${hobbies?.length ? 'Edytuj' : 'Dodaj'} hobby`}
           fullWidth
         />
       )}

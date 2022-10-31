@@ -10,7 +10,7 @@ import './ChangeEmail.scss';
 export const ChangeEmail = () => {
   const { token } = useParams();
   const navigate = useNavigate();
-  
+
   const { mutateAsync, isLoading, status, error } = useConfirmEmail(token);
 
   useEffect(() => {

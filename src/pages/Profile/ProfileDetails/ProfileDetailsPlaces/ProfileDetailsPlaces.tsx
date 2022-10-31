@@ -28,17 +28,23 @@ export const ProfileDetailsPlaces = () => {
             displayOnly={!isOwner}
             key={name}
             placeholder={placeholder}
-            isDisabled={isLoading || value === initialValue}
+            isDisabled={
+              isLoading ||
+              value?.label === // @ts-ignore
+                (initialValue?.label || initialValue?.city)
+            }
             onSubmit={submitHandler}
             onDelete={deleteHandler}
             onClose={closeHandler}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
+            testId={name}
           >
             <CitySelect
               value={value}
               placeholder={capitalizeFirstLetter(placeholder)}
               onChange={changeHandler}
+              testId={`addHoc-${name}-select`}
             />
           </AddHoc>
         )

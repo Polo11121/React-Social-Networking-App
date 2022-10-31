@@ -15,6 +15,7 @@ export const HobbiesList = ({
   <div className="hobbies-list">
     {hobbies?.map(({ icon, text, id, deletable, checked }) => (
       <Chip
+        data-testid={`hobby-chip-${text}`}
         className={classNames({
           'hobbies-list__chip--checked': checked,
         })}

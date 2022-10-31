@@ -49,6 +49,7 @@ export const ProfileDetailsNavigation = () => {
               })
             }
             to={link}
+            data-testid={`details-${link}-link`}
           >
             {label}
           </NavLink>

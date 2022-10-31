@@ -64,13 +64,23 @@ export const HobbiesModal = ({
     });
 
   useEffect(() => {
-    setHobbies((prevState) =>
-      prevState.map((hobby) =>
+    setHobbies((prevState) => [
+      ...prevState.map((hobby) =>
         userHobbies.map(({ text }) => text).includes(hobby.text)
           ? { ...hobby, checked: true }
           : hobby
-      )
-    );
+      ),
+      ...userHobbies
+        .filter(
+          (hobby) => !prevState.map(({ text }) => text).includes(hobby.text)
+        )
+        .map(({ _id, text, icon }) => ({
+          text,
+          icon,
+          id: _id,
+          checked: true,
+        })),
+    ]);
   }, [userHobbies]);
 
   return (
@@ -82,7 +92,7 @@ export const HobbiesModal = ({
       }}
       onClose={onClose}
     >
-      <div className="hobbies-modal">
+      <div className="hobbies-modal" data-testid="hobbies-modal">
         <div className="hobbies-modal__content">
           <IconButton className="hobbies-modal__exit-button" onClick={onClose}>
             <ClearIcon />
@@ -105,12 +115,18 @@ export const HobbiesModal = ({
             />
           </div>
           <div className="hobbies-modal__buttons">
-            <Button onClick={onClose} text="Anuluj" buttonStyleType="mandy" />
             <Button
-              text="Dodaj hobby"
+              onClick={onClose}
+              text="Anuluj"
+              buttonStyleType="mandy"
+              testId="cancel-hobby-modal-button"
+            />
+            <Button
+              text={`${userHobbies.length ? 'Edytuj' : 'Dodaj'} hobby`}
               onClick={updateHobbiesHandler}
               isDisabled={isButtonDisabled}
               buttonStyleType="primary"
+              testId="submit-hobby-modal-button"
             />
           </div>
         </div>

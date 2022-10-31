@@ -19,24 +19,21 @@ export const useFilters = (afterUpdate: () => void) => {
   });
 
   const {
-    userInfo: { filters, interestedGenders: userInterestedGenders, home },
+    userInfo: { filters },
   } = useAuthContext();
 
   const initialValues: InitialValuesType = {
-    interestedGenders: (filters?.interestedGenders ||
-      userInterestedGenders) && {
-      value: filters?.interestedGenders || userInterestedGenders,
-      label: formatInterestedGenders(
-        filters?.interestedGenders || userInterestedGenders
-      ),
+    interestedGenders: filters?.interestedGenders && {
+      value: filters?.interestedGenders,
+      label: formatInterestedGenders(filters?.interestedGenders),
     },
     interestedAge: filters?.interestedAge && {
       value: filters.interestedAge,
       label: filters.interestedAge,
     },
-    interestedCity: (filters?.interestedCity || home?._id) && {
-      value: filters?.interestedCity._id || home?._id,
-      label: filters?.interestedCity.city || home?.city,
+    interestedCity: filters?.interestedCity && {
+      value: filters?.interestedCity._id,
+      label: filters?.interestedCity.city,
     },
     interestedCityMaxDistance: filters?.interestedCityMaxDistance && {
       value: `${filters.interestedCityMaxDistance}`,

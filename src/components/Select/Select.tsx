@@ -13,6 +13,7 @@ export type CustomSelectPropsType = {
   onInputChange?: (newValue: string, actionMeta: InputActionMeta) => void;
   isLoading?: boolean;
   noOptionsMessage?: (obj: { inputValue: string }) => React.ReactNode;
+  isClearable?: boolean;
 };
 
 export const CustomSelect = ({
@@ -26,6 +27,7 @@ export const CustomSelect = ({
   onInputChange,
   isLoading,
   noOptionsMessage,
+  isClearable = false,
 }: CustomSelectPropsType) => (
   <Select
     styles={{
@@ -44,5 +46,6 @@ export const CustomSelect = ({
     onInputChange={onInputChange}
     isLoading={isLoading}
     noOptionsMessage={noOptionsMessage}
+    isClearable={isClearable}
   />
 );

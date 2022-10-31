@@ -39,6 +39,7 @@ export const ChatContentMessage = ({
       className={classNames('chat-content-message', {
         'chat-content-message--owner': isOwner,
       })}
+      data-testid={`chat-message-${message}`}
     >
       {!isOwner && (
         <div className="chat-content-message__user">

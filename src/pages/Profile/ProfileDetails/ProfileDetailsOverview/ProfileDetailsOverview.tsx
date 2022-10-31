@@ -33,6 +33,7 @@ export const ProfileDetailsOverview = () => {
             value={value}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
+            testId={name}
           >
             <Input
               style={{ margin: '0' }}
@@ -40,6 +41,7 @@ export const ProfileDetailsOverview = () => {
               value={value as string}
               onChange={changeHandler}
               name={name}
+              testId={`addHoc-${name}-input`}
             />
           </AddHoc>
         )
@@ -64,17 +66,19 @@ export const ProfileDetailsOverview = () => {
             key={name}
             placeholder={placeholder}
             value={value?.label}
-            isDisabled={isLoading || value === initialValue}
+            isDisabled={isLoading || value?.label === initialValue?.label}
             onSubmit={submitHandler}
             onDelete={deleteHandler}
             onClose={closeHandler}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
+            testId={name}
           >
             <CitySelect
               value={value}
               placeholder={capitalizeFirstLetter(placeholder)}
               onChange={changeHandler}
+              testId={`addHoc-${name}-select`}
             />
           </AddHoc>
         )

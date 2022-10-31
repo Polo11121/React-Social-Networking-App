@@ -14,6 +14,7 @@ export type InputPropsType = {
   isDisabled?: boolean;
   error?: string;
   tooltipError?: boolean;
+  testId?: string;
 };
 
 export const Input = ({
@@ -23,6 +24,7 @@ export const Input = ({
   name,
   error,
   style,
+  testId,
   type = 'text',
   tooltipError = false,
   isDisabled = false,
@@ -46,6 +48,7 @@ export const Input = ({
         onChange={onChange}
         value={value}
         disabled={isDisabled}
+        data-testid={testId}
       />
       <WarningIcon
         style={{

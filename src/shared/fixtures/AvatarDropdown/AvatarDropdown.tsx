@@ -44,6 +44,7 @@ export const AvatarDropdown = () => {
         }}
         disableRipple
         onClick={openHandler}
+        data-testid="user-header-avatar"
       >
         <Avatar src={userInfo.profileImage} />
         <p className="avatar-dropdown__username">
@@ -51,14 +52,20 @@ export const AvatarDropdown = () => {
         </p>
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={closeHandler}>
-        <MenuItem onClick={navigateToMyProfile}>
+        <MenuItem
+          onClick={navigateToMyProfile}
+          data-testid="user-header-profile-button"
+        >
           <Avatar
             src={userInfo.profileImage}
             className="avatar-dropdown__avatar"
           />
           <ListItemText>Mój Profil</ListItemText>
         </MenuItem>
-        <MenuItem onClick={logoutHandler}>
+        <MenuItem
+          onClick={logoutHandler}
+          data-testid="user-header-logout-button"
+        >
           <div className="avatar-dropdown__icon-overlay">
             <LogoutIcon
               style={{ color: 'white' }}

@@ -196,8 +196,8 @@ export const useProfileDetails = () => {
         formik.setFieldValue('childCity', formatCity(childCity));
       },
       deleteHandler: () => {
-        mutateAsync({ childCity: '' });
-        formik.setFieldValue('childCity', '');
+        mutateAsync({ childCity: null });
+        formik.setFieldValue('childCity', null);
       },
     },
     phoneNumber: {

@@ -8,12 +8,14 @@ export type ImagePickerPropsType = {
   text?: string;
   tooltipText?: string;
   isMultiple?: boolean;
+  testId?: string;
 };
 
 export const ImagePicker = ({
   onChooseFile,
   text,
   tooltipText,
+  testId,
   isMultiple = false,
 }: ImagePickerPropsType) => {
   const hiddenFileInput = useRef<null | HTMLInputElement>(null);
@@ -42,11 +44,12 @@ export const ImagePicker = ({
         {text}
       </button>
       <input
+        data-testid={testId}
         type="file"
         multiple={isMultiple}
         ref={hiddenFileInput}
         onChange={changeHandler}
-        style={{ display: 'none' }}
+        style={{ visibility: 'hidden', width: 0, height: 0 }}
       />
       <Tooltip
         isDisabled={!tooltipText}

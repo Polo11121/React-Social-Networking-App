@@ -8,7 +8,7 @@ import { useGetMatches } from 'api/useGetMatches';
 import './Matches.scss';
 
 export const Matches = () => {
-  const [listOption, setListOption] = useState<MatchesListOptionType>('match');
+  const [listOption, setListOption] = useState<MatchesListOptionType>('all');
   const { value, changeValueHandler } = useSearch();
   const { isLoading } = useGetMatches();
 

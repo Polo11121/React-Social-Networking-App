@@ -75,12 +75,14 @@ export const AddPost = () => {
             isMultiple
             text="Dodaj zdjęcie"
             onChooseFile={changPhotoHandler}
+            testId="add-post-photo"
           />
           <Button
             isDisabled={isButtonDisabled}
             onClick={addPostHandler}
             text="Dodaj przemyślenie"
             buttonStyleType="primary"
+            testId="add-post-button"
           />
         </div>
       </div>

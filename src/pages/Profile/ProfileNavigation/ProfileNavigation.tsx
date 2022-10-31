@@ -30,6 +30,7 @@ export const ProfileNavigation = ({ isVisible }: { isVisible: boolean }) => {
                 })
               }
               to={link}
+              data-testid={`${link}-link`}
             >
               {label}
             </NavLink>

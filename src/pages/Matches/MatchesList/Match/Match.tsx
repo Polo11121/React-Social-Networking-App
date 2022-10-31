@@ -27,8 +27,12 @@ export const Match = ({
     });
 
   return (
-    <div className="match">
-      <div onClick={navigateToProfile} className="match__info">
+    <div className="match" data-testid={`match-${name}-${surname}`}>
+      <div
+        onClick={navigateToProfile}
+        className="match__info"
+        data-testid={`match-${name}-${surname}-link`}
+      >
         <Avatar
           className="match__avatar"
           src={profileImage}
@@ -36,7 +40,7 @@ export const Match = ({
         />
         <h2 className="match__name">{getFullName(name, surname)}</h2>
       </div>
-      <span className={classnames({ match__mandy: isMatch })}>
+      <span className={classnames('match__status', { match__mandy: isMatch })}>
         {matchStatus()}
         {isMatch && <FavoriteIcon className="match__mandy" />}
       </span>

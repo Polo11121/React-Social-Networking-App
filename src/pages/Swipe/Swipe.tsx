@@ -80,7 +80,7 @@ export const Swipe = () => {
 
   const swipeMessage = () => {
     if (!lastDirection) {
-      return 'Przesuń żeby uzyśkać dopasowanie';
+      return 'Przesuń żeby uzyskać dopasowanie';
     }
 
     return `
@@ -124,6 +124,7 @@ Przesunął${gender === 'male' ? 'eś' : 'aś'} w ${
           onClick={() => swipeHandler('left')}
           className="swipe__button"
           disableRipple
+          data-testid="swipe-left-button"
         >
           <CloseIcon className="swipe__icon swipe__icon--left" />
         </IconButton>
@@ -131,6 +132,7 @@ Przesunął${gender === 'male' ? 'eś' : 'aś'} w ${
           className="swipe__button"
           disableRipple
           onClick={goBackHandler}
+          data-testid="swipe-undo-button"
         >
           <RefreshIcon className="swipe__icon swipe__icon--refresh" />
         </IconButton>
@@ -138,6 +140,7 @@ Przesunął${gender === 'male' ? 'eś' : 'aś'} w ${
           onClick={() => swipeHandler('right')}
           className="swipe__button"
           disableRipple
+          data-testid="swipe-right-button"
         >
           <FavoriteIcon className="swipe__icon swipe__icon--right" />
         </IconButton>

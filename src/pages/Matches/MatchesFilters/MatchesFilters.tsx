@@ -41,6 +41,7 @@ export const MatchesFilters = ({
         value={searchTerm}
         onChange={onSearchTermChange}
         placeholder="Znajdź użytkownika"
+        testId="matches-search-input"
       />
       <div className="matches-filters__chips">
         {chipsList.map(({ value, label }) => (
@@ -50,6 +51,7 @@ export const MatchesFilters = ({
             variant="outlined"
             className={getClassnames(value)}
             onClick={() => onListOptionChange(value)}
+            data-testid={`matches-${value}-chip`}
           />
         ))}
       </div>

@@ -36,6 +36,7 @@ export const ProfileDetailsChangeEmail = () => {
           onChange={formik.handleChange}
           value={formik.values.email}
           error={formik.isValid ? error : formik.errors.email}
+          testId="change-email-input"
         />
         <Button
           size="big"
@@ -44,6 +45,7 @@ export const ProfileDetailsChangeEmail = () => {
           text="Zmień e-mail"
           type="submit"
           style={{ margin: '0 auto' }}
+          testId="change-email-submit-button"
         />
       </form>
       {isModalOpen && <ProfileDetailsChangeEmailModal isOpen={isModalOpen} />}
