@@ -24,7 +24,7 @@ export const ProfileDetailsDeleteAccountModal = ({
       }}
       onClose={onClose}
     >
-      <div className="delete-modal">
+      <div className="delete-modal" data-testid="delete-account-modal">
         <IconButton className="delete-modal__exit-button" onClick={onClose}>
           <ClearIcon />
         </IconButton>
@@ -38,7 +38,12 @@ export const ProfileDetailsDeleteAccountModal = ({
             Usunięcie konta jest nieodwracalne i nie można cofnąć tego procesu.
           </p>
           <div className="delete-modal__buttons">
-            <Button onClick={onClose} buttonStyleType="primary" text="Anuluj" />
+            <Button
+              onClick={onClose}
+              buttonStyleType="primary"
+              text="Anuluj"
+              testId="delete-account-modal-cancel-button"
+            />
             <Button
               onClick={deleteAccountHandler}
               isDisabled={isLoading}

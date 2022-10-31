@@ -1,0 +1,112 @@
+[
+  {
+    "name": "workPlace",
+    "addText": "Billenium",
+    "editText": "Zedytowane Billennium"
+  },
+  {
+    "name": "middleSchool",
+    "addText": "Liceum",
+    "editText": "Zedytowane Liceum"
+  },
+  {
+    "name": "upperSchool",
+    "addText": "UWM",
+    "editText": "Zedytowane UWM"
+  },
+  {
+    "name": "home",
+    "addText": "Ostróda",
+    "editText": "Olsztyn",
+    "type": "select"
+  },
+  {
+    "name": "childCity",
+    "addText": "Ostróda",
+    "editText": "Olsztyn",
+    "type": "select",
+    "click": "details-work-and-education-link"
+  },
+  {
+    "name": "workPlace",
+    "addText": "Billenium",
+    "editText": "Zedytowane Billennium"
+  },
+  {
+    "name": "middleSchool",
+    "addText": "Liceum",
+    "editText": "Zedytowane Liceum"
+  },
+  {
+    "name": "upperSchool",
+    "addText": "UWM",
+    "editText": "Zedytowane UWM",
+    "click": "details-places-link"
+  },
+  {
+    "name": "home",
+    "addText": "Ostróda",
+    "editText": "Olsztyn",
+    "type": "select"
+  },
+  {
+    "name": "childCity",
+    "addText": "Ostróda",
+    "editText": "Olsztyn",
+    "type": "select"
+  },
+  {
+    "name": "city-0",
+    "addText": "Ostróda",
+    "editText": "Olsztyn",
+    "type": "select",
+    "click": "details-contact-and-basic-info-link"
+  },
+  {
+    "name": "phoneNumber",
+    "addText": "123456789",
+    "editText": "987654321"
+  },
+  {
+    "name": "address",
+    "addText": "Test",
+    "editText": "Zedytowany test"
+  },
+  {
+    "name": "contactEmail",
+    "addText": "test@wp.pl.pl",
+    "editText": "zedytowanyTest@wp.pl"
+  },
+  {
+    "name": "firstName",
+    "addText": "test2",
+    "editText": "test",
+    "editOnly": true
+  },
+  {
+    "name": "surname",
+    "addText": "test2",
+    "editText": "test",
+    "editOnly": true
+  },
+  {
+    "name": "gender",
+    "addText": "Kobieta",
+    "editText": "Mężczyzna",
+    "type": "select",
+    "editOnly": true
+  },
+  {
+    "name": "birthDate",
+    "addText": "05.05.2000",
+    "editText": "27.10.2000",
+    "type": "select",
+    "editOnly": true
+  },
+  {
+    "name": "interestedGenders",
+    "addText": "Kobiety",
+    "editText": "Mężczyźni",
+    "type": "select"
+  }
+]

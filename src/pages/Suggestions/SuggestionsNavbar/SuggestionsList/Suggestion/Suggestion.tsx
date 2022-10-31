@@ -36,6 +36,7 @@ export const Suggestion = ({
       className={classNames('suggestion', {
         'suggestion--active': id === paramsId,
       })}
+      data-testid={`suggestion-${name}-${surname}-link`}
     >
       <>
         <Avatar className="suggestion__avatar" src={profileImage} />

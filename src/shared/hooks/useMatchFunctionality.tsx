@@ -63,6 +63,7 @@ export const useMatchFunctionality = ({
           Icon={<FavoriteIcon />}
           text="Wyślij prośbę o dopasowanie"
           buttonStyleType="primary"
+          testId="match-request-button"
         />
       );
     }
@@ -71,16 +72,18 @@ export const useMatchFunctionality = ({
       return (
         <>
           <Button
-            onClick={requestMatch}
-            Icon={<FavoriteIcon />}
-            text="Akceptuj prośbę"
-            buttonStyleType="primary"
-          />
-          <Button
             onClick={rejectMatch}
             Icon={<HeartBrokenIcon />}
             text="Odrzuć prośbę"
             buttonStyleType="mandy"
+            testId="match-reject-button"
+          />
+          <Button
+            onClick={requestMatch}
+            Icon={<FavoriteIcon />}
+            text="Akceptuj prośbę"
+            buttonStyleType="primary"
+            testId="match-accept-button"
           />
         </>
       );
@@ -90,16 +93,18 @@ export const useMatchFunctionality = ({
       return (
         <>
           <Button
-            onClick={navigateToChat}
-            Icon={<ChatIcon />}
-            text="Czat"
-            buttonStyleType="primary"
-          />
-          <Button
             onClick={rejectMatch}
             Icon={<HeartBrokenIcon />}
             text="Anuluj dopasowanie"
             buttonStyleType="mandy"
+            testId="match-reject-button"
+          />
+          <Button
+            onClick={navigateToChat}
+            Icon={<ChatIcon />}
+            text="Czat"
+            buttonStyleType="primary"
+            testId="match-chat-button"
           />
         </>
       );
@@ -116,6 +121,7 @@ export const useMatchFunctionality = ({
           Icon={<HeartBrokenIcon />}
           text="Anuluj prośbę"
           buttonStyleType="mandy"
+          testId="match-reject-button"
         />
       );
     }
@@ -127,16 +133,18 @@ export const useMatchFunctionality = ({
       return (
         <>
           <Button
-            onClick={requestMatch}
-            Icon={<FavoriteIcon />}
-            text="Akceptuj"
-            buttonStyleType="primary"
-          />
-          <Button
             onClick={rejectMatch}
             Icon={<HeartBrokenIcon />}
             text="Odrzuć"
             buttonStyleType="mandy"
+            testId="match-reject-button"
+          />
+          <Button
+            onClick={requestMatch}
+            Icon={<FavoriteIcon />}
+            text="Akceptuj"
+            buttonStyleType="primary"
+            testId="match-accept-button"
           />
         </>
       );
@@ -145,16 +153,18 @@ export const useMatchFunctionality = ({
       return (
         <>
           <Button
-            onClick={navigateToChat}
-            Icon={<ChatIcon />}
-            text="Czat"
-            buttonStyleType="primary"
-          />
-          <Button
             onClick={rejectMatch}
             Icon={<HeartBrokenIcon />}
             text="Anuluj"
             buttonStyleType="mandy"
+            testId="match-reject-button"
+          />
+          <Button
+            onClick={navigateToChat}
+            Icon={<ChatIcon />}
+            text="Czat"
+            buttonStyleType="primary"
+            testId="match-chat-button"
           />
         </>
       );
@@ -165,6 +175,7 @@ export const useMatchFunctionality = ({
         Icon={<HeartBrokenIcon />}
         text="Anuluj"
         buttonStyleType="mandy"
+        testId="match-reject-button"
       />
     );
   };

@@ -4,6 +4,7 @@ import { HobbiesType } from 'pages/Profile/ProfileInfo/AboutMe/ProfileHobbies/Ho
 import { HobbiesIcon } from 'pages/Profile/ProfileInfo/AboutMe/ProfileHobbies/HobbiesIcon/HobbiesIcon';
 import { v4 as uuid } from 'uuid';
 import { hobbiesIcons } from 'shared/constants/icons';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import './AddHobby.scss';
 
 const iconsNames = Object.keys(hobbiesIcons);
@@ -39,7 +40,7 @@ export const AddHobby = ({
       ...prevState,
       {
         text: hobby.text.trim(),
-        icon: hobby.icon || 'AutoAwesomeIcon',
+        icon: hobby.icon === 'MoreVertIcon' ? 'AutoAwesomeIcon' : hobby.icon,
         id: uuid(),
         deletable: true,
         checked: true,
@@ -75,7 +76,7 @@ export const AddHobby = ({
               onClick={addHobbyHandler}
               disableRipple
             >
-              <HobbiesIcon iconName="AddCircleOutlineIcon" />
+              <AddCircleOutlineIcon />
             </IconButton>
           </div>
         }
@@ -83,7 +84,7 @@ export const AddHobby = ({
       />
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={closeHandler}>
         <div className="add-hobby__icons-menu">
-          {iconsNames?.map((icon) => (
+          {iconsNames.slice(0, -2)?.map((icon) => (
             <IconButton
               key={icon}
               onClick={() => changeHobbyIconHandler(icon)}

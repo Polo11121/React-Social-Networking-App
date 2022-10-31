@@ -1,5 +1,6 @@
 import { Avatar } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { formatDataTestId } from 'shared/functions';
 import classNames from 'classnames';
 import './ChatNavbarListItem.scss';
 
@@ -25,6 +26,7 @@ export const ChatNavbarListItem = ({
     className={classNames('chat-navbar-list-item', {
       'chat-navbar-list-item--active': isActive,
     })}
+    data-testId={`user-${formatDataTestId(fullName)}-chat-link`}
   >
     <Avatar src={avatar} className="chat-navbar-list-item__avatar" />
     <div className="chat-navbar-list-item__info">
@@ -33,6 +35,7 @@ export const ChatNavbarListItem = ({
         className={classNames('chat-navbar-list-item__last-message', {
           'chat-navbar-list-item__last-message--bold': newMessage,
         })}
+        data-testId={`user-${formatDataTestId(fullName)}-chat-last-message`}
       >
         {lastMessage}
       </span>

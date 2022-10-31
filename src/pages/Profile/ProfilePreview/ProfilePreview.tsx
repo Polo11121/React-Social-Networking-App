@@ -34,7 +34,11 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
   });
 
   return (
-    <div className="profile-preview" ref={ref}>
+    <div
+      className="profile-preview"
+      ref={ref}
+      data-testid={`user-${user.name}-${user.surname}-profile`}
+    >
       {(profileImage || backgroundImage) && (
         <ProfilePreviewEditHeader
           isDisabled={isLoading}
@@ -70,6 +74,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
           <div className="profile-preview__background-button">
             {isOwner && (
               <ImagePicker
+                testId="add-background-photo"
                 text={`${
                   user.backgroundImage ? 'Edytuj' : 'Dodaj'
                 } zdjęcie w tle`}
@@ -83,6 +88,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
             {isOwner && (
               <div className="profile-preview__photo-button">
                 <ImagePicker
+                  testId="add-profile-photo"
                   tooltipText="Zmień zdjęcie profilowe"
                   onChooseFile={chooseProfileImageHandler}
                 />

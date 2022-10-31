@@ -1,0 +1,28 @@
+[
+  {
+    "label": "Gry wideo"
+  },
+  {
+    "label": "Spanie"
+  },
+  {
+    "label": "Piłka nożna"
+  },
+  {
+    "label": "Pływanie"
+  },
+  {
+    "label": "Jedzenie"
+  },
+  {
+    "label": "Koszykówka"
+  },
+  {
+    "label": "Testowanie",
+    "icon": "SportsGymnasticsIcon"
+  },
+  {
+    "label": "Programowanie",
+    "icon": "FitbitIcon"
+  }
+]

@@ -61,7 +61,11 @@ export const Post = ({
     <SectionCard>
       <div className="post__user">
         {isOwner && (
-          <IconButton onClick={openModalHandler} className="post__button">
+          <IconButton
+            onClick={openModalHandler}
+            className="post__button"
+            data-testid="open-post-menu-button"
+          >
             <MoreHorizIcon />
           </IconButton>
         )}
@@ -76,6 +80,7 @@ export const Post = ({
                 onEditPost(id, images, text);
                 closeModalHandler();
               }}
+              data-testid="edit-post-menu-button"
             >
               <EditIcon className="post__icon" />
               <ListItemText>Edytuj</ListItemText>
@@ -86,6 +91,7 @@ export const Post = ({
               onDeletePost(id);
               closeModalHandler();
             }}
+            data-testid="delete-post-menu-button"
           >
             <DeleteIcon className="post__icon" />
             <ListItemText>Usuń</ListItemText>

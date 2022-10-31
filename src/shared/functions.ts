@@ -89,3 +89,5 @@ export const getFullName = (name?: string, surname?: string) =>
 export const timeout = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
+
+export const formatDataTestId = (text: string) => text.split(' ').join('-');

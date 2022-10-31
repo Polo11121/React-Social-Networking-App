@@ -20,6 +20,7 @@ type AddHocPropsType = {
   hideDelete?: boolean;
   displayOnly?: boolean;
   children?: ReactNode;
+  testId?: string;
 };
 
 export const AddHoc = ({
@@ -32,6 +33,7 @@ export const AddHoc = ({
   displayText,
   displayValue,
   children,
+  testId,
   hideDelete = false,
   isDisabled = false,
   displayOnly = false,
@@ -82,7 +84,11 @@ export const AddHoc = ({
         </span>
       </div>
       {!displayOnly && (
-        <IconButton onClick={openModalHandler} className="add-hoc__menu-button">
+        <IconButton
+          onClick={openModalHandler}
+          className="add-hoc__menu-button"
+          data-testid={`open-addHoc-${testId}-menu-button`}
+        >
           <MoreHorizIcon />
         </IconButton>
       )}
@@ -91,12 +97,18 @@ export const AddHoc = ({
         open={Boolean(anchorEl)}
         onClose={closeModalHandler}
       >
-        <MenuItem onClick={showAdHocHandler}>
+        <MenuItem
+          onClick={showAdHocHandler}
+          data-testid={`edit-addHoc-${testId}-menu-button`}
+        >
           <EditIcon className="ad-hoc__menu-icon" />
           <ListItemText>Edytuj</ListItemText>
         </MenuItem>
         {!hideDelete && (
-          <MenuItem onClick={deleteHandler}>
+          <MenuItem
+            onClick={deleteHandler}
+            data-testid={`delete-addHoc-${testId}-menu-button`}
+          >
             <DeleteIcon className="ad-hoc__menu-icon" />
             <ListItemText>Usuń</ListItemText>
           </MenuItem>
@@ -113,12 +125,14 @@ export const AddHoc = ({
               buttonStyleType="mandy"
               text="Anuluj"
               onClick={hideAdHocHandler}
+              testId={`cancel-addHoc-${testId}-button`}
             />
             <Button
               isDisabled={isDisabled}
               buttonStyleType="primary"
               text="Zapisz"
               onClick={submitHandler}
+              testId={`submit-addHoc-${testId}-button`}
             />
           </div>
         </>
@@ -131,6 +145,7 @@ export const AddHoc = ({
           className="add-hoc"
         >
           <AddCircleOutlineIcon
+            data-testid={`add-addHoc-${testId}-button`}
             fontSize="large"
             className="add-hoc__add-icon"
           />

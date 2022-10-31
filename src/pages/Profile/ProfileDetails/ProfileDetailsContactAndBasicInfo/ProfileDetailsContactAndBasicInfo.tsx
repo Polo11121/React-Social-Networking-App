@@ -39,6 +39,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
             value={value}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
+            testId={name}
           >
             <Input
               style={{ margin: '0' }}
@@ -46,6 +47,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
               value={value as string}
               onChange={changeHandler}
               name={name}
+              testId={`addHoc-${name}-input`}
             />
           </AddHoc>
         )
@@ -77,6 +79,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
             value={value}
             Icon={<Icon fontSize="large" />}
             displayText={displayText}
+            testId={name}
           >
             <Input
               style={{ margin: '0' }}
@@ -84,6 +87,7 @@ export const ProfileDetailsContactAndBasicInfo = () => {
               value={value}
               onChange={changeHandler}
               name={name}
+              testId={`addHoc-${name}-input`}
             />
           </AddHoc>
         )
@@ -100,12 +104,14 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         Icon={<gender.Icon fontSize="large" />}
         displayText={gender.displayText}
         displayValue={gender.displayValue}
+        testId="gender"
       >
         <Select
           value={gender.value}
           placeholder={gender.placeholder}
           onChange={gender.changeHandler}
           options={gender.options}
+          inputId="addHoc-gender-select"
         />
       </AddHoc>
       <AddHoc
@@ -124,8 +130,10 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         Icon={<birthDate.Icon fontSize="large" />}
         displayText={birthDate.displayText}
         displayValue={birthDate.displayValue}
+        testId="birthDate"
       >
         <BirthDatePicker
+          testId="addHoc-birthDate-select"
           error={birthDate.error}
           value={birthDate.value}
           onChange={birthDate.changeHandler}
@@ -154,12 +162,14 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         Icon={<interestedGenders.Icon fontSize="large" />}
         displayText={interestedGenders.displayText}
         displayValue={interestedGenders.displayValue}
+        testId="interestedGenders"
       >
         <Select
           value={interestedGenders.value}
           placeholder={capitalizeFirstLetter(interestedGenders.placeholder)}
           onChange={interestedGenders.changeHandler}
           options={interestedGenders.options}
+          inputId="addHoc-interestedGenders-select"
         />
       </AddHoc>
     </>

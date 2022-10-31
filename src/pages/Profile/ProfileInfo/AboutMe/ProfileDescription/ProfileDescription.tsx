@@ -42,6 +42,7 @@ export const ProfileDescription = () => {
           onClick={descriptionVisibilityHandler}
           text="Anuluj"
           buttonStyleType="mandy"
+          testId="cancel-description-button"
         />
         <Button
           isDisabled={
@@ -50,6 +51,7 @@ export const ProfileDescription = () => {
           type="submit"
           text="Zapisz"
           buttonStyleType="primary"
+          testId="submit-description-button"
         />
       </div>
     </form>
@@ -67,6 +69,7 @@ export const ProfileDescription = () => {
           buttonStyleType="secondary"
           text={`${description ? 'Edytuj' : 'Dodaj'} opis`}
           fullWidth
+          testId="edit-description-button"
         />
       )}
     </>

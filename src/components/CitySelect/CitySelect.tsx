@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from 'react';
 import { Select } from 'components';
 import { SingleValue } from 'react-select';
@@ -9,12 +10,14 @@ type CitySelectPropsType = {
   onChange: (value: SelectOptionType) => void;
   placeholder?: string;
   value?: SelectOptionType | null;
+  testId?: string;
 };
 
 export const CitySelect = ({
   onChange,
   placeholder,
   value,
+  testId,
 }: CitySelectPropsType) => {
   const [inputValue, setInputValue] = useState('');
 
@@ -25,12 +28,15 @@ export const CitySelect = ({
       coordinates?: number[];
     }>
   ) =>
-    onChange({
-      label: newValue?.label || '',
-      value: newValue?.value || '',
-      // @ts-ignore
-      location: newValue.location,
-    });
+    onChange(
+      newValue?.value
+        ? {
+            label: newValue?.label || '',
+            value: newValue?.value || '',
+            location: newValue?.location,
+          }
+        : null
+    );
 
   const debouncedChangeValueHandler = debounce(setInputValue, 200);
 
@@ -39,20 +45,19 @@ export const CitySelect = ({
   return (
     <Select
       value={value}
-      name="home"
+      inputId={testId}
       placeholder={placeholder}
       loadingMessage={() => 'Ładowanie....'}
-      // @ts-ignore
       onChange={changeSelectedValueHandler}
       onInputChange={debouncedChangeValueHandler}
       isLoading={isFetching}
       noOptionsMessage={() => 'Znajdź miasto'}
-      // @ts-ignore
       options={cities.map(({ city, location, _id }) => ({
         label: city,
         value: _id,
         location,
       }))}
+      isClearable
     />
   );
 };

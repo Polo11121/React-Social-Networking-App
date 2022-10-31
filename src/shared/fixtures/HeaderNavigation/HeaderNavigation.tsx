@@ -58,9 +58,14 @@ export const HeaderNavigation = () => {
               })
             }
             to={path}
+            data-testid={`header-navigation-${path}-link`}
           >
             {counter ? (
-              <Badge badgeContent={counter} color="primary">
+              <Badge
+                badgeContent={counter}
+                color="primary"
+                data-testid={`header-navigation-${path}-badge`}
+              >
                 {Icon}
               </Badge>
             ) : (

@@ -20,7 +20,10 @@ export const ProfileDetailsChangeEmailModal = ({
         placeItems: 'center',
       }}
     >
-      <div className="profile-details-change-email-modal__container">
+      <div
+        className="profile-details-change-email-modal__container"
+        data-testid="change-email-modal"
+      >
         <div className="profile-details-change-email-modal">
           <div className="profile-details-change-email-modal__text">
             <div style={{ padding: '1rem' }}>
@@ -47,6 +50,7 @@ export const ProfileDetailsChangeEmailModal = ({
               size="big"
               text="Wyloguj"
               buttonStyleType="primary"
+              testId="change-email-logout-button"
             />
           </div>
         </div>

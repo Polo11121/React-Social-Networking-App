@@ -32,6 +32,7 @@ export const Search = ({
       placeholder={placeholder}
       type="text"
       className="search__input"
+      data-testId={testId}
     />
     {children}
   </div>

@@ -12,6 +12,7 @@ export type ButtonPropsType = {
   fullWidth?: boolean;
   isDisabled?: boolean;
   Icon?: ReactNode;
+  testId?: string;
 };
 
 export const Button = ({
@@ -24,8 +25,10 @@ export const Button = ({
   size = 'normal',
   fullWidth = false,
   isDisabled = false,
+  testId,
 }: ButtonPropsType) => (
   <button
+    data-testid={testId}
     disabled={isDisabled}
     type={type}
     className={classnames(

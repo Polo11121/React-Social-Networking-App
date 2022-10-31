@@ -67,9 +67,13 @@ export const EditModal = ({
       }}
       onClose={onClose}
     >
-      <div className="edit-post__container">
+      <div className="edit-post__container" data-testid="edit-post-modal">
         <div className="edit-post">
-          <IconButton className="edit-post__exit-button" onClick={onClose}>
+          <IconButton
+            className="edit-post__exit-button"
+            onClick={onClose}
+            data-testid="cancel-edit-post-button"
+          >
             <ClearIcon />
           </IconButton>
           <div className="edit-post__text">
@@ -101,6 +105,7 @@ export const EditModal = ({
           />
           <div className="edit-post__footer">
             <ImagePicker
+              testId="edit-post-photo"
               isMultiple
               text="Edytuj zdjęcia"
               onChooseFile={changPhotoHandler}
@@ -112,6 +117,7 @@ export const EditModal = ({
                 onClick={addPostHandler}
                 text="Edtyuj przemyślenie"
                 buttonStyleType="primary"
+                testId="submit-edit-post-button"
               />
             </div>
           </div>

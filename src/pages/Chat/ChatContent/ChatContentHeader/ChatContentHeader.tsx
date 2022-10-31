@@ -1,5 +1,6 @@
 import { Avatar, IconButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { formatDataTestId } from 'shared/functions';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import './ChatContentHeader.scss';
 
@@ -14,13 +15,20 @@ export const ChatContentHeader = ({
   fullName,
   userId,
 }: ChatContentHeaderPropsType) => (
-  <div className="chat-content-header">
+  <div
+    className="chat-content-header"
+    data-testid={`user-${formatDataTestId(fullName)}-chat`}
+  >
     <IconButton>
       <NavLink className="chat-content-header__back-button" to="/chat">
         <ArrowBackIcon />
       </NavLink>
     </IconButton>
-    <NavLink to={`/profile/${userId}`} className="chat-content-header__user">
+    <NavLink
+      to={`/profile/${userId}`}
+      className="chat-content-header__user"
+      data-testid={`user-${formatDataTestId(fullName)}-chat-profile-link`}
+    >
       <Avatar src={avatar} />
       <span>{fullName}</span>
     </NavLink>

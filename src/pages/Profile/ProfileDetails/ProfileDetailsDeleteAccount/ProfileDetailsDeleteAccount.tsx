@@ -19,6 +19,7 @@ export const ProfileDetailsDeleteAccount = () => {
         text="Usuń konto"
         type="submit"
         style={{ margin: '0 auto' }}
+        testId="delete-account-button"
       />
       {isDeleteAccountModalOpen && (
         <ProfileDetailsDeleteAccountModal

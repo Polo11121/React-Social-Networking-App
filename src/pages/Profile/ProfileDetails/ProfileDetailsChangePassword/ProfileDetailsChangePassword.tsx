@@ -41,6 +41,7 @@ export const ProfileDetailsChangePassword = () => {
           onChange={formik.handleChange}
           value={formik.values.passwordCurrent}
           error={formik.isValid ? error : formik.errors.passwordCurrent}
+          testId="change-password-old-password-input"
         />
         <Input
           name="password"
@@ -49,6 +50,7 @@ export const ProfileDetailsChangePassword = () => {
           onChange={formik.handleChange}
           value={formik.values.password}
           error={formik.errors.password}
+          testId="change-password-new-password-input"
         />
         <Input
           name="passwordConfirm"
@@ -57,6 +59,7 @@ export const ProfileDetailsChangePassword = () => {
           onChange={formik.handleChange}
           value={formik.values.passwordConfirm}
           error={formik.errors.passwordConfirm}
+          testId="change-password-confirm-password-input"
         />
         <Button
           size="big"
@@ -65,6 +68,7 @@ export const ProfileDetailsChangePassword = () => {
           text="Zmień hasło"
           type="submit"
           style={{ margin: '0 auto' }}
+          testId="change-password-submit-button"
         />
       </form>
     </div>
