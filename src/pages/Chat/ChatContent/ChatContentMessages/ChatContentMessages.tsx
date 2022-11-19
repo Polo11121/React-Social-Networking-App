@@ -1,8 +1,8 @@
 import { ChatContentMessage } from 'pages/Chat/ChatContent/ChatContentMessages/ChatContentMessage/ChatContentMessage';
 import { BouncingDotsLoader } from 'components';
 import { useAuthContext } from 'contexts/AuthContext';
-import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
-import { formatPostDate } from 'shared/functions';
+import { WithLoader } from 'shared/features/WithLoader/WithLoader';
+import { formatDate } from 'shared/functions';
 import { MessageType } from 'shared/types/responseTypes';
 import { PhotosModalType } from 'shared/types/repeatableTypes';
 import { useGetMessages } from 'api/useGetMessages';
@@ -55,7 +55,7 @@ export const ChatContentMessages = ({
                 isImageLoading={isImageLoading}
                 fullName={`${name} ${surname}`}
                 message={text}
-                timestamp={formatPostDate(createdAt)}
+                timestamp={formatDate(createdAt)}
                 avatar={profileImage}
                 isOwner={userInfo._id === _id}
               />

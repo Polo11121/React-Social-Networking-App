@@ -8,7 +8,7 @@ import { getTrimmedData } from 'shared/functions';
 type UseFormType<T> = {
   initialValues: T;
   validationSchema?: any;
-  mutate: UseMutateFunction<
+  mutate?: UseMutateFunction<
     AxiosResponse<any, any>,
     AxiosError<ResponseErrorType, any>,
     Record<any, any>,
@@ -26,7 +26,7 @@ export const useForm = <T extends FormikValues>({
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => mutate(getTrimmedData(values)),
+    onSubmit: (values) => mutate && mutate(getTrimmedData(values)),
     validateOnChange: isSubmitted,
   });
 

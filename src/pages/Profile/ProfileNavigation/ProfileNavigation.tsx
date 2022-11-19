@@ -1,3 +1,4 @@
+import { ProfileNavigationReport } from 'pages/Profile/ProfileNavigation/ProfileNavigationReport/ProfileNavigationReport';
 import { Avatar, Collapse } from '@mui/material';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { goToTop } from 'shared/functions';
@@ -12,35 +13,42 @@ const navigationItems = [
 ];
 
 export const ProfileNavigation = ({ isVisible }: { isVisible: boolean }) => {
-  const { user } = useProfileInfo();
+  const { user, isOwner } = useProfileInfo();
 
   return (
     <div className="profile-navigation">
       <Collapse in={isVisible}>
-        <nav
-          className="profile-navigation__content"
-          style={isVisible ? {} : { border: 'none' }}
+        <div
+          className={classNames('profile-navigation__content', {
+            'profile-navigation__content--center': isOwner,
+          })}
         >
-          {navigationItems.map(({ label, link }) => (
-            <NavLink
-              key={label}
-              className={({ isActive }) =>
-                classNames('profile-navigation__link', {
-                  'profile-navigation__link--active': isActive,
-                })
-              }
-              to={link}
-              data-testid={`${link}-link`}
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
+          <nav
+            className="profile-navigation__links"
+            style={isVisible ? {} : { border: 'none' }}
+          >
+            {navigationItems.map(({ label, link }) => (
+              <NavLink
+                key={label}
+                className={({ isActive }) =>
+                  classNames('profile-navigation__link', {
+                    'profile-navigation__link--active': isActive,
+                  })
+                }
+                to={link}
+                data-testid={`${link}-link`}
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+          {!isOwner && user.status === 'active' && <ProfileNavigationReport />}
+        </div>
       </Collapse>
       <Collapse in={!isVisible}>
         <nav
-          className={classNames('profile-navigation__content', {
-            'profile-navigation__content--avatar': !isVisible,
+          className={classNames('profile-navigation__avatar', {
+            'profile-navigation__content--hidden': !isVisible,
           })}
         >
           <div onClick={goToTop} className="profile-navigation__button">

@@ -31,3 +31,9 @@
     height: calc(100vh - 4rem);
   }
 }
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

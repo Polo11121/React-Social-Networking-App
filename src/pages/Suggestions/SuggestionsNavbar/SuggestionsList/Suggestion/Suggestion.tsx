@@ -1,7 +1,7 @@
 import { Avatar } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 import { getAge, getFullName } from 'shared/functions';
-import { useMatchFunctionality } from 'shared/hooks/useMatchFunctionality';
+import { useMatchFunctionality } from 'shared/features/useMatchFunctionality/useMatchFunctionality';
 import { Button } from 'components';
 import classNames from 'classnames';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -28,7 +28,9 @@ export const Suggestion = ({
   requested,
 }: SuggestionPropsType) => {
   const { id: paramsId } = useParams();
-  const { requestMatch, rejectMatch } = useMatchFunctionality({ userId: id });
+  const { requestMatchHandler, cancelMatchHandler } = useMatchFunctionality({
+    userId: id,
+  });
 
   return (
     <Link
@@ -48,7 +50,7 @@ export const Suggestion = ({
           {requested ? (
             <Button
               style={{ marginTop: '0.5rem' }}
-              onClick={rejectMatch}
+              onClick={cancelMatchHandler}
               Icon={<HeartBrokenIcon />}
               fullWidth
               text="Anuluj"
@@ -57,7 +59,7 @@ export const Suggestion = ({
           ) : (
             <Button
               style={{ marginTop: '0.5rem' }}
-              onClick={requestMatch}
+              onClick={requestMatchHandler}
               Icon={<FavoriteIcon />}
               fullWidth
               text="Wyślij prośbę"

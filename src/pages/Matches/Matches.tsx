@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MatchesList } from 'pages/Matches/MatchesList/MatchesList';
 import { MatchesFilters } from 'pages/Matches/MatchesFilters/MatchesFilters';
 import { MatchesListOptionType } from 'shared/types/repeatableTypes';
-import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
+import { WithLoader } from 'shared/features/WithLoader/WithLoader';
 import { useSearch } from 'shared/hooks/useSearch';
 import { useGetMatches } from 'api/useGetMatches';
 import './Matches.scss';

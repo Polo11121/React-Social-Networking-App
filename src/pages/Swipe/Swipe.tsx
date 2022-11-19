@@ -1,7 +1,7 @@
 import { useState, useRef, createRef, useMemo } from 'react';
-import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
+import { WithLoader } from 'shared/features/WithLoader/WithLoader';
 import { SwipeCard } from 'pages/Swipe/SwipeCard/SwipeCard';
-import { Filters } from 'shared/fixtures/Filters/Filters';
+import { Filters } from 'shared/features/Filters/Filters';
 import { IconButton } from '@mui/material';
 import { useAuthContext } from 'contexts/AuthContext';
 import { useGetUsers } from 'api/useGetUsers';

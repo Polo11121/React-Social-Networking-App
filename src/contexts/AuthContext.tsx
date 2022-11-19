@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { useGetUser } from 'api/useGetUser';
 import { ResponseUserType, UserType } from 'shared/types/responseTypes';
-import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
+import { WithLoader } from 'shared/features/WithLoader/WithLoader';
 import { useQueryClient } from 'react-query';
 import { io, Socket } from 'socket.io-client';
 import { useLocation } from 'react-router-dom';
@@ -30,6 +30,7 @@ const AuthContext = createContext({
   invalidateUserData: () => new Promise(() => {}),
   userInfo: initialUserInfo,
   socket: io() as unknown as MutableRefObject<Socket<any, any> | undefined>,
+  isAdmin: false,
 });
 
 export const AuthContextProvider = ({
@@ -66,7 +67,6 @@ export const AuthContextProvider = ({
             queryClient.invalidateQueries('unreadMessages');
             customToast({
               text,
-              style: { whiteSpace: 'nowrap', width: 'fit-content' },
             });
           }
         }
@@ -131,6 +131,7 @@ export const AuthContextProvider = ({
       userInfo: userInfo || initialUserInfo,
       invalidateUserData,
       socket,
+      isAdmin: userInfo.role === 'admin',
     }),
     [isAuthenticated, authenticationHandler, userInfo, invalidateUserData]
   );

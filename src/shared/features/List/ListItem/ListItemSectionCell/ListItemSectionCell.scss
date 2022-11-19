@@ -1,0 +1,21 @@
+@import 'styles/styles';
+
+.list-item-section-cell {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    color: gray;
+    min-width: fit-content;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &--link {
+      color: $primary;
+    }
+  }
+}

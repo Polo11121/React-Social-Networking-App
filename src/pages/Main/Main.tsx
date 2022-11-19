@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { RegisterModal } from 'pages/Main/RegisterModal/RegisterModal';
-import { LoginForm } from 'shared/fixtures/LoginForm/LoginForm';
+import { LoginForm } from 'shared/features/LoginForm/LoginForm';
 import { Link } from 'react-router-dom';
 import { Button } from 'components';
 import './Main.scss';

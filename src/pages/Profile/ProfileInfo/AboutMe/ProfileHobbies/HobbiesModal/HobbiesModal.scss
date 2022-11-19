@@ -13,6 +13,7 @@
   @media only screen and (min-width: $large) and (max-width: $extraLarge) {
     width: 60vw;
   }
+
   &__content {
     position: relative;
     display: flex;
@@ -39,6 +40,10 @@
     gap: 0.313rem;
     padding-bottom: 1rem;
     @include bottomLine;
+
+    & .MuiIconButton-root {
+      padding: 0px !important;
+    }
   }
 
   &__buttons {
@@ -46,9 +51,5 @@
     gap: 1rem;
     margin-left: auto;
     padding: 1rem;
-  }
-
-  & .MuiIconButton-root {
-    padding: 0px !important;
   }
 }

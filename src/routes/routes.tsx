@@ -20,6 +20,14 @@ import { ResetPassword } from 'pages/ResetPassword/ResetPassword';
 import { ConfirmAccount } from 'pages/ConfirmAccount/ConfirmAccount';
 import { ProfileDetailsChangeEmail } from 'pages/Profile/ProfileDetails/ProfileDetailsChangeEmail/ProfileDetailsChangeEmail';
 import { ChangeEmail } from 'pages/ChangeEmail/ChangeEmail';
+import { Dashboard } from 'pages/Dashboard/Dashboard';
+import { AllReports } from 'pages/AllReports/AllReports';
+import { NewReports } from 'pages/NewReports/NewReports';
+import { SolvedReports } from 'pages/SolvedReports/SolvedReports';
+import { MyReports } from 'pages/MyReports/MyReports';
+import { Users } from 'pages/Users/Users';
+import { Administrators } from 'pages/Administrators/Administrators';
+import { AdminProfile } from 'pages/AdminProfile/AdminProfile';
 
 export const profileDetailsRoutes = [
   {
@@ -80,7 +88,7 @@ export const profileContentRoutes = [
   },
 ];
 
-export const authorizedRoutes = (userId: string) => [
+export const userAuthorizedRoutes = (userId: string) => [
   {
     path: '/swipe',
     Component: <Swipe />,
@@ -110,8 +118,55 @@ export const authorizedRoutes = (userId: string) => [
     Component: <Suggestions />,
   },
   {
+    path: '/change-email/:token',
+    Component: <ChangeEmail />,
+  },
+  {
     path: '*',
     Component: <Navigate to={`/profile/${userId}`} replace />,
+  },
+];
+
+export const adminAuthorizedRoutes = () => [
+  {
+    path: '',
+    Component: <Dashboard />,
+  },
+  {
+    path: '/all-reports',
+    Component: <AllReports />,
+  },
+  {
+    path: '/new-reports',
+    Component: <NewReports />,
+  },
+  {
+    path: '/solved-reports',
+    Component: <SolvedReports />,
+  },
+  {
+    path: '/my-reports',
+    Component: <MyReports />,
+  },
+  {
+    path: '/users',
+    Component: <Users />,
+  },
+  {
+    path: 'profile/:id/*',
+    Component: <Profile />,
+  },
+  {
+    path: '/administrators',
+    Component: <Administrators />,
+  },
+  {
+    path: 'admin-profile/:id',
+    Component: <AdminProfile />,
+  },
+  {
+    path: '*',
+    Component: <Navigate to="" replace />,
   },
 ];
 

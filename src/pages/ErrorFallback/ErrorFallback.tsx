@@ -11,16 +11,16 @@ export const ErrorFallback = ({
   resetErrorBoundary: () => void;
 }) => {
   const navigate = useNavigate();
-  const { userInfo } = useAuthContext();
+  const { userInfo, isAdmin } = useAuthContext();
 
   const { mutateAsync, isLoading } = useLogout();
 
-  const navigateToProfile = () => {
+  const navigateToProfileHandler = () => {
     resetErrorBoundary();
-    navigate(`/profile/${userInfo._id}`);
+    navigate(`/${isAdmin ? 'admin-' : ''}profile/${userInfo._id}`);
   };
 
-  const logout = () => {
+  const logoutHandler = () => {
     mutateAsync().then(() => {
       resetErrorBoundary();
     });
@@ -35,14 +35,14 @@ export const ErrorFallback = ({
       <div className="error-fallback__buttons">
         <Button
           size="big"
-          onClick={navigateToProfile}
+          onClick={navigateToProfileHandler}
           text="Powrót do profil"
           buttonStyleType="primary"
         />
         <Button
           size="big"
           isDisabled={isLoading}
-          onClick={logout}
+          onClick={logoutHandler}
           text="Wyloguj"
           buttonStyleType="mandy"
         />

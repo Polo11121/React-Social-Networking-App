@@ -1,0 +1,47 @@
+@import 'styles/styles';
+
+.solve-report-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  position: relative;
+  width: 100vw;
+  @include cardBoxShadow;
+
+  @media only screen and (min-width: $large) {
+    width: 30vw;
+    border-radius: 0.5rem;
+  }
+
+  @media only screen and (min-width: $medium) and (max-width: $extraLarge) {
+    width: 50vw;
+  }
+
+  &__text {
+    text-align: center;
+    @include bottomLine;
+  }
+
+  &__exit-button {
+    position: absolute !important;
+    right: 0.5rem !important;
+    top: 0.5rem !important;
+  }
+
+  &__label {
+    font-weight: $font-weight-semibold;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}

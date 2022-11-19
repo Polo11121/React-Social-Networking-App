@@ -7,6 +7,7 @@ export const ProfileWorkAndEducation = () => {
 
   return (
     <>
+      <h2>Praca i wykształcenie</h2>
       {adHocsWorkAndEducation.map(
         ({
           initialValue,

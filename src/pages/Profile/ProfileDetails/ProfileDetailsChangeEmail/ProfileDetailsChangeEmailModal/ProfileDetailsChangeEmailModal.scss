@@ -3,16 +3,16 @@
 .profile-details-change-email-modal {
   &__container {
     background-color: $white;
-    @include cardBoxShadow;
     width: 100vw;
+    @include cardBoxShadow;
 
     @media only screen and (min-width: $large) {
-      width: 40vw;
+      width: 30vw;
       border-radius: 0.5rem;
     }
 
-    @media only screen and (min-width: $large) and (max-width: $extraLarge) {
-      width: 60vw;
+    @media only screen and (min-width: $medium) and (max-width: $extraLarge) {
+      width: 50vw;
     }
   }
 

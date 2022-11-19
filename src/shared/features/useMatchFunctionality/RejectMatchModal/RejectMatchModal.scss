@@ -1,0 +1,42 @@
+@import 'styles/styles';
+
+.reject-match-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  position: relative;
+  width: 100vw;
+  @include cardBoxShadow;
+
+  @media only screen and (min-width: $large) {
+    width: 30vw;
+    border-radius: 0.5rem;
+  }
+
+  @media only screen and (min-width: $medium) and (max-width: $extraLarge) {
+    width: 50vw;
+  }
+
+  &__text {
+    text-align: center;
+    @include bottomLine;
+  }
+
+  &__exit-button {
+    position: absolute !important;
+    right: 0.5rem !important;
+    top: 0.5rem !important;
+  }
+
+  &__content {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  &__buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+}

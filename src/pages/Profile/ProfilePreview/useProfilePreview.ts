@@ -13,7 +13,7 @@ export const useProfilePreview = () => {
 
   const navigate = useNavigate();
 
-  const navigateToEditProfile = () =>
+  const navigateToEditProfileHandler = () =>
     navigate('details/contact-and-basic-info');
 
   const chooseBackgroundImageHandler = (file: File | FileList | null) =>
@@ -52,6 +52,6 @@ export const useProfilePreview = () => {
     changeProfileImageHandler,
     changeBackgroundImageHandler,
     isLoading,
-    navigateToEditProfile,
+    navigateToEditProfileHandler,
   };
 };

@@ -37,6 +37,7 @@
         "endOfLine": "auto"
       }
     ],
+    "@typescript-eslint/naming-convention": 0,
     "no-underscore-dangle": 0,
     "import/no-cycle": 0,
     "no-use-before-define": 1,

@@ -13,6 +13,7 @@ export const Spinner = ({ testId, customColor, size }: SpinnerPropsType) => (
       justifyContent: 'center',
       alignItems: 'center',
       height: '100%',
+      flex: 1,
       color: customColor || '#006f71',
     }}
   >

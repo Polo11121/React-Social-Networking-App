@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode } from 'react';
+import { ChangeEvent, ReactNode, CSSProperties } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import './Search.scss';
 
@@ -9,17 +9,19 @@ export type SearchPropsType = {
   hideIcon?: boolean;
   children?: ReactNode;
   testId?: string;
+  style?: CSSProperties;
 };
 
 export const Search = ({
   value,
   onChange,
   placeholder,
-  hideIcon = false,
   children,
   testId,
+  style,
+  hideIcon = false,
 }: SearchPropsType) => (
-  <div className="search">
+  <div style={{ ...style }} className="search">
     {!hideIcon && (
       <SearchIcon
         className="search__icon"
@@ -32,7 +34,7 @@ export const Search = ({
       placeholder={placeholder}
       type="text"
       className="search__input"
-      data-testId={testId}
+      data-testid={testId}
     />
     {children}
   </div>
