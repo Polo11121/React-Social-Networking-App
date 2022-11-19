@@ -40,3 +40,58 @@ export const cityMaxDistance = [
     value: '300',
   },
 ];
+
+export const reportReasonOptions = [
+  {
+    label: 'Podszywanie się pod inną osobę',
+    value: 'impersonation',
+  },
+  { label: 'Fałszywe konto', value: 'fakeAccount' },
+  { label: 'Fałszywe imię i nazwisko', value: 'fakeName' },
+  {
+    label: 'Publikowanie niestosownych treści',
+    value: 'inappropriateContent',
+  },
+  {
+    label: 'Prześladowanie lub cyberprzemoc',
+    value: 'cyberbullying',
+  },
+  { label: 'Inny powód', value: 'otherReason' },
+];
+
+export const solveReportOptions = [
+  {
+    label: 'Zamknij zgłoszenie',
+    value: 'closeReport',
+  },
+  {
+    label: 'Zamknij zgłoszenie i zablokuj użytkownika',
+    value: 'closeReportAndBlockUser',
+  },
+];
+
+export const reportStatusOptions = [
+  {
+    label: 'Wszystkie',
+    value: '',
+  },
+  {
+    label: 'W trakcie',
+    value: 'inProgress',
+  },
+  { label: 'Zamknięte', value: 'solved' },
+];
+
+export const userAccountStatusOptions = [
+  {
+    label: 'Każdy',
+    value: '',
+  },
+  {
+    label: 'Aktywne',
+    value: 'active',
+  },
+  { label: 'Nieaktywne', value: 'inactive' },
+  { label: 'Zablokowane', value: 'blocked' },
+  { label: 'Niepotwierdzone', value: 'noConfirmation' },
+];

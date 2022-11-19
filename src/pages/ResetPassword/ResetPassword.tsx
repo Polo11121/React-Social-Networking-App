@@ -1,5 +1,5 @@
 import { Button, Input } from 'components';
-import { LoginFormHeader } from 'shared/fixtures/LoginFormHeader/LoginFormHeader';
+import { LoginFormHeader } from 'shared/features/LoginFormHeader/LoginFormHeader';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'shared/hooks/useForm';
 import { useResetPassword } from 'api/useResetPassword';
@@ -11,10 +11,10 @@ export const ResetPassword = () => {
   const { token } = useParams();
   const navigate = useNavigate();
 
-  const navigateToMainPage = () => navigate('/');
+  const navigateToMainPageHandler = () => navigate('/');
 
   const onSuccess = () => {
-    navigateToMainPage();
+    navigateToMainPageHandler();
     customToast({
       text: 'Pomyślnie zresetowano hasło, można ponownie się zalogować',
     });
@@ -62,7 +62,7 @@ export const ResetPassword = () => {
                   size="big"
                   buttonStyleType="mandy"
                   text="Anuluj"
-                  onClick={navigateToMainPage}
+                  onClick={navigateToMainPageHandler}
                   style={{ marginLeft: '1rem' }}
                 />
                 <Button

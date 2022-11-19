@@ -9,8 +9,8 @@ import {
 
 const SuggestionsContext = createContext({
   requestedUsers: [] as string[],
-  addRequestedUser: (userId: string) => {},
-  removeRequestedUser: (userId: string) => {},
+  addRequestedUserHandler: (userId: string) => {},
+  removeRequestedUserHandler: (userId: string) => {},
 });
 
 export const SuggestionsContextProvider = ({
@@ -20,13 +20,13 @@ export const SuggestionsContextProvider = ({
 }) => {
   const [requestedUsers, setRequestedUsers] = useState<string[]>([]);
 
-  const addRequestedUser = useCallback(
+  const addRequestedUserHandler = useCallback(
     (userId: string) =>
       setRequestedUsers((prevState) => [...prevState, userId]),
     []
   );
 
-  const removeRequestedUser = useCallback(
+  const removeRequestedUserHandler = useCallback(
     (userId: string) =>
       setRequestedUsers((prevState) => prevState.filter((id) => id !== userId)),
     []
@@ -35,10 +35,10 @@ export const SuggestionsContextProvider = ({
   const value = useMemo(
     () => ({
       requestedUsers,
-      addRequestedUser,
-      removeRequestedUser,
+      addRequestedUserHandler,
+      removeRequestedUserHandler,
     }),
-    [requestedUsers, addRequestedUser, removeRequestedUser]
+    [requestedUsers, addRequestedUserHandler, removeRequestedUserHandler]
   );
 
   return (

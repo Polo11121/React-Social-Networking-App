@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef } from 'react';
+import { ChangeEvent, useRef, useEffect } from 'react';
 import { Tooltip } from 'components';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import './ImagePicker.scss';
@@ -9,6 +9,7 @@ export type ImagePickerPropsType = {
   tooltipText?: string;
   isMultiple?: boolean;
   testId?: string;
+  image?: File | null;
 };
 
 export const ImagePicker = ({
@@ -17,6 +18,7 @@ export const ImagePicker = ({
   tooltipText,
   testId,
   isMultiple = false,
+  image,
 }: ImagePickerPropsType) => {
   const hiddenFileInput = useRef<null | HTMLInputElement>(null);
 
@@ -25,6 +27,12 @@ export const ImagePicker = ({
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) =>
     event.target.files &&
     onChooseFile(isMultiple ? event.target.files : event.target.files[0]);
+
+  useEffect(() => {
+    if (!image && hiddenFileInput.current) {
+      hiddenFileInput.current.value = '';
+    }
+  }, [image]);
 
   return (
     <>

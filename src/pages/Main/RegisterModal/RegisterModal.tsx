@@ -3,7 +3,7 @@ import { IconButton, Modal } from '@mui/material';
 import { useRegister } from 'api/useRegister';
 import { useForm } from 'shared/hooks/useForm';
 import { GenderRadioButtons } from 'pages/Main/RegisterModal/GenderRadioButtons/GenderRadioButtons';
-import { BirthDatePicker } from 'shared/fixtures/BirthDatePicker/BirthDatePicker';
+import { BirthDatePicker } from 'shared/features/BirthDatePicker/BirthDatePicker';
 import { RegisterSchema } from 'pages/Main/RegisterModal/RegisterSchema';
 import { customToast } from 'shared/hooks/customToast';
 import { Button, Input } from 'components';
@@ -69,7 +69,7 @@ export const RegisterModal = ({
         <form className="register-modal__form" onSubmit={formik.handleSubmit}>
           <div className="register-modal__form-row">
             <Input
-              style={{ marginRight: '1rem' }}
+              style={{ flex: 1 }}
               name="name"
               placeholder="Imię"
               type="text"
@@ -79,6 +79,7 @@ export const RegisterModal = ({
               error={formik.errors.name}
             />
             <Input
+              style={{ flex: 1 }}
               name="surname"
               placeholder="Nazwisko"
               type="text"

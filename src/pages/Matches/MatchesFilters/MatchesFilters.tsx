@@ -40,7 +40,7 @@ export const MatchesFilters = ({
       <Search
         value={searchTerm}
         onChange={onSearchTermChange}
-        placeholder="Znajdź użytkownika"
+        placeholder="Znajdź dopasowanie"
         testId="matches-search-input"
       />
       <div className="matches-filters__chips">

@@ -8,6 +8,7 @@ export const ProfileDetailsOverview = () => {
 
   return (
     <>
+      <h2>Przegląd</h2>
       {adHocsOverviewInputs.map(
         ({
           initialValue,

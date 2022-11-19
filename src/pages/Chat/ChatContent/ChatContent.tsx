@@ -4,11 +4,11 @@ import { ChatContentHeader } from 'pages/Chat/ChatContent/ChatContentHeader/Chat
 import { ChatContentSendMessage } from 'pages/Chat/ChatContent/ChatContentSendMessage/ChatContentSendMessage';
 import { ChatContentMessages } from 'pages/Chat/ChatContent/ChatContentMessages/ChatContentMessages';
 import { useGetMessages } from 'api/useGetMessages';
-import { PhotosModal } from 'shared/fixtures/PhotosModal/PhotosModal';
+import { PhotosModal } from 'shared/features/PhotosModal/PhotosModal';
 import { PhotosModalType } from 'shared/types/repeatableTypes';
 import { useGetLastMessages } from 'api/useGetLastMessages';
 import { getFullName } from 'shared/functions';
-import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
+import { WithLoader } from 'shared/features/WithLoader/WithLoader';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import classNames from 'classnames';
 import './ChatContent.scss';

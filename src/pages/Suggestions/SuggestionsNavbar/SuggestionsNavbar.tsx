@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetUsers } from 'api/useGetUsers';
-import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
-import { Filters } from 'shared/fixtures/Filters/Filters';
+import { WithLoader } from 'shared/features/WithLoader/WithLoader';
+import { Filters } from 'shared/features/Filters/Filters';
 import { SuggestionsList } from 'pages/Suggestions/SuggestionsNavbar/SuggestionsList/SuggestionsList';
 import { useAuthContext } from 'contexts/AuthContext';
 import classNames from 'classnames';

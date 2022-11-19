@@ -1,0 +1,10 @@
+@import 'styles/styles';
+
+.dashboard {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  width: 80vw;
+  gap: 1rem;
+  padding: 1rem;
+}

@@ -5,7 +5,17 @@
   flex-direction: column;
   background-color: $white;
   position: relative;
+  width: 100vw;
   @include cardBoxShadow;
+
+  @media only screen and (min-width: $large) {
+    width: 30vw;
+    border-radius: 0.5rem;
+  }
+
+  @media only screen and (min-width: $medium) and (max-width: $extraLarge) {
+    width: 50vw;
+  }
 
   &__text {
     text-align: center;
@@ -16,11 +26,6 @@
     position: absolute !important;
     right: 0.5rem !important;
     top: 0.5rem !important;
-  }
-
-  @media only screen and (min-width: $small) {
-    border-radius: 0.5rem;
-    width: 25rem;
   }
 
   &__content {

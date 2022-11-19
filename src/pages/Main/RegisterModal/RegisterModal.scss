@@ -5,7 +5,17 @@
   flex-direction: column;
   background-color: $white;
   position: relative;
+  width: 100vw;
   @include cardBoxShadow;
+
+  @media only screen and (min-width: $large) {
+    width: 30vw;
+    border-radius: 0.5rem;
+  }
+
+  @media only screen and (min-width: $medium) and (max-width: $extraLarge) {
+    width: 50vw;
+  }
 
   &__exit-button {
     position: absolute !important;
@@ -17,16 +27,12 @@
     @include bottomLine;
   }
 
-  @media only screen and (min-width: $medium) {
-    border-radius: 0.5rem;
-    width: 25rem;
-  }
-
   &__form {
     padding: 1rem;
   }
 
   &__form-row {
     display: flex;
+    gap: 1rem;
   }
 }

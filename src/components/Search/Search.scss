@@ -11,14 +11,16 @@
     background-color 100ms ease-in;
   border: 2px solid #dee1e2;
   background: $lightGray;
-  height: 2.25rem;
+  height: 2.375rem;
   width: 100%;
 
   &:hover {
     border-color: #ccc;
   }
+
   &:focus-within {
     border-color: $primary;
+    box-shadow: 0 0 0 1px $primary;
     background: $white;
 
     & > .search__icon {
@@ -37,6 +39,7 @@
     height: 100%;
     width: 100%;
     outline: none;
+    font-family: 'Poppins', sans-serif;
   }
 
   &__icon {

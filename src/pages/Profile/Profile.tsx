@@ -3,7 +3,7 @@ import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { useCheckVisibility } from 'shared/hooks/useCheckVisibility';
 import { ProfileNavigation } from 'pages/Profile/ProfileNavigation/ProfileNavigation';
 import { ProfileContent } from 'pages/Profile/ProfileContent/ProfileContent';
-import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
+import { WithLoader } from 'shared/features/WithLoader/WithLoader';
 import classNames from 'classnames';
 import './Profile.scss';
 

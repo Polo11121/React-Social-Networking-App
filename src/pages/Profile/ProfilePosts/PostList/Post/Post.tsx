@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Avatar, ListItemText, Menu, MenuItem } from '@mui/material';
 import { ImageCarousel, SectionCard } from 'components';
-import { formatPostDate } from 'shared/functions';
+import { formatDate } from 'shared/functions';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import IconButton from '@mui/material/IconButton';
@@ -53,7 +53,7 @@ export const Post = ({
       index,
       images.map((image) => ({
         image,
-        label: `${text} ${formatPostDate(date)}`,
+        label: `${text} ${formatDate(date)}`,
       }))
     );
 
@@ -100,7 +100,7 @@ export const Post = ({
         <Avatar src={avatar} />
         <div>
           <p className="post__name">{user}</p>
-          <div className="post__date">{formatPostDate(date)}</div>
+          <div className="post__date">{formatDate(date)}</div>
         </div>
       </div>
       <p className="post__text">{text}</p>

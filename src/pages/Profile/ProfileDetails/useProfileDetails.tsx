@@ -9,7 +9,7 @@ import {
   gendersOptions,
 } from 'shared/constants/options';
 import { useUpdateUser } from 'api/useUpdateUser';
-import { useFormik } from 'formik';
+import { useForm } from 'shared/hooks/useForm';
 import { SingleValue } from 'react-select';
 import { CityType } from 'shared/types/responseTypes';
 import { ProfileDetailsSchema } from 'pages/Profile/ProfileDetails/ProfileDetailsSchema';
@@ -70,7 +70,7 @@ export const useProfileDetails = () => {
     toastText: 'Pomyślnie zaktualizowano profil',
   });
 
-  const formik = useFormik({
+  const formik = useForm({
     initialValues: {
       surname,
       firstName,
@@ -88,7 +88,6 @@ export const useProfileDetails = () => {
       interestedGenders: formatInterestedGendersSelect(interestedGenders),
     },
     validationSchema: ProfileDetailsSchema,
-    onSubmit: () => {},
   });
 
   const [userCities, setUserCities] = useState([

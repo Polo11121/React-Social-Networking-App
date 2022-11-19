@@ -14,6 +14,8 @@ export type SelectOptionType = {
   location?: number[];
 };
 
+export type UserRoleType = 'admin' | 'user';
+
 export type FiltersType = {
   interestedGenders: 'females' | 'males' | 'femalesAndMales';
   interestedCity: CityType;

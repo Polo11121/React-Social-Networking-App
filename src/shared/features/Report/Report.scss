@@ -1,0 +1,20 @@
+@import 'styles/styles';
+
+.report {
+  &__icon-new {
+    color: $mandy !important;
+  }
+
+  &__icon-in-progress {
+    color: $secondary !important;
+  }
+
+  &__icon-resolved {
+    color: $primary !important;
+  }
+
+  &__user-avatar {
+    height: 3.25rem;
+    width: 3.25rem;
+  }
+}

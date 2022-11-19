@@ -142,6 +142,10 @@ context('Matches', () => {
 
     cy.get(`[data-testid="match-reject-button"]`).click();
 
+    cy.get(`[data-testid="reject-match-modal"]`);
+
+    cy.get(`[data-testid="submit-reject-match-button"]`).click();
+
     cy.get('[data-testid="match-test3-test3"]').should('not.exist');
 
     cy.get('[data-testid="matches-search-input"]').clear();

@@ -1,0 +1,90 @@
+@import 'styles/styles';
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  background-color: darken($white, 2%);
+
+  &__content {
+    display: flex;
+    @include cardBoxShadow;
+  }
+
+  &__icon-button {
+    display: flex;
+    align-items: center;
+    color: $primary !important;
+    padding: 1rem !important;
+    background-color: $white;
+    box-shadow: 4px 0 4px -4px rgb(0 0 0 / 10%) !important;
+    border-radius: 0 !important;
+  }
+
+  &__icon {
+    &--rotate {
+      transform: rotate(180deg) !important;
+    }
+  }
+
+  &__cells {
+    display: flex;
+    flex: 1;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12.5rem;
+
+    &:first-of-type {
+      width: 9.375rem;
+      justify-content: flex-start;
+    }
+
+    &:last-of-type {
+      justify-content: flex-end;
+    }
+  }
+
+  &__cell-icon-new {
+    color: $mandy !important;
+  }
+
+  &__cell-icon-in-process {
+    color: $secondary !important;
+  }
+
+  &__cell-icon-resolved {
+    color: $primary !important;
+  }
+
+  &__info {
+    @include cardBoxShadow;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__title {
+    padding: 1rem 2rem 0rem;
+    font-size: 1.25rem;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__info-content {
+    padding: 2rem;
+    gap: 4rem;
+    display: flex;
+  }
+
+  &__info-section-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

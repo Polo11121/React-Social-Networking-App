@@ -1,12 +1,16 @@
+@import 'styles/styles';
+
 body {
   margin: 0 !important;
   padding: 0 !important;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: $background;
 }
 #root {
   height: 100vh;
+  background: $background;
 }
 
 * {

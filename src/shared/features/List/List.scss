@@ -1,0 +1,61 @@
+@import 'styles/styles';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  flex: 1 1 auto;
+  height: 100%;
+
+  &__no-items {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__content {
+    &--small {
+      max-height: 58vh;
+    }
+
+    overflow-y: auto;
+    max-height: 68vh;
+
+    @media only screen and (min-height: $medium) {
+      &--small {
+        max-height: 65vh;
+      }
+
+      overflow-y: auto;
+      max-height: 75vh;
+    }
+  }
+
+  &__headers {
+    padding: 0 1rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  &__header {
+    width: 12.5rem;
+    text-align: center;
+
+    &:first-of-type {
+      width: 9.375rem;
+      margin-left: 3.875rem;
+      text-align: left;
+    }
+
+    &:last-of-type {
+      text-align: right;
+    }
+  }
+}

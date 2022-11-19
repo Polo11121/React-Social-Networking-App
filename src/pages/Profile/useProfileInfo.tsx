@@ -1,7 +1,7 @@
 import { useGetUser } from 'api/useGetUser';
 import { useAuthContext } from 'contexts/AuthContext';
 import { useParams } from 'react-router-dom';
-import { formatPostDate, getFullName } from 'shared/functions';
+import { formatDate, getFullName } from 'shared/functions';
 
 export const useProfileInfo = () => {
   const { id } = useParams();
@@ -12,7 +12,7 @@ export const useProfileInfo = () => {
     ?.map(({ images, description, createdAt, type }) =>
       images.sort().map((image) => ({
         image,
-        label: `${description} ${formatPostDate(createdAt)}`,
+        label: `${description} ${formatDate(createdAt)}`,
         type,
       }))
     )

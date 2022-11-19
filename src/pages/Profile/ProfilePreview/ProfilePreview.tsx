@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { Button, ImagePicker, Tooltip } from 'components';
 import { ProfilePreviewEditHeader } from 'pages/Profile/ProfilePreview/ProfilePreviewEditHeader/ProfilePreviewEditHeader';
 import { useProfilePreview } from 'pages/Profile/ProfilePreview/useProfilePreview';
-import { useMatchFunctionality } from 'shared/hooks/useMatchFunctionality';
+import { useMatchFunctionality } from 'shared/features/useMatchFunctionality/useMatchFunctionality';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { Avatar } from '@mui/material';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -14,7 +14,6 @@ import './ProfilePreview.scss';
 
 export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
   const path = useLocation().pathname.split('/')[1];
-
   const {
     profileImage,
     backgroundImage,
@@ -23,10 +22,11 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
     chooseProfileImageHandler,
     changeBackgroundImageHandler,
     changeProfileImageHandler,
-    navigateToEditProfile,
+    navigateToEditProfileHandler,
     isLoading,
   } = useProfilePreview();
   const { user, isOwner, myStatus, userStatus } = useProfileInfo();
+
   const { isMatch, matchButtons } = useMatchFunctionality({
     userId: user._id,
     myStatus,
@@ -74,6 +74,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
           <div className="profile-preview__background-button">
             {isOwner && (
               <ImagePicker
+                image={backgroundImage}
                 testId="add-background-photo"
                 text={`${
                   user.backgroundImage ? 'Edytuj' : 'Dodaj'
@@ -88,6 +89,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
             {isOwner && (
               <div className="profile-preview__photo-button">
                 <ImagePicker
+                  image={profileImage}
                   testId="add-profile-photo"
                   tooltipText="Zmień zdjęcie profilowe"
                   onChooseFile={chooseProfileImageHandler}
@@ -124,7 +126,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
           {isOwner ? (
             <Button
               Icon={<EditIcon />}
-              onClick={navigateToEditProfile}
+              onClick={navigateToEditProfileHandler}
               text="Edytuj Profil"
               buttonStyleType="primary"
             />

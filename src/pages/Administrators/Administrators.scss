@@ -1,0 +1,12 @@
+@import 'styles/styles';
+
+.administrators {
+  @include flexColumn;
+
+  &__header {
+    background-color: lighten($primary, 3%);
+    color: $background;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}

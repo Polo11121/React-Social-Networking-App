@@ -3,10 +3,9 @@
 
   &__content {
     position: sticky;
-    top: -1rem;
     display: flex;
     flex-direction: column;
-    top: calc(10rem - 1px);
+    top: calc(9rem - 1px);
     gap: 1rem;
   }
 }

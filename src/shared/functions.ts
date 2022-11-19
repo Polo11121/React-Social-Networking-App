@@ -1,4 +1,4 @@
-/* eslint-disable no-promise-executor-return */
+/* eslint-disable  */
 export const getTrimmedData = (obj: Record<any, any>) => {
   if (obj && typeof obj === 'object') {
     // eslint-disable-next-line array-callback-return
@@ -30,12 +30,19 @@ export const getAge = (dateString: Date) => {
   return age;
 };
 
-export const formatPostDate = (date: Date) =>
+export const formatDate = (date: Date) =>
   new Date(date).toLocaleDateString('pl-PL', {
     hour: '2-digit',
     minute: '2-digit',
     year: 'numeric',
     month: 'long',
+    day: '2-digit',
+  });
+
+export const formatShortDate = (date: Date) =>
+  new Date(date).toLocaleDateString('pl-PL', {
+    year: 'numeric',
+    month: '2-digit',
     day: '2-digit',
   });
 
@@ -55,6 +62,71 @@ export const formatInterestedGenders = (gender: string) => {
   }
   if (gender === 'femalesAndMales') {
     return 'Kobiety i Mężczyźni';
+  }
+
+  return '';
+};
+
+export const formatReportReason = (reason: string) => {
+  if (reason === 'impersonation') {
+    return 'Podszywanie się pod inną osobę';
+  }
+  if (reason === 'fakeAccount') {
+    return 'Fałszywe konto';
+  }
+  if (reason === 'fakeName') {
+    return 'Fałszywe imię i nazwisko';
+  }
+  if (reason === 'inappropriateContent') {
+    return 'Publikowanie niestosownych treści';
+  }
+  if (reason === 'cyberbullying') {
+    return 'Prześladowanie lub cyberprzemoc';
+  }
+  if (reason === 'otherReason') {
+    return 'Inny powód';
+  }
+
+  return '';
+};
+
+export const formatReportSolution = (reason: string) => {
+  if (reason === 'closeReport') {
+    return 'Zamknięto zgłoszenie';
+  }
+  if (reason === 'closeReportAndBlockUser') {
+    return 'Zamknięto zgłoszenie i zablokowano użytkownika';
+  }
+
+  return '';
+};
+
+export const formatUserAccountStatus = (status: string) => {
+  if (status === 'active') {
+    return 'Aktywne';
+  }
+  if (status === 'inactive') {
+    return 'Niektywne';
+  }
+  if (status === 'blocked') {
+    return 'Zablokowane';
+  }
+  if (status === 'noConfirmation') {
+    return 'Niepotwierdzone';
+  }
+
+  return '';
+};
+
+export const formatReportStatus = (status: string) => {
+  if (status === 'new') {
+    return 'Nowe';
+  }
+  if (status === 'inProgress') {
+    return 'W trakcie';
+  }
+  if (status === 'solved') {
+    return 'Zamknięte';
   }
 
   return '';
@@ -91,3 +163,14 @@ export const timeout = (ms: number) => {
 };
 
 export const formatDataTestId = (text: string) => text.split(' ').join('-');
+
+export const adjustColor = (color: string, amount: number) =>
+  '#' +
+  color
+    .replace(/^#/, '')
+    .replace(/../g, (color) =>
+      (
+        '0' +
+        Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)
+      ).substr(-2)
+    );

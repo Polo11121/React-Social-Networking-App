@@ -1,6 +1,6 @@
 import { ChatNavbarList } from 'pages/Chat/ChatNavbar/ChatNavbarList/ChatNavbarList';
 import { Search } from 'components';
-import { WithLoader } from 'shared/fixtures/WithLoader/WithLoader';
+import { WithLoader } from 'shared/features/WithLoader/WithLoader';
 import { useParams } from 'react-router-dom';
 import { useSearch } from 'shared/hooks/useSearch';
 import { useGetLastMessages } from 'api/useGetLastMessages';

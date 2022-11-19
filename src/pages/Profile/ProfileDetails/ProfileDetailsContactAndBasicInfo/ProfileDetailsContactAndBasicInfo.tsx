@@ -1,5 +1,5 @@
 import { AddHoc, Input, Select } from 'components';
-import { BirthDatePicker } from 'shared/fixtures/BirthDatePicker/BirthDatePicker';
+import { BirthDatePicker } from 'shared/features/BirthDatePicker/BirthDatePicker';
 import { useProfileDetails } from 'pages/Profile/ProfileDetails/useProfileDetails';
 import { capitalizeFirstLetter } from 'shared/functions';
 

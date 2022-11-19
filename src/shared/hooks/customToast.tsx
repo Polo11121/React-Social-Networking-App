@@ -45,7 +45,7 @@ export const customToast = ({
     draggable,
     progress,
     style: {
-      ...style,
       color: '#006f71',
+      ...style,
     },
   });

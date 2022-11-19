@@ -1,8 +1,8 @@
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
-import { PhotosModal } from 'shared/fixtures/PhotosModal/PhotosModal';
-import { DeleteModal } from 'pages/Profile/ProfilePosts/PostList/DeleteModal/DeleteModal';
+import { PhotosModal } from 'shared/features/PhotosModal/PhotosModal';
+import { DeletePostModal } from 'pages/Profile/ProfilePosts/PostList/DeletePostModal/DeletePostModal';
 import { Post } from 'pages/Profile/ProfilePosts/PostList/Post/Post';
-import { EditModal } from 'pages/Profile/ProfilePosts/PostList/EditModal/EditModal';
+import { EditPostModal } from 'pages/Profile/ProfilePosts/PostList/EditPostModal/EditPostModal';
 import { usePostList } from 'pages/Profile/ProfilePosts/PostList/usePostList';
 import { useMockInfinityData } from 'shared/hooks/useMockInfinityData';
 import { BouncingDotsLoader, SectionCard } from 'components';
@@ -62,13 +62,13 @@ export const PostList = () => {
         <PhotosModal {...postPhotos} onClose={closePhotosModalHandler} />
       )}
       {deletedPost && (
-        <DeleteModal
+        <DeletePostModal
           deletedPost={deletedPost}
           onClose={closeDeletePostModalHandler}
         />
       )}
       {editedPost.postId && (
-        <EditModal {...editedPost} onClose={closeEditPostModalHandler} />
+        <EditPostModal {...editedPost} onClose={closeEditPostModalHandler} />
       )}
     </div>
   );

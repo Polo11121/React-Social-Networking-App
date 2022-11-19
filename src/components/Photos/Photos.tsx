@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
 import { SectionCard } from 'components';
-import { PhotosModal } from 'shared/fixtures/PhotosModal/PhotosModal';
+import { PhotosModal } from 'shared/features/PhotosModal/PhotosModal';
 import { ImageList, ImageListItem } from '@mui/material';
 
 export type PhotosPropsType = {

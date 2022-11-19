@@ -1,0 +1,55 @@
+@import 'styles/styles';
+
+.admin-navbar {
+  position: sticky;
+  top: 4rem;
+  height: calc(100vh - 4rem);
+  flex: 0.2;
+  background-color: $lightBlack;
+
+  &__info-container {
+    padding: 0.5rem;
+    color: #bac7ce;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__avatar {
+    height: 4.375rem !important;
+    width: 4.375rem !important;
+  }
+
+  &__section-title {
+    padding: 0.5rem;
+    font-weight: $font-weight-semibold;
+    background-color: $darkBlack;
+    color: #3e6363;
+    text-align: center;
+  }
+
+  &__section {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    color: #bac7ce;
+
+    &:hover {
+      background-color: #1e282c;
+      color: $white !important;
+    }
+
+    &--active {
+      border-left: 4px solid $primary;
+      background-color: #1e282c;
+      color: $white !important;
+    }
+  }
+}

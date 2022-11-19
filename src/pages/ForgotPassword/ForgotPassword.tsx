@@ -1,5 +1,5 @@
 import { useForgotPassword } from 'api/useForgotPassword';
-import { LoginFormHeader } from 'shared/fixtures/LoginFormHeader/LoginFormHeader';
+import { LoginFormHeader } from 'shared/features/LoginFormHeader/LoginFormHeader';
 import { ForgotPasswordSchema } from 'pages/ForgotPassword/ForgotPasswordSchema';
 import { Button, Input } from 'components';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ export const ForgotPassword = () => {
     mutate,
   });
 
-  const navigateToMainPage = () => navigate('/');
+  const navigateToMainPageHandler = () => navigate('/');
 
   return (
     <div className="forgot-password">
@@ -48,7 +48,7 @@ export const ForgotPassword = () => {
                   size="big"
                   buttonStyleType="mandy"
                   text="Anuluj"
-                  onClick={navigateToMainPage}
+                  onClick={navigateToMainPageHandler}
                   style={{ marginLeft: '1rem' }}
                 />
                 <Button

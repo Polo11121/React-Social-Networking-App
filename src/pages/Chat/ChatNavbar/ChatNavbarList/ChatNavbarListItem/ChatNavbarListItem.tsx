@@ -35,7 +35,7 @@ export const ChatNavbarListItem = ({
         className={classNames('chat-navbar-list-item__last-message', {
           'chat-navbar-list-item__last-message--bold': newMessage,
         })}
-        data-testId={`user-${formatDataTestId(fullName)}-chat-last-message`}
+        data-testid={`user-${formatDataTestId(fullName)}-chat-last-message`}
       >
         {lastMessage}
       </span>

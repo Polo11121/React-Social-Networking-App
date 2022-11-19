@@ -1,4 +1,4 @@
-import { FiltersType } from 'shared/types/repeatableTypes';
+import { FiltersType, UserRoleType } from 'shared/types/repeatableTypes';
 
 type PostType = {
   images: string[];
@@ -13,6 +13,43 @@ export type CityType = {
   city: string;
   location: { type: 'Point'; coordinates: number[] };
   province: string;
+};
+
+export type ReportUserType = {
+  name: string;
+  surname: string;
+  profileImage: string;
+  _id: string;
+};
+
+export type ReportsCountersType = {
+  allReports: number;
+  newReports: number;
+  solvedReports: number;
+  myReports: number;
+  users: number;
+  administrators: number;
+};
+
+export type ReportType = {
+  _id: string;
+  reportId: string;
+  reportedUser: ReportUserType;
+  reportingUser: ReportUserType;
+  admin: ReportUserType;
+  createdAt: Date;
+  userComment: string;
+  adminComment: string;
+  reportSolution: string;
+  status: 'new' | 'inProgress' | 'solved';
+  reason:
+    | 'Podszywanie się pod inną osobę'
+    | 'Fałszywe konto'
+    | 'Fałszywe imię i nazwisko'
+    | 'Publikowanie niestosownych treści'
+    | 'Prześladowanie lub cyberprzemoc'
+    | 'Inny powód';
+  result: number;
 };
 
 export type UserType = {
@@ -38,7 +75,10 @@ export type UserType = {
   contactEmail: string;
   interestedGenders: 'males' | 'females' | 'femalesAndMales';
   filters: FiltersType;
+  role: UserRoleType;
   matchStatus: { user: string; status: string }[];
+  createdAt: Date;
+  status: string;
 };
 
 export type MessageType = {
