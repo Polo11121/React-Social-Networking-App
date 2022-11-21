@@ -7,7 +7,6 @@ import { AuthContextProvider } from 'contexts/AuthContext';
 import { ErrorFallback } from 'pages/ErrorFallback/ErrorFallback';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ToastContainer } from 'react-toastify';
-import axios from 'axios';
 import App from './App';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.scss';
@@ -15,8 +14,6 @@ import './index.scss';
 const queryClient = new QueryClient();
 
 const root = document.getElementById('root');
-
-axios.defaults.baseURL = 'https://praca-inzynierska-backend.vercel.app';
 
 render(
   <React.StrictMode>
