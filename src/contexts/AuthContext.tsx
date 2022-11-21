@@ -58,7 +58,7 @@ export const AuthContextProvider = ({
 
       socket.current =
         process.env.NODE_ENV === 'production'
-          ? io('https://date-app-praca-inzynierska.herokuapp.com')
+          ? io(process.env.REACT_APP_API_KEY as string)
           : io();
 
       socket.current.emit('add-user', userId);
@@ -161,7 +161,7 @@ export const AuthContextProvider = ({
       ? { Authorization: `Bearer ${authenticationToken}` }
       : {};
 
-    axios.defaults.baseURL = 'REACT_APP_API_KEY';
+    axios.defaults.baseURL = process.env.REACT_APP_API_KEY;
   }
 
   return (
