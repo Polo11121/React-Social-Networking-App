@@ -11416,7 +11416,7 @@ p-retry@^4.5.0:
 
 p-sleep@^1.1.0:
   version "1.1.0"
-  resolved "https://registry.npmjs.org/p-sleep/-/p-sleep-1.1.0.tgz#a6c9333059b5103c3c0e46bcbba95a1f7969095b"
+  resolved "https://registry.yarnpkg.com/p-sleep/-/p-sleep-1.1.0.tgz#a6c9333059b5103c3c0e46bcbba95a1f7969095b"
   integrity sha512-bwP3GKZirBUYMtiUuBrheLUQdRXVeE/pmHOaLpNJzNfAD4b5AjDn6l823brXcQFade4G/g7GMNQ3KV86E8EaEw==
 
 p-timeout@^3.1.0:
@@ -12922,10 +12922,10 @@ react-syntax-highlighter@^15.4.5:
     prismjs "^1.27.0"
     refractor "^3.6.0"
 
-react-tinder-card@^1.5.4:
-  version "1.5.4"
-  resolved "https://registry.npmjs.org/react-tinder-card/-/react-tinder-card-1.5.4.tgz#9367e443747a029241fdff49ca1f1a060d3c8bca"
-  integrity sha512-KRY9c5Wj118pMmkcjPI3KLkZVnUcJBMoq7SFnkAyrVfxMMrBXNJpUEwBfRaL6PbqWdWP+L7YskXvgzRYbE2oaA==
+react-tinder-card@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-tinder-card/-/react-tinder-card-1.6.2.tgz#d7ea67691973293ed9e3687fc2763003389c7baa"
+  integrity sha512-jtdgINFQ4bNA7YoqnoS4Z603mYCtrRHVc+K4R6JHuUzjsRsgO7hEooCUXz++HF5WE+fkOHjkuc22w+rxUlkMJw==
   dependencies:
     p-sleep "^1.1.0"
 
