@@ -15,6 +15,7 @@ import { useQueryClient } from 'react-query';
 import { io, Socket } from 'socket.io-client';
 import { useLocation } from 'react-router-dom';
 import { customToast } from 'shared/hooks/customToast';
+import axios from 'axios';
 
 const initialUserInfo = {
   name: '',
@@ -25,11 +26,12 @@ const initialUserInfo = {
 
 const AuthContext = createContext({
   isAuthenticated: false,
+  authenticationToken: '',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  authenticationHandler: (data: any) => {},
+  authenticationHandler: (data?: any) => {},
   invalidateUserData: () => new Promise(() => {}),
   userInfo: initialUserInfo,
-  socket: io() as unknown as MutableRefObject<Socket<any, any> | undefined>,
+  socket: null as unknown as MutableRefObject<Socket<any, any> | undefined>,
   isAdmin: false,
 });
 
@@ -39,6 +41,7 @@ export const AuthContextProvider = ({
   children: JSX.Element;
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authenticationToken, setAuthenticationToken] = useState('');
   const { pathname } = useLocation();
   const path = pathname.split('/');
   const queryClient = useQueryClient();
@@ -46,10 +49,18 @@ export const AuthContextProvider = ({
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
-    setIsAuthenticated(Boolean(userId));
+    const userToken = localStorage.getItem('token');
 
-    if (userId && !socket.current) {
-      socket.current = io();
+    setIsAuthenticated(Boolean(userId && userToken));
+
+    if (userId && userToken && !socket.current) {
+      setAuthenticationToken(userToken);
+
+      socket.current =
+        process.env.NODE_ENV === 'production'
+          ? io('https://date-app-praca-inzynierska.herokuapp.com')
+          : io();
+
       socket.current.emit('add-user', userId);
     }
 
@@ -103,10 +114,12 @@ export const AuthContextProvider = ({
 
   const authenticationHandler = useCallback(
     ({ data }: { data: ResponseUserType }) => {
-      if (isAuthenticated) {
+      if (isAuthenticated && !data) {
         localStorage.removeItem('userId');
+        localStorage.removeItem('token');
       } else {
-        localStorage.setItem('userId', data.data?._id);
+        localStorage.setItem('userId', data.data._id);
+        localStorage.setItem('token', data.token);
       }
 
       setIsAuthenticated((prevState) => !prevState);
@@ -127,14 +140,29 @@ export const AuthContextProvider = ({
   const value = useMemo(
     () => ({
       isAuthenticated,
+      authenticationToken,
       authenticationHandler,
       userInfo: userInfo || initialUserInfo,
       invalidateUserData,
       socket,
       isAdmin: userInfo.role === 'admin',
     }),
-    [isAuthenticated, authenticationHandler, userInfo, invalidateUserData]
+    [
+      isAuthenticated,
+      authenticationHandler,
+      userInfo,
+      invalidateUserData,
+      authenticationToken,
+    ]
   );
+
+  if (process.env.NODE_ENV === 'production') {
+    axios.defaults.headers.common = isAuthenticated
+      ? { Authorization: `Bearer ${authenticationToken}` }
+      : {};
+
+    axios.defaults.baseURL = 'REACT_APP_API_KEY';
+  }
 
   return (
     <AuthContext.Provider value={value}>

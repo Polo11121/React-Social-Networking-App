@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { customToast } from 'shared/hooks/customToast';
 import { useAuthContext } from 'contexts/AuthContext';
 import { useMutation, useQueryClient } from 'react-query';
@@ -9,8 +9,8 @@ export const useLogout = (text: string = 'Pomyślnie wylogowano') => {
 
   const logout = () => axios.get('/api/v1/users/logout');
 
-  const onSuccess = (data: AxiosResponse<any, any>) => {
-    authenticationHandler(data);
+  const onSuccess = () => {
+    authenticationHandler({ data: null });
     queryClient.clear();
 
     if (text) {

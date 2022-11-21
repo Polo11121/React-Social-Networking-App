@@ -117,6 +117,6 @@ export type AllMatchesType = {
   matchCount: number;
 };
 
-export type ResponseUserType = { data: UserType };
+export type ResponseUserType = { data: UserType; token: string };
 
 export type ResponseErrorType = { message: string };
