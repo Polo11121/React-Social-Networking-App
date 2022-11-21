@@ -16,7 +16,7 @@ const queryClient = new QueryClient();
 
 const root = document.getElementById('root');
 
-axios.defaults.baseURL = 'https://praca-inzynierska-backend.vercel.app';
+axios.defaults.baseURL = 'https://date-app-server.onrender.com';
 
 render(
   <React.StrictMode>
