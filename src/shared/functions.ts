@@ -53,10 +53,7 @@ export const formatProfileDetailsDate = (date: Date) =>
     day: '2-digit',
   });
 
-export const formatImageUrl = (imageUrl?: string) =>
-  process.env.NODE_ENV === 'production'
-    ? `${process.env.REACT_APP_API_KEY}/${imageUrl}`
-    : imageUrl;
+export const formatImageUrl = (imageUrl?: string) => imageUrl;
 
 export const goToTop = () =>
   window.scrollTo({
