@@ -12,7 +12,8 @@ import {
   getFullName,
 } from 'shared/functions';
 import { ReportType } from 'shared/types/responseTypes';
-import { Tooltip, Avatar } from 'components';
+import { Tooltip } from 'components';
+import { Avatar } from '@mui/material';
 import { useAuthContext } from 'contexts/AuthContext';
 import { ReportButtons } from 'shared/features/Report/ReportButtons/ReportButtons';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';

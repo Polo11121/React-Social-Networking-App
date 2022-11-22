@@ -1,4 +1,5 @@
-import { ImageCarousel, Spinner, Avatar } from 'components';
+import { ImageCarousel, Spinner } from 'components';
+import { Avatar } from '@mui/material';
 import { PhotosModalType } from 'shared/types/repeatableTypes';
 import classNames from 'classnames';
 import './ChatContentMessage.scss';

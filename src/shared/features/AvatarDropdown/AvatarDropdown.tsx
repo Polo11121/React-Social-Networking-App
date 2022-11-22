@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { IconButton, ListItemText, Menu, MenuItem } from '@mui/material';
-import { Avatar } from 'components';
+import {
+  IconButton,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Avatar,
+} from '@mui/material';
 import { useAuthContext } from 'contexts/AuthContext';
 import { useLogout } from 'api/useLogout';
 import { useNavigate } from 'react-router-dom';

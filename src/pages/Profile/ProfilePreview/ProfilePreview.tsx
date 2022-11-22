@@ -1,11 +1,12 @@
 import { forwardRef } from 'react';
-import { Button, ImagePicker, Tooltip, Avatar } from 'components';
+import { Button, ImagePicker, Tooltip } from 'components';
 import { ProfilePreviewEditHeader } from 'pages/Profile/ProfilePreview/ProfilePreviewEditHeader/ProfilePreviewEditHeader';
 import { useProfilePreview } from 'pages/Profile/ProfilePreview/useProfilePreview';
 import { useMatchFunctionality } from 'shared/features/useMatchFunctionality/useMatchFunctionality';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { NavLink, useLocation } from 'react-router-dom';
-import { formatImageUrl, getAge } from 'shared/functions';
+import { Avatar } from '@mui/material';
+import { getAge } from 'shared/functions';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -65,7 +66,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
               src={
                 backgroundImage
                   ? URL.createObjectURL(backgroundImage)
-                  : formatImageUrl(user.backgroundImage)
+                  : user.backgroundImage
               }
               alt="background"
             />
@@ -96,7 +97,6 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
               </div>
             )}
             <Avatar
-              formatImage={!profileImage}
               src={
                 profileImage
                   ? URL.createObjectURL(profileImage)

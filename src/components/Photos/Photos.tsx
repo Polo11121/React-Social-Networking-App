@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { SectionCard } from 'components';
 import { PhotosModal } from 'shared/features/PhotosModal/PhotosModal';
 import { ImageList, ImageListItem } from '@mui/material';
-import { formatImageUrl } from 'shared/functions';
 
 export type PhotosPropsType = {
   photosList: {
@@ -42,12 +41,8 @@ export const Photos = ({
               <img
                 style={{ cursor: 'pointer' }}
                 onClick={() => setSelectedPhoto(index)}
-                src={formatImageUrl(
-                  `${photo.image}?w=164&h=164&fit=crop&auto=format`
-                )}
-                srcSet={formatImageUrl(
-                  `${photo.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`
-                )}
+                src={`${photo.image}?w=164&h=164&fit=crop&auto=format`}
+                srcSet={`${photo.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                 alt={photo.image}
                 loading="lazy"
               />
