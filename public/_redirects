@@ -1,2 +1,2 @@
 /* /index.html 200
-/api/* https://date-app-praca-inzynierska.herokuapp.com/:splat  200
+/api/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat  200
