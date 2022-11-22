@@ -1,4 +1,5 @@
-import { Avatar, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
+import { Avatar } from 'components';
 import { useLogout } from 'api/useLogout';
 import { useAuthContext } from 'contexts/AuthContext';
 import LogoutIcon from '@mui/icons-material/Logout';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Avatar, ListItemText, Menu, MenuItem } from '@mui/material';
-import { ImageCarousel, SectionCard } from 'components';
+import { ListItemText, Menu, MenuItem } from '@mui/material';
+import { ImageCarousel, Avatar, SectionCard } from 'components';
 import { formatDate } from 'shared/functions';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';

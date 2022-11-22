@@ -1,8 +1,7 @@
-import { Avatar } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 import { getAge, getFullName } from 'shared/functions';
 import { useMatchFunctionality } from 'shared/features/useMatchFunctionality/useMatchFunctionality';
-import { Button } from 'components';
+import { Button, Avatar } from 'components';
 import classNames from 'classnames';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';

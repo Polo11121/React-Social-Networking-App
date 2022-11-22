@@ -3,6 +3,7 @@ export { BouncingDotsLoader } from './BouncingDotsLoader/BouncingDotsLoader';
 export { Button } from './Button/Button';
 export { CitySelect } from './CitySelect/CitySelect';
 export { CustomSelect as Select } from './Select/Select';
+export { CustomAvatar as Avatar } from './Avatar/Avatar';
 export { ErrorText } from './ErrorText/ErrorText';
 export { Header } from './Header/Header';
 export { ImageCarousel } from './ImageCarousel/ImageCarousel';

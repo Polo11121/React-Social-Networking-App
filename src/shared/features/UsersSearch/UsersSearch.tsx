@@ -3,6 +3,7 @@ import { useGetUsersBySearchTerm } from 'api/useGetUsersBySearchTerm';
 import { Spinner } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { useSearch } from 'shared/hooks/useSearch';
+import { formatImageUrl } from 'shared/functions';
 import SearchIcon from '@mui/icons-material/Search';
 import './UsersSearch.scss';
 
@@ -48,7 +49,7 @@ export const UsersSearch = () => {
               data-testid={`users-header-search-${name}-${surname}-hint`}
             >
               <img
-                src={profileImage}
+                src={formatImageUrl(profileImage)}
                 alt=""
                 className="users-search__hint-avatar"
               />

@@ -1,4 +1,4 @@
-import { Avatar } from '@mui/material';
+import { Avatar } from 'components';
 import { useAuthContext } from 'contexts/AuthContext';
 import { NavLink } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
