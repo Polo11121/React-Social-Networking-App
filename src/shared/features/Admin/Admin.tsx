@@ -5,8 +5,7 @@ import { ListItemSection } from 'shared/features/List/ListItem/ListItemSection/L
 import { ListItemSectionCell } from 'shared/features//List/ListItem/ListItemSectionCell/ListItemSectionCell';
 import { formatDate, formatShortDate, getFullName } from 'shared/functions';
 import { UserType } from 'shared/types/responseTypes';
-import { Avatar } from '@mui/material';
-import { Search, Select } from 'components';
+import { Search, Select, Avatar } from 'components';
 import { useGetReports } from 'api/useGetReports';
 import { List } from 'shared/features/List/List';
 import { Report } from 'shared/features/Report/Report';

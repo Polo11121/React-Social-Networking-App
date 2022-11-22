@@ -1,11 +1,11 @@
 import { ChangeEvent, useMemo, useState } from 'react';
-import { Avatar } from '@mui/material';
 import {
   Button,
   SectionCard,
   Textarea,
   ImagePicker,
   ImageCarousel,
+  Avatar,
 } from 'components';
 import { useAddPost } from 'api/useAddPost';
 import { useAuthContext } from 'contexts/AuthContext';

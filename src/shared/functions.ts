@@ -53,6 +53,54 @@ export const formatProfileDetailsDate = (date: Date) =>
     day: '2-digit',
   });
 
+export const formatImageUrl = (imageUrl?: string) =>
+  process.env.NODE_ENV === 'production'
+    ? `${process.env.REACT_APP_API_KEY}/${imageUrl}`
+    : imageUrl;
+
+export const goToTop = () =>
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+
+export const areEqual = <T>(array1: T[], array2: T[]) => {
+  if (array1.length === array2.length) {
+    return array1.every((element) => {
+      if (array2.includes(element)) {
+        return true;
+      }
+
+      return false;
+    });
+  }
+
+  return false;
+};
+
+export const capitalizeFirstLetter = (word?: string) =>
+  word && word.charAt(0).toUpperCase() + word.slice(1);
+
+export const getFullName = (name?: string, surname?: string) =>
+  `${name} ${surname}`;
+
+export const timeout = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+export const formatDataTestId = (text: string) => text.split(' ').join('-');
+
+export const adjustColor = (color: string, amount: number) =>
+  '#' +
+  color
+    .replace(/^#/, '')
+    .replace(/../g, (color) =>
+      (
+        '0' +
+        Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)
+      ).substr(-2)
+    );
+
 export const formatInterestedGenders = (gender: string) => {
   if (gender === 'males') {
     return 'Mężczyźni';
@@ -131,46 +179,3 @@ export const formatReportStatus = (status: string) => {
 
   return '';
 };
-
-export const goToTop = () =>
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
-
-export const areEqual = <T>(array1: T[], array2: T[]) => {
-  if (array1.length === array2.length) {
-    return array1.every((element) => {
-      if (array2.includes(element)) {
-        return true;
-      }
-
-      return false;
-    });
-  }
-
-  return false;
-};
-
-export const capitalizeFirstLetter = (word?: string) =>
-  word && word.charAt(0).toUpperCase() + word.slice(1);
-
-export const getFullName = (name?: string, surname?: string) =>
-  `${name} ${surname}`;
-
-export const timeout = (ms: number) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
-
-export const formatDataTestId = (text: string) => text.split(' ').join('-');
-
-export const adjustColor = (color: string, amount: number) =>
-  '#' +
-  color
-    .replace(/^#/, '')
-    .replace(/../g, (color) =>
-      (
-        '0' +
-        Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)
-      ).substr(-2)
-    );

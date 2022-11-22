@@ -139,7 +139,7 @@ export const AuthContextProvider = ({
 
   const value = useMemo(
     () => ({
-      isAuthenticated,
+      isAuthenticated: isAuthenticated && Boolean(authenticationToken),
       authenticationToken,
       authenticationHandler,
       userInfo: userInfo || initialUserInfo,

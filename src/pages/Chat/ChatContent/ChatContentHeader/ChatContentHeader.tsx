@@ -1,5 +1,6 @@
-import { Avatar, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { Avatar } from 'components';
 import { formatDataTestId } from 'shared/functions';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import './ChatContentHeader.scss';

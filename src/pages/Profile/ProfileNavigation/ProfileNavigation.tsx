@@ -1,5 +1,6 @@
 import { ProfileNavigationReport } from 'pages/Profile/ProfileNavigation/ProfileNavigationReport/ProfileNavigationReport';
-import { Avatar, Collapse } from '@mui/material';
+import { Collapse } from '@mui/material';
+import { Avatar } from 'components';
 import { useProfileInfo } from 'pages/Profile/useProfileInfo';
 import { goToTop } from 'shared/functions';
 import { NavLink } from 'react-router-dom';

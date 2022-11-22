@@ -12,8 +12,7 @@ import { List } from 'shared/features/List/List';
 import { Report } from 'shared/features/Report/Report';
 import { useGetUserReports } from 'api/useGetUserReports';
 import { UserType } from 'shared/types/responseTypes';
-import { Avatar } from '@mui/material';
-import { Button } from 'components';
+import { Button, Avatar } from 'components';
 import { UnblockUserModal } from 'shared/features/User/UnblockUserModal/UnblockUserModal';
 import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned';
 

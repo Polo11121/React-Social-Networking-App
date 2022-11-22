@@ -1,4 +1,4 @@
-import { Avatar } from '@mui/material';
+import { Avatar } from 'components';
 import { NavLink } from 'react-router-dom';
 import { formatDataTestId } from 'shared/functions';
 import classNames from 'classnames';

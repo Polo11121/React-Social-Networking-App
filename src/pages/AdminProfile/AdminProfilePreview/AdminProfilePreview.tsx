@@ -1,5 +1,5 @@
-import { getFullName } from 'shared/functions';
-import { Avatar } from '@mui/material';
+import { formatImageUrl, getFullName } from 'shared/functions';
+import { Avatar } from 'components';
 import { useParams } from 'react-router-dom';
 import { useGetUser } from 'api/useGetUser';
 import { useGetAdminReportsCounters } from 'api/useGetAdminReportsCounters';
@@ -25,7 +25,10 @@ export const AdminProfilePreview = () => {
       </div>
       <div className="admin-preview">
         <div className="admin-preview__info">
-          <Avatar src={profileImage} className="admin-preview__avatar" />
+          <Avatar
+            src={formatImageUrl(profileImage)}
+            className="admin-preview__avatar"
+          />
           <div>
             <div className="admin-preview__name">
               {getFullName(name, surname)}
