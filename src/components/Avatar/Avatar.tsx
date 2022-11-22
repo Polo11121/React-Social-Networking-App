@@ -15,7 +15,7 @@ export const CustomAvatar = ({
   className,
   alt,
   style,
-  formatImage = true,
+  formatImage = false,
 }: CustomAvatarPropsType) => (
   <Avatar
     src={formatImage ? formatImageUrl(src) : src}
