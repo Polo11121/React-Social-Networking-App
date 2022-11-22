@@ -1,12 +1,6 @@
 import { ChangeEvent, useState } from 'react';
-import { IconButton, Modal } from '@mui/material';
-import {
-  Button,
-  Textarea,
-  ImagePicker,
-  ImageCarousel,
-  Avatar,
-} from 'components';
+import { IconButton, Modal, Avatar } from '@mui/material';
+import { Button, Textarea, ImagePicker, ImageCarousel } from 'components';
 import { useEditPost } from 'api/useEditPost';
 import { useAuthContext } from 'contexts/AuthContext';
 import ClearIcon from '@mui/icons-material/Clear';

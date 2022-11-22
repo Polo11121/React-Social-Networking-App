@@ -53,8 +53,6 @@ export const formatProfileDetailsDate = (date: Date) =>
     day: '2-digit',
   });
 
-export const formatImageUrl = (imageUrl?: string) => imageUrl;
-
 export const goToTop = () =>
   window.scrollTo({
     top: 0,

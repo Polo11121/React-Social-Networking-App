@@ -5,8 +5,8 @@ import {
   Textarea,
   ImagePicker,
   ImageCarousel,
-  Avatar,
 } from 'components';
+import { Avatar } from '@mui/material';
 import { useAddPost } from 'api/useAddPost';
 import { useAuthContext } from 'contexts/AuthContext';
 import './AddPost.scss';

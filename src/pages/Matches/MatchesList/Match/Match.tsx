@@ -1,6 +1,6 @@
 import { useMatchFunctionality } from 'shared/features/useMatchFunctionality/useMatchFunctionality';
 import { getFullName } from 'shared/functions';
-import { Avatar } from 'components';
+import { Avatar } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import classnames from 'classnames';
 import './Match.scss';

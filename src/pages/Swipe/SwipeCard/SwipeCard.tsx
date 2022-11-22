@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { HobbiesIcon } from 'pages/Profile/ProfileInfo/AboutMe/ProfileHobbies/HobbiesIcon/HobbiesIcon';
 import { UserType } from 'shared/types/responseTypes';
-import { formatImageUrl, getAge } from 'shared/functions';
+import { getAge } from 'shared/functions';
 import { Chip } from '@mui/material';
 import TinderCard from 'react-tinder-card';
 import classNames from 'classnames';
@@ -37,7 +37,7 @@ export const SwipeCard = forwardRef<HTMLDivElement, SwipeCardPropsType>(
         >
           <img
             className="swipe-card__image"
-            src={formatImageUrl(profileImage)}
+            src={profileImage}
             alt={`${name}-profile`}
           />
           <div

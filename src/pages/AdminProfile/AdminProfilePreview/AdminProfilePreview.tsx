@@ -1,7 +1,7 @@
-import { formatImageUrl, getFullName } from 'shared/functions';
-import { Avatar } from 'components';
+import { getFullName } from 'shared/functions';
 import { useParams } from 'react-router-dom';
 import { useGetUser } from 'api/useGetUser';
+import { Avatar } from '@mui/material';
 import { useGetAdminReportsCounters } from 'api/useGetAdminReportsCounters';
 import MailIcon from '@mui/icons-material/Mail';
 import './AdminProfilePreview.scss';
@@ -25,10 +25,7 @@ export const AdminProfilePreview = () => {
       </div>
       <div className="admin-preview">
         <div className="admin-preview__info">
-          <Avatar
-            src={formatImageUrl(profileImage)}
-            className="admin-preview__avatar"
-          />
+          <Avatar src={profileImage} className="admin-preview__avatar" />
           <div>
             <div className="admin-preview__name">
               {getFullName(name, surname)}

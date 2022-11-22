@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { CSSProperties } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import { formatImageUrl } from 'shared/functions';
+
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './ImageCarousel.scss';
 
@@ -31,7 +31,7 @@ export const ImageCarousel = ({
         key={typeof image === 'string' ? image : image.image}
       >
         <img
-          src={formatImageUrl(typeof image === 'string' ? image : image.image)}
+          src={typeof image === 'string' ? image : image.image}
           key={typeof image === 'string' ? image : image.image}
           style={{
             width: 'auto',
