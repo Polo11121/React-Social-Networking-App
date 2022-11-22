@@ -7,6 +7,7 @@ type CustomAvatarPropsType = {
   className?: string;
   alt?: string;
   style?: CSSProperties;
+  formatImage?: boolean;
 };
 
 export const CustomAvatar = ({
@@ -14,9 +15,10 @@ export const CustomAvatar = ({
   className,
   alt,
   style,
+  formatImage = true,
 }: CustomAvatarPropsType) => (
   <Avatar
-    src={formatImageUrl(src)}
+    src={formatImage ? formatImageUrl(src) : src}
     className={className}
     alt={alt}
     style={style}

@@ -96,6 +96,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
               </div>
             )}
             <Avatar
+              formatImage={!profileImage}
               src={
                 profileImage
                   ? URL.createObjectURL(profileImage)
