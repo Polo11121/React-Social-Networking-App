@@ -129,7 +129,7 @@ export const userAuthorizedRoutes = (userId: string) => [
 
 export const adminAuthorizedRoutes = () => [
   {
-    path: '',
+    path: '/dashboard',
     Component: <Dashboard />,
   },
   {
@@ -166,7 +166,7 @@ export const adminAuthorizedRoutes = () => [
   },
   {
     path: '*',
-    Component: <Navigate to="" replace />,
+    Component: <Navigate to="/dashboard" replace />,
   },
 ];
 
