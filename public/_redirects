@@ -18,6 +18,4 @@ https://date-app-praca-inzynierska.netlify.app/reset-password/* https://date-app
 https://date-app-praca-inzynierska.netlify.app/confirm-account/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
 https://date-app-praca-inzynierska.netlify.app/change-email//* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
 
-
-
 /* /index.html 200
