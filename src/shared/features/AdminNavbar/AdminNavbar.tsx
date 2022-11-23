@@ -32,7 +32,7 @@ export const AdminNavbar = () => {
       <div className="admin-navbar__section-title">ZGŁOSZENIA</div>
       <NavLink
         data-testid="admin-panel-dashboard-link"
-        to="/"
+        to="/dashboard"
         className={({ isActive }) =>
           classNames('admin-navbar__section', {
             'admin-navbar__section--active': isActive,

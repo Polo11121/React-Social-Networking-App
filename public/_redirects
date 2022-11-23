@@ -1,2 +1,16 @@
-https://date-app-praca-inzynierska.netlify.app/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/swipe/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/chat/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/matches/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/suggestions/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/profile/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/admin-profile/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/dashboard/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/all-reports/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/new-reports/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/solved-reports/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/my-reports/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/users/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/administrators/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+
+
 /* /index.html 200
