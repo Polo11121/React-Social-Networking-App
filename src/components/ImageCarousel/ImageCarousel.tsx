@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { CSSProperties } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-
+import classNames from 'classnames';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './ImageCarousel.scss';
 
@@ -27,7 +27,9 @@ export const ImageCarousel = ({
   >
     {images.map((image) => (
       <div
-        className="image-carousel__item"
+        className={classNames('image-carousel__item', {
+          'image-carousel__item--clickable': onClick,
+        })}
         key={typeof image === 'string' ? image : image.image}
       >
         <img

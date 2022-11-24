@@ -26,7 +26,7 @@ export const ProfileWorkAndEducation = () => {
             key={name}
             isDisabled={
               isLoading ||
-              value === initialValue ||
+              value.trim() === initialValue ||
               (!initialValue && !value.trim())
             }
             onSubmit={submitHandler}
