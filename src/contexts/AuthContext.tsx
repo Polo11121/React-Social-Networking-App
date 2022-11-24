@@ -117,6 +117,7 @@ export const AuthContextProvider = ({
       if (isAuthenticated && !data) {
         localStorage.removeItem('userId');
         localStorage.removeItem('token');
+        setAuthenticationToken('');
       } else {
         localStorage.setItem('userId', data.data._id);
         localStorage.setItem('token', data.token);
