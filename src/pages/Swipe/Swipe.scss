@@ -1,7 +1,7 @@
 @import 'styles/styles';
 
 .swipe {
-  overflow-x: hidden;
+  overflow: hidden;
   @include pageLayout;
   display: flex;
   flex-direction: column;

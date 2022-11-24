@@ -2,7 +2,9 @@ https://date-app-praca-inzynierska.netlify.app/swipe/public/img/* https://date-a
 https://date-app-praca-inzynierska.netlify.app/chat/:userId/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
 https://date-app-praca-inzynierska.netlify.app/chat/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
 https://date-app-praca-inzynierska.netlify.app/matches/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
-https://date-app-praca-inzynierska.netlify.app/suggestions/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/suggestions/:userId/:tab/:subTab/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/suggestions/:userId/:tab/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
+https://date-app-praca-inzynierska.netlify.app/suggestions/:userId/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
 https://date-app-praca-inzynierska.netlify.app/profile/:userId/:tab/:subTab/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
 https://date-app-praca-inzynierska.netlify.app/profile/:userId/:tab/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200
 https://date-app-praca-inzynierska.netlify.app/profile/:userId/public/img/* https://date-app-praca-inzynierska.herokuapp.com/public/img/:splat 200

@@ -80,7 +80,7 @@ export const AddPost = () => {
           <Button
             isDisabled={isButtonDisabled}
             onClick={addPostHandler}
-            text="Dodaj przemyślenie"
+            text="Dodaj post"
             buttonStyleType="primary"
             testId="add-post-button"
           />

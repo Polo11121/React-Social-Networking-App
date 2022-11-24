@@ -88,7 +88,7 @@ export const EditPostModal = ({
           </IconButton>
           <div className="edit-post-modal__text">
             <div style={{ padding: '1rem' }}>
-              <h1>Edytuj przemyślenie</h1>
+              <h1>Edytuj post</h1>
             </div>
           </div>
           <div className="edit-post-modal__input-container">

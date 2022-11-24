@@ -4,6 +4,10 @@
   &__item {
     position: relative;
 
+    &--clickable {
+      cursor: pointer;
+    }
+
     &:hover {
       & > p {
         opacity: 1;
