@@ -23,6 +23,7 @@ export const Swipe = () => {
     isFetching,
     data: users, // @ts-ignore
     results,
+    hasNextPage,
   } = useGetUsers({ filters, isSwipe: true });
   const { mutateAsync } = useMatch();
 
@@ -48,7 +49,7 @@ export const Swipe = () => {
     updateCurrentIndexHandler(index + 1);
 
     mutateAsync({ userId, status: direction }).then(() => {
-      if (currentIndex === users.length - 1) {
+      if (currentIndex === users.length - 1 && hasNextPage) {
         fetchNextPage();
       }
     });
