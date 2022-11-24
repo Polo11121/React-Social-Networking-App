@@ -65,8 +65,7 @@ export const useGetUsers = ({
 
   return {
     ...data,
-    data:
-      data?.data?.pages?.map((suggestions) => suggestions.data).flat(1) || [],
+    data: data?.data?.pages?.map((users) => users.data).flat(1) || [],
     // @ts-ignore
     results: data?.data?.pages[0].results,
   };
