@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import { IconButton, Modal, Avatar } from '@mui/material';
 import { Button, Textarea, ImagePicker, ImageCarousel } from 'components';
 import { useEditPost } from 'api/useEditPost';
@@ -58,6 +58,16 @@ export const EditPostModal = ({
   const isButtonDisabled =
     (postValues.text.trim() === text && !postValues?.photos) || isLoading;
 
+  const carouselImages = useMemo(
+    () =>
+      postValues.photos
+        ? Array.from(postValues.photos).map((photo) =>
+            URL.createObjectURL(photo)
+          )
+        : photos,
+    [postValues.photos, photos]
+  );
+
   return (
     <Modal
       open={Boolean(postId)}
@@ -95,13 +105,7 @@ export const EditPostModal = ({
             imageStyle={{
               maxHeight: '50vh',
             }}
-            images={
-              postValues.photos
-                ? Array.from(postValues.photos as FileList).map((photo) =>
-                    URL.createObjectURL(photo)
-                  )
-                : photos
-            }
+            images={carouselImages}
           />
           <div className="edit-post-modal__footer">
             <ImagePicker
