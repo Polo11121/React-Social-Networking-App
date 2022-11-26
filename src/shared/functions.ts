@@ -174,3 +174,6 @@ export const formatReportStatus = (status: string) => {
 
   return '';
 };
+
+export const truncateText = (size: number, text?: string) =>
+  text && text?.length > size ? `${text.slice(0, size - 1)}…` : text;

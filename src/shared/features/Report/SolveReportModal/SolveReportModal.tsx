@@ -30,6 +30,7 @@ export const SolveReportModal = ({
     queryClient.invalidateQueries('reports');
     queryClient.invalidateQueries('userReports');
     queryClient.invalidateQueries('user');
+    queryClient.invalidateQueries('users');
     customToast({ text: `Rozwiązano zgłoszenie ${reportDisplayId}` });
     onClose();
   };

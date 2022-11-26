@@ -60,11 +60,15 @@
 
   &__empty {
     height: 100%;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: $primary !important;
+    display: none;
+
+    &--visible {
+      display: flex;
+    }
   }
 
   &__message {

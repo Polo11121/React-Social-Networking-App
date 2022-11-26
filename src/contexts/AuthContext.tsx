@@ -12,6 +12,7 @@ import { useGetUser } from 'api/useGetUser';
 import { ResponseUserType, UserType } from 'shared/types/responseTypes';
 import { WithLoader } from 'shared/features/WithLoader/WithLoader';
 import { useQueryClient } from 'react-query';
+
 import { io, Socket } from 'socket.io-client';
 import { useLocation } from 'react-router-dom';
 import { customToast } from 'shared/hooks/customToast';
@@ -45,6 +46,29 @@ export const AuthContextProvider = ({
   const queryClient = useQueryClient();
   const socket = useRef<Socket<any, any> | undefined>();
   const isProduction = process.env.NODE_ENV === 'production';
+
+  const authenticationHandler = useCallback(
+    ({ data }: { data: ResponseUserType | null }) => {
+      if (isAuthenticated && !data) {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('token');
+
+        socket.current = undefined;
+      } else if (data) {
+        localStorage.setItem('userId', data.data._id);
+        localStorage.setItem('token', data.token);
+
+        axios.defaults.headers.common = isProduction
+          ? {
+              Authorization: `Bearer ${data.token}`,
+            }
+          : {};
+      }
+
+      setIsAuthenticated((prevState) => !prevState);
+    },
+    [isAuthenticated, isProduction]
+  );
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -106,6 +130,20 @@ export const AuthContextProvider = ({
           }
         }
       );
+
+      socket.current.on('new-report', () => {
+        queryClient.invalidateQueries('newReports');
+        queryClient.invalidateQueries('reports');
+        customToast({ text: 'Dodano nowe zgłoszenie' });
+      });
+
+      socket.current.on('user-blocked', () => {
+        authenticationHandler({ data: null });
+        customToast({
+          text: 'Konto zostało zablokowane, po więcej informacji sprawdź skrzynkę pocztową',
+          autoClose: 5000,
+        });
+      });
     }
 
     return () => {
@@ -114,29 +152,6 @@ export const AuthContextProvider = ({
       }
     };
   }, [path, queryClient, isProduction]);
-
-  const authenticationHandler = useCallback(
-    ({ data }: { data: ResponseUserType }) => {
-      if (isAuthenticated && !data) {
-        localStorage.removeItem('userId');
-        localStorage.removeItem('token');
-
-        socket.current = undefined;
-      } else {
-        localStorage.setItem('userId', data.data._id);
-        localStorage.setItem('token', data.token);
-
-        axios.defaults.headers.common = isProduction
-          ? {
-              Authorization: `Bearer ${data.token}`,
-            }
-          : {};
-      }
-
-      setIsAuthenticated((prevState) => !prevState);
-    },
-    [isAuthenticated, isProduction]
-  );
 
   const { data: userInfo, isLoading } = useGetUser(
     localStorage.getItem('userId')
