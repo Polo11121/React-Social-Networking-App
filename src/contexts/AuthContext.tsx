@@ -26,7 +26,6 @@ const initialUserInfo = {
 
 const AuthContext = createContext({
   isAuthenticated: false,
-  authenticationToken: '',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   authenticationHandler: (data?: any) => {},
   invalidateUserData: () => new Promise(() => {}),
@@ -41,20 +40,24 @@ export const AuthContextProvider = ({
   children: JSX.Element;
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [authenticationToken, setAuthenticationToken] = useState('');
   const { pathname } = useLocation();
   const path = pathname.split('/');
   const queryClient = useQueryClient();
   const socket = useRef<Socket<any, any> | undefined>();
+  const isProduction = process.env.NODE_ENV === 'production';
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     const userToken = localStorage.getItem('token');
 
-    setIsAuthenticated(Boolean(userId && userToken));
-
     if (userId && userToken && !socket.current) {
-      setAuthenticationToken(userToken);
+      axios.defaults.headers.common = isProduction
+        ? {
+            Authorization: `Bearer ${userToken}`,
+          }
+        : {};
+
+      setIsAuthenticated(true);
 
       socket.current =
         process.env.NODE_ENV === 'production'
@@ -110,22 +113,29 @@ export const AuthContextProvider = ({
         socket.current.removeAllListeners();
       }
     };
-  }, [path, queryClient]);
+  }, [path, queryClient, isProduction]);
 
   const authenticationHandler = useCallback(
     ({ data }: { data: ResponseUserType }) => {
       if (isAuthenticated && !data) {
         localStorage.removeItem('userId');
         localStorage.removeItem('token');
-        setAuthenticationToken('');
+
+        socket.current = undefined;
       } else {
         localStorage.setItem('userId', data.data._id);
         localStorage.setItem('token', data.token);
+
+        axios.defaults.headers.common = isProduction
+          ? {
+              Authorization: `Bearer ${data.token}`,
+            }
+          : {};
       }
 
       setIsAuthenticated((prevState) => !prevState);
     },
-    [isAuthenticated]
+    [isAuthenticated, isProduction]
   );
 
   const { data: userInfo, isLoading } = useGetUser(
@@ -140,30 +150,17 @@ export const AuthContextProvider = ({
 
   const value = useMemo(
     () => ({
-      isAuthenticated: isAuthenticated && Boolean(authenticationToken),
-      authenticationToken,
+      isAuthenticated,
       authenticationHandler,
       userInfo: userInfo || initialUserInfo,
       invalidateUserData,
       socket,
       isAdmin: userInfo.role === 'admin',
     }),
-    [
-      isAuthenticated,
-      authenticationHandler,
-      userInfo,
-      invalidateUserData,
-      authenticationToken,
-    ]
+    [isAuthenticated, authenticationHandler, userInfo, invalidateUserData]
   );
 
-  if (process.env.NODE_ENV === 'production') {
-    axios.defaults.headers.common = isAuthenticated
-      ? { Authorization: `Bearer ${authenticationToken}` }
-      : {};
-
-    axios.defaults.baseURL = process.env.REACT_APP_API_KEY;
-  }
+  axios.defaults.baseURL = isProduction ? process.env.REACT_APP_API_KEY : '';
 
   return (
     <AuthContext.Provider value={value}>
