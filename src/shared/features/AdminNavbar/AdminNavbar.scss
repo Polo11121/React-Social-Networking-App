@@ -4,7 +4,12 @@
   position: sticky;
   top: 4rem;
   height: calc(100vh - 4rem);
-  flex: 0.2;
+  width: 15rem;
+
+  @media only screen and (min-width: $extraExtraLarge) {
+    flex: 0.2;
+  }
+
   background-color: $lightBlack;
 
   &__info-container {

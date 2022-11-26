@@ -133,6 +133,7 @@ export const AuthContextProvider = ({
 
       socket.current.on('new-report', () => {
         queryClient.invalidateQueries('newReports');
+        queryClient.invalidateQueries('dashboardCounters');
         queryClient.invalidateQueries('reports');
         customToast({ text: 'Dodano nowe zgłoszenie' });
       });
@@ -151,7 +152,7 @@ export const AuthContextProvider = ({
         socket.current.removeAllListeners();
       }
     };
-  }, [path, queryClient, isProduction]);
+  }, [path, queryClient, isProduction, authenticationHandler]);
 
   const { data: userInfo, isLoading } = useGetUser(
     localStorage.getItem('userId')
