@@ -90,13 +90,15 @@ Przesunął${gender === 'male' ? 'eś' : 'aś'} w ${
     }`;
   };
 
+  const isEmptyMessageVisible =
+    !users.length || (users.length === currentIndex && !hasNextPage);
   return (
     <div className="swipe">
       <Filters />
       <div className="swipe__cards">
         <WithLoader isLoading={isFetching}>
-          {users.length ? (
-            users.map((user, index) => (
+          <>
+            {users.map((user, index) => (
               <SwipeCard
                 user={user}
                 isHidden={index < currentIndex}
@@ -107,13 +109,16 @@ Przesunął${gender === 'male' ? 'eś' : 'aś'} w ${
                 onSwipe={swipedHandler}
                 onCardLeftScreen={outOfFrameHandler}
               />
-            ))
-          ) : (
-            <div className="swipe__empty">
+            ))}
+            <div
+              className={classNames('swipe__empty', {
+                'swipe__empty--visible': isEmptyMessageVisible,
+              })}
+            >
               <HeartBrokenSharpIcon style={{ fontSize: '8rem' }} />
               <h2>Brak dopasowań.</h2>
             </div>
-          )}
+          </>
         </WithLoader>
       </div>
       <div

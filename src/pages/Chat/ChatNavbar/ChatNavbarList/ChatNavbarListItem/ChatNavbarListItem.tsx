@@ -1,6 +1,6 @@
 import { Avatar } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { formatDataTestId } from 'shared/functions';
+import { formatDataTestId, truncateText } from 'shared/functions';
 import classNames from 'classnames';
 import './ChatNavbarListItem.scss';
 
@@ -37,7 +37,7 @@ export const ChatNavbarListItem = ({
         })}
         data-testid={`user-${formatDataTestId(fullName)}-chat-last-message`}
       >
-        {lastMessage}
+        {truncateText(40, lastMessage)}
       </span>
     </div>
   </NavLink>
