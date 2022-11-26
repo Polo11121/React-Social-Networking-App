@@ -34,6 +34,7 @@ export const ReportButtons = ({
 
   const onSuccess = (type: 'assign' | 'unassign') => {
     queryClient.invalidateQueries('reports');
+    queryClient.invalidateQueries(['userReports', userId]);
     customToast({
       style: {
         whiteSpace: 'nowrap',

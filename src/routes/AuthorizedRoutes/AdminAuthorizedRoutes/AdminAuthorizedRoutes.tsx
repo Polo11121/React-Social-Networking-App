@@ -8,7 +8,7 @@ export const AdminAuthorizedRoutes = () => (
     <AdminHeader />
     <div style={{ display: 'flex' }}>
       <AdminNavbar />
-      <div style={{ flex: 0.8 }}>
+      <div style={{ flex: 1 }}>
         <Routes>
           {adminAuthorizedRoutes().map(({ path, Component }) => (
             <Route key={path} path={path} element={Component} />

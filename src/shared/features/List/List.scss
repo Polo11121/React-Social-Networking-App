@@ -45,8 +45,12 @@
   }
 
   &__header {
-    width: 12.5rem;
     text-align: center;
+    width: 8rem;
+
+    @media only screen and (min-width: $extraExtraLarge) {
+      width: 12.5rem;
+    }
 
     &:first-of-type {
       width: 9.375rem;
