@@ -1,13 +1,17 @@
 import { customToast } from 'shared/hooks/customToast';
 import { useApiCrud } from 'api/useApiCrud';
-import { useAuthContext } from 'contexts/AuthContext';
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 export const useChangePassword = () => {
-  const { authenticationHandler } = useAuthContext();
-
   const onSuccess = (data: AxiosResponse<any, any>) => {
-    authenticationHandler(data);
+    if (process.env.NODE_ENV === 'production') {
+      localStorage.setItem('token', data.data.token);
+
+      axios.defaults.headers.common = {
+        Authorization: `Bearer ${data.data.token}`,
+      };
+    }
+
     customToast({ text: 'Pomyślnie zmieniono hasło' });
   };
 
