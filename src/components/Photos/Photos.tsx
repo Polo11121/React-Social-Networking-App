@@ -41,8 +41,8 @@ export const Photos = ({
               <img
                 style={{ cursor: 'pointer' }}
                 onClick={() => setSelectedPhoto(index)}
-                src={`${photo.image}?w=164&h=164&fit=crop&auto=format`}
-                srcSet={`${photo.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                src={photo.image}
+                srcSet={photo.image}
                 alt={photo.image}
                 loading="lazy"
               />
