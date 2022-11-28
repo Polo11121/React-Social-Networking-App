@@ -1,24 +1,28 @@
 @import 'styles/styles';
 
-.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+.MuiInputBase-root {
   height: 3rem;
+  border-color: #ced4da !important;
 }
-.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input::placeholder {
+
+.MuiInputBase-input::placeholder {
   opacity: 1 !important;
   color: #757575 !important;
 }
 
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+.MuiOutlinedInput-notchedOutline {
   border-color: #ced4da !important;
 }
 
-.css-wb57ya-MuiFormControl-root-MuiTextField-root:focus-within
-  .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+.MuiFormControl-root:focus-within .MuiOutlinedInput-notchedOutline {
   border: 1px solid $primary !important;
-  box-shadow: 0 0 0 0.25rem rgb(0 111 113 / 25%) !important;
+  box-shadow: 0 0 0 1px $primary !important;
 }
 
-.Mui-error .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+.Mui-error .MuiOutlinedInput-notchedOutline {
   border-color: $red !important;
+}
+
+.Mui-error .MuiSvgIcon-root {
+  color: $red !important;
 }

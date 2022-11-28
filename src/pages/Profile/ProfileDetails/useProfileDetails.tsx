@@ -87,6 +87,7 @@ export const useProfileDetails = () => {
       birthDate,
       interestedGenders: formatInterestedGendersSelect(interestedGenders),
     },
+    validateOnChange: true,
     validationSchema: ProfileDetailsSchema,
   });
 
