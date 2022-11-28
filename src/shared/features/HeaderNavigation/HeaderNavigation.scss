@@ -23,7 +23,7 @@
   }
 
   &__link {
-    width: 6.25rem;
+    flex: 1;
     border-bottom: 3px solid transparent;
     display: flex;
     justify-content: center;
@@ -32,6 +32,10 @@
     text-decoration: none;
     color: #65676b;
     font-weight: $font-weight-semibold;
+
+    @media only screen and (min-width: $small) {
+      width: 6.25rem;
+    }
 
     &:hover {
       border-radius: 0.313rem;
