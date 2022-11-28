@@ -7,6 +7,7 @@ import { getTrimmedData } from 'shared/functions';
 
 type UseFormType<T> = {
   initialValues: T;
+  validateOnChange?: boolean;
   validationSchema?: any;
   mutate?: UseMutateFunction<
     AxiosResponse<any, any>,
@@ -20,6 +21,7 @@ export const useForm = <T extends FormikValues>({
   initialValues,
   validationSchema,
   mutate,
+  validateOnChange = false,
 }: UseFormType<T>) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -27,7 +29,7 @@ export const useForm = <T extends FormikValues>({
     initialValues,
     validationSchema,
     onSubmit: (values) => mutate && mutate(getTrimmedData(values)),
-    validateOnChange: isSubmitted,
+    validateOnChange: isSubmitted || validateOnChange,
   });
 
   useEffect(
