@@ -2,7 +2,7 @@
 
 context('report', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/profile');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     if (cy.get('button').contains('Zaloguj się')) {
       cy.fixture('user1.json').then(({ login, password }) => {

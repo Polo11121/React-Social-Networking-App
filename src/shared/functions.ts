@@ -30,29 +30,6 @@ export const getAge = (dateString: Date) => {
   return age;
 };
 
-export const formatDate = (date: Date) =>
-  new Date(date).toLocaleDateString('pl-PL', {
-    hour: '2-digit',
-    minute: '2-digit',
-    year: 'numeric',
-    month: 'long',
-    day: '2-digit',
-  });
-
-export const formatShortDate = (date: Date) =>
-  new Date(date).toLocaleDateString('pl-PL', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  });
-
-export const formatProfileDetailsDate = (date: Date) =>
-  new Date(date).toLocaleDateString('pl-PL', {
-    year: 'numeric',
-    month: 'long',
-    day: '2-digit',
-  });
-
 export const goToTop = () =>
   window.scrollTo({
     top: 0,
@@ -84,6 +61,9 @@ export const timeout = (ms: number) => {
 };
 
 export const formatDataTestId = (text: string) => text.split(' ').join('-');
+
+export const truncateText = (size: number, text?: string) =>
+  text && text?.length > size ? `${text.slice(0, size - 1)}…` : text;
 
 export const adjustColor = (color: string, amount: number) =>
   '#' +
@@ -175,5 +155,25 @@ export const formatReportStatus = (status: string) => {
   return '';
 };
 
-export const truncateText = (size: number, text?: string) =>
-  text && text?.length > size ? `${text.slice(0, size - 1)}…` : text;
+export const formatDate = (date: Date) =>
+  new Date(date).toLocaleDateString('pl-PL', {
+    hour: '2-digit',
+    minute: '2-digit',
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+  });
+
+export const formatShortDate = (date: Date) =>
+  new Date(date).toLocaleDateString('pl-PL', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+
+export const formatProfileDetailsDate = (date: Date) =>
+  new Date(date).toLocaleDateString('pl-PL', {
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+  });

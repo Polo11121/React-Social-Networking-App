@@ -2,16 +2,16 @@
 
 .MuiInputBase-root {
   height: 3rem;
-  border-color: #ced4da !important;
+  border-color: $mediumGray !important;
 }
 
 .MuiInputBase-input::placeholder {
   opacity: 1 !important;
-  color: #757575 !important;
+  color: $darkGray !important;
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: #ced4da !important;
+  border-color: $mediumGray !important;
 }
 
 .MuiFormControl-root:focus-within .MuiOutlinedInput-notchedOutline {

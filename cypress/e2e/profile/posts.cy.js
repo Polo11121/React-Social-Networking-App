@@ -2,7 +2,7 @@
 
 context('Profile posts', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/profile');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     if (cy.get('button').contains('Zaloguj się')) {
       cy.fixture('user1.json').then(({ login, password }) => {
@@ -23,7 +23,7 @@ context('Profile posts', () => {
 
     cy.get('[data-testid="add-post-button"]').click();
 
-    cy.contains('Pomyślnie dodano post');
+    cy.wait(500).contains('Pomyślnie dodano post');
   });
 
   it('should edit posts functionality work correctly', () => {
@@ -41,7 +41,7 @@ context('Profile posts', () => {
 
     cy.get('[data-testid="submit-edit-post-button"]').click();
 
-    cy.contains('Pomyślnie zedytowano post');
+    cy.wait(500).contains('Pomyślnie zedytowano post');
   });
 
   it('should "X" button in edit post modal hide modal', () => {
@@ -63,7 +63,7 @@ context('Profile posts', () => {
 
     cy.get('[data-testid="submit-delete-post-button"]').click();
 
-    cy.contains('Pomyślnie usunięto post');
+    cy.wait(500).contains('Pomyślnie usunięto post');
   });
 
   it('should "Anuluj" button in edit post modal hide modal', () => {

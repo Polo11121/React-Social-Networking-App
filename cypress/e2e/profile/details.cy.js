@@ -2,7 +2,7 @@
 
 context('Profile details', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/profile');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     if (cy.get('button').contains('Zaloguj się')) {
       cy.fixture('user1.json').then(({ login, password }) => {
@@ -31,7 +31,7 @@ context('Profile details', () => {
 
               cy.get(`#addHoc-${name}-select`)
                 .type(`{home}${addText}`)
-                .wait(500)
+                .wait(2000)
                 .type('{enter}');
 
               cy.get(`[data-testid="submit-addHoc-${name}-button"]`).click();
@@ -46,7 +46,7 @@ context('Profile details', () => {
 
               cy.get(`#addHoc-${name}-select`)
                 .type(addText)
-                .wait(500)
+                .wait(2000)
                 .type('{enter}');
 
               cy.get(`[data-testid="submit-addHoc-${name}-button"]`).click();
@@ -63,7 +63,7 @@ context('Profile details', () => {
 
             cy.get(`#addHoc-${name}-select`)
               .type(`{home}${editText}`)
-              .wait(500)
+              .wait(2000)
               .type('{enter}');
 
             cy.get(`[data-testid="submit-addHoc-${name}-button"]`).click();
@@ -82,7 +82,9 @@ context('Profile details', () => {
 
               cy.get(`#addHoc-${name}-select`);
 
-              cy.get(`[data-testid="cancel-addHoc-${name}-button"]`).click();
+              cy.get(`[data-testid="cancel-addHoc-${name}-button"]`)
+                .wait(2000)
+                .click();
 
               cy.get(`[data-testid="add-addHoc-${name}-button"]`);
             }
@@ -143,7 +145,9 @@ context('Profile details', () => {
 
               cy.get(`[data-testid="addHoc-${name}-input"]`);
 
-              cy.get(`[data-testid="cancel-addHoc-${name}-button"]`).click();
+              cy.get(`[data-testid="cancel-addHoc-${name}-button"]`)
+                .wait(2000)
+                .click();
 
               cy.get(`[data-testid="add-addHoc-${name}-button"]`);
             }

@@ -3,17 +3,17 @@ import { ListItem } from 'shared/features/List/ListItem/ListItem';
 import { ListItemSections } from 'shared/features/List/ListItem/ListItemSections/ListItemSections';
 import { ListItemSection } from 'shared/features/List/ListItem/ListItemSection/ListItemSection';
 import { ListItemSectionCell } from 'shared/features//List/ListItem/ListItemSectionCell/ListItemSectionCell';
-import {
-  formatDate,
-  formatUserAccountStatus,
-  getFullName,
-} from 'shared/functions';
 import { List } from 'shared/features/List/List';
 import { Report } from 'shared/features/Report/Report';
 import { useGetUserReports } from 'api/useGetUserReports';
 import { UserType } from 'shared/types/responseTypes';
 import { Avatar } from '@mui/material';
 import { Button } from 'components';
+import {
+  formatDate,
+  formatUserAccountStatus,
+  getFullName,
+} from 'shared/functions';
 import { UnblockUserModal } from 'shared/features/User/UnblockUserModal/UnblockUserModal';
 import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned';
 

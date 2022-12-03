@@ -2,7 +2,7 @@
 
 context('Profile description', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/profile');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     if (cy.get('button').contains('Zaloguj się')) {
       cy.fixture('user1.json').then(({ login, password }) => {
@@ -33,7 +33,7 @@ context('Profile description', () => {
 
     cy.get('[data-testid="submit-description-button"]').click();
 
-    cy.contains('Test description');
+    cy.wait(1000).contains('Test description');
   });
 
   it('should edit description functionality work correctly', () => {

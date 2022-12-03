@@ -2,7 +2,7 @@
 
 context('Logout', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
   });
 
   it('should logout functionality work correctly ', () => {

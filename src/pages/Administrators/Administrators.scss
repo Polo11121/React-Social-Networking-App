@@ -7,6 +7,6 @@
     background-color: lighten($primary, 3%);
     color: $background;
     padding: 1rem;
-    font-size: 1rem;
+    font-size: $font-size-normal;
   }
 }

@@ -2,7 +2,7 @@
 
 context('Navigation ', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     cy.fixture('admin1.json').then(({ login, password }) => {
       cy.get('input[placeholder*="E-mail"]').type(login);

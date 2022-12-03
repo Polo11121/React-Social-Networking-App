@@ -21,12 +21,11 @@ export const useMatchFunctionality = ({
   userStatus,
 }: UseMatchFunctionalityPropsType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const navigate = useNavigate();
-  const { isAdmin } = useAuthContext();
   const { mutateAsync, isLoading } = useMatch(userId);
   const { addRequestedUserHandler, removeRequestedUserHandler } =
     useSuggestionsContext();
+  const { isAdmin } = useAuthContext();
+  const navigate = useNavigate();
 
   const navigateToChatHandler = () => navigate(`/chat/${userId}`);
 
@@ -144,6 +143,7 @@ export const useMatchFunctionality = ({
         />
       );
     }
+
     return null;
   };
 
@@ -168,6 +168,7 @@ export const useMatchFunctionality = ({
         </>
       );
     }
+
     if (isMatch) {
       return (
         <>
@@ -196,6 +197,7 @@ export const useMatchFunctionality = ({
         </>
       );
     }
+
     return (
       <Button
         onClick={cancelMatchHandler}
@@ -211,9 +213,11 @@ export const useMatchFunctionality = ({
     if (userStatus === 'none') {
       return 'Wysłano prośbe o dopasowanie';
     }
+
     if (userStatus === 'request') {
       return 'Otrzymano prośbe o dopasowanie';
     }
+
     return 'Dopasowanie';
   };
 

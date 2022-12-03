@@ -2,7 +2,7 @@
 
 context('Navigation ', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     cy.fixture('admin1.json').then(({ login, password }) => {
       cy.get('input[placeholder*="E-mail"]').type(login);
@@ -15,9 +15,9 @@ context('Navigation ', () => {
   it('should admin profile and administrators list work correctly', () => {
     cy.get('[data-testid="admin-panel-administrators-link"]').click();
     cy.get(
-      '[data-testid="admin-Mariusz-Kowalski-list-item-expand-button"]'
+      '[data-testid="admin-Marcin-Góral-list-item-expand-button"]'
     ).click();
-    cy.get('[data-testid="admin-Mariusz-Kowalski-profile-link"]').click();
+    cy.get('[data-testid="admin-Marcin-Góral-profile-link"]').click();
 
     cy.get('[data-testid="admin-panel-profile-header"]');
 

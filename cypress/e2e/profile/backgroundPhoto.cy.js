@@ -2,7 +2,7 @@
 
 context('Profile background photo', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/profile');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     if (cy.get('button').contains('Zaloguj się')) {
       cy.fixture('user1.json').then(({ login, password }) => {
@@ -21,6 +21,6 @@ context('Profile background photo', () => {
 
     cy.contains('Zapisz').click();
 
-    cy.contains('Pomyślnie zaktualizowano zdjęcie w tle');
+    cy.wait(2000).contains('Pomyślnie zaktualizowano zdjęcie w tle');
   });
 });

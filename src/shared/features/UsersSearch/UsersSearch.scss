@@ -7,7 +7,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    font-size: 0.875rem;
+    font-size: $font-size-medium;
     border-radius: 1rem;
     line-height: 1.5;
     padding: 0.3125rem 0.625rem;
@@ -43,7 +43,7 @@
   }
 
   &__icon {
-    color: gray !important;
+    color: $gray !important;
   }
 
   &__input {
@@ -68,7 +68,7 @@
   &__hint {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: $white;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid $primary;
     width: 100%;
@@ -76,7 +76,7 @@
 
     &--empty {
       pointer-events: none;
-      font-size: 0.875rem;
+      font-size: $font-size-medium;
     }
 
     &:hover {

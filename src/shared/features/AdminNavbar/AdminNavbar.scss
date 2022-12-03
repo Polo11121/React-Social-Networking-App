@@ -7,14 +7,14 @@
   width: 15rem;
 
   @media only screen and (min-width: $extraExtraLarge) {
-    flex: 0.2;
+    width: 20rem;
   }
 
   background-color: $lightBlack;
 
   &__info-container {
     padding: 0.5rem;
-    color: #bac7ce;
+    color: $slate;
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -34,7 +34,7 @@
     padding: 0.5rem;
     font-weight: $font-weight-semibold;
     background-color: $darkBlack;
-    color: #3e6363;
+    color: $green;
     text-align: center;
   }
 
@@ -44,16 +44,16 @@
     align-items: center;
     gap: 0.5rem;
     padding: 1rem;
-    color: #bac7ce;
+    color: $slate;
 
     &:hover {
-      background-color: #1e282c;
+      background-color: $lightDark;
       color: $white !important;
     }
 
     &--active {
       border-left: 4px solid $primary;
-      background-color: #1e282c;
+      background-color: $lightDark;
       color: $white !important;
     }
   }

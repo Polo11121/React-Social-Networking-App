@@ -21,12 +21,12 @@ export const Admin = ({ admin }: { admin: UserType }) => {
   const [reportStatus, setReportStatus] =
     useState<SingleValue<SelectOptionType>>(null);
 
+  const { _id, name, surname, email, createdAt, profileImage } = admin;
+
   const changeReportStatusHandler = (
     selectValue: SingleValue<SelectOptionType>
   ) => setReportStatus(selectValue);
   const { value, changeValueHandler } = useSearch();
-
-  const { _id, name, surname, email, createdAt, profileImage } = admin;
 
   const {
     data: reports,

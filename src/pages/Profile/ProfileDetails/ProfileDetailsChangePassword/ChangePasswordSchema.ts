@@ -15,7 +15,7 @@ export const ChangePasswordSchema = Yup.object().shape({
     .required('Hasło musi mieć conajmniej 8 znaków'),
   passwordConfirm: Yup.string().test(
     'equals passwords',
-    'Nieprawidłowe powtórzenie hasło',
+    'Nieprawidłowe powtórzenie hasła',
     (value, ctx) =>
       Boolean(value && ctx.parent.password === value && value.length > 7)
   ),

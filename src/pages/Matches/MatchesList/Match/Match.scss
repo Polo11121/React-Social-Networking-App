@@ -7,7 +7,7 @@
   width: fit-content;
 
   &__name {
-    font-size: 1rem;
+    font-size: $font-size-normal;
 
     @media only screen and (min-width: $medium) {
       font-size: 1.5rem;
@@ -46,10 +46,10 @@
     display: flex;
     align-items: center;
     color: $mandy !important;
-    font-size: 0.75rem;
+    font-size: $font-size-small;
 
     @media only screen and (min-width: $medium) {
-      font-size: 1rem;
+      font-size: $font-size-normal;
     }
   }
 
@@ -61,16 +61,16 @@
     @media only screen and (min-width: $medium) {
       & .button,
       .MuiSvgIcon-root {
-        font-size: 1rem !important;
+        font-size: $font-size-normal !important;
       }
     }
 
     & .button,
     .MuiSvgIcon-root {
-      font-size: 0.625rem !important;
+      font-size: $font-size-x-small !important;
 
       @media only screen and (min-width: $medium) {
-        font-size: 1rem !important;
+        font-size: $font-size-normal !important;
       }
     }
   }

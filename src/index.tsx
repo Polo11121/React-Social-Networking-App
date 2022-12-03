@@ -7,8 +7,8 @@ import { AuthContextProvider } from 'contexts/AuthContext';
 import { ErrorFallback } from 'pages/ErrorFallback/ErrorFallback';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ToastContainer } from 'react-toastify';
-import App from './App';
 import 'react-toastify/dist/ReactToastify.css';
+import App from './App';
 import './index.scss';
 
 const queryClient = new QueryClient();

@@ -1,9 +1,10 @@
 /// <reference types="cypress" />
+import { truncateText } from '../../../src/shared/functions';
 import { v4 as uuid } from 'uuid';
 
 context('Chat', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/suggestions');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     if (cy.get('button').contains('Zaloguj się')) {
       cy.fixture('user1.json').then(({ login, password }) => {
@@ -45,10 +46,12 @@ context('Chat', () => {
 
     cy.get('[data-testid="chat-send-message-button"]').click();
 
-    cy.get(`[data-testid="chat-message-${message1}"]`).contains(message1);
-    cy.get('[data-testid="user-test2-test2-chat-last-message"]').contains(
-      message1
-    );
+    cy.wait(500)
+      .get(`[data-testid="chat-message-${message1}"]`)
+      .contains(message1);
+    cy.wait(500)
+      .get('[data-testid="user-test2-test2-chat-last-message"]')
+      .contains(truncateText(36, message1));
 
     cy.get('[data-testid="user-header-avatar"]').click();
     cy.get('[data-testid="user-header-logout-button"]').click();
@@ -64,9 +67,9 @@ context('Chat', () => {
 
     cy.get('[data-testid="header-navigation-chat-link"]').eq(0).click();
 
-    cy.get('[data-testid="user-test-test-chat-last-message"]').contains(
-      message1
-    );
+    cy.wait(500)
+      .get('[data-testid="user-test-test-chat-last-message"]')
+      .contains(truncateText(34, message1));
 
     cy.get('[data-testid="user-test-test-chat-last-message"]').should(
       'have.css',
@@ -91,10 +94,13 @@ context('Chat', () => {
 
     cy.get('[data-testid="chat-send-message-button"]').click();
 
-    cy.get(`[data-testid="chat-message-${message2}"]`).contains(message2);
-    cy.get('[data-testid="user-test-test-chat-last-message"]').contains(
-      message2
-    );
+    cy.wait(500)
+      .get(`[data-testid="chat-message-${message2}"]`)
+      .contains(message2);
+
+    cy.wait(500)
+      .get('[data-testid="user-test-test-chat-last-message"]')
+      .contains(truncateText(36, message2));
 
     cy.get('[data-testid="user-header-avatar"]').click();
     cy.get('[data-testid="user-header-logout-button"]').click();
@@ -110,9 +116,9 @@ context('Chat', () => {
 
     cy.get('[data-testid="header-navigation-chat-link"]').eq(0).click();
 
-    cy.get('[data-testid="user-test2-test2-chat-last-message"]').contains(
-      message2
-    );
+    cy.get('[data-testid="user-test2-test2-chat-last-message"]')
+      .wait(500)
+      .contains(truncateText(33, message2));
 
     cy.get('[data-testid="user-test2-test2-chat-last-message"]').should(
       'have.css',

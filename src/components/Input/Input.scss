@@ -7,27 +7,35 @@
   padding: 0.625rem 0.75rem;
   background-color: $white;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid $mediumGray;
   outline: 0;
-  color: #212529;
+  color: $mediumBlack;
   appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   margin-bottom: 1rem;
 
   &__container {
-    font-size: 1rem;
+    font-size: $font-size-normal;
     font-weight: $font-weight-normal;
     line-height: $line-height-small;
     width: 100%;
     border: none;
     outline: none;
+
+    &:disabled {
+      background-color: $lightGray;
+    }
   }
 
   &:focus-within {
     background-color: $white;
     border-color: $primary;
     box-shadow: 0 0 0 1px $primary;
+  }
+
+  &--disabled {
+    background-color: $lightGray;
   }
 
   &--error {

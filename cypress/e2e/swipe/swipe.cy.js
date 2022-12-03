@@ -2,7 +2,7 @@
 
 context('Swipe', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/suggestions');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     if (cy.get('button').contains('Zaloguj się')) {
       cy.fixture('user1.json').then(({ login, password }) => {
@@ -37,15 +37,15 @@ context('Swipe', () => {
       .type('Kobiety')
       .type('{enter}');
 
-    cy.get('#filters-interested-age-select').type('55-64').type('{enter}');
+    cy.get('#filters-interested-age-select').type('18-26').type('{enter}');
 
     cy.get('#filters-interested-city-select')
-      .type('Września')
-      .wait(500)
+      .type('Częstochowa')
+      .wait(2000)
       .type('{enter}');
 
     cy.get('#filters-interested-city-max-distance-select')
-      .type('0')
+      .type('0km')
       .type('{enter}');
 
     cy.get('[data-testid="filters-submit-button"]').click();
@@ -58,7 +58,7 @@ context('Swipe', () => {
 
     cy.get('[data-testid="filters-submit-button"]').should('be.disabled');
 
-    cy.get('.css-tj5bde-Svg').click({ multiple: true, force: true });
+    cy.get('.css-8mmkcg').click({ multiple: true, force: true });
     cy.get('[data-testid="filters-submit-button"]').click({
       force: true,
     });

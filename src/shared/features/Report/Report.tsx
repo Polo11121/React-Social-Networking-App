@@ -38,6 +38,7 @@ const getStatusIcon = (status: 'new' | 'inProgress' | 'solved') => {
       </>
     );
   }
+
   if (status === 'inProgress') {
     return (
       <>
@@ -54,6 +55,7 @@ const getStatusIcon = (status: 'new' | 'inProgress' | 'solved') => {
       </>
     );
   }
+
   return (
     <>
       <Tooltip
@@ -82,7 +84,6 @@ export const Report = ({
   noAdmin = false,
 }: ReportPropsType) => {
   const [isListItemExpand, setIsListItemExpand] = useState(false);
-
   const { userInfo } = useAuthContext();
 
   const {

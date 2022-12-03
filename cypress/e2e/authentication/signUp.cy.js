@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 context('SignUp', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     cy.get('button').contains('Utwórz nowe konto').click();
   });
@@ -81,9 +81,7 @@ context('SignUp', () => {
 
     cy.get('.register-modal  input[placeholder*="E-mail"]').focus();
 
-    cy.contains(
-      'Konto z podanym adresem e-mail oczekuję na potwierdzenie, sprawdź skrzynkę pocztową'
-    );
+    cy.contains('Ten adres e-mail jest już używany');
 
     cy.get('.register-modal  input[placeholder*="E-mail"]').blur();
   });

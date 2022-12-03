@@ -34,7 +34,8 @@ export const Input = ({
       className={classnames(
         'input',
         { 'input--error': error },
-        { 'input--tooltip-error': tooltipError }
+        { 'input--tooltip-error': tooltipError },
+        { 'input--disabled': isDisabled }
       )}
       style={style}
     >

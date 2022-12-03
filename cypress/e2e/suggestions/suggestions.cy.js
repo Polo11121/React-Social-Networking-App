@@ -2,7 +2,7 @@
 
 context('Suggestions', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/suggestions');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
 
     if (cy.get('button').contains('Zaloguj się')) {
       cy.fixture('user1.json').then(({ login, password }) => {
@@ -41,29 +41,30 @@ context('Suggestions', () => {
     cy.get('[data-testid="filters-submit-button"]').should('be.disabled');
 
     cy.get('#filters-interested-genders-select')
-      .type('Mężczyźni')
+      .type('Kobiety')
       .type('{enter}');
 
-    cy.get('#filters-interested-age-select').type('55-64').type('{enter}');
+    cy.get('#filters-interested-age-select').type('18-26').type('{enter}');
 
     cy.get('#filters-interested-city-select')
-      .type('Wałbrzych')
-      .wait(500)
+      .type('Częstochowa')
+      .wait(2000)
       .type('{enter}');
 
     cy.get('#filters-interested-city-max-distance-select')
-      .type('0')
+      .type('0km')
       .type('{enter}');
 
     cy.get('[data-testid="filters-submit-button"]').click();
 
-    cy.get('[data-testid="suggestion-test3-test3-link');
+    cy.contains('Pomyślnie zmieniono filtry');
+    cy.get('[data-testid="suggestion-test4-test4-link');
   });
 
   it('should display user profile after clicking link in navbar', () => {
-    cy.get('[data-testid="suggestion-test3-test3-link').click();
+    cy.get('[data-testid="suggestion-test4-test4-link').click();
 
-    cy.get('[data-testid="user-test3-test3-profile');
+    cy.get('[data-testid="user-test4-test4-profile');
   });
 
   it('should clear filters functionality work correctly', () => {
@@ -71,7 +72,7 @@ context('Suggestions', () => {
 
     cy.get('[data-testid="filters-submit-button"]').should('be.disabled');
 
-    cy.get('.css-tj5bde-Svg').click({ multiple: true, force: true });
+    cy.get('.css-8mmkcg').click({ multiple: true, force: true });
     cy.get('[data-testid="filters-submit-button"]').click({ force: true });
 
     cy.contains('Pomyślnie zmieniono filtry');

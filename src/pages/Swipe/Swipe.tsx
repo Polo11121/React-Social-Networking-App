@@ -14,6 +14,10 @@ import classNames from 'classnames';
 import './Swipe.scss';
 
 export const Swipe = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lastDirection, setLastDirection] = useState('');
+  const currentIndexRef = useRef(currentIndex);
+
   const {
     userInfo: { filters, gender },
   } = useAuthContext();
@@ -26,10 +30,6 @@ export const Swipe = () => {
     hasNextPage,
   } = useGetUsers({ filters, isSwipe: true });
   const { mutateAsync } = useMatch();
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [lastDirection, setLastDirection] = useState('');
-  const currentIndexRef = useRef(currentIndex);
 
   const childRefs = useMemo(
     () =>
@@ -92,6 +92,7 @@ Przesunął${gender === 'male' ? 'eś' : 'aś'} w ${
 
   const isEmptyMessageVisible =
     !users.length || (users.length === currentIndex && !hasNextPage);
+
   return (
     <div className="swipe">
       <Filters />

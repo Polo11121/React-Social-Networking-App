@@ -2,7 +2,7 @@
 
 context('Login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('https://date-app-praca-inzynierska.netlify.app');
   });
 
   it('should login admin after submitting with correct values', () => {
