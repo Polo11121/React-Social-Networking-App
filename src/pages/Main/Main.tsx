@@ -18,7 +18,7 @@ export const Main = () => {
           <div className="main__text">
             <h1 className="main__title">DATE-APP</h1>
             <h3 className="main__description">
-              Date-app pomaga kontaktować się z innymi osobami oraz udostępniać
+              Date-App pomaga kontaktować się z innymi osobami oraz udostępniać
               im różne informacje i materiały.
             </h3>
           </div>
