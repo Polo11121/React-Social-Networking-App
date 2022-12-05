@@ -73,7 +73,7 @@ export const ReportButtons = ({
             <>
               <Button
                 testId="unassigned-from-report-button"
-                isDisabled={isLoading}
+                isLoading={isLoading}
                 text="Porzuć zgłoszenie"
                 buttonStyleType="mandy"
                 onClick={unassignFromReportHandler}
@@ -88,7 +88,7 @@ export const ReportButtons = ({
           ) : (
             <Button
               testId="assigned-from-report-button"
-              isDisabled={isLoading}
+              isLoading={isLoading}
               text="Przyjmij zgłoszenie"
               buttonStyleType="primary"
               onClick={assignToReportHandler}

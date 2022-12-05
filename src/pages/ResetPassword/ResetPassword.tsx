@@ -66,7 +66,7 @@ export const ResetPassword = () => {
                   style={{ marginLeft: '1rem' }}
                 />
                 <Button
-                  isDisabled={isLoading}
+                  isLoading={isLoading}
                   size="big"
                   buttonStyleType="primary"
                   text="Zmień hasło"

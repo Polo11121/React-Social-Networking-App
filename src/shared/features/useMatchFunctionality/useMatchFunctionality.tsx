@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from 'contexts/AuthContext';
 import { useMatch } from 'api/useMatch';
 import { Button } from 'components';
+import { useQueryClient } from 'react-query';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -21,11 +22,20 @@ export const useMatchFunctionality = ({
   userStatus,
 }: UseMatchFunctionalityPropsType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [requestStatus, setRequestStatus] = useState<
+    'request' | 'reject' | null
+  >(null);
   const { mutateAsync, isLoading } = useMatch(userId);
   const { addRequestedUserHandler, removeRequestedUserHandler } =
     useSuggestionsContext();
   const { isAdmin } = useAuthContext();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const invalidateQueries = () => {
+    queryClient.invalidateQueries(['user', userId]);
+    queryClient.invalidateQueries('matches');
+  };
 
   const navigateToChatHandler = () => navigate(`/chat/${userId}`);
 
@@ -34,24 +44,40 @@ export const useMatchFunctionality = ({
   const changeModalVisibilityHandler = () =>
     setIsModalOpen((prevState) => !prevState);
 
-  const requestMatchHandler = () =>
-    mutateAsync({ userId, status: 'request' }).then(() => {
+  const requestMatchHandler = () => {
+    setRequestStatus('request');
+
+    return mutateAsync({ userId, status: 'request' }).then(() => {
+      invalidateQueries();
       addRequestedUserHandler(userId);
     });
+  };
 
-  const rejectMatchHandler = () =>
-    mutateAsync({ userId, status: 'reject' }).then(() => {
+  const rejectMatchHandler = () => {
+    setRequestStatus('reject');
+
+    return mutateAsync({ userId, status: 'reject' }).then(() => {
+      invalidateQueries();
       removeRequestedUserHandler(userId);
     });
+  };
 
-  const cancelMatchHandler = () =>
-    mutateAsync({ userId, status: 'none' }).then(() => {
+  const cancelMatchHandler = () => {
+    return mutateAsync({ userId, status: 'none' }).then(() => {
+      invalidateQueries();
       removeRequestedUserHandler(userId);
     });
+  };
 
   const isMatch = myStatus
     ? userStatus === 'match' && myStatus === 'match'
     : userStatus === 'match';
+
+  const isAcceptButtonLoading =
+    requestStatus !== 'reject' && (requestStatus === 'request' || isLoading);
+
+  const isRejectButtonLoading =
+    requestStatus !== 'request' && (requestStatus === 'reject' || isLoading);
 
   const profileButtons = () => {
     if (isAdmin) {
@@ -71,6 +97,7 @@ export const useMatchFunctionality = ({
         <Button
           onClick={requestMatchHandler}
           Icon={<FavoriteIcon />}
+          isLoading={isLoading}
           text="Wyślij prośbę o dopasowanie"
           buttonStyleType="primary"
           testId="match-request-button"
@@ -84,6 +111,8 @@ export const useMatchFunctionality = ({
           <Button
             onClick={rejectMatchHandler}
             Icon={<HeartBrokenIcon />}
+            isLoading={isRejectButtonLoading}
+            isDisabled={Boolean(requestStatus)}
             text="Odrzuć prośbę"
             buttonStyleType="mandy"
             testId="match-reject-button"
@@ -91,7 +120,9 @@ export const useMatchFunctionality = ({
           <Button
             onClick={requestMatchHandler}
             Icon={<FavoriteIcon />}
+            isLoading={isAcceptButtonLoading}
             text="Akceptuj prośbę"
+            isDisabled={Boolean(requestStatus)}
             buttonStyleType="primary"
             testId="match-accept-button"
           />
@@ -129,6 +160,10 @@ export const useMatchFunctionality = ({
     }
 
     if (userStatus === 'reject') {
+      if (requestStatus) {
+        setRequestStatus(null);
+      }
+
       return null;
     }
 
@@ -137,6 +172,7 @@ export const useMatchFunctionality = ({
         <Button
           onClick={cancelMatchHandler}
           Icon={<HeartBrokenIcon />}
+          isLoading={isLoading}
           text="Anuluj prośbę"
           buttonStyleType="mandy"
           testId="match-reject-button"
@@ -155,13 +191,17 @@ export const useMatchFunctionality = ({
             onClick={rejectMatchHandler}
             Icon={<HeartBrokenIcon />}
             text="Odrzuć"
+            isLoading={isRejectButtonLoading}
+            isDisabled={Boolean(requestStatus)}
             buttonStyleType="mandy"
             testId="match-reject-button"
           />
           <Button
             onClick={requestMatchHandler}
-            Icon={<FavoriteIcon />}
             text="Akceptuj"
+            Icon={<FavoriteIcon />}
+            isLoading={isAcceptButtonLoading}
+            isDisabled={Boolean(requestStatus)}
             buttonStyleType="primary"
             testId="match-accept-button"
           />

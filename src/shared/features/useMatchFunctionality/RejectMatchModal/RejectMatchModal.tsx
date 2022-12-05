@@ -51,7 +51,7 @@ export const RejectMatchModal = ({
             <Button
               onClick={rejectMatchHandler}
               buttonStyleType="mandy"
-              isDisabled={isLoading}
+              isLoading={isLoading}
               text="Anuluj"
               testId="submit-reject-match-button"
             />

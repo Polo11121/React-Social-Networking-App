@@ -41,7 +41,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
     >
       {(profileImage || backgroundImage) && (
         <ProfilePreviewEditHeader
-          isDisabled={isLoading}
+          isLoading={isLoading}
           text={`Edycja ${
             backgroundImage ? 'zdjęcie w tle' : 'zdjęcia profilowego'
           }`}

@@ -41,7 +41,7 @@ export const ErrorFallback = ({
         />
         <Button
           size="big"
-          isDisabled={isLoading}
+          isLoading={isLoading}
           onClick={logoutHandler}
           text="Wyloguj"
           buttonStyleType="mandy"

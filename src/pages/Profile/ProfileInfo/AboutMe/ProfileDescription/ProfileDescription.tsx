@@ -45,9 +45,8 @@ export const ProfileDescription = () => {
           testId="cancel-description-button"
         />
         <Button
-          isDisabled={
-            formik.values.description.trim() === description || isLoading
-          }
+          isLoading={isLoading}
+          isDisabled={formik.values.description.trim() === description}
           type="submit"
           text="Zapisz"
           buttonStyleType="primary"

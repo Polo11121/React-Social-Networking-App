@@ -31,9 +31,8 @@ export const ProfileDetailsContactAndBasicInfo = () => {
           <AddHoc
             displayOnly={!isOwner}
             key={name}
-            isDisabled={
-              isLoading || value.trim() === initialValue || !value.trim()
-            }
+            isLoading={isLoading}
+            isDisabled={value.trim() === initialValue || !value.trim()}
             onSubmit={submitHandler}
             onDelete={deleteHandler}
             onClose={closeHandler}
@@ -73,9 +72,8 @@ export const ProfileDetailsContactAndBasicInfo = () => {
             hideDelete={hideDelete}
             displayOnly={!isOwner}
             key={name}
-            isDisabled={
-              isLoading || value.trim() === initialValue || !value.trim()
-            }
+            isLoading={isLoading}
+            isDisabled={value.trim() === initialValue || !value.trim()}
             onSubmit={submitHandler}
             onDelete={deleteHandler}
             onClose={closeHandler}
@@ -100,7 +98,8 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         hideDelete
         displayOnly={!isOwner}
         key={gender.name}
-        isDisabled={isLoading || gender.value.value === gender.initialValue}
+        isLoading={isLoading}
+        isDisabled={gender.value.value === gender.initialValue}
         onSubmit={gender.submitHandler}
         onClose={gender.closeHandler}
         placeholder={gender.placeholder}
@@ -122,9 +121,9 @@ export const ProfileDetailsContactAndBasicInfo = () => {
         hideDelete
         displayOnly={!isOwner}
         key={birthDate.name}
+        isLoading={isLoading}
         isDisabled={Boolean(
-          isLoading ||
-            birthDate.value.getTime() === birthDate.initialValue.getTime() ||
+          birthDate.value.getTime() === birthDate.initialValue.getTime() ||
             birthDate.error
         )}
         onSubmit={birthDate.submitHandler}
@@ -153,8 +152,8 @@ export const ProfileDetailsContactAndBasicInfo = () => {
       <AddHoc
         displayOnly={!isOwner}
         key={interestedGenders.name}
+        isLoading={isLoading}
         isDisabled={
-          isLoading ||
           interestedGenders.value?.value === interestedGenders.initialValue ||
           !interestedGenders.value?.value
         }

@@ -53,7 +53,7 @@ export const DeletePostModal = ({
             />
             <Button
               onClick={deletePostHandler}
-              isDisabled={isLoading}
+              isLoading={isLoading}
               buttonStyleType="mandy"
               text="Usuń"
               testId="submit-delete-post-button"

@@ -45,7 +45,7 @@ export const ProfileDetailsChangeEmailModal = ({
           </div>
           <div className="profile-details-change-email-modal__button">
             <Button
-              isDisabled={isLoading}
+              isLoading={isLoading}
               onClick={logoutHandler}
               size="big"
               text="Wyloguj"

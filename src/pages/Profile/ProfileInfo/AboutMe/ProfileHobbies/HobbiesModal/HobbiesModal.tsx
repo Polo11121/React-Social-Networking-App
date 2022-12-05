@@ -52,7 +52,6 @@ export const HobbiesModal = ({
 
   const isButtonDisabled =
     (hobbies.every(({ checked }) => !checked) && !userHobbies.length) ||
-    isLoading ||
     areEqual(
       userHobbies.map(({ text }) => text),
       checkedHobbies.map(({ text }) => text)
@@ -124,6 +123,7 @@ export const HobbiesModal = ({
             <Button
               text={`${userHobbies.length ? 'Edytuj' : 'Dodaj'} hobby`}
               onClick={updateHobbiesHandler}
+              isLoading={isLoading}
               isDisabled={isButtonDisabled}
               buttonStyleType="primary"
               testId="submit-hobby-modal-button"

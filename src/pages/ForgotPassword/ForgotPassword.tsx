@@ -55,7 +55,7 @@ export const ForgotPassword = () => {
                   size="big"
                   buttonStyleType="primary"
                   text="Szukaj"
-                  isDisabled={isLoading}
+                  isLoading={isLoading}
                   type="submit"
                   style={{ marginLeft: '1rem' }}
                 />

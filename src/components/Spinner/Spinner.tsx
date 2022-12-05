@@ -1,12 +1,13 @@
+import { CSSProperties } from 'react';
 import { CircularProgress } from '@mui/material';
 
 type SpinnerPropsType = {
   testId?: string;
-  customColor?: string;
   size?: number;
+  style?: CSSProperties;
 };
 
-export const Spinner = ({ testId, customColor, size }: SpinnerPropsType) => (
+export const Spinner = ({ testId, size, style }: SpinnerPropsType) => (
   <div
     style={{
       display: 'flex',
@@ -14,7 +15,8 @@ export const Spinner = ({ testId, customColor, size }: SpinnerPropsType) => (
       alignItems: 'center',
       height: '100%',
       flex: 1,
-      color: customColor || '#006f71',
+      color: '#006f71',
+      ...style,
     }}
   >
     <CircularProgress

@@ -47,8 +47,7 @@ export const AddPost = () => {
     mutate(formData);
   };
 
-  const isButtonDisabled =
-    isLoading || !(postValues.photos || postValues.text.trim());
+  const isButtonDisabled = !(postValues.photos || postValues.text.trim());
 
   const carouselImages = useMemo(
     () =>
@@ -78,6 +77,7 @@ export const AddPost = () => {
             testId="add-post-photo"
           />
           <Button
+            isLoading={isLoading}
             isDisabled={isButtonDisabled}
             onClick={addPostHandler}
             text="Dodaj post"

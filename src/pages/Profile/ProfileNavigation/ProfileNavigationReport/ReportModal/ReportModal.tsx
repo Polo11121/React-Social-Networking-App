@@ -105,7 +105,8 @@ export const ReportModal = ({
             />
             <Button
               type="submit"
-              isDisabled={!formik.values.reason || isLoading}
+              isLoading={isLoading}
+              isDisabled={!formik.values.reason}
               buttonStyleType="mandy"
               text="Zgłoś"
               testId="submit-delete-user-button"

@@ -56,7 +56,7 @@ export const EditPostModal = ({
   };
 
   const isButtonDisabled =
-    (postValues.text.trim() === text && !postValues?.photos) || isLoading;
+    postValues.text.trim() === text && !postValues?.photos;
 
   const carouselImages = useMemo(
     () =>
@@ -117,6 +117,7 @@ export const EditPostModal = ({
             <div className="edit-post-modal__buttons">
               <Button onClick={onClose} text="Anuluj" buttonStyleType="mandy" />
               <Button
+                isLoading={isLoading}
                 isDisabled={isButtonDisabled}
                 onClick={addPostHandler}
                 text="Edtyuj"

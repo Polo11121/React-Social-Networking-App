@@ -24,10 +24,9 @@ export const ProfileWorkAndEducation = () => {
           <AddHoc
             displayOnly={!isOwner}
             key={name}
+            isLoading={isLoading}
             isDisabled={
-              isLoading ||
-              value.trim() === initialValue ||
-              (!initialValue && !value.trim())
+              value.trim() === initialValue || (!initialValue && !value.trim())
             }
             onSubmit={submitHandler}
             onDelete={deleteHandler}

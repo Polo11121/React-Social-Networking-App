@@ -5,21 +5,21 @@ export type ProfilePreviewEditHeaderPropsType = {
   text: string;
   onSubmit: () => void;
   onClose: () => void;
-  isDisabled?: boolean;
+  isLoading?: boolean;
 };
 
 export const ProfilePreviewEditHeader = ({
   text,
   onSubmit,
   onClose,
-  isDisabled = false,
+  isLoading = false,
 }: ProfilePreviewEditHeaderPropsType) => (
   <div className="profile-preview-edit-header">
     <p>{text}</p>
     <div className="profile-preview-edit-header__buttons">
       <Button onClick={onClose} text="Anuluj" buttonStyleType="mandy" />
       <Button
-        isDisabled={isDisabled}
+        isLoading={isLoading}
         onClick={onSubmit}
         text="Zapisz"
         buttonStyleType="primary"

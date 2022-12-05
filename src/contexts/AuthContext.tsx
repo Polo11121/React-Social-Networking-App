@@ -114,9 +114,7 @@ export const AuthContextProvider = ({
         'match-status',
         ({ text, users }: { text: string; users: string[] }) => {
           users.forEach((user) => {
-            if (user !== userId) {
-              queryClient.invalidateQueries(['user', user]);
-            }
+            queryClient.invalidateQueries(['user', user]);
           });
 
           if (path[1] === 'matches') {

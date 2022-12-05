@@ -63,7 +63,7 @@ export const ProfileDetailsChangePassword = () => {
         />
         <Button
           size="big"
-          isDisabled={isLoading}
+          isLoading={isLoading}
           buttonStyleType="primary"
           text="Zmień hasło"
           type="submit"

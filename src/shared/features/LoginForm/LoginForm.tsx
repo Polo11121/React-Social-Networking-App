@@ -47,7 +47,7 @@ export const LoginForm = ({
         error={formik.errors.password}
       />
       <Button
-        isDisabled={isLoading}
+        isLoading={isLoading}
         fullWidth={!isInverse}
         buttonStyleType="primary"
         type="submit"

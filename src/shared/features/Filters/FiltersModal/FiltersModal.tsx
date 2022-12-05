@@ -86,7 +86,8 @@ export const FiltersModal = ({
           <Button
             size="big"
             fullWidth
-            isDisabled={isLoading || isDisabled}
+            isLoading={isLoading}
+            isDisabled={isDisabled}
             buttonStyleType="primary"
             type="submit"
             text="Zapisz"

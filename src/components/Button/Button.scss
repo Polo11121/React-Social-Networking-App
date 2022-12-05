@@ -26,6 +26,10 @@
   &--primary {
     background-color: $primary;
 
+    & > .button__content--loading {
+      color: $primary;
+    }
+
     &:hover {
       background-color: darken($primary, 2%);
     }
@@ -34,6 +38,10 @@
   &--secondary {
     background-color: $secondary;
 
+    & > .button__content--loading {
+      color: $secondary;
+    }
+
     &:hover {
       background-color: darken($secondary, 2%);
     }
@@ -41,6 +49,10 @@
 
   &--mandy {
     background-color: $mandy;
+
+    & > .button__content--loading {
+      color: $mandy;
+    }
 
     &:hover {
       background-color: darken($mandy, 2%);
@@ -54,5 +66,10 @@
   &--disabled {
     pointer-events: none;
     filter: brightness(85%);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
   }
 }

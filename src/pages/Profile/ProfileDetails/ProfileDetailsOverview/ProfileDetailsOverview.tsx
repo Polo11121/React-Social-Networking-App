@@ -26,7 +26,8 @@ export const ProfileDetailsOverview = () => {
           <AddHoc
             displayOnly={!isOwner}
             key={name}
-            isDisabled={isLoading || value.trim() === initialValue}
+            isLoading={isLoading}
+            isDisabled={value.trim() === initialValue}
             onSubmit={submitHandler}
             onDelete={deleteHandler}
             onClose={closeHandler}
@@ -67,7 +68,8 @@ export const ProfileDetailsOverview = () => {
             key={name}
             placeholder={placeholder}
             value={value?.label}
-            isDisabled={isLoading || value?.label === initialValue?.label}
+            isLoading={isLoading}
+            isDisabled={value?.label === initialValue?.label}
             onSubmit={submitHandler}
             onDelete={deleteHandler}
             onClose={closeHandler}

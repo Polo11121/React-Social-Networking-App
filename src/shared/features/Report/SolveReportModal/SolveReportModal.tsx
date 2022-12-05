@@ -114,7 +114,8 @@ export const SolveReportModal = ({
             />
             <Button
               type="submit"
-              isDisabled={!formik.values.reportSolution || isLoading}
+              isLoading={isLoading}
+              isDisabled={!formik.values.reportSolution}
               buttonStyleType="mandy"
               text="Rozwiąż"
               testId="submit-solve-report-button"

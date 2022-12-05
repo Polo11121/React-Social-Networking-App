@@ -54,7 +54,7 @@ export const ChatContentMessage = ({
         })}
       >
         <span className="chat-content-message__text">{message}</span>
-        {isImageLoading && <Spinner customColor="#fff" />}
+        {isImageLoading && <Spinner style={{ color: '#fff' }} />}
         {Boolean(images.length) && (
           <ImageCarousel onClick={messageImageClickHandler} images={images} />
         )}

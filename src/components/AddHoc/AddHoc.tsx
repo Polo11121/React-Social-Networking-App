@@ -14,6 +14,7 @@ type AddHocPropsType = {
   onSubmit?: () => void;
   onDelete?: () => void;
   isDisabled?: boolean;
+  isLoading?: boolean;
   placeholder?: string;
   Icon?: ReactNode;
   displayText?: string;
@@ -36,6 +37,7 @@ export const AddHoc = ({
   testId,
   hideDelete = false,
   isDisabled = false,
+  isLoading = false,
   displayOnly = false,
 }: AddHocPropsType) => {
   const [adHocVisibility, setAdHocVisibility] = useState(false);
@@ -128,6 +130,7 @@ export const AddHoc = ({
               testId={`cancel-addHoc-${testId}-button`}
             />
             <Button
+              isLoading={isLoading}
               isDisabled={isDisabled}
               buttonStyleType="primary"
               text="Zapisz"

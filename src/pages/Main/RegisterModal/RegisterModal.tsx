@@ -127,7 +127,7 @@ export const RegisterModal = ({
           />
           <Button
             size="big"
-            isDisabled={isLoading}
+            isLoading={isLoading}
             fullWidth
             buttonStyleType="primary"
             type="submit"

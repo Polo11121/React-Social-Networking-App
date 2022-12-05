@@ -63,7 +63,7 @@ export const UnblockUserModal = ({
             />
             <Button
               onClick={unblockUserHandler}
-              isDisabled={isLoading}
+              isLoading={isLoading}
               buttonStyleType="mandy"
               text="Odblokuj"
               testId="submit-unblock-user-button"

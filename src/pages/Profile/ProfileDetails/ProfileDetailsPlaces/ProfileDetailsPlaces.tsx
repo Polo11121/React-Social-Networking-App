@@ -28,10 +28,10 @@ export const ProfileDetailsPlaces = () => {
             displayOnly={!isOwner}
             key={name}
             placeholder={placeholder}
+            isLoading={isLoading}
             isDisabled={
-              isLoading ||
               value?.label === // @ts-ignore
-                (initialValue?.label || initialValue?.city)
+              (initialValue?.label || initialValue?.city)
             }
             onSubmit={submitHandler}
             onDelete={deleteHandler}

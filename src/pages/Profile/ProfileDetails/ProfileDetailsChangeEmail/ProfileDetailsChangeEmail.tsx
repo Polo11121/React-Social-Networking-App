@@ -40,7 +40,7 @@ export const ProfileDetailsChangeEmail = () => {
         />
         <Button
           size="big"
-          isDisabled={isLoading}
+          isLoading={isLoading}
           buttonStyleType="primary"
           text="Zmień e-mail"
           type="submit"
