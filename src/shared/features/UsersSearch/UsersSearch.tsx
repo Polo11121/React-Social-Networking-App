@@ -59,7 +59,7 @@ export const UsersSearch = () => {
           ))
         ) : (
           <div className="users-search__hint users-search__hint--empty">
-            Brak pasujących wyszukiwań
+            Brak pasujących wyszukiwań.
           </div>
         )}
       </div>

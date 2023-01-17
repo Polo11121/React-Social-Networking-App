@@ -76,9 +76,7 @@ export const ProfilePreview = forwardRef<HTMLDivElement>((props, ref) => {
               <ImagePicker
                 image={backgroundImage}
                 testId="add-background-photo"
-                text={`${
-                  user.backgroundImage ? 'Edytuj' : 'Dodaj'
-                } zdjęcie w tle`}
+                text="Zmień zdjęcie w tle"
                 onChooseFile={chooseBackgroundImageHandler}
               />
             )}

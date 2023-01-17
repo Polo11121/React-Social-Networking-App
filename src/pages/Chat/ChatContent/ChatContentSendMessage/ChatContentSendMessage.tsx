@@ -47,7 +47,7 @@ export const ChatContentSendMessage = ({
         <EmojiEmotionsIcon />
       </IconButton>
       <ImagePicker
-        tooltipText="Dodaj zdjęcie"
+        tooltipText="Dodaj zdjęcia"
         onChooseFile={changPhotoHandler}
         isMultiple
         testId="add-message-photo"

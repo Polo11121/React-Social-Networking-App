@@ -12,7 +12,7 @@ const Template: Story<ImagePickerPropsType> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { text: 'Dodaj zdjęcie' };
+Default.args = { text: 'Dodaj zdjęcia' };
 
 export const Circle = Template.bind({});
-Circle.args = { tooltipText: 'Dodaj zdjęcie' };
+Circle.args = { tooltipText: 'Dodaj zdjęcia' };

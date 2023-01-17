@@ -18,14 +18,19 @@ export const Main = () => {
           <div className="main__text">
             <h1 className="main__title">DATE-APP</h1>
             <h3 className="main__description">
+<<<<<<< Updated upstream
               Date-app pomaga kontaktować się z innymi osobami oraz udostępniać
               im różne informacje i materiały.
+=======
+              Date-App pomaga zawierać nowe znajomości oraz udostępniać im różne
+              informacje i materiały.
+>>>>>>> Stashed changes
             </h3>
           </div>
           <div className="main__form">
             <LoginForm>
               <Link className="main__link" to="/forgot-password">
-                Nie pamietasz hasła ?
+                Nie pamiętasz hasła?
               </Link>
               <div className="main__form-line" />
               <Button

@@ -73,7 +73,7 @@ export const AddPost = () => {
         <div className="add-post__buttons">
           <ImagePicker
             isMultiple
-            text="Dodaj zdjęcie"
+            text="Dodaj zdjęcia"
             onChooseFile={changPhotoHandler}
             testId="add-post-photo"
           />
